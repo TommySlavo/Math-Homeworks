@@ -1,0 +1,211 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 132H Homework 7}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\begin{proof}
+  $\Rightarrow)$ Continuing by contradiction, suppose $f'(z_0) = 0$ for some $z_0 \in U$. Let $D \subset U$ be an open disc centered at $z_0$. We have the property of local bijection; therefore $f: D \to f(D) \subset V$ is a bijection. Holomorphic functions are analytic, so we have an expansion at $z_0$ for $z \in D$,
+  \[
+  f(z) = \sum\limits_{n = 0}^{\infty}a_n(z- z_0)^n. 
+  \]
+  We've previously proven through Cauchy's integral formula that 
+  \[
+  a_n = \frac{f^{(n)}(z_0)}{n!}  
+  \]
+  and so 
+  \[
+  f(z) = f(z_0) + f'(z_0)(z - z_0) + \cdots + \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n + \cdots  
+  \]
+  but we know that $f'(z_0) =0$, so there must be some $k \geq 2$ such that 
+  \[
+  f(z) - f(z_0) = \frac{f^{(k)}(z_0)}{k!}(z - z_0)^k + G(z)  
+  \]
+  where $G(z)$ is the continuation of the Taylor expansion for terms with power greater than $k$, so $G$ vanishes to order $k + 1$ at $z_0$, and let $a = \frac{f^{(k)}(z_0)}{k!}$. Let $w \in D$ be small, and we have 
+  \[
+  f(z) - f(z_0) - w = a(z - z_0)^k - w + G(z). 
+  \]
+  Take $F(z) = a(z - z_0)^k - w$. For a tiny circle near $z_0$ 
+  \[
+  |G(z)| < |F(z)|  
+  \]
+  as the terms $G(z)$ and $a(z - z_0)^k$ will vanish near $z_0$, but with the $-w$ term in $F(z)$, we get the inequality above. Therefore, by Rouche's theorem, $F(z)$ and $F(z) + G(z)$ have the same number of zeros counted by multiplicity. $F(z)$ has at least $2$ zeros since $z_0$ is a zero of multiplicity $\geq 2$, so 
+  \[
+  F(z) + G(z) = f(z) - f(z_0) - w  
+  \]
+  has at least two zeros counted by multiplicity within $D$. If we set 
+  \[
+  f(z) - f(z_0) - w = 0  
+  \]
+  we then have $f'(z) = f'(z_0) = 0$, and thus $f(z) = f(z_0) = C$ which would imply that since $z$ is arbitrary that $f(z) = C$ for all $z \in U$ which contradicts the injectivity of the function near $z_0$. Hence, we have a contradiction. \\ 
+  $\Leftarrow)$ The derivative of a complex number is represented by the Jacobian with the partial derivatives of the real and imaginary parts in $\mathbb{R}^2$ as $\mathbb{C}$ and $\mathbb{R}^2$ are isomorphic. Note, that with $f'(z) 
+  \neq 0$ always we have that the determinant of the Jacobian matrix of the derivatives of the real and imaginary parts of the complex number is never $0$. Therefore, we may apply the inverse function theorem to state that in a neighborhood of $U$ such that the function is bijective. 
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+ Let $F(z) = (g(z))^2$. We then have that 
+ \[
+ F'(z) = 2g'(z)g(z) 
+ \] 
+ \[
+ F''(z) = 2(g''(z)g(z) + g'(z)g'(z)). 
+ \]
+ Considering $F(z_0) = 0$, $F'(z_0) = 0$, and $F''(z_0) \neq 0$ we have 
+ \[
+ F(z_0) = g(z_0)g(z_0) = 0 \Rightarrow g(z_0) = 0 
+ \]
+ \[
+ F''(z_0) = 2(g''(z_0)g(z_0) + g'(z_0)g'(z_0)) = 2g'(z_0)g'(z_0) \neq 0  \Rightarrow g'(z_0) \neq 0 
+ \]
+ and thus, by the previous problem $g$ is a local bijection near $z_0$. Therefore, $g$ is a conformal map near $z_0$ and the same is true for $g^{-1}$. Note, by the conformality of $g$ and $g^{-1}$ we have that angles are preserved under their mapping.  If we take 
+ \[
+ \Gamma_1(t) = g^{-1}(t), \ \Gamma_2(t) = g^{-1}(it), 
+ \]
+ then we get the results
+ \[
+ F(\Gamma_1(t)) = F(g^{-1}(t)) = g(g^{-1}(t))g(g^{-1}(t)) = t\cdot t = t^2
+ \]
+ \[
+ F(\Gamma_2(t)) = F(g^{-1}(it)) = g(g^{-1}(it))g(g^{-1}(it)) = it\cdot it = -t^2. 
+ \]
+ The properties $\Gamma_1$ and $\Gamma_2$ restricted to $F$ are real clearly, and we have that $F(\Gamma_1(t)) = t^2$ is minimized at $0$ and $F(z_0) = 0$ and $F(\Gamma_2(t)) = -t^2$ is maximized at $0$ and $F(z_0) = 0$, so $F(\Gamma_1(t))$ is minimized at $z_0$ and $F(\Gamma_2(t))$ is maximized at $z_0$. Note that $t$ is purely real, and $it$ is purely imaginary, so they are orthogonal. Since conformal maps preserve angles, since $g$ and $g^{-1}$ are conformal at $z_0$ we have that $g $ and $g^{-1}$ applied to $t$ and $it$ preserve that $90$ degree angle at $z_0$ and we have that $\Gamma_1$ and $\Gamma_2$ are orthogonal at $z_0$.  
+\end{proof}
+
+
+\section*{3.}
+\begin{proof}
+  Let $\gamma_0, \gamma_1 \subset V$ such that for $t \in [a, b]$\[
+  \gamma_0(a) = \gamma_1(a) = \alpha, \ \gamma_0(b) = \gamma_1(b) = \beta  
+  \]
+  so these are two curves with the same endpoints. Because $U, V$ are conformally equivalent, there exists $f:U\to V$ and $f^{-1}: V \to U$ that are both bijective and holomorphic, therefore, $f^{-1}(\gamma_0)$ and $f^{-1}(\gamma_1)$ are two curves with the same endpoints $f^{-1}(\alpha)$ and $f^{-1}(\beta)$ in $U$. Since $U$ is simply connected, there exists a homotopy $\gamma_s \subset U$ such that 
+  \[
+    \gamma_s(a) = f^{-1}(\alpha), \ \gamma_s(b) = f^{-1}(\beta)
+  \]
+  \[
+  \gamma_0(t) = f^{-1}(\gamma_0(t)), \ \gamma_1(t) = f^{-1}(\gamma_1(t)).  
+  \]
+  But, we then have that $f$ is continuous and bijective, so it must be that the path connectedness of $\gamma_s$ is preserved under $f$, so $f(\gamma_s) \subset V$ is a homotopy between $f(f^{-1}(\gamma_0)) = \gamma_0$ and $f(f^{-1}(\gamma_1)) = \gamma_1$ and we have that $V$ is simply connected. 
+\end{proof}
+
+\section*{4.}
+\begin{proof}
+  In a previous example, we discovered that \[f_1: \mathbb{D}\xrightarrow[z \mapsto i \frac{1 - z}{1 + z}]{} \mathbb{H}\] is a holomorphic and bijective function from the unit disc to the upper half-plane. Now, consider the function 
+  \[
+    f_2: \mathbb{H} \xrightarrow[w \mapsto (w - i)^2]{} \mathbb{C}.
+  \]
+  We begin by inspecting if $f_2$ is a surjective function and thus if it actually maps to all of $\mathbb{C}$. Study $z \in \mathbb{C}$. Therefore, if we consider the branch to be $\theta \in (0, 2\pi)$, the cut is made on the positive real axis, then we have that one of the solutions to $\sqrt{z} + i$ is within the upper half-plane. Take that solution, and we have that $f_2(\sqrt{z} + i) = \sqrt{z}^2 = z$ and therefore $f_2$ is surjective. Now, we must prove the holomorphicity of $f_2$. Inspecting this we have that for $w \in \mathbb{H}$
+  \begin{align*}
+   \lim\limits_{h \to 0} \frac{f_2(w + h) - f_2(w)}{h} &= \lim\limits_{h \to 0} \frac{(w + h - i)^2 - (w-i)^2}{h} \\
+   &= \lim\limits_{h \to 0} \frac{w^2 + wh -iw + wh + h^2 -ih -iw -ih - 1 -w^2 + 2iw + 1}{h} \\
+   &= \lim\limits_{h \to 0} \frac{2wh + h^2 - 2ih}{h} \\
+   &= \lim\limits_{h \to 0} 2w + h - 2i \\
+   &= 2w -2i 
+  \end{align*}
+  and thus the limit exists, and the function is holomorphic. With the fact that the composition of holomorphic functions is holomorphic and the composition of surjective functions is surjective, we obtain the result $f_1 \circ f_2: \mathbb{D} \to \mathbb{C}$ is a holomorphic surjection from the unit disc to the complex plane. 
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+  Beginning by checking if the map is holomorphic, we have 
+  \begin{align*}
+    \lim\limits_{h \to 0} \frac{-\frac{1}{2}\left(\left(z + h\right) + \frac{1}{z +h}\right) + \frac{1}{2}\left(z + \frac{1}{z}\right)}{h} &=\lim\limits_{h \to 0} \frac{1}{2h} \left(\frac{-z^3-2z^2h-zh^2 - z + z^3 + z^2h + z + h}{z^2 + hz}\right) \\
+    &= \lim\limits_{h \to 0}\frac{1}{2h}\left(\frac{-z^2h-zh^2 + h}{z^2 + hz} \right) \\
+    & = \lim\limits_{h \to 0} \frac{1}{2} \left(\frac{1 - z^2 - zh}{z^2 + hz} \right) \\
+    &= \frac{1}{2}\left(\frac{1 - z^2}{z^2} \right) \\
+    &= -\frac{1}{2} \left(1 - \frac{1}{z^2} \right) 
+  \end{align*}
+  and thus $f$ is holomorhpic. Clearly $f$ is well-defined. Next we must check if $f$ is surjective. Suppose, for $z_1, z_2 \in \{z = x + iy : |z| < 1 ,y > 0 \}$ that $f(z_1) = f(z_2)$ which implies 
+  \[
+  -\frac{1}{2}\left(z_1 + \frac{1}{z_1} \right) = -\frac{1}{2}\left(z_2 + \frac{1}{z_2} \right)  
+  \] 
+  and consequently 
+  \[
+  z_1 + \frac{1}{z_1} = z_2 + \frac{1}{z_2}.  
+  \]
+  Due to the fact that $y > 0$ for $z_1$ and $z_2$ we don't have to be concerned with $\frac{1}{z_j}$ being undefined $j = 1, 2$. Therefore, we must have $z_1 = z_2$. Thus, the function must be injective. To prove surjectivity, take $z \in \mathbb{H}$. The problem can be rephrased into us trying to find the roots for $1 + 2zz_0 + z_0^2$, as if $f(z_0) = z$, then 
+  \[
+  f(z_0) = -\frac{1}{2} \left(z_0 + \frac{1}{z_0} \right) = z\Rightarrow 1 = -2zz_0 - z_0^2 \Rightarrow 0 = 1 + 2zz_0 + z_0^2.
+  \]
+  By the hint, the equation has two distinct roots whenever $z \neq \pm 1$ and since $z \in \mathbb{H}$ as $y > 0$ always. We want one of these roots to be inside the half-disc. Note that  
+  \[
+  (-z +  \sqrt{z^2-1})(-z-\sqrt{z^2 - 1}) = z^2 - z^2 + 1 = 1
+  \]
+  since we have that $z \neq \pm 1$, there must be one root in the disc. So take that root, and with $y > 0$ already by $y > 0$ for $z$, we have that there is a root in the half-disc that satisfies the surjectivity of our function. Thus, we have $f$ bijective and holomorphic and a conformal map. 
+\end{proof}
+
+\section*{6.}
+\begin{proof}
+ Let $z = x + iy$, $F(z) = u_1(x, y) + iv_1(x, y)$ and $u\circ F (z) = u_2(u_1(x, y), v_1(x, y)) + iv_2(u_1(x, y), v_1(x, y))$. By the holomorphicity of the function we then may apply the Cauchy-Riemann equations
+ \[
+ \frac{\partial u_2}{\partial u_1} = \frac{\partial v_2}{\partial v_1}, \ \frac{\partial u_2}{\partial v_1} = -\frac{\partial v_2}{\partial u_1}. 
+ \]
+ Yet, holomorphic functions are infinitely differentiable. Therefore, applying the Cauchy-Riemann equations again
+ \[
+  \frac{\partial^2u_2}{\partial u_1^2} = \frac{\partial^2v_2}{\partial v_1\partial u_1}, \ \frac{\partial^2u_2}{\partial v_1^2} = -\frac{\partial v_2^2}{\partial u_1v_1} = -\frac{\partial v_2^2}{\partial v_1u_1}.
+ \]
+ We hence attain the result
+ \[
+ \Delta u \circ F = \frac{\partial^2 u_2}{\partial u_1^2} + \frac{\partial^2u_2}{\partial v_1^2} = \frac{\partial^2v_2}{\partial v_1\partial u_1}  -\frac{\partial v_2^2}{\partial v_1u_1} = 0.
+ \]
+\end{proof}
+
+\section*{8.}
+\begin{proof}
+  Using the hint, we find the conformal maps from the diagram below the question. The first conformal map is $F_1$ from the first quadrant to the upper half-disc. We already have a conformal map from the upper half-disc to the first quadrant, so finding $F_1$ amounts to finding the inverse of $f:\{z = x + iy: y > 0, |z| = 1\} \to \{z = x + iy \in \mathbb{C} : x > 0, y > 0\}$ where $f(z) = \frac{1 + z}{1 - z}$. Solving 
+  \[
+  z = \frac{1 + F_1(z)}{1 - F_1(z)}  
+  \]
+  for $f(z)$ we obtain 
+  \[
+  F_1(z) = \frac{z - 1}{z + 1}. 
+  \]
+  Because $f$ is a conformal map, we already know that $F_1$ is a conformal map since it must be bijective and holomorphic, and its inverse is $f$. A conformal map from the upper half-disc to the strip $\{w  = u + iv: u \in \mathbb{R}, 0 < v < \pi \}$ is outlined in the book as $F_2(z) = \log(z)$. Now we need a conformal map from $\{z = x + iy : x \in \mathbb{R}_{< 0}, 0 < y < \pi\}$ to $\{w = u + iv : u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right), v \in \mathbb{R} \}$. This map consists of a translation and a rotation, $F_3(z) = -iz - \frac{\pi}{2}$. Translations and rotations are conformal maps. Therefore, this map is conformal. All we must check is that $F_3$ indeed maps to $\{w = u + iv : u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right), v \in \mathbb{R} \}$. Given $z \in \{w = u + iv : u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right), v \in \mathbb{R} \}$ with $z = x+iy$ we have that there exists $w = i\frac{2z - \pi}{2} \in \{z = x + iy : x \in \mathbb{R}_{<0}, 0 < y < \pi\}$ such that $f(w) = z$. In the book an example was already provided for a conformal map between $\{z = x + iy: x \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right), y \in \mathbb{R}\}$ and the upper half-plane, namely $F_4(z) = \sin(z)$ which in the book is already proven to be a conformal map. Lastly, we need to perform a translation $F_5(z) = z - 1$ to have the desired properties of $u$, and translations are conformal maps. The composition of holomorphic maps is holomorphic, and the composition of bijective maps is bijective; therefore 
+  \[
+  F_1 \circ F_2 \circ F_3 \circ F_4 \circ F_5  
+\]
+is a conformal map between the desired spaces and has the desired properties. 
+\end{proof}
+
+\section*{9.}
+\begin{proof}
+  Through the previous problems, we have proven that if $G$ is a holomorphic function on the unit disc with real part $u$, then we have that $u $ is harmonic on the unit disc by our previous problems. Now, we must show that $u $ vanishes on the boundary. Note that 
+  \[
+  f(z) = \frac{i + z}{i - z} = \frac{i + z}{i - z}\cdot 1 = \frac{i + z}{i - z} \cdot \frac{\bar{z}- i}{\bar{z} - i} = \frac{i\bar{z}+ 1 |z|^2 -iz}{i\bar{z}+1-|z|^2 + iz} 
+  \]
+  and on the boundary $|z|^2 = 1$, so 
+  \[
+  f(z) = \frac{i\bar{z}+ 2 -iz}{i\bar{z} + iz} = \frac{ix + y + 2 -ix - y}{ix + y + ix-y} = \frac{1}{ix} = -i \frac{1},{x}  
+  \]
+  and so the boundary maps to the imaginary axis, and since we can choose $x$ infinitesimally small, $u$ is not bounded in $\mathbb{D}$. For $u(0, 1)$ on the boundary the real part of $f$ on the boundary is non-existent, hence 
+  \[
+  u(x, y) = Re(f(z)) = 0 \text{ at } u(0, 1). 
+  \]
+
+\end{proof}
+\end{document}

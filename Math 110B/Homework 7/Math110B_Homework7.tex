@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 110B Homework 7}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\begin{proof}
+    By the first Sylow theorem $G$ has a Sylow $p$-subgroup of order $H$ of order $p^k$. The number of Sylow $p$-subgroups divides the order of $G$ and $n_p \equiv 1 (mod \ p)$. Since $(m, p) = 1$, $n_p | m$ and thus since $m < p$ there must be only one Sylow $p$-subgroup and by a corollary, since there is only one Sylow $p$-subgroup it must be a normal subgroup implying the group is not simple. 
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+    Let $|G| = 48 = 2^4\cdot 3$. Therefore, we have a at least one Sylow $2-$subgroup of order $2^4$ and a Sylow $3$-subgroup of order $3$. The number of Sylow $2-$subgroups must be either $n_2 \in \{1,3\}$ otherwise Sylow theorem $3$ would be broken. \\
+
+    \textit{Claim:} For any two subgroups $H, K \leq G$ we have 
+    \[
+    |HK| = \frac{|H||K|}{|H \cap K|}.    
+    \]
+    Note that $HK = \{hk : h \in H, \ k \in K\}$. For the selection of $h \in H$ we have $|H|$ choices and for the selection of $k \in K$ we have $|K|$ choices. Consider if $h_1k_1 = h_2k_2$ for $h_1, h_2 \in H$ and $k_1, k_2 \in K$. This implies that $k_1k_2^{-1} = h_1^{-1}h_2 \in K, H$ so when we have this relationship, these elements are in the intersection of $H$ and $K$. Therefore, we have 
+    \[
+    |HK| = \frac{|H||K|}{|H \cap K|}.    
+    \]
+
+    Returning to the original problem, for the sake of contradiction, suppose $n_2 = 3$. Take $H_1$ and $H_2$ to be distinct Sylow $2-$subgroups, both of these subgruops will have $|H_1| = |H_2| = 2^4 = 16$. Note that $H_1 \cap H_2$ is a subgroup of $H_1$ and thus by Lagrange's theorem $|H_1 \cap H_2|$ divides $|H_1|$. Since the subgroups must be distinct they can't have all the same elements, so $|H_1 \cap H_2| = 1, 2, 4, \text{ or }8$. We know that we must satisfy 
+    \[
+    |H_1H_2| = \frac{|H_1||H_2|}{|H_1 \cap H_2|} \leq |G| = 60    
+    \]
+    as every element of $H_1H_2$ is in $G$. The only choice of $|H_1 \cap H_2|$ that satisfies this relation is $|H_1 \cap H_2| = 8$. This subgroup is index $2$ in $H_1$ and $H_2$ by Lagrange's theorem, and is thus normal in $H_1$ and $H_2$. Since $|H_1| = |H_2| = 16$ and $|H_1 \cap H_2| = 8$, we have $|N_G(H\cap K)| \geq 24$ but since $N_G(H \cap K)$ is a subgroup of $G$ it must be that $|N_G(H \cap K)| = 24 \text{ or } 48$ in order to divide the order of $G$. If $|N_G( H \cap K)| =  24$ it  is index $2$ and thus normal in $G$, otherwise $|N_G(H \cap K)| = 48 $ which implies $N_G(H \cap K) = G$ and thus $H \cap K$ is a normal non-trivial subgroup of $G$.  
+\end{proof}
+
+\section*{3.}
+\begin{proof}
+    Let $|G| = pqr$ where $p, q, r$ are all primes. Without loss of generality, suppose $p < q < r$. Look at the Sylow $q-$subgroups, and Sylow $r-$subgroups which we know exist by the first Sylow theorem. Consider $n_p$ we know that $n_p|qr$ but since $q, r$ are coprime we ahve $n_p|q$ and $n_p|r$. Since $q, r, p$ are all distinct primes it must be that $n_p = 1$ which implies that the Sylow $p-$subgroup is a normal subgroup.  
+\end{proof}
+
+\section*{4.}
+\begin{proof}
+    By definition we have $K \leq N(K) \leq N(N(K))$. Suppose $x \in N(N(K))$ and therefore $xKx^{-1} \leq xN(K)x^{-1} = N(K)$. The second Sylow theorem ensures that for every Sylow $p-$subgroup $\exists y \in N(K) $ such that 
+    \[
+    xKx^{-1} = yKy^{-1} = K    
+    \]
+    as $y \in N(K)$, and thus $x \in N(P)$. Thus, we have both inclusions and so $N(K) = N(N(K))$. 
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+    Using the third Sylow theorem we have that $n_5 \equiv 1 \ (mod \ 5)$ and $n_5|60$ implies that $n_5 = 1 \text{ or }6$. We have that $(12345) \in A_5$ and $(12354) \in A_5$ as unique elements that are $5-$cycles. The cyclic groups $\langle (12345) \rangle$ and $\langle (12354) \rangle$ are both of order $5$ and are unique as 
+    \[
+    (12354) \notin \langle (12345) \rangle = \{e, (12345), (13524), (14253), (15432)\}    
+    \]
+    so the cyclic subgroups are unique and thus there are at least $2$ Sylow $5-$subgroups, which implies that there are $6$ Sylow $5-$subgroups. 
+\end{proof}
+
+\section*{6.}
+\begin{proof}
+    By the class equation, we have that for $a_i \in G$, $i \in [n]$, 
+    \[
+    |G| = |Z(G)| + [G : C(a_1)] + \cdots + [G: C(a_n)].   
+    \]
+    For the sake of contradiction, suppose $Z(G) = \{e \}$. Then, $[G : C(a_i)] \neq 1$ for all $i \in [n]$ as otherwise they would've been included in the total for $Z(G)$. Since $|G| = p^n$, the smallest nontrivial integer that divides $|G|$ is $p$, and since $[G : C(a_i)]$ divides $|G|$ by Lagrange's theorem, we must have that $p|[G : C(a_i)]$ for all $i \in [n]$. Therefore, 
+    \[
+    [G : C(a_i)] = pq_i, \ q_i \in \mathbb{Z}.    
+    \]
+    Using the class equation, we have 
+    \[
+    |Z(G)| = |G| - [G : C(a_1)] - \cdots [G: C(a_n)] = p^n - pq_1 - \cdots - pq_n = p(p^{n - 1} - q_1 - \cdots - q_n)    
+    \]
+    implying $p$ divides $|Z(G)|$, a contradiction. Thus, $Z(G)$ is a nontrivial subgroup of $G$ and $Z(G)$ is normal. If $Z(G) \neq G$ then we are done as then $Z(G)$ is a nontrivial normal subgroup. If $Z(G) = G$, then the group is abelian, but by the first Sylow theorem since $|G| = p^n = p \cdot p^{n - 1}$ and $n \geq 2$, there exists a nontrivial Sylow $p-$subgroup of order $p$ which will be an abelian group, since $G$ is abelian under this assumption and thus the subgroup would be normal in $G$. 
+\end{proof}
+\end{document}

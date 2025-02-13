@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+
+
+\title{Math 110B Homework 3}
+\author{Thomas Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{1.}
+\subsection*{a.}
+\begin{proof}
+    From Theorem 8.2 of the book we have that $a \equiv b \ (mod \ K) \iff Ka = Kb$ and we can find if $a \equiv b \ (mod \ K)$ by whether or not $ab^{-1} \in K$. For this question we ask if $[17][19]^{-1} \in \langle[9]\rangle$. After some brief calculations it can be found that $[19]^{-1} = [27]$. Then, $[17][27] = [11]$. 
+    Note that $\langle [9] \rangle = \{[9], [81], [729], [6,561] \} = \{[9], [17], [25], [1] \}$. 
+    So, we can conclude that $[17][27] \notin \langle [9] \rangle$ and thus $K[17] \neq K [19]$. 
+
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+We will solve this problem exactly how we solved the previous problem. Note that $[25]^{-1} = [9]$, so $[9][25]^{-1} = [9][9] = [81] = [17] \in \langle [9] \rangle$ and thus, $K[9] = K[25]$. 
+\end{proof}
+\section*{2.}
+\begin{proof}
+    The order of the elements must divide the order of the group $G$, therefore the smallest possible order of $G$ is
+    \[
+    lcm(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) = 27, 720.    
+    \]
+\end{proof}
+\section*{3.}
+\begin{proof}
+Suppose $H, K \leq G$ are subgroups of a finite group $G$ such that $K \leq H$. Since the group is finite the number of left cosets $[G:H]$, $[H:K]$ is finite. By Lagrange's theorem 
+\[
+    [G: K] = \frac{|G|}{|K|} , \ |G| = |H|[G: H],  \ |K| = \frac{|H|}{[H: K]}.   
+\]
+Thus, 
+\[
+ [G: K] = \frac{|G|}{|K|} = \frac{|H|[G: H]}{\frac{|H|}{[H: K]}} = [G:H][H: K].    
+\]
+\end{proof}
+
+\section*{4.}
+\subsection*{a.}
+\begin{proof}
+    Suppose $G$ is a nonabelian group of order $10$. Note that for a finite group every element has an order, as for $a \in G$, there must be $n \neq m$ such that $a^n = a^m$ by the finiteness of $G$, and thus $a^{n - m} = e$. Also, the order of an element in the group must divide the order of a group, and thus the possible orders of elements in this group are $1$, $2$, $5$, and $10$. Since $G$ is nonablian it implies $G$ is not cyclic, as all cyclic groups are abelian, as if for $a \in G$ a generator $a^n = c$ and $a^m= b$ for $b, c \in G$ and $n \neq m$, then $bc = a^ma^n = a^na^m = cb$. Thus, there can be no element of order $10$ in the group. We only have one element of order $1$, so we must deal with the case where all other elements in the group have order $2$. If all but the identity element in a group have order $2$, then for every $a \in G$ we have $a^2 = e$ and thus $a = a^{-1}$. Hence, for $a, b \in G$ we have $ab \in G$ by closedness of multiplication and for this group $(ab)^2 = e$ implies $ab = (ab)^{-1}$. Thus, 
+    \[
+    ab = (ab)^{-1} = b^{-1}a^{-1} = ba    
+    \]
+    implying that the group is abelian and thus a contradiction. Therefore, an element of order $5$ must exist. 
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Every nonidentity element has order $2$ or $5$ and by the previous problem we know an element of order $5$ exists. Let $a \in G$ such that $|a| = 5$. Look at the subgroup $\langle a \rangle = \{e, a ,a^2, a^3, a^4\}$. Then, for $b \in G \backslash \langle a \rangle$, \[\langle a \rangle e = \langle a \rangle \neq \langle a \rangle b = \{b , ab, a^2b , a^3b, a^4b \}.\] 
+    By the fact that two right cosets are either disjoint or identitcal, since $b \notin \langle a \rangle$ but, $b \in \langle a \rangle$, then $\langle a \rangle \cap \langle a \rangle b = \emptyset$. Notice that then $|\langle a \rangle \cup \langle a \rangle b| = |\langle a \rangle | + |\langle a \rangle b| = 5 + 5  =10$ and each element in the cosets is in $G$. Thus, $\langle a \rangle \cup \langle a \rangle b = G$. Note that $a, a^2, a^3, a^4$ all have order $5$. Suppose $b$ has order $5$. Since $|\langle a \rangle| = 5$ we have that by Lagrange's theorem $\frac{|G|}{|\langle a \rangle|} = [G: \langle a \rangle] = 2$ there are two cosets. One of the cosets is simply $\langle a \rangle$ implying \[
+    \langle a \rangle b^2 = \langle a \rangle b^3.   
+    \]
+    But then,
+\[
+    \langle a \rangle b^2b^2 = \langle a \rangle b^3b^2
+\]
+and since $b^5 = e$ this implies
+\[
+ \langle a\rangle b^4 = \langle a \rangle.  
+\]
+Thus, this is saying that $b^4 \in \langle a \rangle$. If $b^4 \in \langle a \rangle$, since subgroups are closed under multiplication we have $b^4b^4 = b^5b^3 = eb^3 = b^3 \in \langle a \rangle$. Similary, we then have that $b^3b^3 = b^5 b = eb = b \in \langle a \rangle$, but this is a contradiction as we chose $b \notin \langle a \rangle$. Thus, the only elements of order $5$ are the $4$ elements of order $5$ in $\langle a \rangle$. 
+\end{proof}
+
+
+\section*{5.}
+\subsection*{a.}
+\begin{proof}
+Let $N, K \leq G$ be subgroups of $G$ a group and $N$ be normal in $G$. Let $a \in NK = \{nk : n \in N, k \in K\}$. Then, $a = nk$ for some $n \in N$ and some $k \in K$. Both $N$ and $K$ are subgroups implying $n^{-1} \in N$ and $k^{-1} \in K$. Then, $a^{-1} = (nk)^{-1} = k^{-1}n^{-1}$, but since $N$ is a normal subgroup there exists $n' \in N$ such that $a^{-1} = k^{-1}n^{-1} = n'k^{-1} \in NK$. Hence, $NK$ contains inverses. Now, take $a, b \in NK$. Then, $a = n_1k_1$ and $b = n_2k_2$ for $n_1, n_2 \in N$ and $k_1, k_2 \in K$. Then, $ab = n_1k_1n_2k_2$ but $N$ is a normal group, so $\exists n_2' \in N$ such thta $k_1n_2 = n_2'k_1$ and so \[
+ ab = n_1k_1n_2k_2 = n_1n_2'k_1k_2   
+\]
+and since $N$ and $K$ are subgroups they are closed under multiplication, and thus $n_1n_2' \in N$ and $k_1k_2 \in K$ implying $ab = n_1n_2'k_1k_2 \in NK$. Thus, $NK$ is a subgroup. 
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Now let $N$ and $K$ be normal. Let $g \in G$. Then, by the normality of $N$ and $K$
+    \[
+    gNKg^{-1} = Ngg^{-1}K = NK. 
+    \]
+    Thus, $NK$ is a normal subgroup. 
+\end{proof}
+
+\section*{6.}
+\begin{proof}
+    Let $H$ be a subgroup of order $n$ in a group $G$. Suppose $H$ is the only subgroup of order $n$ in $G$. Take $g \in G$. First we will show that $gHg^{-1}$ is a subgroup. Note that for $h \in H$, 
+    \[
+    (ghg^{-1})(gh^{-1}g^{-1}) = ghg^{-1}gh^{-1}g^{-1} = e    
+    \]
+    so $(ghg^{-1})^{-1} = gh^{-1}g^{-1}$. Suppose $a \in gHg^{-1}$, then $a = ghg^{-1}$ for some $h \in H$. Therefore, \[
+        a^{-1} = (ghg^{-1})^{-1} = gh^{-1}g^{-1}
+        \] 
+    and we can clearly see that $gh^{-1}g^{-1} \in H$ as $H$ is a subgroup, so $h^{-1} \in H$. Thus, $gHg^{-1}$ is closed under inverses. Now take $a, b \in gHg^{-1}$ with $a = gh_1g^{-1}$ and $b = gh_2g^{-1}$ for $h_1, h_2 \in H$. Then, 
+    \[
+    ab = gh_1g^{-1}gh_2g^{-1} = gh_1h_2g^{-1}    
+    \]
+    and since $H$ is a subgroup, we have $h_1h_2 \in H$ and thus $ab = gh_1h_2g^{-1} \in gHg^{-1}$. Thus, $gHg^{-1}$ is a subgroup of $G$. Now, take $h \in H$. Then, 
+    \[
+    (ghg^{-1})^n = \underbrace{ghg^{-1}ghg^{-1} \cdots ghg^{-1}}_{n -times} = gh^ng^{-1}   
+    \]
+    and since $H$ has order $n$ we have that \[
+    gh^ng^{-1} = gg^{-1} = e    
+    \]
+    using Corollary 8.6 which states if $|G| = k$, then $a^k = e$ $\forall a \in G$. Thus \[
+    |gHg^{-1}| = |H| = n.    
+    \]
+    Since $H$ is the only group of order $n$ we have that \[
+    gHg^{-1} = H    
+    \]
+    and by Theorem 8.11 this is one of the equivalent definitions for $H$ being a normal subgroup. 
+\end{proof}
+
+\end{document}

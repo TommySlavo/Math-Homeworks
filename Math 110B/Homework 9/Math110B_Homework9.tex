@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{bbm}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand{\mycomment}[1]{}
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 110B Homework 9}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\begin{proof}
+    
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+    Classifying the groups of order $21$ the only abelian group is $\mathbb{Z}/21\mathbb{Z}$ as $21 = 7*3$ and $gcd(7,3 ) = 1$. For the nonabelian groups, we have a Sylow $7-$subgroup of $G$ with $|G| = 21$ is normal.
+    \[
+    n_7 \equiv 1 \ (mod \ 7), \ n_7|3    
+    \]
+    so $n_7= 1$. We also have a Sylow $3-$subgroup $K$. Write $N = $Sylow $7-$subgroup. We have $gcd(7, 3) = 1$ which implies $N \cap K = \{e\}$ and 
+    \[
+    G = N\rtimes K.    
+    \]
+    Structure of group specfied by map $K \cong \mathbb{Z}/3\mathbb{Z}$ and $Aut(N) \cong (\mathbb{Z}/7\mathbb{Z})^{\times} \cong \mathbb{Z}/6\mathbb{Z}$. Have $2$ nontrivial maps
+    \[
+    [1] \mapsto [2] \ \varphi_1    
+    \]
+    \[
+    [1] \mapsto [4] \ \varphi_2.    
+    \]
+    Check that \[\mathbb{Z}/7\mathbb{Z} \rtimes_{\varphi_1}\mathbb{Z}/3 \mathbb{Z}\]\[
+    \mathbb{Z}/7\mathbb{Z} \rtimes_{\varphi_2}\mathbb{Z}/3\mathbb{Z}    
+    \]
+    are the same. These are isomorphic, map $\varphi_2: \mathbb{Z}/3\mathbb{Z} \to \mathbb{Z}/6\mathbb{Z}$ is given by composing $\mathbb{Z}/3\mathbb{Z} \xrightarrow[[1]\mapsto [2]]{} \mathbb{Z}/3\mathbb{Z}$ with $\varphi_1$, so they define isomorphic semidirect products. 
+\end{proof}
+
+\section*{3.}
+\begin{proof}
+    The matrix is invertible if and only if $\begin{bmatrix}
+        a \\
+        c
+    \end{bmatrix}$ and $\begin{bmatrix}
+        b \\
+        d
+    \end{bmatrix}$ are linearly independent over $\mathbb{Z}/p\mathbb{Z}$. This is true if and only $\begin{bmatrix}
+        a \\
+        c
+    \end{bmatrix} \neq e\begin{bmatrix}
+        b \\
+        d
+    \end{bmatrix}$ for all $e \in \mathbb{Z}/p\mathbb{Z}$. For the first vector we have $(p^2 - 1)$ choices as we can't have $a = c = 0$. The number of choices of the second vector is $p^2 - p$ as we have to get rid of $p$ choices for the scalar multiples that would remove the linear independence. 
+\end{proof}
+
+\section*{4.}
+\begin{proof}
+Note that $75 = 3*5^2$. With $G$ a group of order $75$, we have $n_5 = 1$ as $n_5 \equiv 1 \ (mod \ 5)$ and divides $3$. So we want nontrivial map $\mathbb{Z}/3\mathbb{Z} \to Aut(N)$, where $N$ is the unique Sylow $5-$subgroup. If $N \cong \mathbb{Z}/25\mathbb{Z}$ then we need a map $\mathbb{Z}/3 \mathbb{Z} \to Aut(\mathbb{Z}/25\mathbb{Z}) \cong (\mathbb{Z}/25\mathbb{Z})^{\times}$. Note
+\[
+ |(\mathbb{Z}/25\mathbb{Z})^{\times}| = \varphi(25) = 20 .
+\] 
+No nontrivial homomorphisms from $\mathbb{Z}/3\mathbb{Z}$ to group of order $20$. If $n \cong \mathbb{Z}/5 \mathbb{Z} \bigoplus \mathbb{Z}/5\mathbb{Z}$, $Aut(N) \cong GL_2(\mathbb{Z}/5\mathbb{Z})$ and $|GL_2(\mathbb{Z}/5\mathbb{Z})| = (25 - 1)(20) = 480.$
+We do have that $3|480$, so has element $A$ of order $3$. Get nontrivial $\varphi: \mathbb{Z}/3\mathbb{Z} \xrightarrow[[1]\mapsto A]{GL_2(\mathbb{Z}/5\mathbb{Z})}$ and thus $N \rtimes_{\varphi}\mathbb{Z}/3\mathbb{Z}$ is a nonabelian group of order $75$. 
+\end{proof}
+
+\end{document}

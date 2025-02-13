@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+\title{Math 110B Homework 5}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\begin{proof}
+   Note, that in cycle notation 
+   \[
+   \sigma = (138)(27)(4965).  
+   \] 
+   The least common multiple of the lengths of these disjoint cycles is $12$. Therefore, since the order of a permutation is the least common of the lengths of disjoint of the disjoint cycles, we have $|\sigma| = 12$. Since the cycles are disjoint 
+   \[
+   \sigma^1000 = (138)^{1000}(27)^{1000}(4965)^{1000} 
+   \] 
+   and since $2|1000$ and $4|1000$
+   \[
+   (27)^{1000} = e, \text{ and } (4965)^{1000} = e 
+   \]
+   and since 
+   \[
+   (138)^{1000} = (138)^{999}(138) 
+   \]
+   and $3|999$ we have 
+   \[
+   (138)^{999} = e. 
+   \]
+   Thus, 
+   \[
+   \sigma = (138).  
+   \]
+   This is a $3-$cycle, so $\sigma^{1000}$ has order $3$. 
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+ For $k$ odd, suppose our $k-$cycle is $\sigma = (a_1, \cdots, a_k)$. Let \[
+ \tau = (a_1 a_{\frac{k - 1}{2} + 2}a_2 a_{\frac{k - 1}{2} + 3} \cdots a_{\frac{k - 1}{2}}a_ka_{\frac{k - 1}{2} + 1}) 
+ \]
+ and see that 
+ \[
+ \tau^2 =  (a_1 a_{\frac{k - 1}{2} + 2}a_2 a_{\frac{k - 1}{2} + 3} \cdots a_{\frac{k - 1}{2}}a_ka_{\frac{k - 1}{2} + 1})(a_1 a_{\frac{k - 1}{2} + 2}a_2 a_{\frac{k - 1}{2} + 3} \cdots a_{\frac{k - 1}{2}}a_ka_{\frac{k - 1}{2} + 1}) = (a_1 a_2 \cdots a_k)
+ \] 
+ and so the claim is proven. 
+\end{proof}
+\section*{3.}
+\begin{proof}
+  Let $\tau = (a_1a_2\cdots a_k)$ and $\sigma \in S_n$. Take $t \in [n]$, then since these are functions compositions we read right to left, so first we perform $\sigma^{-1}(t)$. If $\sigma^{-1}(t) = a_i$ for some $i \in [k]$, then $\tau(\sigma^{-1}(t)) = a_{i + 1}$, otherwise $\tau(\sigma^{-1}(t)) = \sigma^{-1}(t)$. Then, if $\tau(\sigma^{-1}(t)) = a_{i + 1}$, then $\sigma(\tau\sigma^{-1}(t)) = \sigma(a_{i + 1})$, or $\sigma(\tau(\sigma^{-1}(t))) = \sigma(\sigma^{-1}(t)) = t$ and since this is the scenario where $t \notin (a_1 a_2 \cdots a_k)$ this is the result we want. If we say that $\sigma(a_k)$ is mapped to $\sigma(a_1)$ then we are done. 
+\end{proof}
+
+\section*{4.}
+\begin{proof}
+  Let $\sigma \in S_n$. We know that $\sigma$ is the product of transpositions, so we only need to show that all transpositions can be generated. Let $(i, j)$ be a transposition in $S_n$. Then, 
+  $(i, j) = (1, i)(1, j)(1, i)$. The transpositions $(1, i), (1, j), (1, i)$ are all of the desired form and thus we are done. 
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+  We will begin by proving $N$ is a subgroup. $(1)^{-1} = (1) \in N$, $((12)(34))^{-1} = (12)^{-1}(34)^{-1} = (12)(34) \in N$, and similarly $((13)(24))^{-1} = (13)(24) \in N$, $((14)(23))^{-1} = (14)(23) \in N$. Hence, every element in $N$ has an inverse. The identity element multiplied with an other element in $N$ is clearly also in $N$ by observation. We now will test all of the other elements in $N$: 
+  \[
+  (12)(34)(12)(34) = (1), \ (12)(34)(13)(24) = (14)(23) \ (12)(34)(14)(23) = (13)(24)  
+  \]
+  \[
+  (13)(24)(13)(24) = (1) \ (13)(24)(12)(34) = (14)(23) \ (13)(24)(14)(23) = (12)(34)  
+  \]
+  \[
+  (14)(23)(14)(23) = (1) \ (14)(23)(12)(34) = (13)(24) \ (14)(23)(13)(24) = (12)(34).   
+  \]
+  Thus, $N$ is closed under multiplication and is thus a subgroup. Now, we have actually done a lot of the heavy lifting showing the group is normal calculating all of the products, so 
+  \[
+  (1)N = \{(1)(1), (1)(12)(34), (1)(13)(24), (1)(14)(23) \} = \{(1)(1), (12)(34)(1), (13)(24)(1), (14)(23)(1) \} = N(1)  
+  \]
+  \[
+  (12)(34)N = \{(12)(34)(1), (12)(34)(12)(34), (12)(34)(13)(24), (12)(34)(14)(23) \} = \{(12)(34), (1), (14)(23), (13)(24) \}\]\[ = \{(1)(12)(34), (12)(34)(12)(34), (13)(24)(12)(34), (14)(23)(12)(34) \} = N(12)(34)  \]
+  \[
+  (13)(24)N = \{(13)(24)(1), (13)(24)(12)(34), (13)(24)(13)(24), (13)(24)(14)(23) \} = \{(13)(24), (14)(23), (1), (12)(34) \}
+  \]
+  \[
+   = \{(1)(13)(24), (12)(34)(13)(24), (13)(24)(13)(24), (14)(23)(13)(24) \} = N(13)(24)  
+  \]
+  \[
+   (14)(23)N = \{(14)(23)(1), (14)(23)(12)(34), (14)(23)(13)(24), (14)(23)(14)(23) \} = \{(14)(23), (13)(24), (12)(34), (1) \}  
+  \]
+  \[
+  = \{(1)(14)(23), (12)(34)(14)(23), (13)(24)(14)(23), (14)(23)(14)(23) \} = N(14)(23).   
+  \]
+  Thus the subgroup is normal so there is a nontrivial normal subgroup of $A_4$ and thus $A_4$ is not simple. 
+\end{proof}
+
+
+
+\end{document}

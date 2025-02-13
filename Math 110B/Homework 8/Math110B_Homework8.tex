@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{bbm}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand{\mycomment}[1]{}
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 110B Homework 8}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\begin{proof}
+    Consider the Sylow $3-$subgroup of $S_4$ $\langle (123) \rangle$. We need to find the normalizers of the subgroup in order to have that the conjugacy class is preverved using the definition of conjugacy class. Note that if we have $x \in G$ such that the conjugacy class is preserved, by the second Sylow theorem we have that all Sylow $p-$subgroups are conjugate to one another. Therefore, every other Sylow $3-$subgroup is conjugate to this Sylow $3-$subgroup. The identity element can be trivially included in the conjugates as well. 
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+    For $C_a = \{gag^{-1}: g \in G\}$ take $b \in C_a$. We then have $b = gag^{-1}$ for some $g \in G$. Therefore, 
+    $f(b) = f(gag^{-1}) = f(g)f(a)f(g^{-1}) = f(g)f(a)f(g)^{-1} \in f(C_a)$ and thus $f(C_a)$ is also a conjugacy class of $G$. 
+\end{proof}
+
+\section*{3.}
+\begin{proof}
+    Let $G$ be an infinite group and $H\subset G$ be all elements that have finite conjugates. Consider $a, b \in H$. Then, if $a$ in $H$ implies that $a $ has finite conjugates and therefore every conjugate of $a$ can be written $gag^{-1}$, so every conjugate of $a^{-1}$ is $(gag^{-1})^{-1} = ga^{-1}g$ and therefore $a^{-1} \in H$. The product $ab$ has conjugates $gabg^{-1} = gag^{-1}gbg^{-1} = (gag^{-1})(gbg^{-1})$ and $a, b$ have finite conjugages, so $ab$ has finite conjugate as we can write it in terms of conjugates of $a$ and $b$. Thus, $H$ is closed under inverses and multiplication and is thus a subgroup.  
+\end{proof}
+
+\section*{4.}
+\begin{proof}
+    Let $H$ be a proper subgroup of $G$. By theorem 9.25 we know that the number of $H$ conjugates of $G$ must divide the order of $G$. Therefore, if $H$ is a proper subset of $G$, then since $H$ is a normal subgroup of $N(H)$, then $[H : H \cap N(H)]$ is strictly less than the order of $G$ implying $G$ cannot be the union of all the conjugates of $H$. 
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+    To begin, by viewing the multiplication table we can see that there are exactly 2 generators, same as in $D_4$, then we can see that all elements correspond to multiplication just as the same as in $D_4$. Similarly the claim holds for $G_2$ and $Q_8$. Hence, we get the desired result. 
+\end{proof}
+
+\section*{6.}
+\begin{proof}
+    Take $(n_1, k_1), (n_2, k_2), (n_3, k_3) \in N\rtimes_{\phi} K$. We then have
+    \begin{align*}
+        ((n_1, k_1)(n_2, k_2))(n_3, k_3) &= ((n_1\phi_{k_1}(n_2), k_1k_2))(n_3, k_3) \\
+        &= (n_2\phi_{k_1}(n_2), k_1k_2)(n_3, k_3) \\
+        &= (n_3\phi_{k_1k_2}(n_3)\phi_{k_1}(n_2), k_1k_2k_3)\\
+        &= (n_1\phi_{k_1}(n_2\phi_{k_2}(n_3)),k_1k_2k_3)\\
+        &= (n_1, k_1)(n_2\phi_{k_2}(n_3), k_2k_3)\\
+        &= (n_1, k_1)((n_2\phi_{k_2}(n_3), k_2k_3)) \\
+        &= (n_1, k_1)((n_2, k_2)(n_3, k_3))
+    \end{align*}
+    using that automorphisms are themselves group homomorphisms. Thus, we have the associative property and the semidirect product is a group. 
+\end{proof}
+\end{document}

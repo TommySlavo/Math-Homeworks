@@ -1,0 +1,362 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 132H Homework 8}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{10.}
+\begin{proof}
+   If we consider $G:\mathbb{H} \to \mathbb{D}$ where 
+   \[
+   z \mapsto \frac{z - i}{z + i}. 
+   \] 
+   We then have that $|G(z)| \leq 1$ always, and any function that maps from $\mathbb{H} \to \mathbb{C}$ such that $|F(z)|\leq 1$ it must be that $F$ maps to some subset of the closed unit disc. Also, with $G$ we have that $G(i) = 0$. We have that $G$ and $G^{-1}$ are conformal maps, and the composition of two holomorphic maps is holomorphic. Therefore, $F\circ G^{-1}: \mathbb{H} \to \mathbb{C}$ is a holomorphic map such that $F(i) = 0$ and by Schwarz lemma we have 
+   \[
+   |F(G^{-1}(z))| \leq z \leq 1 \text{ as } z \in \mathbb{D}.  
+   \]
+   Thus, we have that 
+   \[
+   |F(G^{-1}(G(z)))| = |F(z)| \leq |G(z)| = \left|\frac{z - i}{z + i}\right|.
+   \]
+
+
+\end{proof}
+
+\section*{11.}
+\begin{proof}
+   Consider the maps $\varphi:D(0, R) \to \mathbb{D}$ and $\phi:D(0, M) \to \mathbb{D}$ where $z\mapsto \frac{z}{R}$ and $z \mapsto \frac{z}{M}$. We then have that $\varphi^{-1}:\mathbb{D} \to D(0, R)$ maps $z \mapsto Rz$ and thus we define $F = \phi \circ f \circ \varphi^{-1}$. Therefore, we have
+   \[
+   F(z) = \phi(f(zR)) = \frac{f(zR)}{M}. 
+   \]
+   Note that with $z \in \mathbb{D}$ we have $zR \in D(0, R)$. 
+   Then, 
+   \begin{align*}
+   \left|\frac{F(z) - F(0)}{1 - \overline{F(0)}F(z)}\right| &= \left|\frac{\frac{f(zR)}{M} - \frac{f(0)}{M}}{1 - \frac{\overline{f(0)}}{M}\frac{f(zR)}{M}}\right| \\
+   &= \left|\frac{\frac{f(zR) - f(0)}{M}}{\frac{M^2- \overline{f(0)}f(zR)}{M^2}}\right| \\
+   &= \left|\frac{Mf(zR) - Mf(0)}{M^2 - \overline{f(0)}f(zR)}\right| \leq z
+   \end{align*}
+   with the last step being justified by the Schwartz lemma. Rearranging we get 
+   \[
+    \left|\frac{f(zR) - f(0)}{M^2 - \overline{f(0)}f(zR)}\right| \leq \frac{z}{M}.
+   \]
+   Then if we set $w = zR \in D(0, R)$ we obtain
+   \[
+   \left|\frac{f(w) - f(0)}{M^2 - \overline{f(0)}f(w)} \right| \leq \frac{w}{MR} 
+   \]
+   and the result is proven. 
+\end{proof}
+
+\section*{12.}
+\subsection*{a.}
+\begin{proof}
+  Suppose $f:\mathbb{D}\to \mathbb{D}$ is analytic with two fixed points. Suppose $\alpha, \alpha'$ are the two fixed points. Consider the map $\varphi_{\alpha}:\mathbb{D}\to \mathbb{D}$ such that for $|\alpha| < 1$
+  \[
+  \varphi_{\alpha}(z) = \frac{\alpha - z}{1 - \overline{\alpha}z}  
+  \]
+  and since $|\alpha| < 1$ the map will never have a pole but is equal to $0$ when $z = \alpha$. The book proves that $\varphi_{\alpha}$ is indeed an automorphism of $\mathbb{D}$. With the choice of $\varphi_{\alpha}$ as proven in the book we also have $\varphi_{\alpha}^{-1} = \varphi_{\alpha}$. Define 
+  \[
+  \tilde{f} = \varphi_{\alpha}\circ f \circ \varphi_{\alpha}  
+  \]
+  and we clearly have 
+  \[
+  \tilde{f}(0) = \varphi_{\alpha}(f(\varphi_{\alpha}(0))) = \varphi_{\alpha}(f(\alpha)) = \varphi_{\alpha}(\alpha) = 0  
+  \]
+  using that $\varphi_{\alpha}(0) = \alpha$, $f(\alpha) = \alpha$ as it is a fixed point of $f$, and $\varphi_{\alpha}(\alpha) = 0$. But, we also obtain a second fixed point for $\tilde{f}$, namely $\varphi_{\alpha}(\alpha')$:
+  \[
+  \varphi_{\alpha}(f(\varphi_{\alpha}(\varphi_{\alpha}(\alpha')))) = \varphi_{\alpha}(f(\alpha')) = \varphi_{\alpha}(\alpha')  
+  \] as $\varphi_{\alpha}\circ\varphi_{\alpha}(z) = z$ and $\alpha'$ is a fixed point of $f$ by assumption. Hence $\tilde{f}$ has two fixed points, but since $\tilde{f}(0) = 0$ and clearly $\tilde{f}:\mathbb{D}\to \mathbb{D}$ is holomorphic as $\varphi_{\alpha}$ and $f$ are holomorphic, we may apply the Schwartz lemma. Since we have a nonzero $z_0 = \varphi_{\alpha}(\alpha')$ such that 
+  \[
+  |\tilde{f}(\varphi_{\alpha}(\alpha'))| = |\varphi_{\alpha}(\alpha')|  
+  \]
+  by Schwartz's lemma it must be that $\tilde{f}$ is a rotation. But it can't be a rotation that isn't the identity; otherwise, every point will be rotated by the same amount, meaning we can't have two fixed points. Thus, $\tilde{f} = id$ and it must be that $f = id$. 
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}
+  We have already looked at the maps $G:\mathbb{D} \to \mathbb{H}$ where $G(z) = i \frac{1 - z}{1 + z}$ and $F:\mathbb{H}\to \mathbb{D}$ with $F(w) = \frac{i - w}{i + w}$. Therefore, composing these conformal maps with the conformal map $f:\mathbb{H} \to \mathbb{H}$ with $f(z) = z + 1$ we have $F\circ f\circ G: \mathbb{D} \to \mathbb{D}$ a conformal map from the unit disc to itself, but with no fixed points as in the upper half plane every point is shifted by $1$ and then remapped into the disc. 
+\end{proof}
+
+\section*{13.}
+\subsection*{a.}
+\begin{proof}
+  We can begin by defining $\psi_{\alpha}: \mathbb{D} \to \mathbb{D}$ by $\psi_{\alpha}(z) = \frac{z - \alpha}{1 - \overline{\alpha}z}$. Note that the book has already discussed that this is an automorphism of the unit disc. The inverse that arises from the definition of $\psi_{\alpha}$ is $\psi_{\alpha}^{-1}(z) = \frac{z + \alpha}{1 + z\overline{\alpha}}$ which is once again an automorphism of the unit disc. Therefore, $\psi_{f(w)}\circ f \circ \psi_{w}^{-1}$ is a holomorphic function from the unit disc to itself as it is the composition of holomorphic funcitions from the unit disc to itself. Note that we then have 
+  \[
+  \psi_{f(w)}(f(\psi_w^{-1}(0)))  = \psi_{f(w)}(f(w)) = \frac{f(w) - f(w)}{1 - |f(w)|^2} = 0 
+  \]
+  as $|f(w)| < 1$. Thus, we meet the necessary conditions to apply Schartz's lemma and attain the result
+  \[
+  |\psi_{f(w)}(f(\psi_w^{-1}(z)))| \leq |z|  
+  \]
+  and setting $z = \psi_w(z)$ we have that 
+  \[
+    |\psi_{f(w)}(f(\psi_w^{-1}(\psi_w(z))))| = |\psi_{f(w)}(f(z))| \leq |\psi_w(z)|
+  \]
+  thus giving us the result
+  \[
+   \rho(f(z), f(w)) \leq \rho(z, w). 
+  \]
+  If $f$ is an automorphism of $\mathbb{D}$, then $f^{-1}$ exists as a conformal map from $\mathbb{D} \to \mathbb{D}$. Now consider 
+  \[
+    \psi_{f^{-1}(w)}\circ f^{-1}\circ \psi_w^{-1}(0) = \psi_{f^{-1}(w)}(f^{-1}(w)) = \frac{f^{-1}(w) - f^{-1}(w)}{1 - |f^{-1}(w)|^2} = 0
+  \]
+  as $f^{-1}(w) \in \mathbb{D}$. Clearly the composition of automorphisms of the disc above is holomorphic and therefore the conditions of Schwarz lemma are satisfied and we have 
+  \[
+  |\psi_{f^{-1}(w)}(f^{-1}(\psi_{w}^{-1}(z)))| \leq |z|.
+  \]
+  Set $z = \psi_w(z)$ and we ahve 
+  \[
+  |\psi_{f^{-1}(w)}(f^{-1}(z))| \leq |\psi_w(z)|  
+  \]
+  and once again we can set $z = f(z)$ which implies $w = f(w)$ and see 
+  \[
+  |\psi_w(z)| \leq |\psi_{f(w)}(f(z))|  
+  \]
+  and thus 
+  \[
+  \rho(z, w) \leq \rho(f(z), f(w)).   
+  \]
+  Given that $f$ is an automorphism we have 
+  \[
+    \rho(z, w) \leq \rho(f(z), f(w)) \text{ and } \rho(f(z), f(w)) \leq \rho(z, w)
+  \]
+  implying by squeeze lemma 
+  \[
+  \rho(z, w) = \rho(f(z), f(w)).  
+  \]
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+  From the previous result we know 
+  \[
+  \left|\frac{f(z) - f(w)}{1 - \overline{f(w)}f(z)}\right| \leq \left|\frac{z - w}{1 - \overline{w}z}\right|  
+  \]
+  with $z , w \in \mathbb{D}$. Rearranging we gather
+  \[
+  \left|\frac{f(z) - f(w)}{(z - w)(1 - \overline{f(w)}f(z))}\right| \leq \left|\frac{1}{1 - \overline{w}z}\right|.  
+  \]
+  Taking the limit as $z \to w$: 
+  \[
+  \left|\lim\limits_{z \to w} \frac{f(z) - f(w)}{z - w} \cdot \frac{1}{1 - \overline{f(w)}f(z)} \right| \leq \frac{1}{|1 - |w|^2|}, 
+  \]
+  as $f$ is holomorphic we may more the limit inside $f$, therefore
+  \[
+  \left|\frac{f'(w)}{1 - |f(w)|^2} \right| \leq \frac{1}{|1 - |w|^2|}  
+  \]
+  and 
+  \[
+  \frac{|f'(w)|}{1 - |f(w)|^2} \leq \frac{1}{1 - |w|^2}  
+  \]
+  with 
+  \[
+  |1 - |f(w)|^2| = 1 - |f(w)|^2 \text{ and } |1 - |w|^2| = 1 - |w|^2  
+  \]
+  because $w, f(w) \in \mathbb{D}$. 
+\end{proof}
+
+\section*{14.}
+\begin{proof}
+  Suppose $f:\mathbb{H} \to \mathbb{D}$ is a conformal map. 
+ Recall we have the conformal map $g: \mathbb{D} \to \mathbb{H}$ by 
+ \[
+ g(z) = i \frac{1 - z}{1 + z}. 
+ \] 
+ Hence, $f \circ g$ is a conformal map and thus an automorphism of $\mathbb{D}$. Then we have for $z \in \mathbb{D}$
+ \[
+ f(g(z)) = f\left(i \frac{1 - z}{1 + z} \right). 
+ \]
+ By a theorem from the book it must be that any automorphism of the disc is of the form 
+ \[
+ e^{i \theta} \frac{\alpha - z}{1 - \overline{\alpha}z} 
+ \]
+ for $\alpha\in \mathbb{D}$ and $\theta \in \mathbb{R}$, so 
+ \[
+  f(g(z)) = f\left(i \frac{1 - z}{1 + z} \right) = e^{i \theta} \frac{\alpha - z}{1 - \overline{\alpha}z}.
+ \]
+ The motivation of the next step comes from noting that as previously mentioned in the book
+ \[
+ g^{-1}(z) = \frac{i - z}{i + z}. 
+ \]
+ Take $z = \frac{i - z}{i + z}$ and we have 
+ \begin{align*}
+  f(z) &= e^{i \theta} \frac{\alpha - \frac{i - z}{i + z}}{1 - \overline{\alpha} \frac{i - z}{i + z}} \\
+  &= e^{i \theta} \frac{\alpha i + \alpha z - i + z}{i + z - \overline{\alpha}i + \overline{\alpha}z} \\
+  &= e^{i \theta} \frac{z(1 + \alpha) + \alpha i - i}{z(1 + \overline{\alpha}) + i -\overline{\alpha}i} \\
+  &= e^{i \theta} \frac{z + \frac{\alpha i - i }{1 + \alpha}}{z + \frac{i - \overline{\alpha}i}{1 + \overline{\alpha}}}\\
+  &= e^{i \theta}\frac{z - \frac{i - \alpha i}{1 + \alpha}}{z - \frac{\overline{\alpha}i - i}{1 + \overline{\alpha}}}\\
+  &= e^{i \theta} \frac{z - i\frac{1 - \alpha}{1 + \alpha}}{z - i \frac{\overline{\alpha} - 1}{1 + \overline{\alpha}}}.
+ \end{align*}
+ Notice 
+ \[
+ \overline{i\frac{1 - \alpha }{1 + \alpha}} = i\frac{\overline{\alpha}- 1}{1 + \overline{\alpha}} 
+ \]
+and that by the known mapping $g(z) = i\frac{1 - z}{1 + z} \in \mathbb{H}$ and with $\alpha \in \mathbb{D}$ we have 
+\[
+   i\frac{1 - \alpha}{1 + \alpha} \in \mathbb{H}.
+\]
+ Taking 
+ \[
+ \beta =  i\frac{1 - \alpha }{1 + \alpha} \text{ and then } \overline{\beta} = i\frac{\overline{\alpha} - 1}{1 + \overline{\alpha}} 
+ \]
+ we get the result 
+ \[
+ f(z) = e^{i \theta}\frac{z - i\frac{1 - \alpha }{1 + \alpha}}{z - i\frac{\overline{\alpha} - 1}{1 + \overline{\alpha}}} = e^{i \theta}\frac{z - \beta}{z - \overline{\beta}}.
+ \]
+\end{proof}
+
+\section*{15.}
+\subsection*{a.}
+\begin{proof}
+  We know by previous results that all automorphisms of the upper half-plane are of the form 
+  \[
+  z \mapsto \frac{az + b}{cz + d}.  
+  \]
+  The identity map fixes all points so it certainly fixes three different points. Suppose $z$ is a fixed point by an automorphism of $\mathbb{H}$, then 
+  \[
+  z = \frac{az + b}{cz + d}.  
+  \]
+  Rearranging the above implies 
+  \[
+  \frac{az + b - cz^2 - dz}{cz + d} = 0  
+  \]
+  and thus that 
+  \[
+  -z^2 + z(a - d) + b = 0.  
+  \]
+  According to the Fundamental theorem of Algebra, the polynomial above has two solutions, so three points can't be fixed unless the map is the identity.  
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}
+  The idea here is that we build a map that assigns $x_1$, $x_2$, and $x_3$ to three manageable points. Define
+  \[
+  f(z) = \frac{(z - x_1)(x_2 - x_3)}{(z - x_3)(x_2 - x_1)}  
+  \]
+  here $f(x_1) = 0$, $f(x_2) = 1$, and $\lim\limits_{z \to x_3}f(z) = \infty$. This is an automorphism of $\mathbb{H}$, as the determinant of the coefficients is greater than $0$ which is sufficient as $z \in \mathbb{H}$. Also, define 
+  \[
+  g(z) = \frac{zy_2y_3 - zy_1y_3 - y_1y_2 + y_1y_3}{zy_2 - zy_1 - y_2 + y_3}  
+  \] 
+  which is the inverse of 
+  \[
+  \frac{(z - y_1)(y_2 - y_3)}{(z - y_3)(y_2 - y_1)},  
+  \]
+  but I will spare the reader that long and tedious computation. 
+  We then have that 
+  \[
+  g \circ f(x_1) = \frac{-y_1y_2 + y_1y_3}{-y_2 + y_3} = y_1  
+  \]
+  \[
+  g \circ f(x_2) = \frac{y_2y_3 - y_1y_2}{y_3 - y_1} = y_2  
+  \]
+  \[
+  \lim\limits_{z \to x_3}g\circ f(z) = \frac{\infty\cdot y_2y_3 - \infty\cdot y_1 y_3}{\infty \cdot y_2 - \infty \cdot y_1} = y_3.  
+  \]
+
+  Suppose $f$ and $g$ are two conformal maps such that $f(x_1) = g(x_1) = y_1$, $f(x_2) = g(x_2) = y_2$ and $f(x_3) = g(x_3) = x_3$ with all variables as defined by the problem. By the first part of the problem, it must be that $f \circ g^{-1} = id$ as the map would fix three points, and thus $f = g$. 
+\end{proof}
+
+\section*{17.}
+\begin{proof}
+  We begin by using the hint provided for the first integral, since $\psi_{\alpha}$ is holomorphic and bijective, we may use that integrals of the form 
+  \[
+    \frac{1}{\pi}\iint_{\mathbb{D}}|\psi_{\alpha}'|^2dx dy = \frac{1}{\pi}\cdot \text{Area}(\psi_{\alpha}(\mathbb{D}))
+  \]
+  but $\psi_{\alpha}$ is a automorphism of $\mathbb{D}$, so
+  \[
+  \psi_{\alpha}(\mathbb{D}) = \mathbb{D}  
+  \]
+  and since the radius of the unit disc is $1$
+  \[
+    \frac{1}{\pi}\iint_{\mathbb{D}}|\psi_{\alpha}'|^2dx dy = \frac{1}{\pi}\cdot \text{Area}(\psi_{\alpha}(\mathbb{D})) = \frac{1}{\pi}\cdot \text{Area}(\mathbb{D}) = \frac{1}{\pi}\cdot \pi = 1.
+  \]\\
+
+  The second integral must be handled with more care. If we parametrize $z = e^{i \theta}$. Now, we can calculate the derivative of 
+  \[
+  \psi_{\alpha}(z) = \frac{\alpha - z}{1 - \overline{\alpha}z}.  
+  \]
+  Using the quotient rule we calculate the derivative to be
+  \[
+   \psi_{\alpha}'(z) = \frac{-1 +|\alpha|^2}{(1 - \overline{\alpha}z)^2}.
+    \]
+    Plugging into the integral 
+    \[
+    \frac{1}{\pi}\iint_{\mathbb{D}} |\psi_{\alpha}'|dxdy = \frac{1}{\pi}\iint_{\mathbb{D}} \left|\frac{-1 + |\alpha|^2}{(1 - \overline{\alpha}z)^2} \right|dxdy.
+    \]
+    With our parametrization of $z$ in hand, we will tackle this integral over contour of the unit disc. Note that since $\alpha \in \mathbb{D}$ we have
+    \[
+    |1 - |\alpha|^2| = 1 - |\alpha|^2.  
+    \]
+    Therefore, with $d \theta = \frac{1}{iz}dz$ our integral becomes
+    \begin{align*}
+      \frac{1}{\pi}\iint_{\mathbb{D}} |\psi_{\alpha}'|dxdy &= \frac{1 - |\alpha|^2}{\pi}\int_0^1\int_{0}^{2\pi} \frac{1}{|1 - \overline{\alpha}re^{i \theta}|^2}r d\theta dr  \\
+      &= \frac{1 - |\alpha|^2}{\pi}\int_0^1\int_{|z| = 1} \frac{r}{iz|1 - \overline{\alpha} rz|^2}dz dr.
+    \end{align*}
+    With $|z| = 1$ we have $z\cdot \overline{z} = 1$ and so $\overline{z} = \frac{1}{z}$ and the integral is now
+     \begin{align*}
+      \frac{1}{\pi}\iint_{\mathbb{D}}|\psi_{\alpha}'|dxdy &= \frac{1 - |\alpha|^2}{\pi}\int_0^1\int_{|z| = 1}\frac{r}{iz|1 - \overline{\alpha} rz|^2}dzdr \\
+      &= \frac{1 - |\alpha|^2}{\pi}\int_0^1\int_{|z| = 1} \frac{r}{iz(1 - \overline{\alpha} r z)\left(1 - \alpha r \frac{1}{z}\right)} dz dr \\
+      &= \frac{1 - |\alpha|^2}{i\pi}\int_0^1\int_{|z| = 1} \frac{r}{z(1 - \overline{\alpha} rz)\left(\frac{z - \alpha r}{z}\right)}dz dr \\
+      &= \frac{1 - |\alpha|^2}{i\pi}\int_0^1\int_{|z| = 1} \frac{rz}{z(1 - \overline{\alpha} rz)\left(z - \alpha r\right)}dz dr \\
+      &= \frac{1 - |\alpha|^2}{i\pi}\int_0^1\int_{|z| = 1} \frac{r}{(1 - \overline{\alpha} rz)\left(z - \alpha r\right)}dz dr \\
+      &= \frac{1 - |\alpha|^2}{i \pi}\int_0^1 r \int_{|z| = 1} \frac{1}{(1 - \overline{\alpha} r z)(z - \alpha r)}dzdr.
+     \end{align*}
+     Now we must find the residues of the poles. The poles are $z = \frac{1}{\alpha r}$ and $z = \alpha r$. Note that since $r < 1$ and $\alpha \in \mathbb{D}$ we have that the pole $ \frac{1}{\alpha r}$ is not in the disc therefore we need only consider the pole $z_1 = \alpha r$. Clearly, this pole only has an order of $1$. Calculating the residue we get
+     \[
+     res_{z_1}f = \lim\limits_{z \to \alpha r}( z - \alpha r) \frac{1}{(1 - \overline{\alpha} rz)(z - \alpha r)} = \frac{1}{1 - |\alpha|^2r^2}. 
+     \]
+     Thus, by the residue integration formula
+     \begin{align*}
+      \frac{1}{\pi}\iint_{\mathbb{D}}|\psi_{\alpha}'|dxdy &= \frac{1 - |\alpha|^2}{i \pi}\int_0^1 r \int_{|z| = 1} \frac{1}{(1 - \overline{\alpha} r z)(z - \alpha r)}dzdr \\
+      &= \frac{1 - |\alpha|^2}{i\pi} \int_0^1 r \frac{2\pi i }{1 - |\alpha|^2r^2}dr \\
+      &= (2 - 2|\alpha|^2)\int_0^1 \frac{r}{1 - |\alpha|^2r^2}dr.
+     \end{align*}
+     Performing classical $u-$substitution with $u = 1 - |\alpha|^2r^2$ we have 
+     \[
+     \frac{du}{dr} = -2r|\alpha|^2
+     \]
+     and thus
+     \[
+     -\frac{du}{2r|\alpha|^2} = dr. 
+     \]
+     We can then simplify the integral into 
+     \begin{align*}
+      \frac{1}{\pi}\iint_{\mathbb{D}}|\psi_{\alpha}'|dxdy &= (2 - 2|\alpha|^2)\int_0^1 \frac{r}{1 - |\alpha|^2r^2}dr \\
+      &= (2 - 2|\alpha|^2)\int_1^{1 - |\alpha|^2}\frac{r}{u(-2r|\alpha|^2)}du \\
+      &= -\frac{1 - |\alpha|^2}{|\alpha|^2}\int_1^{1 - |\alpha|^2} \frac{1}{u}du \\
+      &= \frac{1 - |\alpha|^2}{|\alpha|^2} \int_{1 - |\alpha|^2}^1 \frac{1}{u}du \\
+      &= -\frac{1 - |\alpha|^2}{|\alpha|^2}\left[\ln(|u|)\right]_{1 - |\alpha|^2}^{1} \\
+      &= \frac{1 - |\alpha|^2}{|\alpha|^2}(-\ln(|1 - |\alpha|^2|)) \\
+      &= \frac{1 - |\alpha|^2}{|\alpha|^2}\ln((1 - |\alpha|^2)^{-1}) \\
+      &= \frac{1 - |\alpha|^2}{|\alpha|^2}\ln\left(\frac{1}{1 - |\alpha|^2}\right)
+     \end{align*}
+     with the last step true by basic logarithm rules. 
+     Hence, the last proof of my undergraduate career is complete. 
+    
+\end{proof}
+
+
+\end{document}

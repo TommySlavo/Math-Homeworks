@@ -1,0 +1,151 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{enumerate}
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+
+
+\title{Math 110B Homework 4}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\section*{1.}
+\begin{proof}
+    Let $Nx \in G/N$ for $x \in G$. Then, since $N$ is a normal subgroup and $x^2 \in N$ we have
+    \[
+    NxNx = NxxN = Nx^2N = NN = N.     
+    \]
+    Thus, implying all elements of $G/N$ have order $2$. 
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+We look at $T \leq G$ the subgroup of elements of $G$ of finite order. The elements of $G/T$ are $Tx$ where $x \in G$. Note, since the group is abelian, we have that $xT = Tx$. If $x$ has finite order, then $x \in T$, so clearly $Tx = T$ has finite order but is also the idenity. Now, suppose $x$ has infinite order. Suppose for sake of contradiction $Tx$ has finite order $n$. Then, 
+\[
+ \underbrace{Tx \cdot Tx \cdots Tx}_{n-\text{times}} = T   
+\]
+but since the group is abelian so is $G/T$ by theorem 8.13 in the book
+\[
+    \underbrace{Tx \cdot Tx \cdots Tx}_{n-\text{times}} = = Tx^nT \cdots T = T 
+\]
+implying $x$ has finite order, but this is a contradiction as we assumed $x$ to have infinite order. Therefore, every nontrivial element of $G/T$ has infinite order. 
+\end{proof}
+\section*{3.}
+\begin{proof}
+    Suppose $N$ is a normal subgroup of $G$ such that $N$ and $G/N$ are finitely generated. Since $N$ is normal $G/N$ is a subgroup and is finitely generated, so $G/N = \langle Ng_1, Ng_2, \ldots, Ng_n \rangle$ for $n$ finite. The, we have 
+    \[
+    G = \cap_{i = 1}^n Ng_i    
+    \]
+    but, $N$ is finitely generated, and so it must be that $G$ is finitely generated. 
+\end{proof}
+
+\section*{4.}
+\subsection*{a.}
+\begin{proof}
+Suppose $a \in K$. Therefore, \[\left(a^{-1}\right)^2 = a^{-2} = \left(a^{2}\right)^{-1} = e\]
+so $K $ is closed under inverses. Take $a, b \in K$. Then, we have that, since the group is abelian
+\[
+   (ab)^2 = abab = aabb = a^2b^2 = ee = e.  
+\]
+Thus, $K$ is closed under multiplication and inverses which is sufficient for it to be a subgroup. 
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Suppose $a \in H$. We then have that $a = x_1^2$ for some $x_1 \in G$. Therefore, 
+    \[
+    a^{-1} = \left(x_1^2\right)^{-1} = x_1^{-2} = (x_1^{-1})^2    
+    \]
+    and so $a^{-1} = \left(x^{-1} \right)^2$ implying $a^{-1} \in H$. Now, look at $a, b \in H$. Hence $a = x_1^2$ and $b = x_2^2$ for some $x_1, x_2 \in G$. Therefore, using that $G$ is abelian 
+    \[
+    ab = x_1^2x_2^2 = x_1x_1x_2x_2 = x_1x_2x_1x_2 = (x_1x_2)^2    
+    \]
+    and thus $ab \in G$ by closure of groups under multiplication and $H$ is a subgroup of $G$. 
+\end{proof}
+\subsection*{c.}
+\begin{proof}
+    Let $f:G \to H$ be a map where $x \mapsto x^2$ for $x \in G$. First to show this is a homomorphism look at $a, b \in G$, and since $G$ is abelian  
+    \[
+    f(ab) = (ab)^2 = abab = aabb = a^2b^2 = f(a)f(b).
+    \]
+    Now, since $f$ is a homorphism, clearly $H = \{x^2 : x \in H\}$ is the image but the kernel is where $f(x) = e$ and this is precisely when $f(x) =x^2 = e$, thus these are elements of order $2$ and the identity element. The kernel is thus exacly $K$. Then, by the first isomorphism theorem we have that \[
+      G/K \cong H.   
+    \]
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+    Suppose $f:G \to H$ is a homomorphism of finite groups. Then, we claim the image $\{f(g) : g \in G\}$ is a subgroup of $H$. Suppose $a \in Im(f)$, then there exists $x \in G$ such that $f(x) = a$, and since $f(x^{-1}) = f(x)^{-1}$ for a homomorphism, then $a^{-1} = f(x)^{-1} = f(x^{-1})$ and since $x^{-1} \in G$, $f(x^{-1}) = a^{-1} \in Im(f)$. Next, if $a, b \in Im(f)$ we have that there exists $x_1, x_2 \in G$ such that $f(x_1) = a$ and $f(x_2) = b$, so since $f$ is a homomorphism
+    \[
+    ab = f(x_1)f(x_2) = f(x_1x_2)    
+    \]
+    and $x_1x_2 \in G$, so $f(x_1x_2) = ab \in Im(f)$. 
+    Therefore, $Im(f) \leq H$ is a subgroup of $H$ and by Lagrange's theorem $|Im(f)|$ divides $|H|$. By the First Isomorphism theorem 
+    \[
+    G/ker(f) \cong Im(f)  
+    \]
+    and we know that by Lagrange 
+    \[
+    \frac{|G|}{|ker(f)|} = [G: ker(f)]    
+    \]
+    but $[G: ker(f)]$ is the number of right cosets of $ker(f)$ which is exactly the order of $G/ker(f)$ which is isomorphic to $Im(f)$. Thus, 
+    \[
+    |G| = [G: ker(f)]|ker(f)| = |G/ker(f)||ker(f)| = |Im(f)||ker(f)|    
+    \]
+    implying $|Im(f)|$ divides $|G|$. k
+\end{proof}
+
+\section*{6.}
+\subsection*{a.}
+\begin{proof}
+To prove that $N$ is a normal subgroup take $x \in NK$ and $n \in N$. Because $x \in NK$, $x = n_1k_1$ and $x^{-1} = (n_1k_1)^{-1}$. Because $N$ is normal in $G$, $n_1k_1 = k_1n_2$ for some $n_2 \in N$. Then, using the normality of $N$ in $G$ we have $k_1N = Nk_1$, so  \[
+xN = = n_1k_1N = k_1n_2N = k_1N = Nk_1 = Nn_1k_1 = Nx.\] 
+
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    We begin by showing $f$ is a homomorphism, so take $k_1k_2 \in K$. Note that $N$ is normal in $NK$, so $Nk_1 = k_1N$. Therfore, 
+    \[
+    f(k_1k_2) = Nk_1k_2 = NNk_1k_2 = Nk_1Nk_2 = f(k_1)f(k_2).    
+    \]
+    To show the homomorphism is surjective, suppose we have $Na \in NK/N$ for $a = n_1k_1 \in NK$ and $n_1 \in N$, $k_1 \in K$. Then, 
+    \[
+    Na = Nn_1k_1 = Nk_1    
+    \]
+    so $\exists k_1 \in K$ such that 
+    \[
+    f(k_1) = Nk_1 = Nn_1k_1 = Na    
+    \]
+    and thus the homomorphism is surjective. If $f(k) = N$, then $f(k) = Nk = N$ which implies $k \in N$. Thus, the kernel must be $N \cap K$, as $k \in K$ must also be in $N$ for $f(k) = N$. 
+\end{proof}
+\subsection*{c.}
+\begin{proof}
+    We have met all the criteria to apply the First Isomorphism theorem and state
+   \[
+   K/(N \cap K) \cong NK / N. 
+   \] 
+\end{proof}
+\end{document}
+

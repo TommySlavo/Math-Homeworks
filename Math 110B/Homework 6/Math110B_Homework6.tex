@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+\title{Math 110B Homework 6}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\subsection*{a.}
+Let $G$ be a group and let $D = \{(a, a, a) : a \in G\}$.
+\begin{proof}
+   Let $x \in D$, then $x = (a, a, a)$ for some $a \in G$. Then, since $G$ is a group $a^{-1} \in G$, so $x(a^{-1}, a^{-1}, a^{-1}) = (a, a, a)(a^{-1}, a^{-1}, a^{-1}) = (e, e, e)$ so $x \in D$ has $x^{-1} \in D$. Let $x, y \in D$. Then, $x = (a, a, a)$ and $y = (b, b, b)$ for $a, b \in G$. The product is then $xy = (ab, ab, ab)$ but since $G$ is a group, we have $ab \in G$, so $xy = (ab, ab, ab) \in D$. Thus, $D$ is a subgroup of $G \times G \times G$. 
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    $\Rightarrow)$ Suppose that $D$ is normal in $G \times G \times G$. Then, for any $(a, b, c) \in G \times G \times G$ for $a, b, c \in G$ we have $(a, b, c)D = D(a, b, c)$, so then for every $(d, d, d) \in D$ with $d \in G$ we have that there exists $(d_1, d_1, d_1) \in D$ with $d_1 \in G$ such that $(a, b, c)(d, d, d) = (ad, bd, cd) = (d_1, d_1, d_1)(a, b, c) = (d_1a, d_1b, d_1c)$. We then have that 
+    \[
+    (ada^{-1}, bdb^{-1}, cdc^{-1}) = (d_1, d_1, d_1) \in D    
+    \]
+    and thus \[
+    ada^{-1} = bdb^{-1} = cdc^{-1}    
+    \]
+    and if we set $d = b$ we have 
+    \[
+    aba^{-1} = bbb^{-1} \Rightarrow aba^{-1} = b \Rightarrow ab = ba    
+    \]
+    and the claim is proven in this direction. \\
+    $\Leftarrow)$ Supposing the contrary, if we have that $G$ is abelian, then for any $(a, b, c) \in G \times G \times G$ we have that \[
+    (a, b, c)D    
+    \]
+    has elements \[
+    (a, b, c)(d, d, d)    
+    \]
+    for $d \in G$. Then, since $G$ is abelian we have
+    \[
+    (a, b, c)(d, d, d) = (ad, bd, dc) = (da, db, dc) = (d, d, d)(a, b, c)    
+    \]
+    which gives the implication
+    \[
+    (a, b, c)D = D(a, b, c)    
+    \]
+    and that $D$ is a normal subgroup of $G \times G \times G$.  
+\end{proof}
+\section*{2.}
+\begin{proof}
+    Suppose $N, K$ are subgroups of $G$ such that $G = N \times K$ with $M$ a normal subgroup of $N$. Take $g \in G$. Then, $g = nk$ for some $n \in N$ and $k \in K$. Then, \[
+        g^{-1}Mg =k^{-1}n^{-1}Mnk 
+    \]
+    but $M$ is normal in $N$, so \[
+    n^{-1}Mn \subset M.     
+    \]
+    Because $G = N \times K$ we have that $nk = kn$,  and with $M \subset N$ normal we have that 
+    \[
+        g^{-1}Mg =k^{-1}n^{-1}Mnk  = k^{-1}Mk = Mk^{-1}k =  M. 
+    \]
+\end{proof}
+
+\section*{3.}
+\subsection*{a.}
+\begin{proof}
+    Let $a, b\in G$. Then, first showing that $f^*$ is a homomorphism using that $f_i$ is a homomorphism \[
+    f^*(a + b) = (f_1(a_1+b_1), f_2(a_2 + b_2), \ldots , f_n(a_n + b_n)) = (f_1(a_1) + f_1(b_1), f_2(a_2) + f_2(b_2), \ldots, f_n(a_n) + f_n(b_n))\]
+    \[ = (f_1(a_1), f_2(a_2), \ldots , f_n(a_n)) + (f_1(b_1), f_2(b_2), \ldots , f_n(a_n)) = f^*(a) + f^*(b) \]   
+    
+    \[
+    f^*(ab) = (f_1(a_1b_1), f_2(a_2  b_2), \ldots , f_n(a_n  b_n)) = (f_1(a_1)  f_1(b_1), f_2(a_2)  f_2(b_2), \ldots, f_n(a_n)  f_n(b_n)) \] 
+    \[ =(f_1(a_1), f_2(a_2), \ldots , f_n(a_n))  (f_1(b_1), f_2(b_2), \ldots , f_n(a_n)) = f^*(a)  f^*(b). 
+    \]
+    Now, we can show that 
+    \[
+    \pi_i \circ f^*(a) = \pi_i(f^*(a)) = \pi_i((f_1(a_1), f_2(a_2), \ldots , f_n(a_n))) = f_i(a_i)  
+    \]
+    so the claim holds for all $i$. 
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Suppose that $g$ is another homomorphism from $G$ to $G_1 \times \cdots \times G_n$ such that $\pi_i \circ g = f_i$. We then have that $\pi_i(a_1, a_2, \ldots , a_n) = a_i$, so this implies $\pi_i((g(a_1), g(a_2), \ldots , g(a_n))) = f_i(a_i)$ which implies $g(a_i) = f_i(a_i)$ for all $i$ and thus $g = f^*$. 
+\end{proof}
+
+\section*{4.}
+\subsection*{a.}
+\begin{proof}
+   \[
+   \mathbb{Z}_{12}, \ \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 
+   \] 
+
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    \[
+   \mathbb{Z}_{15}
+   \]
+\end{proof}
+\subsection*{c.}
+\begin{proof}
+    \[
+    \mathbb{Z}_{30}    
+    \]
+\end{proof}
+\subsection*{d.}
+\begin{proof}
+\[
+ \mathbb{Z}_{72}, \ \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3, \ \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3, \ \mathbb{Z}_8 \times \mathbb{Z}_3 \times \mathbb{Z}_3, \ \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_9, \ \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_9i   
+\]
+\end{proof}
+\subsection*{e.}
+\begin{proof}
+    \[
+    \mathbb{Z}_{90}, \ \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3 \times \mathbb{Z}_5    
+    \]
+\end{proof}
+\subsection*{f.}
+\begin{proof}
+    \[
+       \mathbb{Z}_{144}, \ \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3,\ \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3, \ \mathbb{Z}_8 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3, \ \mathbb{Z}_{16} \times \mathbb{Z}_3 \times \mathbb{Z}_3, \ 
+    \]
+    \[
+        \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_{9},\ \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_9, \ \mathbb{Z}_8 \times \mathbb{Z}_2 \times \mathbb{Z}_9
+    \]
+\end{proof}
+\subsection*{g.}
+\begin{proof}
+    \[
+    \mathbb{Z}_{600}, \ \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_5 \times \mathbb{Z}_5, \ \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_5 \times \mathbb{Z}_5, \ \mathbb{Z}_8 \times \mathbb{Z}_3 \times \mathbb{Z}_5, \ \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_{25}, \ \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_25
+    \]
+\end{proof}
+\subsection*{h.}
+\begin{proof}
+    \[
+    \mathbb{Z}_{1160}, \  \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_5 \times \mathbb{Z}_{29}, \mathbb{Z}_4 \times \mathbb{Z}_2 \times \mathbb{Z}_{5} \times \mathbb{Z}_{29}.     
+    \]
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+    Suppose $G$ is a finite abelian group and $p$ a prime that divides $|G|$. By the fundamental theorem we know that $G$ is the direct sum of cycle groups each of prime power order. Therefore, we have a cycle group of order $p^k$ for some $p$. By theorem $7.9$ that element $p$ is in the group. 
+\end{proof}
+
+\section*{6.}
+Let $G, H, K$ be finite abelian groups. 
+\subsection*{a.}
+\begin{proof}
+    Put 
+    \[
+    G \cong \mathbb{Z}/p_1^{e_1} \bigoplus \cdots \bigoplus \mathbb{Z}/p_r^{e_r}    
+    \]
+    where $p_1, \ldots, p_r$ are primes each $e^i \geq 1$ 
+    \[
+    H \cong \mathbb{Z}/q_1^{f_1} \bigoplus \cdots \bigoplus \mathbb{Z}/q_s^{f_r}    
+    \]
+    where $q_1, \ldots , q_s$ are primes and $f^i \geq 1$. Classification theorem says $G \cong H \iff (p_1^{e_1}, \ldots , p_r^{c_r}) = (q_1^{f_1}, \ldots , q_s^{f_s})$ up to some ordering. We know 
+    \[
+    G \bigoplus G \cong \left(\mathbb{Z}/{p_1}^{e_1} \bigoplus \mathbb{Z}/p_1^{e_1} \right) \bigoplus \cdots \bigoplus \left(\mathbb{Z}/p_r^{q_r} \bigoplus \mathbb{Z}/p_r^{q_r} \right)
+    \]
+    and similarly for $H \bigoplus H$. \[
+    (p_1^{e_1}, p_1^{e_1}, \ldots p_r^{e_r}, p_r^{e_r} )    
+    \]
+    \[
+    (q_1^{f_1}, q_1^{f_1}, \ldots , q_s^{f_s}, q_s^{f_s}).    
+    \]
+    Using classification we have that $r = s$, so we can reorder the $q$'s such that  
+    \[
+    p_1^{e_1} = q_1^{f_1}, \ldots , p_r^{e_r} = q_r^{f_r}    
+    \]
+    but $p_i^{e_i}$s and $q_j^{f_j}$s are element divisiors for $G$ adn $H$ and thus they are equal, so 
+    \[
+    G \cong H.     
+    \]
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Let \[
+    K \cong \mathbb{Z}/m_1^{g_1} \bigoplus \cdots \bigoplus \mathbb{Z}/m_t^{g_t}    
+    \]
+    for $m$'s prime and $g_i \geq 1$ for all $i$. We then have that 
+    \[
+    G \bigoplus H \cong \left(\mathbb{Z}/p_1^{e_1} \bigoplus \cdots \bigoplus \mathbb{Z}/p_r^{e_r} \right) \bigoplus \left( \mathbb{Z}/q_1^{f_1} \bigoplus \cdots \bigoplus \mathbb{Z}/q_s^{f_s} \right)     
+    \]
+    \[
+       G \bigoplus K \cong \left(\mathbb{Z}/p_1^{e_1} \bigoplus \cdots \bigoplus \mathbb{Z}/p_r^{e_r} \right) \bigoplus \left(\mathbb{Z}/m_1^{g_1} \bigoplus \cdots \bigoplus \mathbb{Z}/m_t^{g_t}\right)
+    \]
+    with the two isomorphic. 
+    We can reorder $(p_1^{e_1}, \ldots , p_n^{e_n}, m_1^{g_1}, \ldots , m_t^{g_t})$ to get $(p_1^{e_1}, \ldots , p_r^{e_r}, q_1^{k_1}, \ldots , q_s^{f_s})$ so $s = t$. 
+    Assume $p_i^{e_i} = q_j^{f_j}$ in the reordering. Then $p_i^{e_i}$ in $G \bigoplus H$ matches with either $p_j^{e_j}$ or $m_k^{e_k}$. If $p_n^{e_n}$ in $G \bigoplus H$ matches with $m_i^{e_i}$, then change pairing so that $p_i^{e_i}$ swaps with $p_j^{e_j}$ and $q_i^{p_i}$ swaps with $m_i^{p_i}$. If $p_i^{e_i}$ matches with another $p_j^{f_j}$ then the same is true for $p_j^{e_j}$. Eventually we will have swapped all $p_i^{e_i}$ and get that every $q^f$ and $m^g$ agree and $H \cong K$. 
+\end{proof}
+\end{document}
