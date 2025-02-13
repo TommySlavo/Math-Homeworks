@@ -1,0 +1,193 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+
+\title{Math 121 Homework 9}
+\author{Thomas Slavonia; UID: 205511702}
+\date{March, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{3.3.5.}
+\subsection*{a.}
+\begin{proof}[\unskip\nopunct]
+   $(\Leftarrow)$ If a subset $W \subseteq \mathbb{R}^n$ is
+   convex, then for $w, y \in W$, we have that there is a straight line interval that joins $w, y$ in $W$
+   which is exactly the definition of $W$ being star-shaped
+   with respect to $w$. \\
+   $(\Rightarrow)$ Now, if $W$ is a star-shaped set with respect to every point in $W$, then for any $x, y \in W$ we have a line segment between $x$ and $y$ thus proving convexity. 
+
+  
+
+
+
+\end{proof}
+\subsection*{b.}
+With respect to the point $(0, 0)$. Let $W = \{(x, y) : x = 0 \text{ or } y = 0\} \subseteq \mathbb{R}^2$. For the point $(0, 0)$, we have that if $x \neq 0$, then $t(x, 0) + (1 - t)(0, 0) = (tx, 0) \in W$ for $t \in [0, 1]$ is a line segment from $(0, 0)$ to $(x, 0)$, and similarly, if $y \neq 0$, then $t(0, y) + (1- t)(0, 0) = (0, ty) \in W$ is a line segment from $(0, 0)$ to $(0, y)$. 
+But, there is no line segment in $W$ from $(x, 0)$ to $(0, y)$, if $x, y \neq 0$, as $t(x, 0) + (1 - t)(0, y) = (tx, (1 - t)y)$ and if $t = \frac{1}{2}$, then $(\frac{1}{2}x, \frac{1}{2}y) \notin W$ if we have that $x, y \neq 0$.  
+
+\subsection*{c.}
+\begin{proof}[\unskip\nopunct]
+Suppose $W \subseteq \mathbb{R}^n$ is a star-shaped set. 
+Let $x_0 \in W$. 
+Let $F:W \times [0, 1] \to W$ where $(x, t) \mapsto (1 - t)x_0 +tx$. Then, we have that $F(x, 0) = x_0$, $F(x, 1) = x$, and $F(x_0, t) = x_0 - tx_0 + tx_0 =x_0$. 
+Thus, the conditions of contractible to $x_0$ have been met. 
+
+\end{proof}
+
+\subsection*{d.}
+\begin{proof}[\unskip\nopunct]
+   Let $W \subseteq \mathbb{R}^n$ be a star-shaped set. In 
+   Problem $3$ of this section, we proved that any set contractible to a point has a trivial fundamental group. 
+   We have shown that a star-shaped set is contractible to a point. Thus, it has a trivial fundamental group. A star-shaped set is path-connected; by definition, there exists a line segment between a given point and the point that the star-shaped set is with respect to. Thus, for $x, y \in W$ and if $W$ is with respect to $w$, then there exists line segment $\alpha:[0, 1] \to W$ such that $\alpha(t) = (1 - t)x + tw$ and line segment $\beta:[0, 1] \to W$ with $\beta(t) = (1 - t)w + ty$. Then, $\gamma = \alpha \beta$ is a path from $x$ to $y$. Thus, $W$ is simply connected. 
+    
+
+\end{proof}
+
+\section*{3.3.6.} %Fix 
+\begin{proof}[\unskip\nopunct]
+   %Let $(X, x_0)$ and $(Y, y_0)$ be two pointed spaces. Let $f:\pi_1(X \times Y, (x_0, y_0)) \to \pi_1(X, x_0) \times \pi_1(Y, y_0) $ map, for $[\gamma] = [(\alpha, \beta)] \in \pi_1(X \times Y, (x_0, y_0))$, then 
+   %$f([\gamma]) = ([\alpha], [\beta])$. To prove that $f$ is well defined, let $[\gamma] = [\gamma'] \in \pi_1(X \times Y, (x_0, y_0))$, then $f([\gamma]) = ([\alpha], [\beta]) = ([\alpha'], [\beta']) = f([\gamma'])$, so $f$ is well defined. To prove injectivity,
+   %suppose $f([\gamma]) = f([\gamma'])$. Consequently, we have that $[\alpha] = [\alpha']$ and $[\beta] = [\beta']$, hence $[\gamma] = ([\alpha], [\beta]) = [\gamma'] = ([\alpha'], [\beta'])$.
+   
+   For a loop $\gamma$ based at $(x_0, y_0)$, we have that it is equivalent to $(\alpha, \beta)$ where $\alpha$ is based at $x_0$ and $\beta$ is based at $y_0$. This assertion is true because, by the properties 
+   of the product topology, $\gamma:[0, 1] \to (X, x_0) \times (Y, y_0)$ is continuous if and only if $\alpha:[0, 1] \to (X, x_0)$ and $\beta:[0, 1] \to (Y, y_0)$ are continuous, $\gamma(t) = (\alpha(t), \beta(t))$, which they are. 
+   Similarly, a homotopy $\gamma_t$ is equivalent to a pair of homotopies $\alpha_t$ and $\beta_t$. Thus, we have a bijection $\pi_1(X \times Y, (x_0, y_0))$ to $\pi_1(X, x_0) \times \pi_1(Y, y_0)$ with $[\gamma] \mapsto ([\alpha], [\beta])$. 
+
+
+
+\end{proof}
+
+\section*{3.3.7.}
+\begin{proof}[\unskip\nopunct]
+   Suppose $X$ $Y$ are simply connected spaces. By the previous problem, we have that $\pi_1(X \times Y) \cong \pi_1(X) \times \pi_1(Y) \cong 0 \times 0$, and thus
+   the fundamental group is trivial in the product space. 
+   Let $(x_1, y_1), (x_2, y_2) \in X \times Y$. We know there exists path $\alpha:[0, 1] \to X$ a path 
+   from $x_1$ to $x_2$, $\alpha(t) = (1 - t)x_1 + tx_2$, and 
+   $\beta:[0, 1] \to Y$ a path from $y_1$ to $y_2$ with $\beta(t) = (1 - t)y_1 + ty_2$. 
+    Hence, $\gamma(t) = \alpha \beta(t)$ where $\gamma(t) = ((1 - t)x_1, (1 - t)y_1) + (tx_2, ty_2) = ((1 - t)x_1 + tx_2, (1 - t)y_1 + y_2)$ is a path from $(x_1, y_1)$ to $(x_2, y_2)$. 
+    Thus, $X \times Y$ is path-connected and thus is simply connected. 
+\end{proof}
+
+\section*{3.4.1.}
+\begin{proof}[\unskip\nopunct]
+   Suppose $X$ is a simply connected topological space, and suppose $f:X \to Y$ is a homeomorphism from $X$ to a topological space $Y$. We have previously shown that path connectedness is a topological property. Thus, we need only show that 
+   the property of a trivial fundamental group is a topological property. 
+   By assumption, $\pi_1(X) \cong 0$ by Corollary 4.4, we have that since $X$ and $Y$ are homeomorphic, there exists an isomorphism $f_*$ from $\pi_1(X)$ to $\pi_1(Y)$
+   which implies $\pi_1(Y) \cong \pi_1(X) \cong 0$. 
+
+\end{proof}
+
+\section*{3.4.2.}
+\begin{proof}[\unskip\nopunct]
+   Recall that $S^n \subset \mathbb{R}^{n + 1}$. Let $f:\mathbb{R}^{n + 1} \backslash \{0\} \to S^n$ map $x \in \mathbb{R}^{n + 1}\backslash \{0\}$ to $\frac{x}{||x||} \in S^n$. 
+   Then, for all $x \in S^n$ we have $||x|| = 1$, so $f(x) = \frac{x}{||x||} = \frac{x}{1} = x$. We can conclude $f$ is a retraction and $S^n$ is a retract of $\mathbb{R}^{n + 1} \backslash \{0\}$. 
+\end{proof}
+
+\section*{3.4.3.}
+\subsection*{a.}
+\begin{proof}[\unskip\nopunct]
+   Let $f:X \to A$ be a retraction and $x_0 \in A$. Let $j: A \hookrightarrow X$ be the inclusion map. Then, $j_*:\pi_1(A, x_0) \to \pi_1(X, x_0)$ is a homomorphism by Theorem 4.3. 
+   To prove that we have injectivity, let $j_*([\alpha]) = j_*([\beta])$ for $[\alpha], [\beta] \in \pi_1(A, x_0)$. Therefore, we have $[\alpha] = [\beta]$ both in $\pi_1(X, x_0)$ and thus $[\alpha] = [\beta]$ in $\pi_1(A, x_0)$ so we have injectivity. 
+
+\end{proof}
+\subsection*{b.}
+\begin{proof}[\unskip\nopunct]
+   To prove the surjectivity of $f_*: \pi_1(X, x_0) \to \pi_1(A, x_0)$, suppose we have $[\alpha] \in \pi_1(A, x_0)$. Then, there exists $[\alpha] \in \pi_1(X, x_0)$ such that $f_*([\alpha]) = [f \circ \alpha] - [\alpha] \in \pi_1(A, x_0)$. Therefore, we have surjectivity. 
+\end{proof}
+
+\subsection*{c.}
+\begin{proof}[\unskip\nopunct]
+    Now, suppose $X$ is simply connected. Therefore, $X$ is path connected and $\pi_1(X) \cong 0$. Let $a, b \in A$. 
+    Because $X$ is path connected, in $X$ there exists $\gamma:[0, 1] \to X$ such that $\gamma(t) = (1 - t)a + tb$ is a path from $a$ to $b$. 
+    With $f$ being a retraction of $X$, we have $f(x) = x \in A$ for all $x \in A$. 
+
+    Note that $f \circ j = id_A$ and thus $f_* \circ j_* $ is identity homomorphism for the fundamental group. We know $\pi_1(X) \cong 0$, and thus for any $[\alpha] \in \pi_1(A)$, we have $f_* \circ j_* (\alpha) = f_*(j_*([\alpha]))$ 
+    and since $f_*$ is onto, we have $f_*(j_*([\alpha])) \cong 0$ and thus $A$ is simply connected.    
+
+\end{proof}
+
+\section*{2.13.8.}
+\subsection*{a.}
+\begin{proof}[\unskip\nopunct]
+   Because $P^n$ is derived from $S^n$, which is compact, we 
+   have that $P^n$ is compact. Take $x, y \in P^n$ such that $x \neq y$. Then, define a map $f:P^n \to S^n$ such that $x \in P^n$ maps to $f(x) = \{-a, a\} \subset S^n$ for $-a, a \in S^n$. Then, we have $f(x) = \{-a, a\}$ and $f(y) = \{-b, b\}$. 
+   Take $\epsilon = min\{||a - b||, ||a + b|| \}$ and then we have $x \in B(x, \epsilon)$ and $y \in B(y, \epsilon)$ that are disjoint. Thus, $f^{-1}(f(x)) = x \in f^{-1}(B(x, \epsilon))$ and $f^{-1}(f(y)) = y \in f^{-1}(B(y, \epsilon))$ which are disjoint open sets in $P^n$ by choice of $\epsilon$. 
+   Thus, we have that $P^n$ has the Hausdorff property. 
+
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}[\unskip\nopunct]
+  Let $\pi:S^n \to P^n$ and take $x \in S^n$. Let $x \in U$ be an open neighborhood of $X$ in $S^n$. Now, look at the antipodal of $x$ $-x$, which will have an open set $-U = \{-y: y \in U\}$ as an open neighborhood of equal size $U$. Therefore, $\pi(U \cup -U)$ is open as $\pi$ is continuous.
+  Moreover, we have $\pi(x) \in \pi(U \cup -U)$ as $x \equiv x$ and $x \equiv -x$ and $x, -x \in U \cup U$. 
+\end{proof}
+
+\subsection*{c.}
+\begin{proof}[\unskip\nopunct]
+  To show that $P^1$ is homeomorphic to $S^1$, consider $f:S^1 \to S^1$ where $f(x) = x^2$ for $x \in S^1$. The map is surjective, as for any $x \in S^1$ there exists $\sqrt{x} \in S^1$ such that $f(\sqrt{x}) = x$. 
+  To prove continuity, note $\forall \epsilon$ $\exists \delta = \min\{1, \frac{\epsilon}{1 + 2|y|}\}$ such that for $|x - y| < \delta$ we have, 
+  \[ |f(x) - f(y)| = |x^2 - y^2| = |x - y||x + y| = |x - y||x - y + 2y| \leq  (|x - y| + |2y|) \delta < (1 + 2|y|)\delta < \epsilon. \]
+  Now, $S^1$ is a compact Hausdorff space, and $f$ is a continuous surjective function from $S^1$ to itself, thus by Theorem 13.4 we have $S^1/\sim \cong S^1$ where the equivalence relation is defined as $x \sim y$ if $f(x) = f(y)$. But this is exactly the equivalence relation we want, as
+  $f(x) = x^2$ which implies $f(x) = f(-x) = x^2$, and thus $S^1 \cong P^1$. 
+\end{proof}
+
+\subsection*{d.}
+\begin{proof}[\unskip\nopunct]
+   To find the homeomorphism between $P^n$ and the quotient space obtained from looking at the antipodal points of the boundary of $B^n$, let $f: B^n \to P^n$ where for $x \in B^n$, $f(x) = \pi(x)$ where $||x|| = 1$. Because both are compact Hausdorff spaces and since $f$ is a continuous function,
+   we have previously shown (Theorem 13.4) that $B^n/\sim \cong P^n$, thus we are done. 
+\end{proof}
+
+\subsection*{3.5.1.}
+\begin{proof}[\unskip\nopunct]
+   For $m \in \mathbb{Z}$, let $\alpha_m(s) = e^{2 \pi i ms}$ be a loop in $S^1$ for $s \in [0, 1]$. Let $\beta$ be a loop in $S^1$ based at $1$. Then, if $\beta$ has the same index as $\alpha_m$, then we have by Theorem 5.6 that they are in the same homotopy class. 
+\end{proof}
+
+\subsection*{3.5.3.}
+\begin{proof}[\unskip\nopunct]
+  Let $p: \mathbb{R}^n \to T^n$ be the exponential map where for $ x = (x_1, \ldots , x_n) \in \mathbb{R}^n$, we have $p(x_1, \ldots, x_n) = (e^{2\pi i x_1}, \ldots , e^{2 \pi i x_n})$. 
+  We know that $p$ is a covering map as it is the product of covering maps and $T^n = S^1 \times \cdots \times S^1$ $n-times$. 
+  To show the desired isomorphism, note that in the previous exercise, we know that for identity element $e = (1, 1, \ldots, 1)$ we have $\pi_1(T^n, e) \cong p^{-1}(e)$. Therefore, using the previously established fact $\pi_1(S^1, 1) \cong \mathbb{Z}$, \[\pi_1(T^n, e) = \pi_1(S^1 \times \cdots \times S^1, e) = \pi_1(S^1, 1) \times \cdots \times \pi_1(S^1, 1) \cong \mathbb{Z} \times \cdots \times \mathbb{Z} \]
+
+
+  We can get the desired loop for the n-tuple $(m_1, \ldots , m_n)$, $\gamma: [0, 1] \to T^n$, by setting $\gamma(t) = (e^{2 \pi i m_1 t}, \ldots , e^{2 \pi i m_n t})$. 
+  This will be a loop based at $(1, 1, \ldots , 1)$, as for $t = 0$ we have $\gamma(0) = (e^0, \ldots, e^0) = (1, 1, \ldots, 1)$. For $\gamma(1)$ we have 
+  \[
+   \gamma(1) = (e^{2\pi i m_1}, \ldots , e^{2 \pi i m_n}) = (e^{2 \pi i 1}, \ldots , e^{2 \pi i 1}) = (e^{2 \pi i}, \ldots , e^{2 \pi i}) = (1, 1 , \ldots , 1).
+   \]
+\end{proof}
+
+\section*{3.5.4.} % Fix
+\begin{proof}[\unskip\nopunct]
+  The map is surjective, as for any $z \in mathbb{C} \backslash \{0\}$ we have $x \in \mathbb{C}$ such that $e^x = z$. 
+  Take $x_0 \in \mathbb{C} \backslash \{0\}$. Then, let $U = \{y \in \mathbb{C} : |x_0 - y| < \epsilon \}$ which is the disk of radius $\epsilon > 0$ in the complex plane without $0$.
+  The exponential function being continuous and invertible implies that $p^{-1}(U)$ is open, and moreover, we have $y_0$ map to $x_0$, and so do all elements with period $2 \pi i$.  
+
+  For any $z \in \mathbb{C}$, we have $z = a + ib$. The, we have $e^z = e^{a + ib} = e^ae^{ib}$. We have previously shown that $e^{ib}$ will be a covering map onto $S^1$, and it is seen that $e^a$ is a covering map onto $\mathbb{R}_{> 0}$. 
+  Therefore, we have that $e^z$ is the product of two covering maps and is thus a covering map. If we take a look at $p^{-1}$ for the point $1$, we have $p^{-1}(\{1\}) =  2 \pi i t$ for $t \in \mathbb{Z}$ and thus, $C \backslash \{0\} \cong \mathbb{Z}$. 
+
+\end{proof}
+
+
+\section*{3.5.5.}
+\begin{proof}[\unskip\nopunct]
+   Let $A = \{w : e^c < |w| < e^d \}$ and take $w \in A$. Then, $\exists z \in E$ such that by the monotonicity of $e^x$ we have $e^c < e^z < e^d$ where $w$ can map to $e^z$. Now, the covering space argument is the same as in the previous problem
+   The fundamental group of the open annulus, $\pi_1(\{w : e^c < |w| < e^d \})$ is isomorphic to that of a circle $S^1$ as any loop on the annulus will operate similarly to that of the circle but only with width. Therefore, $\pi_1(\{e^c < |w| < e^d \}) \cong \pi_1(S^1) \cong \mathbb{Z}$. 
+   Nothing notable changes with the closed annulus, and thus we have $\pi_1(\{e^c \leq |w| \leq e^d \}) \cong \pi_1(S^1) \cong \mathbb{Z}$
+\end{proof}
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+
+\title{Math 121 Homework 7}
+\author{Thomas Slavonia; UID: 205511702}
+\date{February 2024}
+
+\begin{document}
+\maketitle
+
+\section*{2.11.3.}
+\begin{proof}[\unskip\nopunct]
+    The proof is very similar to the proof that every vector space has a basis. Let $S$ be the family of all linearly independent subsets of $V$ that contain $A$, and with the usual set inclusion, $S$ becomes partially ordered. Let $\tau$ be a totally ordered subset of $S$. Define $B = \cup \{T : T \in \tau \}$. Let $v_1, \ldots , v_m \in B$ and let $a_1, \ldots , a_m \in F$ the field satisfy $a_1v_1 + \cdots + a_mv_m = 0$. For $1 \leq j \leq m$ take $T_j \in \tau$ such that $v_j \in T_j$. Since $T_j$'s are totally ordered, and finite $\exists T_{l}$ such that $T_j \subseteq T_l$ for $1 \leq j \leq m$ which implies $v_j \ni T_l$. Since $T_l$ is linearly independent $a_1 = \cdots = a_m = 0$. We can gather that $B$ is an upper bound for $S$, and a maximal element $C$ of $S$ exists using Zorn's Lemma. By definition of $S$, we have $A \subseteq C$. To show $C$ is a basis for the vector space, note that it is linearly independent. If $v \in C$, then $v$ is in the span of $C$. Hence, we will now consider the case where $v \notin C$. Since $C$ is the maximal linearly independent set that contains $A$, $C \cup \{v\}$ is not linearly independent. Thus, $\exists v_1, \ldots , v_n$ in $C \cup \{v\}$ and scalars $a_1 , \ldots , a_n \in F$ such that $a_1v_1 + \cdots + a_n v_n = 0$ and there exists some $a_k \neq 0$ for $1 \leq k \leq n$. We may assume each $a_k \neq 0$. Since $C$ is linearly independent, one of the $v_k$ must be $v$. Without loss of generality, suppose $v_1 = v$. Then 
+    \[
+        v = \left(-\frac{a_2}{a_1}v_2 \right) + \cdots + \left(-\frac{a_n}{a_1}v_n\right)
+        \]  
+    expresses $v$ as the linear combination of of elements in $C$ which implies that $C$ is a basis that contains $A$. 
+
+\end{proof}
+\section*{2.12.3.}
+\begin{proof}[\unskip\nopunct]
+    Look at the restriction $\pi_{\beta}$ to $X_{\beta} \times \{y\}$ $\pi_{\beta}:X_{\beta} \times \{y\} \to X_{\beta}$. We first want to show that $\pi_{\beta}$ is an open map. Let $U$ be open. We have that $\pi_{\beta} (U \times \emptyset) = \pi_{\beta}(\pi_{\beta}^{-1}(U_{\beta})) = U$ which is open
+    or we have $\pi_{\beta} (U \times \{y\}) = U$ which is open. Therefore, we have that $\pi_{\beta}$ is an open map.
+    Because we know that $\pi_{\beta}^{-1}(U) = U$ or $\pi_{\beta}^{-1}(U) = U \times \{y\}$ both of which are open, we 
+    know that $\pi_{\beta}$ is continuous as the preimage of an open 
+    set is open. For $(x_{\beta}, y), (x_{\beta}', y) \in X_{\beta} \times \{y\}$ suppose $\pi_{\beta}(x_{\beta}, y) = \pi_{\beta}(x_{\beta}', y)$. Then, we would have that $x_{\beta} = x_{\beta}'$
+    and hence it must be that $(x_{\beta}, y) = (x_{\beta}', y)$ which implies surjectivity. To see surjectivity is quite trivial, as for any 
+    $x_{\beta} \in X_{\beta}$ we will clearly be able to 
+    find a $(x_{\beta}, y) \in X_{\beta} \times \{y\}$ such that $\pi_{\beta}(x_{\beta}, y) = x_{\beta}$. 
+    Lastly, $\pi_{\beta}^{-1}:X_{\beta} \to X_{\beta} \times \{y\}$ is clearly
+    continuous as the preimage of any open $U$ in $X_{\beta}$ is still just $U$ and will be open in $X_{\beta} \times \{y\}$.
+    Hence, we have a homeomorphism.  
+
+    
+\end{proof}
+
+\section*{2.12.4.}
+\begin{proof}[\unskip\nopunct]
+    Suppose $X_{\alpha}$ is Hausdorff for all $\alpha \in A$ an index set. 
+    Let $X = \prod\limits_{\alpha \in A} X_{\alpha}$. 
+    Let $x, y \in X$ such that $x \neq y$. Therefore, $\exists \beta \in A$ such that $x_{\beta} \neq y_{\beta}$. Since $X_{\beta}$ is Hausdorff, $\exists U, V \in X_{\beta}$ open and disjoint sets such that $x_{\beta} \in U$ and $y_{\beta} \in V$. Consequently, we get $\pi_{\beta}^{-1}(U)$ and $\pi_{\beta}^{-1}(V)$ are open and disjoint sets of the 
+    product space with $x \in \pi_{\beta}^{-1}(U)$ and $y \in \pi_{\beta}^{-1}(V)$. We conclude that $X$ is Hausdorff. 
+
+
+\end{proof}
+
+\section*{2.12.7.}
+\begin{proof}[\unskip\nopunct]
+    Let $E \subseteq X$ be connected. Then, $\pi_{\alpha}(E) = E_{\alpha}$ is connected and $E_{\alpha} \subseteq X_{\alpha}$ by 
+    the fact that if a topological space is connected, 
+    then its image under a continuous function is connected. 
+    We must have that $E_{\alpha} \subseteq F_{\alpha} \subseteq X$ where $F_{\alpha}$ is the connected
+    component of $X_{\alpha}$ that contains $E_{\alpha}$.
+    Therefore, $E \subseteq \prod F_{\alpha} \subseteq X$ and thus the connected components are of the form $\prod F_{\alpha}$ where each $F_{\alpha}$ is a connected component of $X_{\alpha}$. 
+    
+\end{proof}
+\section*{2.12.8.}
+\begin{proof}[\unskip\nopunct]
+    Let $X_{\alpha}$ be path connected for all $\alpha \in A$. Let $x, y \in X = \prod X_{\alpha}$. We know that for all $\alpha \in A$ $\exists \gamma_{\alpha}:[0, 1] \to X_{\alpha}$ continuous
+    such that $\gamma_{\alpha}(0) = x_{\alpha}$ and $\gamma_{\alpha}(1) = y_{\alpha}$. 
+    Let $\gamma:[0, 1] \to X$ be continuous. Because $\gamma$ is continuous, 
+    we know have previously shown that implies $\pi_{\alpha} \circ \gamma$ is continuous
+    because both are continuous functions. 
+    If we set $(\gamma(t))_{\alpha}$ to $\gamma_{\alpha}(t)$ 
+    we can then conclude that $\gamma(0) = x$ and $\gamma(1) = y$. 
+    
+\end{proof}
+
+\section*{2.12.9}
+\begin{proof}[\unskip\nopunct]
+    Let $S_{\alpha}$ be a nonempty set with $\alpha \in A$ an index set. Let $X_{\alpha}$ be obtained from $S_{\alpha}$ by adjoining one point $p_{\alpha}$. Let $X_{\alpha}$ be endowed with the cofinite 
+    topology including $\emptyset$ and $\{p_{\alpha}\}$. 
+    We have previously proven that any topological space with the cofinite topology is compact.
+    Thus, $X_{\alpha}$ is compact. By Tychonoff's Theorem, $\prod X_{\alpha}$ is compact. Now, look at the subsets $\pi_{\alpha}^{-1}(S_{\alpha}) \subseteq \prod X_{\alpha}$. Note that each $S_{\alpha}$ is closed, as $X \backslash S_{\alpha} = \{p_{\alpha}\}$ which is open. Since $\pi_{\alpha}^{-1}$ is continuous, we know that $\pi_{\alpha}^{-1} (S_{\alpha})$ is closed in $\prod X_{\alpha}$. Then, since each $S_{\alpha}$ is nonempty, $\bigcup\limits_{i = 1}^n \left(\pi_{\alpha}^{-1}(S_{\alpha})\right)_i \neq \emptyset$ as $\prod X_{\alpha}$ is compact. Thus, $\exists x \in \bigcup\limits_{i = 1}^n \left(\pi_{\alpha}^{-1}(S_{\alpha})\right)_i$
+    and each component of that element must be one element of $S_{\alpha}$, $x_{\alpha} \in S_{\alpha}$. This is a rephrasing of the Axiom of Choice. 
+\end{proof}
+
+\section*{2.12.11.}
+\subsection*{a.}
+\begin{proof}[\unskip\nopunct]
+    Let $x \in \prod X_{\alpha}$. Then, $x_{\alpha} \in U_{\alpha}$ some open subset of $X_{\alpha}$. Hence, $x \in \prod U_{\alpha}$ an open subset of $\beta$. Hence,
+    every $x \in \prod X_{\alpha}$ is in some element of $\beta$. 
+     For $1 \leq i \leq n$ look at a finite subset of the products $\{\left(\prod U_{\alpha} \right)_i\}_i \subseteq \beta$ for $1 \leq i \leq n$. Then, the intersection $\bigcap\limits_{i = 1}^n \left(\prod U_{\alpha} \right)_i$ is the product of $\bigcap\limits_{i = 1}^n U_{\alpha_{i}}$. The finite intersection of open sets here is of the same form as the original open sets, so we have that $\bigcap\limits_{i = 1}^n \left(\prod U_{\alpha} \right)_i \in \beta$. 
+     Thus, $\beta$ is closed under intersection, and we have met an equivalent definition for $\beta$ being a base. 
+
+\end{proof} 
+
+\subsection*{b.}
+\begin{proof}[\unskip\nopunct]
+
+    Suppose $X_{\alpha}$ has the discrete topology for all $\alpha \in A$. Then every subset $U_{\alpha} \subseteq X_{\alpha}$ is open. Thus, every $U = \prod\limits_{\alpha \in A} U_{\alpha}$ is open.
+    
+\end{proof}
+
+\subsection*{c.}
+\begin{proof}[\unskip\nopunct]
+    Let $X_{\alpha}$ have the discrete topology and consist of two points $\{0, 1\}$. Therefore, by the previous part of this problem, $\prod X_{\alpha}$ is discrete. Let $A$ be infinite. Then, for every open cover, there will be no finite subcover. 
+    
+\end{proof}
+
+\subsection*{d.}
+\begin{proof}[\unskip\nopunct]
+    Suppose $X_{\alpha}$ is Hausdorff for all $\alpha \in A$. 
+    Let $x, y \in \prod X_{\alpha}$ such that $x \neq y$. If $x \neq y$, then $\exists \beta \in A$ such that $x_{\beta} \neq y_{\beta}$. Since $X_{\beta}$ is Hausdorff $\exists U_{\beta}, V_{\beta} \subseteq X_\beta$ open and disjoint such that $x_{\beta} \in U_{\beta}$ and $y_{\beta} \in V_{\beta}$. Therefore, $x \in \prod U_{\alpha}$ and $y \in \prod V_{\alpha}$ which are disjoint, so $\prod X_{\alpha}$ is Hausdorff. \\
+    Let each $X_{\alpha}$ be regular. Let $E \subset \prod X_{\alpha}$
+    be closed and $x \in \prod X_{\alpha} \backslash E$. Then, for $E_{\alpha}$ and $x_{\alpha}$ $\exists U_{\alpha}, V_{\alpha} \subseteq X_{\alpha}$
+    open and disjoint such that $E_{\alpha} \subset U_{\alpha}$ and $x_{\alpha} \subset V_{\alpha}$. Thus, 
+    $E = \prod E_{\alpha} \subset \prod U_{\alpha}$ open and $x \subset \prod V_{\alpha}$ with $\prod U_{\alpha}\cap \prod V_{\alpha} = \emptyset$ open. Thus, we have that it is regular. \\
+    It is not true that it is normal as the example for the half-open interval topology on $\mathbb{R}$ that $\mathbb{R} \times \mathbb{R}$ is not normal, but $\mathbb{R}$ is.  
+
+\end{proof}
+
+
+\end{document}
+
+

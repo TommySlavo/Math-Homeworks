@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+
+\title{Math 121 Homework 8}
+\author{Thomas Slavonia; UID: 205511702}
+\date{March 2024}
+
+\begin{document}
+\maketitle
+\section*{3.1.1.}
+\begin{proof}[\unskip\nopunct]
+    Note that to prove groups of the same size are isomorphic, we only need to show that every homomorphism is injective, as injectivity between the group homomorphisms implies surjectivity of the homomorphisms when the groups have the same cardinality.  
+    Let $G$ and $G'$ have one element since every group must have an identity element $G = e$ and $G' = e'$. Let $f:G \to G'$ be a group homomorphism. 
+    To prove injectivity, suppose that for $a, b \in G$ that $f(a) = f(b)$. But, there is only one element in $G$, so $a = b = e$. 
+    Thus, we have injectivity, and since the groups have the same cardinality, that implies surjectivity. \\
+    Now, suppose $G$ and $G'$ each have two elements. They both still must have the identity element and therefore $G = \{e, a\}$ and $G' = \{e', a'\}$. 
+    Let $h: G \to G'$ be a group homomorphism. To prove that the group homomorphisms are injective, let $a, b \in G$ and suppose $h(a) = h(b)$. 
+    For a group homomorphism to indeed be a group homomorphism, we must have that $h(e) = e'$. Thus, if $a = e$, then $h(a) = h(e) = e' = h(b)$ which implies that $b = e = a$. If $a \neq e$, then since there are only two elements in both groups and one of them is the identity, we mustn't have that $h(a) = e'$ as that contradicts that $h$ is a group homomorphism. Therefore, $h(a) = a'$ and thus $h(b) = a'$. 
+    We can't have that $b = e$ as then $h(b) = e'$, thus $b = a$, and we have that the groups are isomorphic. \\
+    Lastly, let $G$ and $G'$ have order $3$. Both groups must be of the form $G = \{e , a, b\}$ and $G' = \{e, a', b' \}$. For $g: G \to G'$ a group homomorphism 
+    , suppose that for $a, b \in G$, $g(a) = g(b)$. If $a = e$, we have previously shown that implies $b = e$. Suppose that $a \neq e$; note that this implies $b \neq e$. 
+    Then, $g(a) = g(b)$ implies $g(b)^{-1}g(a) = g(b^{-1})g(a) = g(b^{-1}a) = e'$. Recall that the inverse of a group element is unique, and such $a^{-1} \neq b^{-1}$ for $a \neq b$. Therefore, if $a \neq b$, then $b^{-1}a \neq e$, but then $g(b^{-1}a) = e'$ is impossible
+    as a group, homomorphism maps the identity of one group to the identity of the other group. 
+    Thus, it must be that $a = b$, and the homomorphism is injective. 
+
+\end{proof}
+
+\section*{3.1.4.}
+\begin{proof}[\unskip\nopunct]
+    Let $f: G \to H$ be a group homomorphism. Then, $f(G) = \{f(g) : g \in  G\}$. We know that $e_H \in f(G)$ as $f(e_G) = e_H$. 
+    Suppose $a, b \in f(G)$. Then, $\exists x, y \in G$ such that $f(x) = a$ and $f(y) = b$. Because $G$ is a group, we have that $xy \in G$. 
+    Then, $f(xy) \in f(G)$, so $f(xy) = f(x)f(y) = ab \in f(G)$. 
+    To show that $f(G)$ is contained under inverses, take $a \in f(G)$. 
+    Then, $\exists z \in G$ such that $f(z) = a$. $G$ is a group, hence $z^{-1} \in G$. Then, $f(z^{-1}) \in f(G)$, so $f(z^{-1}) = f(z)^{-1} = a^{-1} \in f(G)$. Consequently, $f(G)$ is a subgroup. \\
+    Let $e_H$ be the identity of $H$. Note that $f^{-1}(e_H) = \{g \in G : f(g) = e_H\}$. It is required that $f(e_G) = e_H$ for $f$ to be a group homomorphism, so $e_G \in f^{-1}(e_H)$. Let $a, b \in f^{-1}(e_H)$. Then, $f(a) = e_H$ and $f(b) = e_H$. Thus, $f(ab) = f(a)f(b) = e_He_H = e_H$ which implies $ab \in f^{-1}(e_H)$. 
+    Now suppose $a \in f^{-1}(e_H)$. Then, $f(a) = e_H = e_H^{-1} = f(a)^{-1} = f(a^{-1})$. Accordingly $a^{-1} \in f^{-1}(e_H)$ and thus $f^{-1}(e_H)$ is a subgroup of $G$. 
+
+    
+\end{proof}
+
+\section*{3.2.1.}
+\begin{proof}[\unskip\nopunct]
+    By contradiction, if $\exists $ two distinct points $x, y$ in a path component. Let $\beta[0, 1] \to X$ be the path such that $\beta(0) = x$ and $\beta(1) = y$ and define $\alpha = x$ and $\gamma = y$. So $F(s) = (\alpha \beta) \gamma(s)$, and $G(s) = \alpha (\beta \gamma)(s)$ are well-defined. \[F(s) = \begin{cases}
+        \alpha (4s) , \ 0 \leq s \leq \frac{1}{4} \\
+        \beta(4s - 1), \  \frac{1}{4} \leq s \leq \frac{1}{2}, \\
+        \gamma(2s - 1) , \ \frac{1}{2} \leq s \leq 1
+    \end{cases} G(s) = \begin{cases}
+        \alpha(2s), \ 0 \leq s \leq \frac{1}{2} \\
+        \beta(4s - 2), \ \frac{1}{2} \leq s \leq \frac{3}{4} \\
+        \gamma(4s - 3), \ \frac{3}{4} \leq s \leq 1
+    \end{cases}\]. If we evaluate \[F\left(\frac{1}{2} \right) = \beta \left(4 \cdot \frac{1}{2} - 1\right) = \beta(1) = y \neq G\left(\frac{1}{2}\right) = \beta \left(4 \frac{1}{2} - 2 \right) = \beta(0) = x\]
+    which gives us a contradiction.  
+\end{proof}
+
+\section*{3.2.2.}
+\begin{proof}[\unskip\nopunct]
+   Let $X$ be path connected and let $b \in X$. Let $\gamma$ be a path in $X$ from $x$ to $y$ for $x, y \in X$. Then, since $X$ is path connected there exists a path $\alpha:[0, 1] \to X$ from $x$ to $b$. Now, let $\beta:[0, 1] \to X$ be the path 
+   \[
+    \beta(s) = \begin{cases}
+        \alpha(3s), \ 0 \leq s \leq \frac{1}{3} \\
+        \alpha(-3s +2), \ \frac{1}{3} \leq s \leq \frac{2}{3}. \\
+        \gamma(3s - 2), \ \frac{2}{3} \leq s\leq  1
+    \end{cases}
+    \]
+    Let $\gamma_t(s):[0, 1] \to X$ be 
+    \[
+    \gamma_t(s) = (1 - t) \gamma(s) + t \beta(s).   
+    \]
+    We have that $\gamma_0(s) = \gamma(s)$, $\gamma_1(s) = \beta(s)$, $\gamma_t(0) = x$, and $\gamma_t(1) = y$. 
+    Thus, $\gamma_t(s)$ meets all the criteria to be a homotopy between $\gamma$ and $\beta$. 
+\end{proof}
+
+\section*{3.2.4.}
+\begin{proof}[\unskip\nopunct]
+    Let $D \subseteq \mathbb{R}^n$ be open. 
+    Let $\gamma:[0, 1] \to D$ be a path from $x \in D$ to $y \in D$. 
+    Since $[0, 1]$ is compact in $\mathbb{R}^n$ and $\gamma$ is continuous, then $\gamma([0, 1]) \subset D$ is compact. 
+    For $t \in [0, 1]$, $\gamma(t) \in \gamma([0, 1]) \subset D$ and thus, since $D$ is open there exists $r_t > 0$ such that $B(\gamma(t), r_t) \subset D$. Therefore, for $i \in I$ an index set $\{B(\gamma(t_i), r_{t_{i}}) : t_i \in [0, 1] \}$ is an open cover of the compact set $\gamma([0, 1])$. 
+    Because $\gamma([0, 1])$ is compact, $\exists 0 = t_0 < t_1 < \cdots < t_n = 1$ a finite selection of the $t_i$ such that $\{B(\gamma(t_i), r_{t_{i}}) : i = 0, 1, \ldots , n \}$ is a finite subcover of $\gamma([0, 1])$. 
+    The image $\gamma([0, 1])$ will be connected in $D$, and thus for any $i = 0, 1, \ldots n - 1$, pick $x_i \in B(\gamma(t_i), r_{t_{i}}) \cap B(\gamma(t_{i + 1}), r_{t_{i + 1}})$ which is nonempty such that $x_i \in \gamma([0, 1])$ also. 
+    Then, for any $i = 0, 1, \ldots n - 1$ we have $x_i, \gamma(t_i) \in B(\gamma(t_i), r_{t_{i}})$. Note that any ball in $\mathbb{R}^n$ is convex, therefore, the straight line segment between $x_i$ and $\gamma(t_i)$ is homotopic to the section of the path between $\gamma(t_i)$ and $x_i$. Thus, taking the union of all of these 
+    we find that our original path is homotopic to a polygonal path. 
+
+
+\end{proof}
+
+\section*{3.2.5.}
+\begin{proof}[\unskip\nopunct]
+    % Let $\gamma:[0, 1] \to X$ be a path from $x$ to $y$ for $x, y \in X$. If $r$ is the radius of $S^n$ let 
+    % $d = \inf \{|\gamma(s) - w| : w \in S^n, \ 0 \leq s \leq 1\}$. 
+    % Pick $0 = s_0 < s_1 < \cdots < s_n = 1$ such that 
+    % $|\gamma(s) - \gamma(s_j)| < d$ for all $1 \leq j \leq n$. 
+    % Let $\alpha:[0, 1] \to X$ be $\alpha(s) = (s - s_{j + 1})\gamma(s_j) + (s - s_j)\gamma(s_{j + 1})$. By the previous problem there exists a homotopy between $\gamma$ and $\alpha$.
+
+    Let $\gamma:[0, 1] \to S^n$ be a path. Since $S^n \subset \mathbb{R}^{n + 1}$ implies that $\gamma([0, 1]) \subset \mathbb{R}^{n + 1}$. But, then $\gamma$ will miss a point inside $\mathbb{R}^{n + 1}$ let us denote this point $x \in \mathbb{R}^{n + 1}$. Then, $\gamma([0, 1]) \subseteq \mathbb{R}^{n + 1}\backslash \{x\}$. Because $S^n$ is a subset of $\mathbb{R}^{n + 1}$, there is an open ball of large enough radius; denote this ball $D$ such that $S^n \subset D \subseteq \mathbb{R}^{n + 1}$. Therefore, we can use the previous problem, which implies that $\gamma$ is homotopic to a polygonal path in $D$ and thus in $S^n$. 
+
+\end{proof}
+
+\section*{3.3.1.}
+\begin{proof}[\unskip\nopunct]
+   Note that $S^n$ is path connected, so we need to show $\pi_1(X)$ is trivial. To do this, we need to show that every loop is homotopic to the constant loop. 
+   Let $\gamma$ be a loop at the base point $b$. Let $\delta$ be a path that ends at $b$. Recall that $S^n$ without one point is homeomorphic to $\mathbb{R}^n$. 
+   Now, it suffices to show that the loop misses one point as we have that $S^n$ minus that point is homeomorphic to $\mathbb{R}^n$ which is simply connected. 
+   Take a point $a \in S^n $ such that $b \neq a$. For $\epsilon > 0$, let $B(a , \epsilon)$ be an open ball around $a$ such that $\gamma(t)$ travels through $B(a, \epsilon)$ (we can adjust $\epsilon$ accordingly). 
+   Note that $\gamma$ is continuous which implies $\gamma^{-1}(B(a, \epsilon))$ is open. Then, the closed set $\gamma^{-1}(\{a\}) \subset \gamma^{-1}(B(a, \epsilon))$ is closed 
+   and bounded in $[0, 1]$, thus by Heine Borel it is compact. Thus, every open cover of $\gamma^{-1}(\{a\})$ has a finite subcover. 
+   For an open cover $\bigcup\limits_{j \in J} I_j$ of intervals that cover $\gamma^{-1}(\{a\})$
+   we have a finite subcover $\bigcup\limits_{j = 1}^n I_j$. 
+   Then, $\gamma(t) \in \gamma(I_j)$ for some $j$. Thus, we have that for $0 = s_0 < s_1 < \cdots < s_n =  1$ that $\gamma([s_k, s_{k + 1}]) \subset \gamma(I_j)$ for some $j$. 
+   By exercise $2.5$, we know that $\gamma$ is homotopic to some polygonal path in $S^n$. 
+   For some $\alpha:[0, 1] \to X$ with image not all of $X$, then there exists $x \in X$ such that $\alpha(t) \neq x$ for all $t \in [0, 1]$. 
+   By the stereographic projection we have a homeomorphism between $S^n \backslash \{a\}$ and $\mathbb{R}^n$ and since $\mathbb{R}^n$ has trivial fundamental group, we have that $S^n$ has trivial fundamental group
+
+   
+   
+\end{proof}
+
+\section*{3.3.2.}
+\begin{proof}[\unskip\nopunct]
+   Let $U, V \subseteq X$ be simply connected open subsets such that $U \cup V = X$ and $U \cap V \neq \emptyset$ 
+   and path connected. We need to prove that $X$ is 
+   path-connected and that the fundamental group is trivial. Let $x \in U \cap V$ be a base point, and let $\gamma$ be a loop at $x$. Choose $0 = t_0 < t_1 < \cdots < 
+   t_n =1$ such that $\gamma([t_i, t_{i + 1}]) \subset U 
+   \backslash V$ or $\gamma([t_i, t_{i + 1}]) \subset V 
+   \backslash U$ and that if $\gamma([t_{i - 1}, t_i]) \subset U$, then $\gamma([t_i, t_{i + 1}]) \subset V$. 
+   This ensures $\gamma(t_i) \in U \cap V$. We can do this essentially by the Lebesgue number as $U \cup V = X$. 
+    Then $\gamma_i(s) = \gamma((1 -s)t_j + st_{j + 1})$ is a path from $\gamma(t_j)$ to $\gamma(t_{j + 1})$.
+    Now, let $\alpha_j:[0, 1] \to X$ be a path from $x$ to $\gamma(t_j)$. 
+    Then $\gamma$ is homotopic to $\alpha_1 \cdots \alpha_n$, and $\alpha_j$ is homotopic to a point; thus, $\gamma$ is homotopic to a point. 
+\end{proof}
+
+\section*{3.3.3.}
+\begin{proof}[\unskip\nopunct]
+    Suppose a space $X$ is contractible to a point $x_0 \in X$ with map $F:X \times [0, 1] \to X$ satisfying all of the properties of $X$ being contractible. Let $\gamma$ be a loop at $x_0$.
+     Let $\gamma_t(s) = F(\gamma(s), t) = F(\gamma(s), t)$. 
+     The path $\gamma_t(s)$ satisfies all of the properties of a homotopy:
+     \begin{align*}
+        \gamma_t(0) &= F(\gamma(0), t) = F(x_0, t) = x_0 \\ 
+        \gamma_t(0) &= F(\gamma(1), t) = F(x_0, t) = x_0 \\
+        \gamma_0(s) &= F(\gamma(s), 0) = x_0 \\
+        \gamma_1(s) &= F(\gamma(s), 1) = x_0. 
+     \end{align*}
+     Thus, $\gamma_t(s)$ is the homotopy to a single, implying $X$ has a trivial fundamental group.
+\end{proof}
+
+\section*{3.3.4.}
+\begin{proof}[\unskip\nopunct]
+    To prove that the comb space is contractible to $x_0 = (0, 0)$, look at the map $F:X \times [0, 1] \to X$ such that for $x = (x_1, x_2) \in X$, $F(x, t) = (x_1t, x_2t)$. Now, we check that $F$ has the necessary properties:
+    \begin{align*}
+        F(x, 0) &= (x_1 \cdot 0, x_2 \cdot 0) = (0, 0) \\
+        F(x, 1) &= (x_1 \cdot 1, x_2 \cdot 1) = x \\
+        F((0, 0), t) &= (0 \cdot t, 0 \cdot t) = (0, 0).
+    \end{align*}
+    Thus, $X$ is contractible to $(0, 0)$. \\
+
+    To prove that $X$ is not contractible to $(0, 1)$, for the sake of contradiction, suppose there exists $G(x, t)$ such that it is a contraction to $(0, 1)$. For a point in the comb $x  = \left(\frac{1}{n}, 1\right)$, then $G(x, t)$ is a path from $x$ to $x_0$. But, by connectivity of the comb the path must go through the point $\left(\frac{1}{n}, 0 \right)$. Because $G$ is continuous, as we take $n \to \infty$, then $G(x_0, t) = (0, 0)$, but this is a contradiction as then $G$ wouldn't be a contraction. 
+    
+\end{proof}
+
+\end{document}

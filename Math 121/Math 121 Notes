@@ -1,0 +1,2357 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+
+\title{Math 121 Notes}
+\author{Thomas Slavonia; UID: 205511702}
+\date{2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Defintion of Metric, Open and Closed Sets:}
+\subsection*{Definition:}
+A \underline{metric} $d$ on a set $X$ is a function $d:X\times X \rightarrow \mathbb{R}_{\geq 0}$ such that 
+\begin{enumerate}
+    \item $d(x,y) = 0 \iff x = y$
+    \item $d(x,y) = d(y,x) \ \forall x,y \in X$ (symmetric)
+    \item $d(x,y) + d(y,z) \geq d(x,z) \ \forall x,y,z \in X$ (triangle inequality)
+\end{enumerate}
+
+\subsection*{Definition:}
+A \underline{metric space} $(X, d)$ consists of a set $X$ and a metric $d$ on $X$. 
+
+\subsection*{Example:}
+\begin{enumerate}
+\item $(\mathbb{R}, d)$ $d(x,y) = |x - y|$
+\item $(\mathbb{R}^n, d)$ $x = (x_1, \cdots , x_n)$ $y = (y_1, \cdots , y_n)$
+\begin{align*}
+    d(x,y) = \sqrt{(x_1 - y_1)^2 + \cdots + (x_n - y_n)^2}
+\end{align*}
+\item Discrete metric $X = \text{set}$
+\begin{align*}
+d(x,y) = 
+    \begin{cases}
+        1 & \text{if} \ x = y \\
+        0 & \text{if} \ x \neq y
+    \end{cases}
+\end{align*}
+\end{enumerate}
+\subsection*{HW:}
+Verify $(1), (2), \text{ and } (3)$ are metric spaces. 
+\subsection*{Example:}
+Any subset $Y$ of a metric space $(X, d)$ is a metric space. 
+\subsection*{Open Sets:}
+$(X, d)$ is a metric space. 
+\subsection*{Definition:}
+An \underline{open ball} $B(x,r)$ centered at $x \in X$ of radius $r > 0$ is; 
+\begin{align*}
+    B(x, r) = \{y \in X: d(x,y) < r \} 
+\end{align*}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp7162643258891104] 
+\draw  [line width=3] [line join = round][line cap = round] (298,86) .. controls (291.2,86) and (283.32,89.68) .. (279,94) ;
+%Shape: Free Drawing [id:dp20476228499103377] 
+\draw  [line width=3] [line join = round][line cap = round] (272,106) .. controls (270.38,106) and (256,122.79) .. (256,127) ;
+%Shape: Free Drawing [id:dp05467300688805765] 
+\draw  [line width=3] [line join = round][line cap = round] (249,149) .. controls (249,153.09) and (246.56,171) .. (248,171) ;
+%Shape: Free Drawing [id:dp6071551712683518] 
+\draw  [line width=3] [line join = round][line cap = round] (264,189) .. controls (270.44,195.44) and (276.27,200.76) .. (283,203) .. controls (284.65,203.55) and (285,205.71) .. (285,204) ;
+%Shape: Free Drawing [id:dp7258302918981048] 
+\draw  [line width=3] [line join = round][line cap = round] (308,209) .. controls (319.91,209) and (332.39,208.61) .. (339,202) ;
+%Shape: Free Drawing [id:dp33202371486349347] 
+\draw  [line width=3] [line join = round][line cap = round] (355,190) .. controls (355,183.67) and (364.45,177.64) .. (366,173) .. controls (366.84,170.49) and (365.99,168.01) .. (368,166) ;
+%Shape: Free Drawing [id:dp9438503082348702] 
+\draw  [line width=3] [line join = round][line cap = round] (323,85) .. controls (329.56,85) and (344,94) .. (345,94) ;
+%Shape: Free Drawing [id:dp4162036228874242] 
+\draw  [line width=3] [line join = round][line cap = round] (358,101) .. controls (358,105.78) and (365,112.99) .. (367,117) .. controls (367.21,117.42) and (367.53,118) .. (368,118) ;
+%Shape: Free Drawing [id:dp7872232460209612] 
+\draw  [line width=3] [line join = round][line cap = round] (371,126) .. controls (371,133.01) and (372,139.99) .. (372,147) ;
+%Shape: Free Drawing [id:dp5345981096280708] 
+\draw  [line width=3] [line join = round][line cap = round] (312,150) .. controls (312,150.47) and (313.33,151.33) .. (313,151) .. controls (312.33,150.33) and (310.06,153) .. (311,153) .. controls (313.45,153) and (311.28,149.14) .. (311,149) .. controls (309.89,148.44) and (306.17,149.17) .. (309,152) .. controls (311.27,154.27) and (314.75,148.37) .. (312,147) .. controls (309.83,145.91) and (309.23,151.7) .. (310,154) .. controls (310.53,155.58) and (313,151.67) .. (313,150) ;
+%Shape: Free Drawing [id:dp05296213796767879] 
+\draw  [line width=3] [line join = round][line cap = round] (312,149) .. controls (312,142.73) and (326.57,116.87) .. (331,108) .. controls (331.92,106.16) and (340.35,90) .. (339,90) ;
+
+% Text Node
+\draw (303,155.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (328,119.4) node [anchor=north west][inner sep=0.75pt]    {$r$};
+
+
+\end{tikzpicture}
+
+\subsection*{Definition:}
+A subset $Y \subset X$ is \underline{open} if $\forall y \in Y$ $\exists r > 0$ such that 
+\[
+B(y, r) \subset Y 
+\]
+\[
+\iff
+\]
+\[
+Y \text{ is a union of open balls}
+\]
+
+\subsection*{Properties:}
+\begin{enumerate}
+    \item $\emptyset$, $X$ are open
+    \begin{proof}
+        $\emptyset$ has no points so open condition is vacuously true. For any $x \in X$, $r > 0$, $B(x,r) \subset X \Rightarrow X$ is open. 
+    \end{proof}
+    \item The union of a collection of open subsets of $X$ is an open subset of $X$. (i.e. given a collection $\{U_{\alpha} \}_{\alpha \in I}$ of open sets $\bigcup\limits_{\alpha \in I} U_{\alpha}$ is open)
+    \begin{proof}
+        Given $x \in \bigcup\limits_{\alpha \in I} U_{\alpha}$, $\exists \alpha \in I$ such that $x \in U_{\alpha}$. Also, $\exists r > 0$ such that $B(x,r) \in U_{\alpha}$. 
+        \[
+        B(x,r) \subset U_{\alpha} \subset \bigcup\limits_{\alpha \in I} U_{\alpha}
+        \]
+    \end{proof}
+    \item The intersection of a finite number of open subsets is open. (i.e., if $U_1, \cdots , U_n$ are open, then $\bigcap\limits_{i = 1}^n U_i$ is open)
+    \begin{proof}
+        Given $x \in \bigcap\limits_{i = 1}^n U_i$, $\exists r_i > 0$ such that $B(x, r_i) \subset U_i$
+        \[
+        B(x, \min(r_1, \cdots, r_n)) \subset U_i \text{ (any)}
+        \]
+        \[
+        \Rightarrow \subset \bigcap\limits_{i = 1}^n U_i
+        \]
+    \end{proof}
+\end{enumerate}
+\subsection*{Example:}
+$B(x, \frac{1}{n})$; $\bigcap B(x, \frac{1}{i}) = \{x\}$ most of time $\{x\}$ not open for all $x$. 
+
+\section*{Closed Sets, Completeness, and Review of $\mathbb{R}$:}
+\subsection*{Closed Sets:}
+$(X, d)$ metric space
+\subsection*{Definition:}
+$Y \subset X$ is \underline{closed} if its complement $X-Y = \{x \in X | x \notin Y \}$ is open. The complement is also denoted as $X \backslash Y$. 
+\subsection*{Notation:} 
+If $x_1, x_2, \cdots$ is a sequence of points in $X$, then we write 
+\[
+\{x_n\}_{n=1}^{\infty} \subset X.
+\]
+\subsection*{Defintion:}
+$\{x_n\}_{n=1}^{\infty} \subset X$ \underline{converges} to $x \in X$ if $d(x_n, x) \rightarrow 0$. 
+
+\subsection*{Definition:}
+$x$ is the \underline{limit} of $\{x_n\}$ if $x_n \rightarrow x$. 
+
+\subsection*{Definition:}
+The \underline{closure} $\overline{Y}$ of $Y$ in $X$ is $\{x \in X | \ \exists \text{ sequence } \{y_n\} \in Y \text{ s.t. } d(y_n, x) \rightarrow 0 \}$. 
+
+\subsection*{Remark:}
+Clearly $Y \subset \overline{Y}$. Given $y \in Y$, take $\{y_n = y\}$, $d(y_n, y) = 0 \rightarrow 0$.
+
+\subsection*{Theorem:}
+$Y$ is closed $\iff$ $\overline{Y} = Y$. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Suppose $Y$ is closed. Let $x \in \overline{Y} - Y$. Since $x \notin Y$, $x \in X - Y$ open. Therefore, $\exists \ B(x, r) \subset X - Y$ for some $r > 0$. No points in $Y$ therefore $\exists x \in \overline{Y} - Y$. \\
+
+    Suppose $\overline{Y} = Y$. Let $x \in X - Y$. Given a sequence $r_i \rightarrow 0$ if $\exists y_i \in Y$ s.t. $y_i \in B(x, r_i)$, then $x \in \overline{Y}$ which is a contradiction since $\overline{Y} = Y$ and we are assuming $x \in X-Y = X- \overline{Y}$. Therefore $\exists r_i$ s.t. $B(x, r_i) \subset X - Y$. 
+
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp5769869676566741] 
+\draw  [line width=3] [line join = round][line cap = round] (435,103) .. controls (435,99.17) and (427.02,102.71) .. (425,103) .. controls (417,104.14) and (402.72,111.57) .. (397,118) .. controls (393.15,122.33) and (392.97,130.82) .. (392,136) .. controls (388.49,154.71) and (383.13,166.06) .. (384,186) .. controls (384.51,197.78) and (395.34,208.34) .. (402,217) .. controls (421.74,242.66) and (441.48,250.6) .. (474,248) .. controls (491.54,246.6) and (508.56,239.88) .. (523,230) .. controls (546.77,213.73) and (542.17,191.68) .. (536,167) .. controls (528.11,135.43) and (486.45,102.71) .. (454,101) .. controls (448.34,100.7) and (442.64,100.44) .. (437,101) .. controls (434.9,101.21) and (433.11,103) .. (431,103) ;
+%Shape: Free Drawing [id:dp6538410113941568] 
+\draw  [line width=3] [line join = round][line cap = round] (458,180) .. controls (458,177.93) and (462.13,175.61) .. (463,173) .. controls (468.64,156.07) and (487,123.92) .. (487,112) ;
+%Shape: Free Drawing [id:dp8144979759843409] 
+\draw  [line width=3] [line join = round][line cap = round] (444,198) .. controls (450.12,199.53) and (457.56,203.28) .. (463,206) ;
+%Shape: Free Drawing [id:dp26993101305074396] 
+\draw  [line width=3] [line join = round][line cap = round] (450,209) .. controls (450,201.72) and (461,198.22) .. (461,191) ;
+%Shape: Free Drawing [id:dp6498675428939871] 
+\draw  [line width=3] [line join = round][line cap = round] (482,159) .. controls (482,171.73) and (482.28,157.72) .. (486,154) .. controls (489.14,150.86) and (496,149.86) .. (496,155) ;
+%Shape: Free Drawing [id:dp8778206780597082] 
+\draw  [line width=3] [line join = round][line cap = round] (501,166) .. controls (501,168.73) and (501,171.73) .. (501,169) ;
+%Shape: Free Drawing [id:dp1656357942087332] 
+\draw  [line width=3] [line join = round][line cap = round] (502,158) .. controls (502,154) and (502,154) .. (502,158) ;
+%Shape: Free Drawing [id:dp3379390520847667] 
+\draw  [line width=3] [line join = round][line cap = round] (425,143) .. controls (425,144.2) and (427,138.8) .. (427,140) .. controls (427,142) and (426.51,144.06) .. (427,146) .. controls (427.49,147.96) and (428.92,135.47) .. (425,142) .. controls (424.13,143.46) and (424.8,148.2) .. (426,147) .. controls (427.2,145.8) and (426.46,143.61) .. (427,142) .. controls (427.15,141.55) and (428.45,141.15) .. (428,141) .. controls (421.93,138.98) and (426,146.26) .. (426,143) ;
+%Shape: Free Drawing [id:dp9568165005760387] 
+\draw  [line width=3] [line join = round][line cap = round] (413,162) .. controls (416.8,162) and (419.67,166) .. (422,169) .. controls (423.02,170.32) and (426,173.67) .. (426,172) ;
+%Shape: Free Drawing [id:dp38786554903043813] 
+\draw  [line width=3] [line join = round][line cap = round] (430,163) .. controls (430,165.26) and (430.05,186) .. (424,186) ;
+%Shape: Free Drawing [id:dp22536558088971925] 
+\draw  [line width=3] [line join = round][line cap = round] (438,178) .. controls (438,181) and (438,184) .. (438,187) ;
+%Shape: Free Drawing [id:dp9115566950509446] 
+\draw  [line width=3] [line join = round][line cap = round] (438,172) .. controls (438,175.5) and (441,168.77) .. (441,170) .. controls (441,173.4) and (439,170.21) .. (439,169) ;
+%Shape: Free Drawing [id:dp08147355437134074] 
+\draw  [line width=3] [line join = round][line cap = round] (172,91) .. controls (161.22,91) and (155.85,104) .. (146,104) ;
+%Shape: Free Drawing [id:dp1741189318403411] 
+\draw  [line width=3] [line join = round][line cap = round] (133,118) .. controls (130.07,124.84) and (129,127.72) .. (129,135) ;
+%Shape: Free Drawing [id:dp48551270116735656] 
+\draw  [line width=3] [line join = round][line cap = round] (129,176) .. controls (129,180.67) and (130.39,194) .. (136,194) ;
+%Shape: Free Drawing [id:dp18066107589732128] 
+\draw  [line width=3] [line join = round][line cap = round] (166,205) .. controls (173,205) and (180,205) .. (187,205) ;
+%Shape: Free Drawing [id:dp7759567980665469] 
+\draw  [line width=3] [line join = round][line cap = round] (219,200) .. controls (222.57,199.11) and (231,196.62) .. (231,192) ;
+%Shape: Free Drawing [id:dp18776232553646732] 
+\draw  [line width=3] [line join = round][line cap = round] (201,93) .. controls (202.84,93) and (206,95.73) .. (206,97) ;
+%Shape: Free Drawing [id:dp38002600977289824] 
+\draw  [line width=3] [line join = round][line cap = round] (219,104) .. controls (219,107.35) and (220,110.65) .. (220,114) ;
+%Shape: Free Drawing [id:dp785387071180681] 
+\draw  [line width=3] [line join = round][line cap = round] (231,121) .. controls (231.39,127.7) and (230.86,147.86) .. (237,154) ;
+%Shape: Free Drawing [id:dp7167889495809052] 
+\draw  [line width=3] [line join = round][line cap = round] (240,164) .. controls (240,167) and (240,170) .. (240,173) ;
+%Shape: Free Drawing [id:dp6721844826215218] 
+\draw  [line width=3] [line join = round][line cap = round] (180,155) .. controls (188.92,141.63) and (199.85,130.08) .. (209,117) .. controls (210.71,114.56) and (214,111) .. (216,109) .. controls (216.78,108.22) and (221.25,107) .. (219,107) ;
+%Shape: Free Drawing [id:dp7017296047627568] 
+\draw  [line width=3] [line join = round][line cap = round] (204,139) .. controls (204,154.77) and (205.05,138.95) .. (209,135) .. controls (210.95,133.05) and (220,134.54) .. (220,137) ;
+%Shape: Free Drawing [id:dp36175847472530465] 
+\draw  [line width=3] [line join = round][line cap = round] (184,165) .. controls (183,167.99) and (175,178.53) .. (175,177) ;
+%Shape: Free Drawing [id:dp8624959768257259] 
+\draw  [line width=3] [line join = round][line cap = round] (173,165) .. controls (176.19,165) and (191,175.39) .. (191,177) ;
+
+% Text Node
+\draw (139,217.4) node [anchor=north west][inner sep=0.75pt]    {$no\ points\ in\ Y$};
+
+
+\end{tikzpicture}
+
+\end{proof}
+\subsection*{Properties of Closed Sets:}
+\begin{enumerate}
+    \item $\emptyset$, $X$ are closed
+    \item $\bigcap$ of any collection of closed sets is closed 
+    \item $\bigcup$ of a finite number of closed sets is closed
+\end{enumerate}
+Follows from the corresponding properties of open sets by taking complements. 
+
+\subsection*{Cauchy Sequences:}
+\subsection*{Definition:}
+A sequence $\{x_n\} \subset X$ is \underline{Cauchy} if $\forall \epsilon > 0 \ \exists N \text{ s.t. } \forall n, m \geq N \ d(x_n, x_m) < \epsilon$. 
+\subsection*{Lemma:}
+A convergent sequence $x_n \rightarrow x$ is Cauchy. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Suppose $x_n \rightarrow x$. $\forall \epsilon > 0 \ \exists N \in \mathbb{N} \text{ s.t. } \forall n \geq N \ d(x_n, x) < \frac{\epsilon}{2}$. By triangle inequality $d(x_n, x_m) \leq d(x_n, x) + d(x, x_m) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. 
+\end{proof}
+
+\subsection*{Defintion:}
+A metric space $(X, d)$ is \underline{complete} if every Cauchy sequence in $X$ converges to some point in $X$.
+
+\subsection*{Ex:}
+\begin{enumerate}
+    \item  $\mathbb{R}$ with the standard metric is complete. 
+    \item $(0, 1) = \{x \in \mathbb{R} | 0 < x < 1 \}$ is not complete. For example $x_n = \frac{1}{n} \rightarrow 0$ not in $(0, 1)$. 
+\end{enumerate}
+
+\subsection*{Remark:}
+Need to know that $\lim x_n$ is unique if it exists. Suppose $x_n \rightarrow y$ and $x_n \rightarrow x$. Then we have $d(x_n, y) \rightarrow 0$, $d(x_n, x) \rightarrow 0$. Using the triangle inequality, $d(x, y) \leq d(x_n, y) + d(x_n, x) \rightarrow 0$. Therefore we have that $d(x, y) = 0 \Rightarrow x = y$. 
+
+\subsection*{$\mathbb{R}$:}
+
+\subsection*{Recall:}
+$\mathbb{R}$ has an ordering $<$. 
+
+\subsection*{Definition:}
+A nonempty subset $S \subset \mathbb{R}$ is \underline{bounded above} if $\exists x \in \mathbb{R}$ s.t. $y \leq x$ $\forall y \in S$. 
+
+\subsection*{Least Upper Bound Axiom:}
+If $S$ is bounded above, then $S$ has a least upper bound i.e., an upper bound $x = \sup(S)$ s.t. $\sup(S) \leq \text{ any upper bound for } S$. 
+
+\subsection*{Theorem:}
+$\mathbb{R}$ with metric $d(c, y) = |x - y|$ is complete. 
+
+\subsection*{Proof:}
+Let $\{x_n\}$ be a Cauchy sequence in $\mathbb{R}$. Let $S = \{y \in \mathbb{R} | \exists \text{ finitely many } x_n < y\}$. 
+\begin{enumerate}
+    \item We show $S$ is nonempty and bounded above. 
+
+Given $\epsilon > 0$ $\exists N$ s.t. $d(x_n, x_m) < \epsilon$. This implies all but finitely many $x_n$ lie on $(x_N - \epsilon, x_N + \epsilon )$. 
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp9024745658161666] 
+\draw  [line width=3] [line join = round][line cap = round] (110,151) .. controls (176.33,151) and (242.66,147.53) .. (309,147) .. controls (346,146.7) and (383,146.42) .. (420,147) .. controls (428.69,147.14) and (467,156.98) .. (467,148) ;
+%Shape: Free Drawing [id:dp6011829598711353] 
+\draw  [line width=3] [line join = round][line cap = round] (196,120) .. controls (196,123.9) and (193.19,127.28) .. (192,131) .. controls (189.14,139.92) and (186.19,154.21) .. (188,164) .. controls (188.79,168.27) and (195,179.35) .. (195,175) ;
+%Shape: Free Drawing [id:dp4152947812924148] 
+\draw  [line width=3] [line join = round][line cap = round] (314,135) .. controls (314,140.67) and (313.69,146.34) .. (314,152) .. controls (314.04,152.81) and (316,160.91) .. (316,156) ;
+%Shape: Free Drawing [id:dp30468396289660893] 
+\draw  [line width=3] [line join = round][line cap = round] (423,123) .. controls (424.88,131.46) and (429.54,140.67) .. (430,149) .. controls (430.3,154.33) and (430.25,159.67) .. (430,165) .. controls (429.93,166.37) and (429,170.37) .. (429,169) ;
+%Shape: Free Drawing [id:dp4675922550363725] 
+\draw  [line width=3] [line join = round][line cap = round] (182,81) .. controls (182,88.6) and (176.36,95.86) .. (176,103) .. controls (175.68,109.33) and (175.67,115.68) .. (176,122) .. controls (176.1,123.94) and (178.13,125.26) .. (179,127) .. controls (179.54,128.07) and (182.14,129.62) .. (181,130) .. controls (174.1,132.3) and (170,122.69) .. (170,118) ;
+%Shape: Free Drawing [id:dp36026275574924993] 
+\draw  [line width=3] [line join = round][line cap = round] (182,131) .. controls (182,125.34) and (187,121.97) .. (187,118) ;
+%Shape: Free Drawing [id:dp3003385863461987] 
+\draw  [line width=3] [line join = round][line cap = round] (442,82) .. controls (442,89.67) and (442.91,97.39) .. (442,105) .. controls (441.21,111.6) and (440.7,119.3) .. (436,124) .. controls (435.82,124.18) and (432.19,130.12) .. (432,130) .. controls (429.56,128.38) and (432.21,111.21) .. (428,107) ;
+%Shape: Free Drawing [id:dp015859913063704933] 
+\draw  [line width=3] [line join = round][line cap = round] (432,125) .. controls (432,125) and (432,125) .. (432,125) ;
+%Shape: Free Drawing [id:dp26106032053521355] 
+\draw  [line width=3] [line join = round][line cap = round] (434,130) .. controls (440.26,130) and (441.57,128) .. (446,128) ;
+%Shape: Free Drawing [id:dp1799106260578378] 
+\draw  [line width=3] [line join = round][line cap = round] (216,145) .. controls (216,151.51) and (218.03,141.05) .. (221,145) .. controls (223.31,148.08) and (217.86,152.41) .. (217,155) .. controls (216.39,156.84) and (220,151.94) .. (220,150) .. controls (220,148.95) and (218.05,151) .. (217,151) ;
+%Shape: Free Drawing [id:dp5189444095192348] 
+\draw  [line width=3] [line join = round][line cap = round] (254,147) .. controls (254,150.26) and (258.55,143.36) .. (259,143) .. controls (259.21,142.83) and (264.03,141) .. (263,141) .. controls (257.01,141) and (252.95,147.76) .. (254,153) .. controls (254.55,155.77) and (258.54,149.43) .. (260,147) .. controls (260.38,146.36) and (261,144.25) .. (261,145) .. controls (261,146.59) and (261,153.3) .. (261,148) ;
+%Shape: Free Drawing [id:dp7646407690161054] 
+\draw  [line width=3] [line join = round][line cap = round] (290,145) .. controls (290,149.33) and (288.63,153.89) .. (290,158) .. controls (291.14,161.41) and (292.39,151.21) .. (294,148) .. controls (294.22,147.56) and (293,145) .. (293,145) .. controls (293,145) and (281.78,145.57) .. (285,152) .. controls (285.42,152.84) and (286.53,150.82) .. (287,150) .. controls (288.48,147.41) and (289.35,144.48) .. (291,142) ;
+%Shape: Free Drawing [id:dp3591569304033273] 
+\draw  [line width=3] [line join = round][line cap = round] (343,145) .. controls (343,149.08) and (349.39,140.94) .. (350,144) .. controls (350.39,145.97) and (350.39,149.81) .. (348,151) .. controls (347.16,151.42) and (346.78,148.48) .. (346,149) .. controls (345.12,149.58) and (345,153.05) .. (345,152) .. controls (345,149.91) and (347,147.29) .. (347,146) .. controls (347,144.77) and (345,150.15) .. (345,147) ;
+%Shape: Free Drawing [id:dp5787330655724972] 
+\draw  [line width=3] [line join = round][line cap = round] (382,146) .. controls (382,147.67) and (381.67,149.37) .. (382,151) .. controls (382.51,153.55) and (387,147.6) .. (387,145) .. controls (387,143.83) and (382.72,144.64) .. (378,147) .. controls (377.58,147.21) and (377,148.47) .. (377,148) .. controls (377,143.69) and (380.45,144) .. (382,144) ;
+%Shape: Free Drawing [id:dp42992530181152944] 
+\draw  [line width=3] [line join = round][line cap = round] (410,146) .. controls (410,153.96) and (414,133.8) .. (414,146) .. controls (414,146.65) and (411.8,153.2) .. (410,152) .. controls (406.1,149.4) and (411,147.08) .. (411,145) .. controls (411,144.25) and (410.33,146.33) .. (410,147) .. controls (409.71,147.57) and (408.66,146) .. (408,146) ;
+
+% Text Node
+\draw (174,182.4) node [anchor=north west][inner sep=0.75pt]    {$x_{N} -\epsilon $};
+% Text Node
+\draw (405,176.4) node [anchor=north west][inner sep=0.75pt]    {$x_{N} +\epsilon $};
+% Text Node
+\draw (172,57.4) node [anchor=north west][inner sep=0.75pt]    {$x_{N} -\epsilon \ \in S$};
+% Text Node
+\draw (384,60.4) node [anchor=north west][inner sep=0.75pt]    {$x_{N} +\epsilon \notin S$};
+% Text Node
+\draw (304,166.4) node [anchor=north west][inner sep=0.75pt]    {$x_{N}$};
+
+
+\end{tikzpicture}
+\item Show $x_n \rightarrow$ x. \\
+Using the same $\epsilon$, $N$, if $n \geq N$ then $|x_n - x| \leq \underbrace{|x_n - x_N|}_{< \epsilon} + \underbrace{|x_N - x|}_{< \epsilon} < 2 \epsilon$. 
+\end{enumerate}
+
+\section*{Discussion 1:}
+\subsection*{Problem 1: (1.1.2.)}
+Let $X$ be any set. Define and $d(x,y) =  \begin{cases}
+    1 & x \neq y \\
+    0 & x = y
+\end{cases}$ for $x, y \in X$. Show that $d$ is a metric. Show that every subset of $(X, d)$ is both open and closed. 
+\subsection*{Solution:}
+$d$ is a metric if 
+\begin{enumerate}
+    \item $d(x,y) \geq 0$
+    \item $d(x,y) = 0 \iff x = y$
+    \item $d(x,y) = d(y, x)$
+    \item $d(x,z) \leq d(x,y) + d(y, z)$
+\end{enumerate}
+Clearly from the definition $d$ is nonnegative. We defined $d(x,y) = 0$ if $x = y$. Falling from the definition $d(x,y) = d(y, x)$. Lastly, if $x = z$, then $d(x,z) = 0$. If $y \in X$, then $d(x,y) + d(y,z) \geq 0 + 0 = 0 = d(x,z)$. Then, if $x \neq z$ we have that $d(x, z) = 1$. Given $y \in X$, $y$ has to be either not equal to $x$ or $z$. Therefore, $d(x,y) + d(y,z) \geq 1 = d(x,z)$. \\
+
+First we will prove that every subset of $X$ is open. If $A \subset X$ is empty, $A$ is open and closed as we have shown in class. Now assume $A \subset X$ is not empty. Given a set $A \subset X$. Let $x \in A$, consider $B(x, \frac{1}{2})$. Then $B(x, \frac{1}{2}) = \{x\}$. This implies that $B(x, \frac{1}{2}) = \{x\} \subset A$. Therefore, $x$ is an interior point, and $A$ is open as every point is an interior point. Now, we are going to show that every subset of $X$ is closed. Given $A \subset X$, we need to check all the points adherent to $A$ are in $A$. Show if $y \notin A$, then $y$ is not adherent to $A$. If $y \notin A$, pick $B(y, \frac{1}{2}) = \{y\}$. Therefore, $B(y, \frac{1}{2})\cap A = \emptyset$. Thus, $y$ is not adherent to $A$. \textbf{Remark:} We can also check that $A^c$ is open.
+\subsection*{Problem 2: (1.1.8)}
+A set of the form $A = \{y \in X : d(x, y) \leq r \}$ is called the closed ball. Show a closed ball is a closed set. Is a closed ball always the closure of the open ball. What if $X = \mathbb{R}^n$ (with the Euclidean metric)?
+\subsection*{Solution:}
+Check $z \in A^c$, is not adherent to $A$. With $z \notin A$ this implies $r' = d(x, z) > r$. Take $B(z, \frac{r'- r}{2})$. For $z' \in B(z, \frac{r'-r}{2})$. 
+\[
+d(z', x) \geq |d(z', z) - d(z, x)| 
+\]
+\[
+= r' - \frac{r'-r}{2}
+\]
+\[
+= \frac{r' + r}{2} > \frac{2r}{2} = r.
+\]
+This shows that $z' \notin A$ which implies $B(z, \frac{r'-r}{2}) \cap A = \emptyset$. Therefore, the complement of $A$ is open, so $A$ is closed. \\
+
+\textbf{No}, say we are given a set $X$. Define $d(x, y) \begin{cases}
+    1 & x = y \\
+    0 & x \neq y
+\end{cases}$. 
+$B(x,r)$ is a subset of $X$, which implies $B(x,r)$ is closed by Problem (1.1.2). Hence, $\overline{B(x,r)} = B(x,r)$. In particular, $\overline{B(x, 1)} = B(x, 1) = \{x\}$ but $\{y \in X: d(x,y) \leq 1 \} = X$. \\
+
+If $X = \mathbb{R}^n$ then let $B(x,r)$ be the open ball. Claim: $A = \{y \in \mathbb{R}^n : d(x,y) = r \} \subset \overline{B(x,r)}$. Given such $y \in A$, for all $\epsilon > 0$, $B(y, \epsilon) \cap B(x, r) \neq \emptyset$. Pick $z = y + \epsilon ||x-y||$ for $\epsilon > 0$ small enough, then $z \in B(y, \epsilon)$. 
+\[
+d(z, x) = d(y, x) - d(y, z) = r - \epsilon < r
+\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp5322083673802687] 
+\draw  [line width=3] [line join = round][line cap = round] (207,64) .. controls (205.8,64) and (188,63.35) .. (188,68) ;
+%Shape: Free Drawing [id:dp05550932327049418] 
+\draw  [line width=3] [line join = round][line cap = round] (170,78) .. controls (165.99,80.67) and (162,81.68) .. (162,86) ;
+%Shape: Free Drawing [id:dp04092210748103864] 
+\draw  [line width=3] [line join = round][line cap = round] (143,108) .. controls (143,114.97) and (138,116.25) .. (138,125) ;
+%Shape: Free Drawing [id:dp7311863698742702] 
+\draw  [line width=3] [line join = round][line cap = round] (144,157) .. controls (144,160.06) and (148,171.25) .. (148,169) ;
+%Shape: Free Drawing [id:dp9281376773757561] 
+\draw  [line width=3] [line join = round][line cap = round] (171,188) .. controls (176.14,188) and (179.19,192) .. (183,192) ;
+%Shape: Free Drawing [id:dp19884269345378702] 
+\draw  [line width=3] [line join = round][line cap = round] (205,196) .. controls (209.35,196) and (213.65,195) .. (218,195) ;
+%Shape: Free Drawing [id:dp8374379409762336] 
+\draw  [line width=3] [line join = round][line cap = round] (241,191) .. controls (242.84,191) and (254,179.99) .. (254,179) ;
+%Shape: Free Drawing [id:dp6091646811267042] 
+\draw  [line width=3] [line join = round][line cap = round] (263,163) .. controls (263,156.73) and (265,152.06) .. (265,147) ;
+%Shape: Free Drawing [id:dp8125324484123675] 
+\draw  [line width=3] [line join = round][line cap = round] (236,68) .. controls (244.6,68) and (245.19,77) .. (248,77) ;
+%Shape: Free Drawing [id:dp36000648856117734] 
+\draw  [line width=3] [line join = round][line cap = round] (261,89) .. controls (261,93.01) and (262,96.99) .. (262,101) ;
+%Shape: Free Drawing [id:dp12045831133402074] 
+\draw  [line width=3] [line join = round][line cap = round] (267,116) .. controls (267,120.01) and (268,123.99) .. (268,128) ;
+%Shape: Free Drawing [id:dp7251099750847918] 
+\draw  [line width=3] [line join = round][line cap = round] (208,127) .. controls (208,122.23) and (208.76,127.48) .. (209,127) .. controls (209.3,126.4) and (209,124.33) .. (209,125) .. controls (209,126.67) and (209.27,128.36) .. (209,130) .. controls (208.88,130.74) and (208,132.75) .. (208,132) .. controls (208,130.67) and (208,129.33) .. (208,128) .. controls (208,126.3) and (207,134.7) .. (207,133) .. controls (207,131.4) and (208,126.8) .. (208,130) ;
+%Shape: Free Drawing [id:dp9213066974460231] 
+\draw  [line width=3] [line join = round][line cap = round] (211,140) .. controls (206.03,146.07) and (201.6,154.4) .. (196,160) .. controls (194.65,161.35) and (193,161.34) .. (193,163) ;
+%Shape: Free Drawing [id:dp6920340039389661] 
+\draw  [line width=3] [line join = round][line cap = round] (194,146) .. controls (200.31,146) and (204.5,144.95) .. (210,148) .. controls (213.17,149.76) and (216.45,156) .. (220,156) ;
+%Shape: Free Drawing [id:dp660666671385495] 
+\draw  [line width=3] [line join = round][line cap = round] (261,172) .. controls (261,170.2) and (259.25,165.22) .. (259,167) .. controls (258.67,169.31) and (258.67,171.69) .. (259,174) .. controls (259.21,175.48) and (261.67,171.33) .. (261,170) .. controls (260.24,168.48) and (260,173.3) .. (260,175) .. controls (260,184.44) and (259,167.66) .. (259,173) ;
+%Shape: Free Drawing [id:dp8088614931071789] 
+\draw  [line width=3] [line join = round][line cap = round] (272,161) .. controls (270,161) and (268,161) .. (266,161) ;
+%Shape: Free Drawing [id:dp05808934841891422] 
+\draw  [line width=3] [line join = round][line cap = round] (250,161) .. controls (250,163.13) and (247.51,164.49) .. (246,166) ;
+%Shape: Free Drawing [id:dp7065092287027703] 
+\draw  [line width=3] [line join = round][line cap = round] (247,173) .. controls (247,174.33) and (247,175.67) .. (247,177) ;
+%Shape: Free Drawing [id:dp740217108301569] 
+\draw  [line width=3] [line join = round][line cap = round] (252,188) .. controls (252,188) and (252,188) .. (252,188) ;
+%Shape: Free Drawing [id:dp9125908825507514] 
+\draw  [line width=3] [line join = round][line cap = round] (262,192) .. controls (262,191.47) and (264.75,188) .. (265,188) ;
+%Shape: Free Drawing [id:dp296855753801486] 
+\draw  [line width=3] [line join = round][line cap = round] (277,169) .. controls (277,171) and (277,173) .. (277,175) ;
+%Shape: Free Drawing [id:dp910593149499834] 
+\draw  [line width=3] [line join = round][line cap = round] (272,184) .. controls (272,182.61) and (274,180.39) .. (274,179) ;
+%Shape: Free Drawing [id:dp13317670170242812] 
+\draw  [line width=3] [line join = round][line cap = round] (261,184) .. controls (263.23,184) and (274,195.03) .. (274,193) ;
+%Shape: Free Drawing [id:dp37095576360407256] 
+\draw  [line width=3] [line join = round][line cap = round] (285,182) .. controls (276.46,191.76) and (271.23,198.77) .. (262,208) ;
+%Shape: Free Drawing [id:dp4144668420001403] 
+\draw  [line width=3] [line join = round][line cap = round] (212,129) .. controls (219.19,136.19) and (244.69,155.37) .. (247,160) .. controls (247.67,161.34) and (251.02,162.34) .. (252,163) .. controls (255.18,165.12) and (260,172.85) .. (260,167) ;
+%Shape: Free Drawing [id:dp39748369959744] 
+\draw  [line width=3] [line join = round][line cap = round] (234,111) .. controls (234,115.84) and (228,118.73) .. (228,123) ;
+%Shape: Free Drawing [id:dp12913451749770233] 
+\draw  [line width=3] [line join = round][line cap = round] (224,115) .. controls (229.02,115) and (231.99,122) .. (236,122) ;
+%Shape: Free Drawing [id:dp25456487905713776] 
+\draw  [line width=3] [line join = round][line cap = round] (240,116) .. controls (242.33,116) and (244.67,116) .. (247,116) ;
+%Shape: Free Drawing [id:dp35574136208532336] 
+\draw  [line width=3] [line join = round][line cap = round] (247,107) .. controls (251.01,107) and (252.66,112) .. (256,112) ;
+%Shape: Free Drawing [id:dp44625247053860284] 
+\draw  [line width=3] [line join = round][line cap = round] (263,105) .. controls (263,110.02) and (254.37,117.27) .. (253,120) .. controls (252.67,120.67) and (252.75,122) .. (252,122) ;
+%Shape: Free Drawing [id:dp7739013376927819] 
+\draw  [line width=3] [line join = round][line cap = round] (410,75) .. controls (415.17,80.17) and (419.67,87.34) .. (425,92) .. controls (437.15,102.63) and (454.7,114.85) .. (465,124) .. controls (470.33,128.74) and (474.89,134.89) .. (478,138) .. controls (480.55,140.55) and (484.24,141.24) .. (487,144) .. controls (488.99,145.99) and (495,154.07) .. (495,153) ;
+%Shape: Free Drawing [id:dp6682025790168775] 
+\draw  [line width=3] [line join = round][line cap = round] (400,52) .. controls (397.34,52) and (388.33,69.67) .. (386,72) ;
+%Shape: Free Drawing [id:dp29409934209019317] 
+\draw  [line width=3] [line join = round][line cap = round] (383,53) .. controls (387.62,53) and (402,58.21) .. (402,62) ;
+%Shape: Free Drawing [id:dp06896640476659321] 
+\draw  [line width=3] [line join = round][line cap = round] (411,74) .. controls (411,80.76) and (418.39,72.7) .. (417,72) .. controls (414.02,70.51) and (410.5,74) .. (411,75) .. controls (411.15,75.3) and (412,75.33) .. (412,75) ;
+%Shape: Free Drawing [id:dp13145891812383748] 
+\draw  [line width=3] [line join = round][line cap = round] (497,153) .. controls (500.83,156.83) and (506.13,147.84) .. (504,145) .. controls (500.72,140.63) and (499,151) .. (499,151) .. controls (499,151) and (498.33,149) .. (500,149) ;
+%Shape: Free Drawing [id:dp994429759283292] 
+\draw  [line width=3] [line join = round][line cap = round] (513,159) .. controls (518,159) and (529.06,161.06) .. (533,165) ;
+%Shape: Free Drawing [id:dp22935946320858647] 
+\draw  [line width=3] [line join = round][line cap = round] (539,152) .. controls (534.6,156.4) and (532.27,175.73) .. (525,183) ;
+%Shape: Free Drawing [id:dp46505453411959197] 
+\draw  [line width=3] [line join = round][line cap = round] (403,46) .. controls (399.39,46) and (398.55,54) .. (397,54) ;
+%Shape: Free Drawing [id:dp28722755664364774] 
+\draw  [line width=3] [line join = round][line cap = round] (434,156) .. controls (440,156) and (446.01,155.67) .. (452,156) .. controls (452.7,156.04) and (447.55,162.27) .. (447,163) .. controls (445.23,165.35) and (443.53,167.94) .. (442,171) .. controls (441.58,171.84) and (439.06,173) .. (440,173) .. controls (442.78,173) and (453.54,167.86) .. (457,167) .. controls (457.46,166.89) and (457.67,166.33) .. (458,166) ;
+%Shape: Free Drawing [id:dp03171520294748276] 
+\draw  [line width=3] [line join = round][line cap = round] (467,146) .. controls (467,148.67) and (466.62,151.36) .. (467,154) .. controls (467.11,154.74) and (468.47,153.53) .. (469,153) .. controls (470.05,151.95) and (470.89,151) .. (473,151) ;
+%Shape: Free Drawing [id:dp0741923320324196] 
+\draw  [line width=3] [line join = round][line cap = round] (470,152) .. controls (470,143.37) and (489.85,128) .. (499,128) ;
+%Shape: Free Drawing [id:dp14908537244176268] 
+\draw  [line width=3] [line join = round][line cap = round] (513,127) .. controls (507.05,127) and (505.1,134) .. (514,134) .. controls (515,134) and (511.95,133.68) .. (511,134) .. controls (509.3,134.57) and (507.51,138) .. (509,139) .. controls (515.33,143.22) and (515,140.3) .. (515,138) ;
+%Shape: Free Drawing [id:dp29954450481264905] 
+\draw  [line width=3] [line join = round][line cap = round] (432,97) .. controls (432,103) and (432,109) .. (432,115) ;
+%Shape: Free Drawing [id:dp033723941337442165] 
+\draw  [line width=3] [line join = round][line cap = round] (435,98) .. controls (442.67,98) and (450.33,98) .. (458,98) ;
+
+
+
+
+\end{tikzpicture}
+
+\subsection*{Fact:}
+A closed subset $Y$ of a complete space $(X, d)$ is complete. 
+\subsection*{Proof:}
+\begin{proof}
+    Let $(y_n)_{n \in \mathbb{N}} \subset Y$ be a Cauchy sequence. Since $X$ is complete, $\exists y \in X$ such that $(y_n)_{n \in \mathbb{N}}$ converges to $x$. Since $Y$ is closed $Y = \overline{Y}$. Then, $y \in \overline{}{Y}$ and $y \in Y$. 
+\end{proof}
+
+\subsection*{Definition:}
+A subset $Y \subset X$ is \underline{dense} if $\overline{Y} = X$. 
+
+\subsection*{Example:}
+$\mathbb{Q} \subset \mathbb{R}$, $\mathbb{R} \backslash \mathbb{Q} \subset \mathbb{R}$
+
+\subsection*{Theorem: (Baire Category Theorem)}
+A countable intersection of dense, open subsets of a complete space $(X, d)$ is dense. 
+
+\subsection*{Example:}
+$\mathbb{Q} \cap \mathbb{R} \backslash \mathbb{Q} = \emptyset$ but $\mathbb{Q}, \mathbb{R} \backslash \mathbb{Q}$ are not open, which does not contradict the theorem. 
+
+\subsection*{Proof:}
+We show for all $x \in X$, $\epsilon > 0$, $\exists y \in \bigcap\limits_{n = 1}^{\infty} U_n$ such that $y \in B(x, \epsilon)$. Since $U_1$ is open and dense, there exists $y_1 \in B(x, \epsilon) \cap U_i$. Thus, $\exists \epsilon_1 > 0$ such that $B(y_1, \epsilon_1) \subset B(x, \epsilon) \cap U_1$ (finite intersection of open sets). Furthermore, WLOG, let $\overline{B(y_1, \epsilon_1)} \subset B(x, \epsilon)$ (let $\{z \in X: d(z, y_1) \leq \epsilon_1 \}$ is closed). Now consider $B(y_1, \epsilon_1)$. Continuing, $\exists y_2 \in B(y_1, \epsilon_1) \cap U_2$ and $\epsilon_2$ such that $\overline{B(y_2, \epsilon_2)} \subset B(y_1, \epsilon_1) \cap U_2$. Inductively, we obtain a sequence $(y_n)_{n \in \mathbb{N}}$. Now we can enforce $\epsilon_i \leq \frac{1}{i}$ at each step such that $(y_n)_{n \in \mathbb{N}}$ is Cauchy and has a limit $y \in X$ by completeness of $X$. 
+
+\subsection*{Exercie:}
+$y \in \bigcap\limits_{i \in \mathbb{N}} U_i$ and $y \in B(x, \epsilon)$. 
+
+\section*{Products and $\mathbb{R}^n$:}
+\subsection*{Products:}
+Let $(X_1, d_1), \ldots, (X_n, d_n)$ be a metric space. Let $X = X_1 \times \cdots \times X_n$. We can make $X$ a metric space in the following ways: 
+\begin{enumerate}
+    \item $d(x, y) = (\sum\limits_i d(x_i, y_i)^2)^{\frac{1}{2}}$
+    \item $d(x,y) = \sum\limits_i d(x_i, y_i)$
+    \item $d(x, y) = \max\limits_i (d(x_i, y_i)) = \sup\limits_i d(x_i, y_i)$
+\end{enumerate}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp9680463019332026] 
+\draw  [line width=3] [line join = round][line cap = round] (123,80) .. controls (120.33,80) and (117.65,79.67) .. (115,80) .. controls (113.07,80.24) and (113.37,83.63) .. (112,85) .. controls (109.23,87.77) and (103,92.1) .. (103,95) ;
+%Shape: Free Drawing [id:dp07891291041584059] 
+\draw  [line width=3] [line join = round][line cap = round] (94,111) .. controls (94,116.47) and (87.36,119.68) .. (84,124) .. controls (79.78,129.42) and (78,135.77) .. (78,143) ;
+%Shape: Free Drawing [id:dp8863903328542515] 
+\draw  [line width=3] [line join = round][line cap = round] (87,162) .. controls (87,167.67) and (86.23,173.39) .. (87,179) .. controls (87.65,183.74) and (102.32,196) .. (106,196) ;
+%Shape: Free Drawing [id:dp5361072273412233] 
+\draw  [line width=3] [line join = round][line cap = round] (126,210) .. controls (130.32,210) and (148,214.57) .. (148,213) ;
+%Shape: Free Drawing [id:dp8655448225944735] 
+\draw  [line width=3] [line join = round][line cap = round] (174,215) .. controls (180.22,215) and (194,209.29) .. (194,204) ;
+%Shape: Free Drawing [id:dp2560905940557603] 
+\draw  [line width=3] [line join = round][line cap = round] (151,76) .. controls (161.37,76) and (165.94,84) .. (170,84) ;
+%Shape: Free Drawing [id:dp05768414397397459] 
+\draw  [line width=3] [line join = round][line cap = round] (192,94) .. controls (192,99.51) and (199,107.29) .. (199,114) ;
+%Shape: Free Drawing [id:dp6616018136934396] 
+\draw  [line width=3] [line join = round][line cap = round] (207,129) .. controls (207,136.33) and (207,143.67) .. (207,151) ;
+%Shape: Free Drawing [id:dp1492081684831792] 
+\draw  [line width=3] [line join = round][line cap = round] (208,165) .. controls (208,169.5) and (204.54,188) .. (200,188) ;
+%Shape: Free Drawing [id:dp6791091975246195] 
+\draw  [line width=3] [line join = round][line cap = round] (148,146) .. controls (148,149.37) and (152.74,147.26) .. (150,150) .. controls (149.76,150.24) and (149.85,149.3) .. (150,149) .. controls (151.07,146.86) and (146.68,147.68) .. (148,149) .. controls (149.12,150.12) and (149.34,146) .. (147,146) .. controls (146.25,146) and (148.59,146.38) .. (149,147) .. controls (150.42,149.13) and (149.06,151.03) .. (147,150) .. controls (144.55,148.78) and (156.38,142.42) .. (156,143) .. controls (154.99,144.52) and (148,147.8) .. (148,149) .. controls (148,150.67) and (153.18,147.18) .. (152,146) .. controls (149.16,143.16) and (147.11,153.19) .. (151,148) .. controls (153.29,144.95) and (150.05,141.71) .. (147,144) .. controls (141.14,148.39) and (158.52,148.91) .. (152,145) .. controls (148,142.6) and (146,145.65) .. (146,148) ;
+%Shape: Free Drawing [id:dp2133119310789262] 
+\draw  [line width=3] [line join = round][line cap = round] (255,145) .. controls (255.24,145) and (268.98,132.03) .. (269,132) .. controls (269.33,131.33) and (269.25,130) .. (270,130) ;
+%Shape: Free Drawing [id:dp19838894429039522] 
+\draw  [line width=3] [line join = round][line cap = round] (288,119) .. controls (290.72,116.28) and (301,109.21) .. (301,106) ;
+%Shape: Free Drawing [id:dp14397726241094744] 
+\draw  [line width=3] [line join = round][line cap = round] (322,92) .. controls (329.24,86.83) and (330.11,84.74) .. (337,79) ;
+%Shape: Free Drawing [id:dp978105165572198] 
+\draw  [line width=3] [line join = round][line cap = round] (355,84) .. controls (355.41,84) and (365.36,95.36) .. (366,96) .. controls (366.33,96.33) and (367,96.53) .. (367,97) ;
+%Shape: Free Drawing [id:dp8319043456096029] 
+\draw  [line width=3] [line join = round][line cap = round] (382,113) .. controls (383.84,113) and (392,124.58) .. (392,126) ;
+%Shape: Free Drawing [id:dp5249895224777212] 
+\draw  [line width=3] [line join = round][line cap = round] (399,142) .. controls (399,145.71) and (406.27,152.9) .. (409,157) ;
+%Shape: Free Drawing [id:dp8307123515379786] 
+\draw  [line width=3] [line join = round][line cap = round] (263,163) .. controls (266.23,165.42) and (275.95,178) .. (279,178) ;
+%Shape: Free Drawing [id:dp40446605899770494] 
+\draw  [line width=3] [line join = round][line cap = round] (305,191) .. controls (312.46,192.87) and (314.22,199.61) .. (319,202) .. controls (322.06,203.53) and (323.22,204.61) .. (326,206) .. controls (327.58,206.79) and (326.02,204) .. (325,204) ;
+%Shape: Free Drawing [id:dp9676118782027892] 
+\draw  [line width=3] [line join = round][line cap = round] (340,204) .. controls (344.52,199.48) and (351.96,196.04) .. (357,191) ;
+%Shape: Free Drawing [id:dp6058067113683061] 
+\draw  [line width=3] [line join = round][line cap = round] (375,181) .. controls (379.35,178.1) and (396,172.92) .. (396,166) ;
+%Shape: Free Drawing [id:dp4160115050220534] 
+\draw  [line width=3] [line join = round][line cap = round] (332,149) .. controls (327.33,149) and (331.89,151.56) .. (333,151) .. controls (334.02,150.49) and (330.18,148.47) .. (330,149) .. controls (329.43,150.71) and (329.57,154.29) .. (333,152) .. controls (334.76,150.83) and (331,147.92) .. (331,151) ;
+%Shape: Free Drawing [id:dp8301072212825817] 
+\draw  [line width=3] [line join = round][line cap = round] (457,84) .. controls (457,90.01) and (458,95.99) .. (458,102) ;
+%Shape: Free Drawing [id:dp02100009609918163] 
+\draw  [line width=3] [line join = round][line cap = round] (457,120) .. controls (457,125.68) and (458,131.32) .. (458,137) ;
+%Shape: Free Drawing [id:dp16168992741237487] 
+\draw  [line width=3] [line join = round][line cap = round] (458,153) .. controls (458,159.67) and (458,166.33) .. (458,173) ;
+%Shape: Free Drawing [id:dp6838884640185132] 
+\draw  [line width=3] [line join = round][line cap = round] (459,187) .. controls (459,192.33) and (459,197.67) .. (459,203) ;
+%Shape: Free Drawing [id:dp7680932951144288] 
+\draw  [line width=3] [line join = round][line cap = round] (474,205) .. controls (482.78,205) and (489.82,203) .. (500,203) ;
+%Shape: Free Drawing [id:dp9608824073065712] 
+\draw  [line width=3] [line join = round][line cap = round] (523,204) .. controls (531.5,204) and (537.4,202) .. (545,202) ;
+%Shape: Free Drawing [id:dp6423053178619202] 
+\draw  [line width=3] [line join = round][line cap = round] (570,203) .. controls (580,203) and (590,203) .. (600,203) ;
+%Shape: Free Drawing [id:dp5317537414547489] 
+\draw  [line width=3] [line join = round][line cap = round] (601,191) .. controls (601,181.66) and (602,172.34) .. (602,163) ;
+%Shape: Free Drawing [id:dp5547024330076722] 
+\draw  [line width=3] [line join = round][line cap = round] (603,149) .. controls (603,142.67) and (603,136.33) .. (603,130) ;
+%Shape: Free Drawing [id:dp5409918323726952] 
+\draw  [line width=3] [line join = round][line cap = round] (604,115) .. controls (604,107.33) and (604.33,99.66) .. (604,92) .. controls (603.99,91.74) and (602,88.42) .. (602,87) ;
+%Shape: Free Drawing [id:dp9387442253013625] 
+\draw  [line width=3] [line join = round][line cap = round] (467,76) .. controls (476.33,76) and (485.67,76) .. (495,76) ;
+%Shape: Free Drawing [id:dp7591069791170213] 
+\draw  [line width=3] [line join = round][line cap = round] (507,75) .. controls (514,75) and (521,75) .. (528,75) ;
+%Shape: Free Drawing [id:dp4549240764061526] 
+\draw  [line width=3] [line join = round][line cap = round] (547,74) .. controls (553.92,74) and (568.92,74) .. (562,74) ;
+%Shape: Free Drawing [id:dp7929182176122385] 
+\draw  [line width=3] [line join = round][line cap = round] (580,74) .. controls (587.33,74) and (594.67,74) .. (602,74) ;
+%Shape: Free Drawing [id:dp7867304770544672] 
+\draw  [line width=3] [line join = round][line cap = round] (531,143) .. controls (531.94,143) and (533,140.06) .. (533,141) .. controls (533,141.94) and (534.7,143.89) .. (535,143) .. controls (535.35,141.94) and (533.15,138.27) .. (532,140) .. controls (529.81,143.28) and (534,144.33) .. (534,142) ;
+%Shape: Free Drawing [id:dp9759488086310117] 
+\draw  [line width=3] [line join = round][line cap = round] (75,234) .. controls (75.75,234) and (75.67,235.33) .. (76,236) .. controls (77.23,238.45) and (82.5,244.25) .. (86,246) .. controls (99.12,252.56) and (102.95,256.71) .. (119,259) .. controls (122.1,259.44) and (124.88,261.87) .. (128,262) .. controls (158.96,263.29) and (188.41,266.41) .. (220,265) .. controls (237.26,264.23) and (256.77,256.73) .. (273,251) .. controls (276.34,249.82) and (277.46,244.15) .. (281,244) .. controls (288.66,243.67) and (296.34,243.67) .. (304,244) .. controls (308.35,244.19) and (317.63,263) .. (318,263) .. controls (318.47,263) and (318.85,262.45) .. (319,262) .. controls (319.84,259.48) and (327.2,245.2) .. (331,249) .. controls (331.07,249.07) and (329.47,252.47) .. (331,254) .. controls (344.43,267.43) and (391.49,270.54) .. (411,271) .. controls (423,271.29) and (435.01,271.5) .. (447,271) .. controls (456.38,270.61) and (466.68,268.24) .. (476,267) .. controls (483.71,265.97) and (491.34,264.39) .. (499,263) .. controls (520.11,259.16) and (537.8,254.61) .. (558,249) .. controls (576.06,243.98) and (587,248.32) .. (587,227) ;
+
+% Text Node
+\draw (138,226.4) node [anchor=north west][inner sep=0.75pt]    {$( 1)$};
+% Text Node
+\draw (320,218.4) node [anchor=north west][inner sep=0.75pt]    {$( 2)$};
+% Text Node
+\draw (521,218.4) node [anchor=north west][inner sep=0.75pt]    {$( 3)$};
+% Text Node
+\draw (199,277.4) node [anchor=north west][inner sep=0.75pt]    {$open\ balls\ in\ \mathbb{R}^{2} \ w.r.t.\ these\ metrics$};
+
+
+\end{tikzpicture} \\
+
+
+
+The metrics are different but the collection of open sets w.r.t. them are the same:
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp9680463019332026] 
+\draw  [line width=3] [line join = round][line cap = round] (508,68) .. controls (505.33,68) and (502.65,67.67) .. (500,68) .. controls (498.07,68.24) and (498.37,71.63) .. (497,73) .. controls (494.23,75.77) and (488,80.1) .. (488,83) ;
+%Shape: Free Drawing [id:dp07891291041584059] 
+\draw  [line width=3] [line join = round][line cap = round] (479,99) .. controls (479,104.47) and (472.36,107.68) .. (469,112) .. controls (464.78,117.42) and (463,123.77) .. (463,131) ;
+%Shape: Free Drawing [id:dp8863903328542515] 
+\draw  [line width=3] [line join = round][line cap = round] (472,150) .. controls (472,155.67) and (471.23,161.39) .. (472,167) .. controls (472.65,171.74) and (487.32,184) .. (491,184) ;
+%Shape: Free Drawing [id:dp5361072273412233] 
+\draw  [line width=3] [line join = round][line cap = round] (511,198) .. controls (515.32,198) and (533,202.57) .. (533,201) ;
+%Shape: Free Drawing [id:dp8655448225944735] 
+\draw  [line width=3] [line join = round][line cap = round] (559,203) .. controls (565.22,203) and (579,197.29) .. (579,192) ;
+%Shape: Free Drawing [id:dp2560905940557603] 
+\draw  [line width=3] [line join = round][line cap = round] (536,64) .. controls (546.37,64) and (550.94,72) .. (555,72) ;
+%Shape: Free Drawing [id:dp05768414397397459] 
+\draw  [line width=3] [line join = round][line cap = round] (577,82) .. controls (577,87.51) and (584,95.29) .. (584,102) ;
+%Shape: Free Drawing [id:dp6616018136934396] 
+\draw  [line width=3] [line join = round][line cap = round] (592,117) .. controls (592,124.33) and (592,131.67) .. (592,139) ;
+%Shape: Free Drawing [id:dp1492081684831792] 
+\draw  [line width=3] [line join = round][line cap = round] (593,153) .. controls (593,157.5) and (589.54,176) .. (585,176) ;
+%Shape: Free Drawing [id:dp6791091975246195] 
+\draw  [line width=3] [line join = round][line cap = round] (533,134) .. controls (533,137.37) and (537.74,135.26) .. (535,138) .. controls (534.76,138.24) and (534.85,137.3) .. (535,137) .. controls (536.07,134.86) and (531.68,135.68) .. (533,137) .. controls (534.12,138.12) and (534.34,134) .. (532,134) .. controls (531.25,134) and (533.59,134.38) .. (534,135) .. controls (535.42,137.13) and (534.06,139.03) .. (532,138) .. controls (529.55,136.78) and (541.38,130.42) .. (541,131) .. controls (539.99,132.52) and (533,135.8) .. (533,137) .. controls (533,138.67) and (538.18,135.18) .. (537,134) .. controls (534.16,131.16) and (532.11,141.19) .. (536,136) .. controls (538.29,132.95) and (535.05,129.71) .. (532,132) .. controls (526.14,136.39) and (543.52,136.91) .. (537,133) .. controls (533,130.6) and (531,133.65) .. (531,136) ;
+%Shape: Free Drawing [id:dp8301072212825817] 
+\draw  [line width=3] [line join = round][line cap = round] (90,82) .. controls (90,88.01) and (91,93.99) .. (91,100) ;
+%Shape: Free Drawing [id:dp02100009609918163] 
+\draw  [line width=3] [line join = round][line cap = round] (90,118) .. controls (90,123.68) and (91,129.32) .. (91,135) ;
+%Shape: Free Drawing [id:dp16168992741237487] 
+\draw  [line width=3] [line join = round][line cap = round] (91,151) .. controls (91,157.67) and (91,164.33) .. (91,171) ;
+%Shape: Free Drawing [id:dp6838884640185132] 
+\draw  [line width=3] [line join = round][line cap = round] (92,185) .. controls (92,190.33) and (92,195.67) .. (92,201) ;
+%Shape: Free Drawing [id:dp7680932951144288] 
+\draw  [line width=3] [line join = round][line cap = round] (107,203) .. controls (115.78,203) and (122.82,201) .. (133,201) ;
+%Shape: Free Drawing [id:dp9608824073065712] 
+\draw  [line width=3] [line join = round][line cap = round] (156,202) .. controls (164.5,202) and (170.4,200) .. (178,200) ;
+%Shape: Free Drawing [id:dp6423053178619202] 
+\draw  [line width=3] [line join = round][line cap = round] (203,201) .. controls (213,201) and (223,201) .. (233,201) ;
+%Shape: Free Drawing [id:dp5317537414547489] 
+\draw  [line width=3] [line join = round][line cap = round] (234,189) .. controls (234,179.66) and (235,170.34) .. (235,161) ;
+%Shape: Free Drawing [id:dp5547024330076722] 
+\draw  [line width=3] [line join = round][line cap = round] (236,147) .. controls (236,140.67) and (236,134.33) .. (236,128) ;
+%Shape: Free Drawing [id:dp5409918323726952] 
+\draw  [line width=3] [line join = round][line cap = round] (237,113) .. controls (237,105.33) and (237.33,97.66) .. (237,90) .. controls (236.99,89.74) and (235,86.42) .. (235,85) ;
+%Shape: Free Drawing [id:dp9387442253013625] 
+\draw  [line width=3] [line join = round][line cap = round] (100,74) .. controls (109.33,74) and (118.67,74) .. (128,74) ;
+%Shape: Free Drawing [id:dp7591069791170213] 
+\draw  [line width=3] [line join = round][line cap = round] (140,73) .. controls (147,73) and (154,73) .. (161,73) ;
+%Shape: Free Drawing [id:dp4549240764061526] 
+\draw  [line width=3] [line join = round][line cap = round] (180,72) .. controls (186.92,72) and (201.92,72) .. (195,72) ;
+%Shape: Free Drawing [id:dp7929182176122385] 
+\draw  [line width=3] [line join = round][line cap = round] (213,72) .. controls (220.33,72) and (227.67,72) .. (235,72) ;
+%Shape: Free Drawing [id:dp7867304770544672] 
+\draw  [line width=3] [line join = round][line cap = round] (164,141) .. controls (164.94,141) and (166,138.06) .. (166,139) .. controls (166,139.94) and (167.7,141.89) .. (168,141) .. controls (168.35,139.94) and (166.15,136.27) .. (165,138) .. controls (162.81,141.28) and (167,142.33) .. (167,140) ;
+
+% Text Node
+\draw (45,127.4) node [anchor=north west][inner sep=0.75pt]    {$e.g.$};
+% Text Node
+\draw (284,143.4) node [anchor=north west][inner sep=0.75pt]    {$( and\ vice\ verse)$};
+% Text Node
+\draw (242,118.4) node [anchor=north west][inner sep=0.75pt]    {$can\ be\ written\ as\ the\ union\ of$};
+
+
+\end{tikzpicture} \\
+
+The $3$ metrics satisfy
+\begin{enumerate}
+    \item A sequence $(x^{(k)})_{k \in \mathbb{N}}$, $x^k = (x_1^{(k)}, \ldots , x_n^{(k)})$ converges to $x = (x_1, \ldots, x_n)$ iff for each $i = 1, \ldots, n$ we have $(x_i^{(k)})_{k \in \mathbb{N}} \rightarrow x_i$. 
+    \item $d_i(x_i, y_i) \leq d(x, y)$
+\end{enumerate}
+\subsection*{Theorem:}
+If $d$ is a metric on $X$ satisfying $(1)$, then the open sets in $(X, d)$ are unions of open sets of the form $U_1 \times \cdots \times U_n$ where $U_i$ is open in $X_i$ (kind of looks like the open square from (3)). 
+
+\subsection*{Proof:}
+\begin{proof}
+    $X_1 \times \cdots \times U_i^c \times \cdots \times X_n$ is closed $\iff$ $X_1 \times \cdots \times U_i \times \cdots \times X_n$ is open. Let $S_i = X_1 \times \cdots \times U_i \times \cdots \times X_n$. Let $(x^{(k)})_{k \in \mathbb{N}}$ be a sequence in $X_1 \times \cdots \times U_i^c \times \cdots \times X_n$ converging to $x \in X$. But the components converge to corresponding components of $x$ such that $x_k \in X_k$ or $x_i \in U_i$ such that $x \in X_1 \times \cdots U_i^c \times \cdots \times X_n$. Thus, the set is closed and $S_i^c = X_1 \times \cdots \times U_i^c \times \cdots \times X_n$ so that $S_i$ is open. $\bigcap\limits_{i = 1}^n S_i = U_1 \times \cdots \times U_n$. Remember to show that every open set of $X$ is a union of $U_1 \times \cdots \times U_n$ (for next class).     
+\end{proof}
+
+\subsection*{Products}
+
+\[
+X = X_1 \times \cdots \times X_n, \ (X_k, d_k) \text{ metric space}
+\]
+\[
+x = (x_1, \ldots, x_n) \;
+x^{(j)} = \left(x_1^{(j)}, \ldots, x_n^{(j)} \right)
+\]
+
+\subsection*{Theorem:}
+$x^{(j)} \rightarrow x$ iff $x_k^{(j)} \rightarrow x_k \ \forall k$. 
+
+\subsection*{Theorem:}
+If $d$ is a metric, $X$ set, then the open sets in $(X, d)$ are the unions of the form $U_1 \times \cdots \times U_n$ where $U_k \subset X_k$ open. 
+
+\subsection*{Proof:}
+\begin{proof}
+    \textbf{Step 1:} Showed $U_1 \times \cdots \times U_n$ open if $\forall U_k$ open. \\
+
+    \textbf{Step 2:} Show that every open set of $X$  is a union of $U_1 \times \cdots \times U_n$. Let $U \subset X$ be open. Arguing by contradiction, suppose $\exists \epsilon_j \rightarrow 0$, $x \in U$ and \[y^{(j)} = (y_1^{(j)}, \ldots , y_n^{(j)}) \in B(x_1, \epsilon_j) \times \cdots \times B(x_n, \epsilon_j) \notin U. \]
+    But then $y_k^{(j)} \rightarrow x_k$. by the previous theorem it must be that $y \in X = U$ closed set that $y^{(j)} \rightarrow x$ which implies $x \in X - U$ which is a contradiction. 
+\end{proof}
+
+\section*{Continuity:}
+$(X, d_x)$, $(Y, d_y)$ are metric spaces
+
+\subsection*{Definition:}
+A map $f:X \rightarrow Y$ is \underline{continuous} at $x \in X$ if 
+\[
+(x_n \rightarrow x) \Rightarrow (f(x_n) \rightarrow f(x))
+\]
+\begin{itemize}
+    \item A map $f:X \rightarrow Y$ is \underline{continuous} if $f$ is continuous at all $x \in X$ 
+\end{itemize}
+\subsection*{Properties:}
+\begin{enumerate}
+    \item The identity map $id:X \rightarrow X$ $x \mapsto x$ is continuous. 
+    \item If $X \xrightarrow{f}$ and $Y \xrightarrow{g} Z$ are continuous, then $X \xrightarrow{g \circ f} Z$ is continuous [HW]
+\end{enumerate}
+
+\subsection*{Lemma:}
+$f$ is continuous at $x$ iff $\forall \epsilon > 0$ $\exists \delta > 0$ s.t. 
+\[
+d_x(x, x') < \delta \Rightarrow d_y(f(x), f(x')) < \epsilon
+\]
+
+
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp4593630576693313] 
+\draw  [line width=3] [line join = round][line cap = round] (168.5,112) .. controls (151.3,112) and (137.07,117.43) .. (127.5,127) .. controls (120,134.5) and (119.6,151.3) .. (122.5,160) .. controls (130.06,182.68) and (145.51,210.07) .. (176.5,208) .. controls (217.85,205.24) and (229.01,143.51) .. (202.5,117) .. controls (193.68,108.18) and (177.8,112) .. (167.5,112) ;
+%Shape: Free Drawing [id:dp5445449398275048] 
+\draw  [line width=3] [line join = round][line cap = round] (168.5,161) .. controls (168.5,158.05) and (172.77,153.46) .. (174.5,150) .. controls (179.12,140.77) and (189.5,122.97) .. (189.5,114) ;
+%Shape: Free Drawing [id:dp46453228006146174] 
+\draw  [line width=3] [line join = round][line cap = round] (228.5,144) .. controls (256.44,116.06) and (294.74,94.81) .. (335.5,105) .. controls (346.74,107.81) and (357.77,117.27) .. (364.5,124) .. controls (365.87,125.37) and (371.33,134.67) .. (367.5,136) .. controls (350.56,141.89) and (342.98,135.26) .. (343.5,135) .. controls (344.58,134.46) and (346.5,134.2) .. (346.5,133) ;
+%Shape: Free Drawing [id:dp5343214782959187] 
+\draw  [line width=3] [line join = round][line cap = round] (366.5,118) .. controls (366.5,121.78) and (367.49,127.99) .. (369.5,130) .. controls (370.25,130.75) and (370.5,134.05) .. (370.5,133) .. controls (370.5,128.11) and (368.86,121.98) .. (368.5,117) .. controls (368.21,113) and (371.51,105) .. (367.5,105) ;
+%Shape: Free Drawing [id:dp9467031587216441] 
+\draw  [line width=3] [line join = round][line cap = round] (479.5,89) .. controls (439.82,89) and (427.17,90.79) .. (396.5,115) .. controls (396.12,115.3) and (388.09,120.22) .. (387.5,122) .. controls (385.58,127.77) and (378.99,135.69) .. (378.5,142) .. controls (378.19,145.99) and (378.77,150.01) .. (378.5,154) .. controls (378.17,159) and (377,164.01) .. (377.5,169) .. controls (380.43,198.27) and (415.29,215.03) .. (441.5,216) .. controls (442.51,216.04) and (467.23,218.01) .. (474.5,214) .. controls (494.4,203.02) and (515.15,184.31) .. (516.5,160) .. controls (517.44,143.08) and (510.88,123.66) .. (500.5,110) .. controls (496.93,105.3) and (492.34,101.48) .. (488.5,97) .. controls (487.36,95.66) and (486.87,92) .. (484.5,92) ;
+%Shape: Free Drawing [id:dp5139812339083769] 
+\draw  [line width=3] [line join = round][line cap = round] (458.5,135) .. controls (450.87,135) and (436.99,140.51) .. (431.5,146) .. controls (430.38,147.12) and (427.63,158.09) .. (427.5,160) .. controls (426.96,168.11) and (429.79,189.47) .. (440.5,191) .. controls (447.83,192.05) and (460.93,195.08) .. (466.5,191) .. controls (478.62,182.12) and (494.49,161.15) .. (481.5,146) .. controls (472.81,135.86) and (463.88,140.38) .. (458.5,135) -- cycle ;
+%Shape: Free Drawing [id:dp9512013762705425] 
+\draw  [line width=3] [line join = round][line cap = round] (455.5,164) .. controls (455.5,156.34) and (462.5,149.42) .. (462.5,142) ;
+%Shape: Free Drawing [id:dp7118891640520393] 
+\draw  [line width=3] [line join = round][line cap = round] (466.5,134) .. controls (472.7,124.7) and (475.34,113.26) .. (478.5,103) .. controls (479.84,98.65) and (483.5,93.57) .. (483.5,89) ;
+%Shape: Free Drawing [id:dp9178224821079228] 
+\draw  [line width=0.75] [line join = round][line cap = round] (128.5,156) .. controls (140.08,144.42) and (151.44,130.09) .. (159.5,118) ;
+%Shape: Free Drawing [id:dp3383790028947373] 
+\draw  [line width=0.75] [line join = round][line cap = round] (137.5,173) .. controls (142.27,153.93) and (152.59,138.89) .. (164.5,124) .. controls (165.49,122.76) and (165.92,120) .. (168.5,120) ;
+%Shape: Free Drawing [id:dp2762539544556908] 
+\draw  [line width=0.75] [line join = round][line cap = round] (151.5,183) .. controls (154.34,163.14) and (171.5,146.39) .. (171.5,127) ;
+%Shape: Free Drawing [id:dp6131542639569152] 
+\draw  [line width=0.75] [line join = round][line cap = round] (177.5,208) .. controls (177.5,188.75) and (173.63,149.87) .. (186.5,137) ;
+%Shape: Free Drawing [id:dp6377808250760479] 
+\draw  [line width=0.75] [line join = round][line cap = round] (193.5,200) .. controls (193.5,179.67) and (193.18,159.33) .. (193.5,139) .. controls (193.58,134.13) and (197.5,129.95) .. (197.5,125) ;
+%Shape: Free Drawing [id:dp6211814145572769] 
+\draw  [line width=0.75] [line join = round][line cap = round] (435.5,168) .. controls (435.5,162.67) and (435.17,157.32) .. (435.5,152) .. controls (435.54,151.38) and (446.27,145.23) .. (447.5,144) ;
+%Shape: Free Drawing [id:dp34703320900809587] 
+\draw  [line width=0.75] [line join = round][line cap = round] (435.5,184) .. controls (442.43,173.22) and (459.5,158.01) .. (459.5,146) ;
+%Shape: Free Drawing [id:dp2465660637248781] 
+\draw  [line width=0.75] [line join = round][line cap = round] (460.5,188) .. controls (460.5,180) and (460.18,171.99) .. (460.5,164) .. controls (460.55,162.67) and (463.5,162.42) .. (463.5,160) ;
+%Shape: Free Drawing [id:dp15023137651146046] 
+\draw  [line width=0.75] [line join = round][line cap = round] (473.5,181) .. controls (473.5,173.33) and (472.64,165.44) .. (474.5,158) .. controls (474.76,156.98) and (474.45,155) .. (475.5,155) ;
+
+% Text Node
+\draw (160,166.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (188,139.4) node [anchor=north west][inner sep=0.75pt]    {$\delta $};
+% Text Node
+\draw (298,73.4) node [anchor=north west][inner sep=0.75pt]    {$f$};
+% Text Node
+\draw (482,114.4) node [anchor=north west][inner sep=0.75pt]    {$\epsilon $};
+% Text Node
+\draw (463,143.4) node [anchor=north west][inner sep=0.75pt]    {$\delta $};
+% Text Node
+\draw (448,165.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+
+
+\end{tikzpicture}
+
+\subsection*{Proof:}
+\begin{proof}
+    $\Rightarrow)$Suppose $f$ is continuous at $x$. Arguing by contradiction, suppose $\exists \epsilon > 0$, $\delta_n \rightarrow 0$, and $x_n \in X$ s.t.
+    \[
+    d(x, x_n) \rightarrow 0 \text{ but } d(f(x), f(x_n)) \geq \epsilon.
+    \]
+    But then $x_n \rightarrow x$ but $f(x_n) \not\rightarrow f(x)$ which is a contradiction. \\
+    $\Leftarrow)$ Pick $\epsilon > 0$ s.t. $d(x, x') < \delta \Rightarrow d(f(x), f(x')) < \epsilon$. Suppose $x_n \rightarrow x$. For some $\delta > 0$ $\exists N > 0$ s.t. $\forall n \geq N$ $d(x, x_n) < \delta \Rightarrow d(f(x), f(x')) < \epsilon.$
+    
+\end{proof}
+
+\subsection*{Theorem: TFAE}
+\begin{enumerate}
+    \item $f$ is continuous
+    \item For all $x \in X$ and $\epsilon > 0$ $\exists \delta > 0$ s.t. $d(x, x') < \delta \Rightarrow d(f(x), f(x')) < \epsilon$. 
+    \item For every open set $U \subset Y$, the preimage of $U$ defined \\ $f^{-1}(U) = \{x \in X : f(x) \in U \}$ is open. 
+\end{enumerate}
+
+\subsection*{Proof:}
+\begin{proof}
+    $(1) \Longleftrightarrow (2)$ has already been done. \\
+    $(2) \Rightarrow (3)$ Let $U \subset Y$ be open. Show $f^{-1}(U)$ open. Let $x \in f^{-1}(U)$. $\exists \epsilon > 0$ s.t. $B(f(x), \epsilon) \subset U$.
+    By $(2)$ $\exists \delta > 0$ s.t. $f(B(x, \delta)) \subset B(f(x), \epsilon)$. 
+    \[
+    \therefore B(x, \delta) \subset f^{-1}(U)
+    \]
+    
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp0434556413209084] 
+\draw  [line width=3] [line join = round][line cap = round] (185.5,87) .. controls (163.54,87) and (138.14,93.36) .. (123.5,108) .. controls (118.99,112.51) and (118.95,122.19) .. (117.5,128) .. controls (109.95,158.18) and (135.05,186.8) .. (165.5,191) .. controls (170.78,191.73) and (176.17,190.72) .. (181.5,191) .. controls (186.84,191.28) and (192.26,193.05) .. (197.5,192) .. controls (203.06,190.89) and (208.03,187.48) .. (212.5,184) .. controls (219.76,178.35) and (232.86,171.28) .. (237.5,162) .. controls (255.3,126.39) and (223.38,84) .. (188.5,84) ;
+%Shape: Free Drawing [id:dp5716475303167328] 
+\draw  [line width=3] [line join = round][line cap = round] (178.5,140) .. controls (178.5,129.63) and (181.41,113.43) .. (183.5,103) .. controls (184.48,98.11) and (187.5,93.27) .. (187.5,88) ;
+%Shape: Free Drawing [id:dp9538975685020044] 
+\draw  [line width=3] [line join = round][line cap = round] (436.5,86) .. controls (414.54,86) and (389.14,92.36) .. (374.5,107) .. controls (369.99,111.51) and (369.95,121.19) .. (368.5,127) .. controls (360.95,157.18) and (386.05,185.8) .. (416.5,190) .. controls (421.78,190.73) and (427.17,189.72) .. (432.5,190) .. controls (437.84,190.28) and (443.26,192.05) .. (448.5,191) .. controls (454.06,189.89) and (459.03,186.48) .. (463.5,183) .. controls (470.76,177.35) and (483.86,170.28) .. (488.5,161) .. controls (506.3,125.39) and (474.38,83) .. (439.5,83) ;
+%Shape: Free Drawing [id:dp8666368939421436] 
+\draw  [line width=3] [line join = round][line cap = round] (429.5,139) .. controls (429.5,128.63) and (432.41,112.43) .. (434.5,102) .. controls (435.48,97.11) and (438.5,92.27) .. (438.5,87) ;
+%Shape: Free Drawing [id:dp8251215462846042] 
+\draw  [line width=3] [line join = round][line cap = round] (442.5,38) .. controls (431.5,38) and (420.48,37.42) .. (409.5,38) .. controls (393.4,38.85) and (361.25,56.38) .. (351.5,71) .. controls (331.97,100.29) and (337.97,126.92) .. (350.5,157) .. controls (355.37,168.69) and (360.68,181.43) .. (371.5,189) .. controls (386.69,199.64) and (407.47,205.53) .. (425.5,206) .. controls (452.31,206.71) and (453.91,209.43) .. (472.5,202) .. controls (476.11,200.56) and (475.32,199.27) .. (478.5,197) .. controls (488.8,189.65) and (498.2,181.55) .. (505.5,171) .. controls (521.3,148.18) and (524.17,101.44) .. (505.5,80) .. controls (499,72.53) and (492.06,65.39) .. (484.5,59) .. controls (479,54.34) and (472.68,50.71) .. (466.5,47) .. controls (461.67,44.1) and (447.5,39.81) .. (447.5,34) ;
+%Shape: Free Drawing [id:dp9471000859667731] 
+\draw  [line width=3] [line join = round][line cap = round] (435.5,12) .. controls (400.48,12) and (369.41,11.02) .. (335.5,19) .. controls (330.21,20.24) and (317.46,26.56) .. (314.5,31) .. controls (313.63,32.31) and (313.97,35.58) .. (313.5,37) .. controls (309.36,49.43) and (306.28,58.57) .. (304.5,71) .. controls (302.83,82.71) and (300.23,93.73) .. (301.5,106) .. controls (304.24,132.49) and (322.91,188.31) .. (346.5,206) .. controls (368.24,222.31) and (393.33,224.98) .. (420.5,228) .. controls (445.77,230.81) and (489.11,220.29) .. (509.5,205) .. controls (530.03,189.61) and (543.69,155.74) .. (545.5,131) .. controls (546.79,113.32) and (546,83.7) .. (533.5,69) .. controls (517.87,50.61) and (500.91,41.91) .. (480.5,30) .. controls (469.69,23.69) and (454.72,12) .. (442.5,12) ;
+%Shape: Free Drawing [id:dp8822212383912151] 
+\draw  [line width=3] [line join = round][line cap = round] (436.5,82) .. controls (436.5,62.59) and (450.5,49.75) .. (450.5,32) ;
+%Shape: Free Drawing [id:dp6832490861871994] 
+\draw  [line width=3] [line join = round][line cap = round] (223.5,84) .. controls (235.41,84) and (246.2,76.77) .. (257.5,73) .. controls (266.94,69.85) and (279.42,65.99) .. (289.5,67) .. controls (291.11,67.16) and (293.68,69) .. (295.5,69) ;
+%Shape: Free Drawing [id:dp8982589441930988] 
+\draw  [line width=3] [line join = round][line cap = round] (296.5,66) .. controls (296.5,61.99) and (293.5,60.77) .. (293.5,57) ;
+%Shape: Free Drawing [id:dp575224801903087] 
+\draw  [line width=3] [line join = round][line cap = round] (294.5,71) .. controls (291.81,71) and (286.5,69.31) .. (286.5,72) ;
+%Shape: Free Drawing [id:dp6759555614356991] 
+\draw  [line width=0.75] [line join = round][line cap = round] (130.5,145) .. controls (130.5,134.64) and (157.63,113.05) .. (161.5,109) .. controls (163.92,106.47) and (167.73,101) .. (170.5,101) ;
+%Shape: Free Drawing [id:dp07899657799278503] 
+\draw  [line width=0.75] [line join = round][line cap = round] (168.5,182) .. controls (188.62,173.06) and (189.64,159.86) .. (202.5,147) .. controls (202.74,146.76) and (203.22,147.18) .. (203.5,147) .. controls (205.71,145.53) and (223.62,131) .. (222.5,131) ;
+%Shape: Free Drawing [id:dp8109275763442039] 
+\draw  [line width=0.75] [line join = round][line cap = round] (141.5,157) .. controls (144.17,155.33) and (147.06,153.98) .. (149.5,152) .. controls (158.74,144.49) and (161.14,138.84) .. (169.5,132) .. controls (171.51,130.35) and (175.5,129.6) .. (175.5,127) ;
+%Shape: Free Drawing [id:dp022708029358050608] 
+\draw  [line width=0.75] [line join = round][line cap = round] (381.5,151) .. controls (381.5,145.94) and (387.44,142.56) .. (390.5,139) .. controls (397.61,130.71) and (406.33,123.97) .. (413.5,116) .. controls (414.36,115.05) and (421.28,104) .. (424.5,104) ;
+%Shape: Free Drawing [id:dp022809620406576414] 
+\draw  [line width=0.75] [line join = round][line cap = round] (392.5,165) .. controls (405.01,152.49) and (416.46,140.04) .. (428.5,128) ;
+%Shape: Free Drawing [id:dp7885552798966862] 
+\draw  [line width=0.75] [line join = round][line cap = round] (433.5,182) .. controls (446.6,177.63) and (451.47,167.04) .. (459.5,157) .. controls (469.78,144.15) and (477.48,133.02) .. (488.5,122) ;
+
+% Text Node
+\draw (165,145.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (187,110.4) node [anchor=north west][inner sep=0.75pt]    {$\delta $};
+% Text Node
+\draw (416,144.4) node [anchor=north west][inner sep=0.75pt]    {$f( x)$};
+% Text Node
+\draw (438,109.4) node [anchor=north west][inner sep=0.75pt]    {$\delta $};
+% Text Node
+\draw (529,35.4) node [anchor=north west][inner sep=0.75pt]    {$U$};
+% Text Node
+\draw (455,63.4) node [anchor=north west][inner sep=0.75pt]    {$\epsilon $};
+% Text Node
+\draw (255,44.4) node [anchor=north west][inner sep=0.75pt]    {$f$};
+
+
+\end{tikzpicture}\\
+$(3) \Rightarrow (2)$ $f^{-1}(U)$ is open for all $U \subset Y$ open. Consider $B(f(x), \epsilon)$ open. $f^{-1}(B(f(x), \epsilon))$ open $\Rightarrow \exists \delta > 0$ s.t. $B(x, \delta) \subset f^{-1}(B(f(x), \epsilon))$
+\[
+\Rightarrow f(B(x, \delta)) \subset B(f(x), \epsilon). 
+\]
+\end{proof}
+
+\subsection*{Definition:}
+$f:X \rightarrow Y$ is \underline{uniformly continuous} if for each $\epsilon > 0$ $\exists \delta > 0$ s.t. whenever $x, x' \in X$ satisfies $d(x, x') < \delta$ we have $d(f(x), f(x')) < \epsilon$.
+
+\subsection*{Remark:}
+\[
+x^{(j)} \rightarrow x \Rightarrow x_k^{(j)} \rightarrow x_k \; \forall k
+\]
+is the same as the continuity of projection maps
+\[
+(\#) \ \prod_k: X \rightarrow X_k, \ (x_1, \ldots , x_n) \mapsto x_k. 
+\]
+
+\subsection*{Remark:}
+Assuming $(\#)$ showing $U_1 \times \cdots \times U_n$ is open is easy:
+\[
+\prod_k^{-1}(U_k) = X_1 \times \cdots \times U_k \times \cdots \times X_n \text{ open}
+\]
+\[
+\bigcap\limits_{k = 1}^n \prod_k^{-1}(U_k) = U_1 \times \cdots \times U_n \text{ open}.
+\]
+
+\subsection*{Summarizing:}
+\subsection*{Lemma:}
+\[
+\prod_k X \rightarrow X_k \text{ are continuous for all } k \Longleftrightarrow U_1 \times \cdots \times U_n \text{ open whenever } U_k \text{ open}
+\]
+
+\subsection*{Proof:}
+\begin{proof}
+    $\Rightarrow)$ We have already done. \\
+    $\Leftarrow)$ Take $\prod_k^{-1}U_k = X_1 \times \cdots \times X_n$ open.
+\end{proof}
+
+\section*{Discussion 2:}
+\subsection*{Problem 1: (1.2.3.)}
+Prove that the set of isolated points of a countable complete metric space $X$ is dense in $X$. 
+\subsection*{Baire Category Theorem:}
+Let $X$ be a complete metric space. If $\{U_n\}_{n = 1}^{\infty}$ is a sequence of dense open subsets, then $\bigcap\limits_{n = 1}^{\infty} U_n$ is also dense. 
+\subsection*{Solution:}
+\begin{proof}
+    Let $A = \{\text{isolated points}\} \subset X$. Let $x_1, x_2, x_3, \ldots \in A^c$, $\{x_i\}$ is closed for $i = 1, \ldots, n$ which implies $\{x_i\}^c = U_i$ is open and dense (complement of non-isolated singletons are dense) for $i = 1, \ldots , n$. Then we get 
+    \[
+    \bigcap\limits_{i = 1}^{\infty} U_i = \bigcap\limits_{i = 1}^{\infty} \{x_i\}^c = \left( \bigcup\limits_{i = 1}^{\infty}\{x_i\} \right)^c = \left(A^c \right)^c = A
+    \]
+    is dense by Baire Category Theorem. 
+\end{proof}
+
+\subsection*{Problem 2:}
+$(\mathbb{Q}, ||\cdot||)$ (set of irrational with Euclidean metric) is a Baire space. 
+
+\subsection*{Solution:}
+\begin{proof}
+    Let $U_1, \ldots, U_n \subset \mathbb{Q}^c$ be open, dense subsets of $\mathbb{Q}^c$. \textbf{Goal:} Show $\bigcap\limits_{i = 1}^{\infty}U_i$ is dense. $\exists V_i \subset \mathbb{R}$ open such that $U_i = V_i \bigcap \mathbb{Q}^c$. $V_i$ is also dense in $(\mathbb{R}, ||\cdot||)$. 
+    \[
+    \bigcap\limits_{n = 1}^{\infty}U_n = \bigcap\limits_{n = 1}^{\infty} \left(V_n \bigcap \mathbb{Q}^c \right) = \left( \bigcap\limits_{n = 1}^{\infty} V_n \right) \bigcap \mathbb{Q}^c
+ = \left(\bigcap\limits_{n = 1}^{\infty}V_n \right) \bigcap \left(\bigcup\limits_{n  = 1}^{\infty} \{q_n \} \right)^c = \left(\bigcap_{n = 1}^{\infty}V_n \right) \bigcap \left( \bigcap\limits_{n = 1}^{\infty} \{q_n\}^c \right)   \]
+ which is dense in $(\mathbb{R}, || \cdot ||)$ which implies it is dense in $(\mathbb{Q}^c, ||\cdot ||)$. 
+\end{proof}
+
+\subsection*{Problem 3: (1.6.2.)}
+Prove that two metrics $d, \rho$ for $X$ are equivalent iff the identity $id:(X, d) \rightarrow (X, \rho)$ is bicontinuous (i.e. $f, f^{-1}$ are continuous). 
+\subsection*{Remarks:}
+\begin{itemize}
+    \item Two metrics are equivalent if they define the same open sets.
+    \item Let $f$ be a function from $(X, d)$ to $(Y, \rho)$ TFAE
+    \begin{enumerate}
+        \item $f$ is continuous
+        \item $V \subset Y$ open $\Rightarrow$ $f^{-1}(V) \subset X$ is open 
+    \end{enumerate}
+\end{itemize}
+\subsection*{Solution:}
+\begin{proof}
+    $\Rightarrow)$ Let $V \subset X$ be an open set in $(X, \rho)$.\\ \textbf{Goal:} Show $id:(X, d) \rightarrow(X, \rho)$ is continuous, so need to show $id^{-1}(X) \subset (X, d)$ is open. \\
+    Note that $id^{-1}(V) = V$ and $V$ is open, since $d, \rho$ are equivalent. So, $id:(X, d) \rightarrow(X, \rho)$ is continuous. Similarly for $id^{-1}$. 
+    $\Leftarrow)$ Let $V \subset X$ be an open set in $(X, \rho)$. Then, since $id:(X, d) \rightarrow(X, \rho)$ is continuous, 
+    \[
+    id^{-1}(V) \subset X
+    \]
+    is open in $(X, d)$, hence $id^{-1}(V) = V \Rightarrow V$ is open in $(X, d)$. Similarly, for the other direction, so are equivalent.
+\end{proof}
+
+\subsection*{Problem 4: (1.6.5.)}
+Let $(X_0, d_0), (X_1, d_1), (X_2, d_2)$ be metric spaces. Let $f$ be a function $f:X_0 \rightarrow X_1$ and $g$ a function $g:X_1 \rightarrow X_2$. Show if $f$ is continuous at $x_o \in X_0$, $g$ is continuous at $f(x_0) \in X_1$, then $h = g\circ f$ is continuous at $x_0$. 
+
+\subsection*{Solution:}
+\begin{proof}
+    \textbf{Goal:} Given $\epsilon > 0$, $\exists \delta > 0$, such that $d_0(x, x_0) < \delta \Rightarrow d_2(h(x), h(x_0)) < \epsilon$. \\
+    By continuity of $g$ at $f(x_0)$, $\exists \delta' > 0$, such that $d_1(y, f(x_0)) < \delta' \Rightarrow d_2(g(y), g(f(x_0))) < \epsilon$. By continuity of $f$ at $x_0$, $\exists \delta > 0$, such that $d_0(x, x_0) < \delta \Rightarrow d_1(f(x), f(x_0)) < \delta'$. Therefore, \[
+    d_0(x, x_0) < \delta \Rightarrow d_1(f(x) = y, f(x_0)) < \delta'
+    \]
+    \[
+    \Rightarrow d_2(g(f(x)) = h(x), g(f(x_0)) = h(x_0)) < \epsilon. 
+    \]
+\end{proof}
+
+\section*{Compactness I:}
+$(X, d)$ is a metric space. 
+\subsection*{Definition:}
+\begin{itemize}
+    \item A collection $\{U_{\alpha} \}_{\alpha \in I}$ of subsets of $X$ \underline{covers} $X$ if $\bigcap\limits_{\alpha \in I}U_{\alpha} = X$. Then, $\{U_{\alpha}\}_{\alpha \in I}$ is a \underline{cover} of $X$. 
+    \item If all $U_{\alpha}$ are open, $\{U_{\alpha}\}_{alpha \in I}$ is an \underline{open cover} of $X$. 
+\end{itemize}
+
+\subsection*{Definition:}
+\begin{itemize}
+    \item $X$ is \underline{compact} if every open cover $\{U_{\alpha}\}_{\alpha \in I}$ admits a finite subcover $\exists U_1, \ldots, U_n$ such that $\bigcup\limits_{i = 1}^nU_i = X$. 
+
+    \item Given $Y \subset X$ a subset, $\exists$ induced metric on $Y$. $d_Y$ on $X$ restricted to $Y \times Y$. $Y$ is compact if $(Y, d_Y)$ is compact. 
+\end{itemize}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp33714035724826696] 
+\draw   (236,70) -- (405.5,70) -- (405.5,219) -- (236,219) -- cycle ;
+%Shape: Free Drawing [id:dp1390081512376371] 
+\draw  [line width=3] [line join = round][line cap = round] (330.5,111) .. controls (323.5,111) and (316.49,110.67) .. (309.5,111) .. controls (309.22,111.01) and (302.59,115.17) .. (300.5,116) .. controls (291.9,119.44) and (282.46,121.31) .. (275.5,130) .. controls (274.06,131.79) and (274.08,139.67) .. (273.5,142) .. controls (271.02,151.91) and (256.32,156.08) .. (268.5,172) .. controls (271.68,176.16) and (278.74,183.24) .. (281.5,186) .. controls (283.02,187.52) and (288.36,188.47) .. (290.5,189) .. controls (303.44,192.23) and (317.18,190.67) .. (330.5,190) .. controls (335.58,189.75) and (338.95,184.28) .. (343.5,182) .. controls (354.66,176.42) and (356.6,173.42) .. (365.5,166) .. controls (379.48,154.35) and (380.35,151.19) .. (382.5,134) .. controls (382.87,131) and (384.37,127.89) .. (383.5,125) .. controls (381.83,119.42) and (372.87,119.09) .. (368.5,118) .. controls (360.26,115.94) and (352.4,110.66) .. (344.5,110) .. controls (340.5,109.67) and (336.51,109) .. (332.5,109) .. controls (331.99,109) and (331.26,111) .. (328.5,111) ;
+%Shape: Circle [id:dp2860620513819949] 
+\draw   (293,178) .. controls (293,164.19) and (304.19,153) .. (318,153) .. controls (331.81,153) and (343,164.19) .. (343,178) .. controls (343,191.81) and (331.81,203) .. (318,203) .. controls (304.19,203) and (293,191.81) .. (293,178) -- cycle ;
+%Shape: Circle [id:dp5654433157367866] 
+\draw   (307,125) .. controls (307,111.19) and (318.19,100) .. (332,100) .. controls (345.81,100) and (357,111.19) .. (357,125) .. controls (357,138.81) and (345.81,150) .. (332,150) .. controls (318.19,150) and (307,138.81) .. (307,125) -- cycle ;
+%Shape: Circle [id:dp5206051085547101] 
+\draw   (271,136) .. controls (271,122.19) and (282.19,111) .. (296,111) .. controls (309.81,111) and (321,122.19) .. (321,136) .. controls (321,149.81) and (309.81,161) .. (296,161) .. controls (282.19,161) and (271,149.81) .. (271,136) -- cycle ;
+%Shape: Circle [id:dp5741140352794292] 
+\draw   (246,150) .. controls (246,136.19) and (257.19,125) .. (271,125) .. controls (284.81,125) and (296,136.19) .. (296,150) .. controls (296,163.81) and (284.81,175) .. (271,175) .. controls (257.19,175) and (246,163.81) .. (246,150) -- cycle ;
+%Shape: Circle [id:dp5730817804246258] 
+\draw   (257,181) .. controls (257,167.19) and (268.19,156) .. (282,156) .. controls (295.81,156) and (307,167.19) .. (307,181) .. controls (307,194.81) and (295.81,206) .. (282,206) .. controls (268.19,206) and (257,194.81) .. (257,181) -- cycle ;
+%Shape: Circle [id:dp30348194044390864] 
+\draw   (326,169) .. controls (326,155.19) and (337.19,144) .. (351,144) .. controls (364.81,144) and (376,155.19) .. (376,169) .. controls (376,182.81) and (364.81,194) .. (351,194) .. controls (337.19,194) and (326,182.81) .. (326,169) -- cycle ;
+%Shape: Circle [id:dp050547293492842815] 
+\draw   (346,135) .. controls (346,121.19) and (357.19,110) .. (371,110) .. controls (384.81,110) and (396,121.19) .. (396,135) .. controls (396,148.81) and (384.81,160) .. (371,160) .. controls (357.19,160) and (346,148.81) .. (346,135) -- cycle ;
+%Shape: Circle [id:dp2935171756131434] 
+\draw   (288,157) .. controls (288,143.19) and (299.19,132) .. (313,132) .. controls (326.81,132) and (338,143.19) .. (338,157) .. controls (338,170.81) and (326.81,182) .. (313,182) .. controls (299.19,182) and (288,170.81) .. (288,157) -- cycle ;
+
+% Text Node
+\draw (277,91.4) node [anchor=north west][inner sep=0.75pt]    {$Y$};
+% Text Node
+\draw (359,41.4) node [anchor=north west][inner sep=0.75pt]    {$X$};
+
+
+\end{tikzpicture}
+
+\subsection*{Definition:}
+\begin{itemize}
+    \item $X$ is \underline{totally bounded} if $\forall \epsilon > 0$ $X$ can be covered by finitely many open balls of radius $\epsilon$.
+    \[
+    x_1, \ldots, x_{N = N(\epsilon)}, \ B(x_1 \epsilon); \bigcup \cdots \bigcup B(X_N, \epsilon) = X
+    \]
+    \item $X$ is \underline{bounded} if $\exists R > 0$ such that $\forall x,y \in X$ we have $d(x, y) < R$. 
+\end{itemize}
+
+\subsection*{Example:}
+Consider the discrete metric space $(X, d)$, $d(x, y) =  \begin{cases}
+    1 \ x \neq y \\
+    0 \ x = y
+\end{cases}$. Clearly, $X$ is bounded. Pick $0 < \epsilon < 1$. Then, we have $B(x, \epsilon) = \{x \}$ but $X$ is totally bounded iff $X$ is finite. Therefore, if $X$ is infinite, then $X$ isn't totally bounded on the discrete metric. 
+
+\subsection*{Lemma:}
+Totally bounded $\Rightarrow$ bounded. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Assume $X$ is totally bounded. Pick $\epsilon > 0$. Then $\exists x_1, \ldots, x_N$ such that $B(x_1, \epsilon) \cup \cdots \cup B(x_N, \epsilon) = X$. Given $x, y \in X$, $x \in B(x_i, \epsilon)$, $y \in B(x_j, \epsilon)$ for some $x_i$, $x_j$. Then, 
+    \[
+    d(x, y) \leq d(x, x_i) + d(y, x_j) + d(x_i, x_j) \leq 2\epsilon + \sup_{i, j}d(x_i, x_j) 
+    \]
+    by the triangle inequality. Thus, we have that $d(x, y)$ is bounded by \[2\epsilon + \sup_{i, j} d(x_i, x_j) \]. 
+\end{proof}
+
+\subsection*{Equivalent Notions of Compactness:}
+
+\subsection*{Definition:}
+For a sequence $x_1, x_2, \ldots \in X$, a \underline{subsequence} $x_{i_{1}}, x_{i_{2}}, x_{i_{3}}, \ldots \in X$ where $i_1 < i_2 < i_3$. 
+\subsection*{Theorem: (TFAE)}
+\begin{enumerate}
+    \item $X$ is compact
+    \item Every sequence in $X$ has a convergent subsequence (sequentially compact).
+    \item $X$ is totally bounded and complete. 
+\end{enumerate}
+
+\subsection*{Proof:}
+\begin{proof}
+    $(1) \Rightarrow (2)$ Suppose $X$ is compact. Let $y_1, y_2, \ldots$ be a sequence in $X$. \\
+    \underline{Claim}: $\exists x$ such that for all $\epsilon > 0$, $B(x, \epsilon)$ contains $\infty$ many $y_i$. Arguing by contradiction, suppose no such $x$ exists. This means for any $x$, $\exists B(x, \epsilon(x))$ with finitely many $y_i$. $\{B(x, \epsilon(x)) \}_{x \in X}$ is an open cover. By compactness, $\exists$ a finite subcover $B(x_1, \epsilon_1), \ldots , B(x_N, \epsilon_N)$. But then $\exists$ only finitely many terms in $\{y_i \}$ in $X$ and thus we have a contradiction. Pick a sequence $\frac{1}{2}, \frac{1}{3}, \ldots$ and $y_{i_{2}} \in B(x, \frac{1}{2})$ has infinitely many term of $\{y_i\}$. Similarly for $B(x, \frac{1}{3}) \subset B(x, \frac{1}{2})$, $y_{i_{3}} \in B(x, \frac{1}{3})$ has infinitely many terms of $\{y_i\}$. Keep doing this until we have $y_{i_{k}} \rightarrow x$. \\
+
+    $(2) \Rightarrow (3)$ Suppose every sequence has a convergent subsequence. $X$ is complete: given a Cauchy sequence $\{y_i\}$ show it has a limit $x$. 
+    \begin{itemize}
+    \item Cauchy: $\forall \epsilon > 0$ $\exists N > 0$ such that $n, m \geq N \Rightarrow d(y_n, y_m) < \epsilon$.
+    \item Convergent subsequence: $\exists x$ such that $\forall \epsilon > 0$ $\exists N' > N$ such that $i_n \geq N' \Rightarrow d(x, y_{i_{n}}) < \epsilon$.
+    \end{itemize}
+    Take $m \geq N' \Rightarrow d(x, y_m) \leq d(x, y_{i_{n}}) + d(y_m, y_{i_{n}}) \leq 2 \epsilon$ which implies that $\{y_i\}\rightarrow x$. 
+    
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp5469955497481709] 
+\draw   (208,142) .. controls (208,77.93) and (259.93,26) .. (324,26) .. controls (388.07,26) and (440,77.93) .. (440,142) .. controls (440,206.07) and (388.07,258) .. (324,258) .. controls (259.93,258) and (208,206.07) .. (208,142) -- cycle ;
+%Shape: Circle [id:dp02589230092208883] 
+\draw   (264.75,142) .. controls (264.75,109.28) and (291.28,82.75) .. (324,82.75) .. controls (356.72,82.75) and (383.25,109.28) .. (383.25,142) .. controls (383.25,174.72) and (356.72,201.25) .. (324,201.25) .. controls (291.28,201.25) and (264.75,174.72) .. (264.75,142) -- cycle ;
+%Shape: Circle [id:dp5369159765025162] 
+\draw   (237.5,142) .. controls (237.5,94.23) and (276.23,55.5) .. (324,55.5) .. controls (371.77,55.5) and (410.5,94.23) .. (410.5,142) .. controls (410.5,189.77) and (371.77,228.5) .. (324,228.5) .. controls (276.23,228.5) and (237.5,189.77) .. (237.5,142) -- cycle ;
+%Shape: Free Drawing [id:dp31009943731324263] 
+\draw  [line width=3] [line join = round][line cap = round] (325.5,149) .. controls (324.75,149) and (324.25,148) .. (323.5,148) ;
+%Shape: Free Drawing [id:dp431436790423104] 
+\draw  [line width=3] [line join = round][line cap = round] (304.5,125) .. controls (304.17,125) and (303.83,125) .. (303.5,125) ;
+%Shape: Free Drawing [id:dp0801312616262575] 
+\draw  [line width=3] [line join = round][line cap = round] (279.5,86) .. controls (279.5,85.67) and (279.5,85.33) .. (279.5,85) ;
+%Shape: Free Drawing [id:dp3155098288414777] 
+\draw  [line width=3] [line join = round][line cap = round] (257.5,66) .. controls (257.5,64.95) and (258.5,64.05) .. (258.5,63) ;
+
+% Text Node
+\draw (406,18.4) node [anchor=north west][inner sep=0.75pt]    {$\frac{1}{2}$};
+% Text Node
+\draw (400,62.4) node [anchor=north west][inner sep=0.75pt]    {$\frac{1}{3}$};
+% Text Node
+\draw (383.9,116.44) node [anchor=north west][inner sep=0.75pt]  [rotate=-359.71]  {$\frac{1}{4}$};
+% Text Node
+\draw (260,80.4) node [anchor=north west][inner sep=0.75pt]    {$y_{i_{3}}$};
+% Text Node
+\draw (284,119.4) node [anchor=north west][inner sep=0.75pt]    {$y_{i_{4}}$};
+% Text Node
+\draw (240,62.4) node [anchor=north west][inner sep=0.75pt]    {$y_{i_{2}}$};
+% Text Node
+\draw (315,149.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+
+
+\end{tikzpicture} \\
+
+To prove $X$ is totally bounded pick $\epsilon > 0$. Consider $x_1 \in X$ and $B(x_1, \epsilon)$. If $B(x_1, \epsilon) = X$ we are done. Otherwise, $\exists x_2 \in X \backslash B(x_1, \epsilon)$ which implies $d(x_1, x_2) \geq \epsilon$. If $B(x_1, \epsilon) \bigcup B(x_2, \epsilon) \neq X$ $\exists x_3 \in X$ not in $B(X_1, \epsilon) \bigcup B(x_2, \epsilon)$. Assuming the procedure does not terminate, have $x_1, x_2, x_3, \ldots$ such that $d(x_i, x_j) \geq \epsilon$. Therefore, the sequence does not converge but this is a contradiction as every sequence must have a convergent subsequence. \\
+
+$(3) \Rightarrow (2)$ Suppose $X$ is totally bounded and complete. Let $\{y_1, y_2, \ldots \}$ be a sequence in $X$. \underline{Claim}: If $X$ is totally bounded, then $\{y_n\}$ has a Cauchy subsequence. This would imply that the subsequence converges by completeness. \\
+We construct a sequence of sequences in $X$ such that 
+\begin{enumerate}
+    \item $y_{1, n} = y_n$
+    \item $\{y_{k, n}\}_{n = 1}^{\infty}$ is a subsequence of $\{y_{k-1}, n \}_{n =1}^{\infty}$
+    \item $\{y_{k, n} \}_{n = 1}^{\infty}$ is contained in a ball of radius $\frac{1}{k}$ (some $B(x_k, \frac{1}{k})$
+\end{enumerate}
+By total boundedness, for $\epsilon = \frac{1}{k}$ $\exists x_k$ such that $B(x_k, \frac{1}{k})$ contains infinitely many terms. Take Cauchy sequence $y_{1, 1}, y_{2, 2}, y_{3, 3}, \ldots$. 
+\[
+y_{1, 1} \ y_{1, 2} \ y_{1, 3} \cdots
+\]
+\[
+y_{2, 1} \ y_{2, 2} \ y_{2, 3} \cdots
+\]
+\[
+y_{3, 1} \ y_{3, 2} \ y_{3, 3} \cdots
+\]
+\[
+\vdots \ \vdots \ \vdots
+\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp17273351519209124] 
+\draw   (252,134.75) .. controls (252,95.68) and (283.68,64) .. (322.75,64) .. controls (361.82,64) and (393.5,95.68) .. (393.5,134.75) .. controls (393.5,173.82) and (361.82,205.5) .. (322.75,205.5) .. controls (283.68,205.5) and (252,173.82) .. (252,134.75) -- cycle ;
+%Shape: Free Drawing [id:dp022734855767404527] 
+\draw  [line width=3] [line join = round][line cap = round] (321.5,134) .. controls (321.5,135.33) and (321.5,135.33) .. (321.5,134) ;
+%Shape: Free Drawing [id:dp031415653219174944] 
+\draw  [line width=3] [line join = round][line cap = round] (322.5,134) .. controls (322.5,128.41) and (328.41,124.28) .. (329.5,121) .. controls (330.17,119) and (329.66,116.88) .. (330.5,115) .. controls (334.95,104.98) and (340.21,99.57) .. (345.5,89) .. controls (347.58,84.84) and (347.07,76.43) .. (350.5,73) .. controls (350.74,72.76) and (351.5,73.33) .. (351.5,73) ;
+%Shape: Free Drawing [id:dp7346627189341506] 
+\draw  [line width=0.75] [line join = round][line cap = round] (291.5,98) .. controls (287.54,101.96) and (276.98,107.57) .. (275.5,112) .. controls (266.34,139.49) and (273.59,151.55) .. (301.5,150) .. controls (307.06,149.69) and (307.42,141.16) .. (309.5,137) .. controls (317.5,121.01) and (307.73,100) .. (291.5,100) ;
+%Shape: Free Drawing [id:dp0006294543522056273] 
+\draw  [line width=0.75] [line join = round][line cap = round] (288.5,118) .. controls (288.5,120.67) and (289.5,117.92) .. (289.5,116) .. controls (289.5,114.95) and (288.5,117.95) .. (288.5,119) ;
+%Shape: Free Drawing [id:dp6599646401632873] 
+\draw  [line width=0.75] [line join = round][line cap = round] (284.5,134) .. controls (288,134) and (284.81,127.75) .. (284.5,129) .. controls (282.07,138.71) and (290.84,130) .. (286.5,130) ;
+%Shape: Free Drawing [id:dp8723609596592123] 
+\draw  [line width=0.75] [line join = round][line cap = round] (298.5,137) .. controls (304.7,137) and (297.89,131.84) .. (296.5,136) .. controls (295.1,140.2) and (298.57,139.93) .. (300.5,138) ;
+%Shape: Free Drawing [id:dp20925648438173727] 
+\draw  [line width=0.75] [line join = round][line cap = round] (298.5,117) .. controls (298.5,119.31) and (297.83,122.4) .. (303.5,119) .. controls (304.93,118.14) and (299.5,111.22) .. (299.5,118) ;
+%Shape: Free Drawing [id:dp03410978349895388] 
+\draw  [line width=0.75] [line join = round][line cap = round] (289.5,117) .. controls (283.2,117) and (290.5,101.93) .. (290.5,116) ;
+%Straight Lines [id:da7311925689288739] 
+\draw    (255.5,58) -- (279.77,120.14) ;
+\draw [shift={(280.5,122)}, rotate = 248.66] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+\draw (309,140.4) node [anchor=north west][inner sep=0.75pt]    {$x_{2}$};
+% Text Node
+\draw (345.13,95.35) node [anchor=north west][inner sep=0.75pt]  [rotate=-0.4]  {$\frac{1}{2}$};
+% Text Node
+\draw (218,35.4) node [anchor=north west][inner sep=0.75pt]    {$\infty \ many\ y_{1,n}$};
+
+
+\end{tikzpicture} \\
+
+$(2) + (3) \Rightarrow (1)$ Let $\{U_{\alpha}\}$ be an open cover of $X$. Proceed in two stages. 
+\begin{align*}
+     \{U_{\alpha}\} \text{ open cover} \xrightarrow[]{\text{Step 1}} \{U_{\alpha}\} \text{ countable subcover} \\
+     \xrightarrow[]{\text{Step 2}} \{U_{\alpha}\} \text{ finite subcover}
+\end{align*}
+\underline{Step 2:} Suppose $\{U_1, U_2, \ldots \}$ is a countable cover. Argue by contradiction. For each $n$ pick $x_n \notin U_1 \bigcup U_2 \bigcup \cdots \bigcup U_n$. By $(2)$, $\{x_n\} \rightarrow x$ (after passing to subsequence). Note $x_n, x_{n+1}, \ldots \notin U_1 \bigcup U_2 \bigcup \cdots \bigcup U_n$. But then $\underbrace{X\backslash \underbrace{U_1 \bigcup \cdots U_n}_{\text{open}}}_{\text{closed}} \Rightarrow x \in \text{compl.}$ which implies $x \notin U_1 \bigcup \cdots \bigcup U_n$ for all $n$ which is a contradiction as then $\{U_n\}$ does not cover. 
+\end{proof}
+
+\section*{Compactness II:}
+ \subsection*{Separability and 2nd Countability:}
+ \subsection*{Definition:}
+ $X$ is \underline{separable} if it has a countable dense subset. 
+
+ \subsection*{Remark:}
+ \[
+X \text{ is separable} \iff \exists \text{ sequence } \{x_n\} \subset X
+\text{ which is dense in } X. \]
+\subsection*{Example:}
+$\mathbb{Q}$ is dense in $\mathbb{R}$ so $\mathbb{R}$ is separable. 
+
+\subsection*{Theorem:} 
+\text{Totally bounded} $Rightarrow$ \text{separable}
+
+\subsection*{Proof:}
+\begin{proof}
+    For $\epsilon = \frac{1}{n}$, $\exists x_{n, 1}, \ldots , x_{n, \alpha (n)}$ such that $B(x_{n, 1}, \frac{1}{n}) \bigcup \cdots \bigcup B(x_{n, \alpha (n)}, \frac{1}{n}) = X$. Take $\{x_{n, j}, \begin{array}{l}
+        n = 1, 2, \ldots \\
+        j = 1, 2, \ldots, \alpha (n)
+    \end{array} \}.$ 
+    This is dense since for any $\frac{1}{n} > 0$, $x \in X$ $x \in B(x_{n, j}, \frac{1}{n})$ for some $x_{n, j}$.
+\end{proof}
+
+\subsection*{Definition:}
+A \underline{basis} (or base) $B$ of open sets in $X$ is a collection such that every open set $U$ of $X$ is a union of elements in $B$. $\iff$ For each $U$ of $X$ open and $x \in U$, $\exists V \in B$ such that $x \in V \subset U$. 
+\subsection*{Example:}
+\begin{enumerate}
+    \item For any metric space $X$, $\{B(x, r)| \begin{array}{l}
+         x \in X \\
+          r \in R > 0
+    \end{array} \}$ is a basis. 
+    \item $\{ B(x, \frac{1}{n}) | \begin{array}{l}
+          x \in X \\
+          n \in \mathbb{Z}_{> 0}
+    \end{array} \}$
+    \item For $X_1 \times \cdots \times X_n$, $\{ U_1 \times \cdots \times U_n|U_i \text{ open in } X_i \}$ is a basis. 
+\end{enumerate}
+
+\subsection*{Definition:}
+$X$ is \underline{2nd countable} if it has a countable basis. 
+
+\subsection*{Theorem:}
+2nd countable $\iff$ separable. 
+\subsection*{Proof:}
+\begin{proof}
+\begin{enumerate}
+    \item [$\impliedby$] Suppose $X$ is separable. Then, there exists a countable dense subset $S = \{x_n\}_{n\in\mathbb{N}}$. Take the following collection of open sets:
+    \[\left\{B(x_n,1/k) \ | \ (n,k) \in \mathbb{N}^2\right\}\]
+    We claim that it is a basis for $X$. Let $U$ be any open subset of $X$. Fix $x \in U$. Since $U$ is open, there exists $\varepsilon > 0$ such that $B(x,\varepsilon) \subseteq U$. There exists $k \in \mathbb{N}$ such that $1/k < \varepsilon/2$. Since $S$ is dense, there exists $x_n$ such that $d(x,x_n) < 1/k$. Therefore, $x \in B(x_n,1/k)$ and 
+    \[B(x_n,1/k) \subseteq B(x,2/k) \subseteq B(x,\varepsilon)\]
+    \item [$\implies$] Let $\{U_\alpha\}_{\alpha\in I}$ be a countable basis for $X$ and assume without loss of generality it does not contain the empty set. For each $\alpha \in I$, pick $x_\alpha \in U_\alpha$ and consider the countable subset of $X$, $S := \{x_\alpha : \alpha \in I\}$. We claim that $S$ is dense in $X$. Fix $x \in X$ and $\varepsilon > 0$. Since $\{U_\alpha\}_{\alpha\in I}$ is a basis, there exists  $\alpha' \in I$ such that $x \in U_{\alpha'}$ and $U_{\alpha'} \subset B(x,\varepsilon)$. In particular, $x_{\alpha'} \in B(x,\varepsilon)$.
+\end{enumerate}
+    
+\end{proof}
+\subsection*{Theorem:}
+If $X$ is 2nd countable, then an open cover $\{U_{\alpha}\}$ has a countable subcover. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Supose $X$ is separable. $\exists$ dense sequence $\{x_1, x_2, \ldots \} \subset X$. Take $B= \{B(x_1, \frac{1}{n})| \begin{array}{l}
+        i = 1, 2, \ldots \\
+        n = 1, 2, \ldots
+    \end{array} \}$. This is a basis. For any open $U$ and $x \in U$, $\exists B(x, \frac{2}{n}) \subset U$. But $\{x_i\}$ is dense, so $\exists x_i \in B(x, \frac{1}{n}) \subset B(x, \frac{2}{n}) \subset U$. Thus, separable implies 2nd countable.   
+\end{proof}
+
+\section*{Topological Spaces:}
+\textbf{Goal:} Throw away the metric. 
+
+\subsection*{Definition:} 
+A collection $\tau = \{U_{\alpha} \}_{\alpha \in I}$ of subsets of a set $X$ is a \underline{topology} for $X$ if 
+\begin{enumerate}
+    \item $\emptyset, X \in \tau$
+    \item Any union of sets in $\tau$ is in $\tau$. 
+    \item Any finite intersection of sets in $\tau$ is in $\tau$. 
+\end{enumerate}
+
+\subsection*{Definition:}
+A \underline{topological space} is a pair $(X, \tau)$. An element of $\tau$ is called an open set. 
+
+\subsection*{Example A:}
+The set $\tau$ of open subsets of a metric space $(X, d)$ is a topology. We showed that $(1), (2), (3)$ hold for metric spaces on Day 1. This is called the metric topology. 
+
+\subsection*{Example B:}
+For any set $X$, $\tau = \{\emptyset, X\}$. 
+
+\subsection*{Example C:}
+For any set $X$, $\tau = \{2^|X|\}$ is the \underline{discrete topology}. 
+
+\subsection*{Example D:}
+Cofinite topology on $X$, $\tau = \{ u \subset X | X - U \text{ finite }\} \bigcup \emptyset$. 
+
+\subsection*{Definition:}
+A topological space $(X, \tau)$ is \underline{metrizable} (arises from a metric) if $\tau$ is the metric topology of some $(X, d)$. 
+
+\subsection*{Proof: (C)}
+\begin{proof}
+    Metrizable. Let's try the discrete metric $d(x, y) = \begin{cases}
+        1 \text{ if } x \neq y \\
+        0 \text{ if } x = y
+    \end{cases}$. 
+    This implies that all subsets are open. 
+\end{proof}
+
+\subsection*{Proof: (B)}
+\begin{proof}
+    B is not metrizable if the set $X$ has more than one element. If metrizable, then $\exists a > 0$ such that $d(x, y) = a > 0$ if $x \neq y$. Take $ x\in B(x, \frac{a}{2})$ and $ y \in B(y, \frac{a}{2})$ disjoint. This is a contradiction as there is an open set containing $y$ but not $x$ but we have only one non-empty open set. 
+\end{proof}
+
+\subsection*{Definition:}
+A subset $V \subset X$ is \underline{closed} if $X-V$ is open. As before, taking complements; 
+\begin{enumerate}
+    \item $\emptyset, X$ are closed. 
+    \item Any intersection of closed sets is closed. 
+    \item Any finite union of closed sets is closed. 
+\end{enumerate}
+
+\subsection*{Induced Topology:}
+Given $f: X \rightarrow (Y, \tau)$ where $X$ is just a set, $f$ is just a map, and $(Y, \tau)$ is a topological space. The \underline{induced topology} on $X$ is:
+\[
+f^{-1}(\tau) = \{f^{-1}(u)| u \in \tau \}.
+\]
+\subsection*{Remark:}
+The \underline{preimage} $f^{-1}(u)$ is $\{x \in X : f(x) \in u \}$. Note $f(f^{-1}(u)) \neq u$ necessarily. 
+
+\subsection*{Example:}
+Special case where $X \subset Y$ and $i_x:X \xrightarrow[x \mapsto x]{}Y$ induced topology $i_x^{-1} \tau$ to sometimes called the relative topology or subspace topology. 
+\[
+i_x^{-1} (U)  = \{U \bigcap X \} \ U \subset \tau
+\]
+
+\subsection*{Definition:}
+For $(X, \tau)$ a topological space, $S \subset X$ subest. 
+\begin{enumerate}
+    \item $S$ is a \underline{neighborhood} of $x \in X$ if $U \subset \tau$ such that $x \in U \subset S$ (often people will assume neighborhoods are open). E.g. $[0 , 1)$ is a neighborhood of $\frac{1}{2}$, $\frac{1}{2} \in (0 , 1) \subset [0, 1)$. 
+    \item $x \in S$ is an \underline{interior point} of $S$ if $S$ is a neighborhood of $x$. 
+    \item The set of interior points of $S$ is the \underline{interior} of $S$ denoted $int(S)$ and is open. 
+    \item A point $x \in X$ is an \underline{adherent point} of $S$ if every neighborhood of $x$ contains a point in $S$. 
+    \item A point $x \in X$ is a \underline{limit point} of $S$ if every neighborhood of $x$ contains a point, not equal to $x$, in $S$. 
+\end{enumerate}
+
+\subsection*{Remark:}
+If $x \in S$, then $x$ is an adherent point of $S$. In the definition of limit point, not allowed to use $x$ itself.  
+
+\section*{Discussion 3:}
+\subsection*{Remark:}
+\begin{proof}
+    
+
+$x, y \in \mathbb{R}^n$. \textbf{Want:} $d(x, y) \leq d(x, z) + d(z, y)$ and thus $\left(d(x, y) \right)^2 \leq \left(d(x, z) + d(z, y) \right)^2$. We have 
+\[
+d(x, y) = \left(\sum\limits_{i = 1}^n (x_i - y_i)^2 \right)^{\frac{1}{2}}
+\]
+\[
+\left(d(x, y)\right)^2 = \sum\limits_{i = 1}^n\left(x_i - y_i \right)^2 = \sum\limits_{i = 1}^n (x_i - z_i + z_i - y_i)^2 = \sum\limits_{i = 1}^n(x_i - z_i)^2 + 2(x_i - z_i)(z_i - y_i) + (z_i - y_i)^2
+\]
+
+By Cauchy Schwarz
+\[
+\left|\sum 2(x_i - z_i) (z_i - y_i) \right| = \left|2(x - z, z- y) \right| \leq 2 ||x-z||||z-y||
+\]
+Therefore, 
+\[
+d(x, y)^2 \leq ||x-z||^2 + 2||x-z||||z-y|| + ||y - z||^ = \left(||x - z|| + ||y - z|| \right)^2 = \left(d(x, z) + d(z, y) \right)^2.
+\]
+\end{proof}
+
+\subsection*{Problem 1: (1.5.4.)}
+Let $\{U_{\alpha}\}_{\alpha \in A}$ be a finite open cover of a compact metric space $X$. 
+\subsection*{a.}
+Show that $\exists \epsilon > 0$ such that $\forall x \in X$, $B(x, \epsilon)$ is contained in one of the $U_{\alpha}$. 
+\subsection*{b.}
+Show that if at least one of the $U_{\alpha}$ is a proper subset of $X$, then $\exists$ a largest Lebesgue number. 
+
+\subsection*{Remark:}
+For a metric space $X$ TFAE. 
+\begin{enumerate}
+    \item $X$ is compact.
+    \item Every sequence in $X$ has a convergent subsequence. 
+    \item $X$ is totally bounded and complete.
+\end{enumerate}
+
+\subsection*{Solution:}
+\begin{proof}
+    (a) By contradiction, if $\exists B(x_1, y), B(x_2, \frac{y}{2}), \ldots , B(x_k, \frac{1}{k})$ such that $B(x_k, \frac{1}{k}) \not\subset U_{\alpha}$ for any $\alpha \in A$. Since $X$ is 
+    compact it is sequentially compact. Hence, $\exists$ $x_{n_{k}}$ subsequence such that $x_{n_{k}} \rightarrow x \in X$. Since $\{U_{\alpha}\}$ is a covering, $x \in U_{\alpha_0}$ for some $\alpha_0 \in A$, and $\exists \epsilon > 0$, $B(x, \epsilon) \subset U_{\alpha_0}$. With $x_{n_{k}} \rightarrow x$ this implies 
+    $\exists N$ large such that $d(x_{n_{k}}, x) < \frac{\epsilon}{2}$ and $\frac{1}{n_k} < \frac{\epsilon}{2}$. So if $y \in B(x_{n_{k}}, n_k^{-1})$ $d(y_k, x) \leq d(y, x_{n_{k}}) + d(x_{n_{k}}, x) \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$ which implies $B(x_{n_{k}}, n_k^{-1}) \subset B(X, \epsilon)$ and $B(x_{n_{k}}, n_k^{-1}) \subset U_{\alpha}$ which is a contradiction 
+\end{proof}
+
+\begin{proof}
+    (b) $X$ compact implies $X$ is totally bounded and thus $X$ is bounded. For each $x \in X$, say $x \in U_{\alpha}$, then $r_{\alpha} > 0$ such that $B(x, r_{\alpha}) \not\subset U$. If $U_{\alpha} = X$. $\{y \in X : d(y, z) < r \} = B(x, r) \subset X$ $\forall x \in X$ and $r > 0$. 
+\end{proof}
+
+\subsection*{Problem 2: (1.6.8.)}
+Prove that $f: X \rightarrow \mathbb{R}$ is continuous and $X$ is a compact metric space, then $f$ assumes a maximum and a minimum. 
+\subsection*{Remark:}
+$X$ compact and $f$ continuous implies $f(X)$ is also compact $\subset \mathbb{R}$. By Heine-Borel, a set in $\mathbb{R}^n$ is compact iff it is closed and bounded.
+
+\subsection*{Solution:}
+\begin{proof}
+    Boundedness $\Rightarrow \sup_{x \in X} f(x) < \infty$. By definition of the supremum $\exists y_k = f(x_k)$ $k = 1, \ldots , n$ such that $\lim y_k = \alpha$. Closedness $\Rightarrow \alpha \in f(X) \Rightarrow \alpha = f(x^*)$ for $x^* \in X$. 
+\end{proof}
+
+\subsection*{Remark:}
+With $\mathbb{R}^n$ with the Euclidean norm $||\cdot||$. You can also put discrete topology, $d(x, y)  = \begin{cases}
+    1 \ x \neq y\\
+    0 \ x  = y
+\end{cases}$. Can also look at indiscrete topology $\tau = \{\emptyset, \mathbb{R}^n \}$
+
+\subsection*{Problem 3: (2.1.2)}
+Let $X$ be a set and let $\tau$ be the family of subsets $U$ of $X$ such that $X \backslash U$ is finite together with $\emptyset$. Show $\tau$ is a topology. \\
+
+Must show that 
+\begin{enumerate}
+     \item $\emptyset, X \in \tau$
+     \item closed under arbitrary union
+     \item closed under finite intersection
+\end{enumerate}
+
+\subsection*{Solution:}
+\begin{proof}
+    \begin{enumerate}
+        \item $\emptyset \in \tau$ is given. We have $X \in \tau$, as $X \backslash X = \emptyset$
+        \item Given $\{U_{\alpha}\}_{\alpha \in A} \subset \tau$
+        \[
+        X \backslash \left(\bigcup\limits_{\alpha \in A}U_{\alpha} \right) \subset X \backslash U_{\alpha_0} \text{ for some } \alpha_0 \in A \Rightarrow \text{ finite;  }
+        \]
+        \[
+        \Rightarrow X \backslash \left(\bigcup_{\alpha \in A}U_{\alpha} \right) \text{ is finite}
+        \]
+        \item Given $U_1, \ldots , U_n \in \tau$ 
+        \[
+        X \backslash \left(\bigcap_{i = 1}^n U_i \right) = X \bigcap \left(\bigcap\limits_{i = 1}^n U_i \right)^c = X \bigcap \left(\bigcap\limits_{i = 1}^n U_i^c \right) = \bigcup\limits_{i = 1}^n \left(X \bigcap U_i^c \right)
+        \]
+        which is finite as each $X \bigcap U_i^c$ is finite. Finite union of finite sets is finite. 
+    \end{enumerate}
+\end{proof}
+
+\subsection*{Problem 4: (2.1.3.)}
+Let $\tau$ be the cofinite topology on $\mathbb{Z}$. Show that $\{1, 2, 3, \ldots \}$ converges in $\left(\mathbb{Z}, \tau \right)$ to every point in $\mathbb{Z}$. Let $n \in \mathbb{Z}$. For each $U \in \tau$ such that $n \in U$. 
+
+\subsection*{Solution:}
+\begin{proof}
+    We have $\mathbb{Z} \backslash U$ is a finite set, so $\exists N$ such that $N = \max \{\mathbb{Z} \backslash U \}$. So, for $k > N$, we know $k \in U$. 
+\end{proof}
+
+\subsection*{Remark:}
+In a topological space $x_n \rightarrow x$ iff $\forall U \in \tau$ such that $x \in U$ $\exists N > 0$ such that $n > N \Rightarrow x_n \in U$. 
+
+\section*{Continuous Functions:}
+
+\subsection*{Definition:} 
+A map $f:\left(X, \tau \right) \rightarrow \left(Y, \tau' \right)$ is \underline{continuous} if $U \in \tau' \Rightarrow f^{-1}(U) = \{x \in X | f(x) \in U \} \in \tau$. 
+
+\subsection*{Properties:}
+\begin{enumerate}
+    \item $id:\left(X, \tau \right) \xrightarrow[x \mapsto x]{} \left(X, \tau \right)$ is continuous, $f^{-1}(U) = U$. 
+    \item If $X\xrightarrow[]{f}Y$, $Y \xrightarrow[]{g} Z$ are continuous, then $X \xrightarrow[]{g \circ f} Z$ is continuous. $U \text{ open} \subset Z$ implies since $g$ is continuous that $g^{-1}(U) \text{ open} \subset Y$ which implies since $f$ is continuous that $f^{-1}\left(g^{-1}\left(U \right) \right) = \left(g \circ f \right)^{-1}\left(U \right)$. 
+\end{enumerate}
+
+\subsection*{Homeomorphisms:}
+\subsection*{Definition:}
+\begin{enumerate}
+    \item A continuous map $f:X \rightarrow Y$ is a \underline{homeomorphism} if $\exists$ a continuous \underline{inverse} $g: Y \rightarrow X$ (set theoretic inverse).
+    \item $X, Y$ are \underline{homeomorphic} if $\exists$ a homeomorphism $f:X \rightarrow Y$. 
+\end{enumerate}
+
+\subsection*{Example:}
+$\mathbb{R}$, any open interval $(a, b)$ where $a < b$, any half-line $(a, \infty)$ are homeomorphic
+\begin{itemize}
+    \item $f: \left(-\frac{\pi}{2}, \frac{\pi}{2} \right) \xrightarrow[t \mapsto tan(t)]{} \mathbb{R}$, $g: \mathbb{R} \xrightarrow[s \mapsto tan^{-1}(s)]{} \left(-\frac{\pi}{2}, \frac{\pi}{2} \right)$. These are both continuous inverses. (You may assume all your standard continuous functions are indeed continuous.)
+    \item $(a, b) \cong \left(-\frac{\pi}{2}, \frac{\pi}{2} \right)$ using a linear function $t \mapsto ct + d$.
+    \item $\mathbb{R} \cong \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \cong (a, b) \cong (0, \infty)$. 
+    \item $f:(0, \infty) \xrightarrow[t \mapsto \log(t)]{} \mathbb{R}$, $g:\mathbb{R} \xrightarrow[x \mapsto t^x]{} (0, \infty)$
+    \item $(0, \infty) \cong (a, \infty)$ using $t \mapsto t + d$
+\end{itemize}
+
+\subsection*{Example:}
+$\mathbb{R}^n$ and $B(0, r) \subset \mathbb{R}^n$ are homeomorphic. 
+\[
+f: B(0, r) \xrightarrow[x \mapsto \frac{|x|}{r - |x|} x]{} \mathbb{R}^n
+\]
+\[
+g:\mathbb{R}^n \xrightarrow[y \mapsto h(|y|)\frac{y}{|y|} = |x|\frac{y}{|y|}]{} B(0, r)
+\]
+Want to calculate $h(|y|):$ $|y| = \frac{|x|^2}{r - |x|} \Rightarrow |x|^2 + |y||x| - r|y| = 0$. Then, using the quadratic formula $|x| = \frac{-|y| + \sqrt{|y|^2 + 4r|y|}}{2}$. Therefore $|x| = h(|y|)$. \\
+
+It's a lot harder to prove without tools of algebraic topology that certain spaces are not homeomorphic. 
+\begin{enumerate}
+    \item $\mathbb{R}^n \not\cong \mathbb{R}^m$ if $m \neq n$
+    \item In $\mathbb{R}^2$ we have $\{ x \ | \ |x| < 1 \}$ open disk with radius $1$ is not homeomorphic to $\{ x \ | \ |x| < 1 \} \not\cong \{x \ | \ 0 < |x| < 1 \}$. 
+\end{enumerate}
+
+\subsection*{Induced Topology:}
+$f:X \rightarrow \left(Y, \tau \right)$. The induced topology $f^{-1}(\tau) = \{f^{-1}(U) \ | \ U \in \tau \}$. 
+
+\subsection*{Note:}
+$f: (X, f^{-1}(\tau)) \rightarrow \left(Y, \tau \right)$ is a continuous map. 
+
+\subsection*{Fact:}
+$f^{-1}(\tau)$ is the \underline{smallest} topology which makes $f$ continuous. Any other topology $\tau'$ such that $f:(X, \tau') \rightarrow (Y, \tau)$ is continuous satisfies $f^{-1}(\tau) \subset \tau'$. 
+
+\subsection*{Zen:} 
+The induced topology is defined "naturally" by requiring the continuity of $f: X \rightarrow (Y, \tau)$. 
+
+\subsection*{Examples of Induced Topologies:}
+\begin{enumerate}
+    \item half-open interval $(0, 1] \hookrightarrow \mathbb{R}^2$
+    
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.5pt,y=0.5pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp31482462334958505] 
+\draw  [line width=3] [line join = round][line cap = round] (131.5,110) .. controls (131.5,114.38) and (115.9,127.95) .. (114.5,134) .. controls (112.9,140.91) and (116.1,157.6) .. (120.5,162) .. controls (121.42,162.92) and (120.87,164.63) .. (122.5,163) ;
+%Shape: Free Drawing [id:dp6086040261502881] 
+\draw  [line width=3] [line join = round][line cap = round] (118.5,140) .. controls (160.99,140) and (169.14,139.11) .. (198.5,138) .. controls (216.17,137.33) and (233.87,137.36) .. (251.5,136) .. controls (252.37,135.93) and (280.25,135) .. (276.5,135) ;
+%Shape: Free Drawing [id:dp47517905623562395] 
+\draw  [line width=3] [line join = round][line cap = round] (257.5,105) .. controls (259.36,103.14) and (278.31,102.94) .. (284.5,105) .. controls (285.37,105.29) and (282.56,109.49) .. (282.5,110) .. controls (282.21,112.34) and (281.56,114.64) .. (281.5,117) .. controls (281.17,130.66) and (286.2,145.17) .. (281.5,158) .. controls (279.78,162.7) and (271.45,157.29) .. (266.5,158) .. controls (258.7,159.11) and (258.5,164.29) .. (258.5,160) ;
+%Shape: Free Drawing [id:dp2890435929541755] 
+\draw  [line width=3] [line join = round][line cap = round] (211.5,106) .. controls (211.5,109.68) and (201.82,115.41) .. (201.5,117) .. controls (200.33,122.85) and (195.8,129.3) .. (195.5,135) .. controls (194.88,146.82) and (195.86,168) .. (209.5,168) ;
+%Shape: Free Drawing [id:dp49032203358366355] 
+\draw  [line width=3] [line join = round][line cap = round] (302.5,132) .. controls (328.9,115.2) and (344.58,113.06) .. (376.5,114) .. controls (381.25,114.14) and (394.12,116.62) .. (397.5,120) .. controls (398.82,121.32) and (404.11,129.39) .. (406.5,127) .. controls (406.83,126.67) and (405.73,126.41) .. (405.5,126) .. controls (402.83,121.2) and (394.5,107.83) .. (394.5,102) ;
+%Shape: Free Drawing [id:dp016996127427044705] 
+\draw  [line width=3] [line join = round][line cap = round] (404.5,124) .. controls (394.3,124) and (374.36,142.72) .. (370.5,135) ;
+%Shape: Free Drawing [id:dp763587661935218] 
+\draw  [line width=3] [line join = round][line cap = round] (418.5,19) .. controls (418.5,71.33) and (417.23,123.72) .. (419.5,176) .. controls (420.24,192.96) and (421.51,209.24) .. (422.5,226) .. controls (422.77,230.67) and (422.84,235.37) .. (423.5,240) .. controls (423.78,241.98) and (422.39,244.34) .. (423.5,246) .. controls (424.5,247.51) and (445.83,249.86) .. (447.5,250) .. controls (448.55,250.09) and (449.45,250.98) .. (450.5,251) .. controls (456,251.09) and (498.54,253.33) .. (518.5,250) .. controls (537.04,246.91) and (554.84,238.87) .. (573.5,237) .. controls (585.26,235.82) and (599.49,233.91) .. (609.5,233) .. controls (613.15,232.67) and (618.33,235.96) .. (620.5,233) .. controls (626.01,225.48) and (619.61,219.78) .. (619.5,213) .. controls (619.19,193.34) and (619.19,173.66) .. (619.5,154) .. controls (620.03,120.87) and (622.28,88.03) .. (623.5,55) .. controls (623.94,43.06) and (626.5,36.54) .. (626.5,22) ;
+%Shape: Free Drawing [id:dp1464099459708339] 
+\draw  [line width=3] [line join = round][line cap = round] (421.5,15) .. controls (454.83,15) and (488.17,15.32) .. (521.5,15) .. controls (532.78,14.89) and (544.12,10.3) .. (555.5,10) .. controls (566.83,9.7) and (578.17,10.31) .. (589.5,10) .. controls (600.17,9.71) and (611.64,4.92) .. (621.5,9) .. controls (625.2,10.53) and (621.19,17.01) .. (621.5,21) .. controls (621.72,23.9) and (624.5,27.76) .. (624.5,32) ;
+%Shape: Free Drawing [id:dp7528288928292626] 
+\draw  [line width=3] [line join = round][line cap = round] (486.5,114) .. controls (483.05,114) and (479.73,122.77) .. (476.5,126) .. controls (475.79,126.71) and (471.64,129.46) .. (471.5,131) .. controls (470.87,137.98) and (470.8,145.2) .. (472.5,152) .. controls (473.16,154.64) and (474.38,163) .. (477.5,163) ;
+%Shape: Free Drawing [id:dp12059801976922846] 
+\draw  [line width=3] [line join = round][line cap = round] (473.5,138) .. controls (505.35,138) and (535.14,131) .. (566.5,131) ;
+%Shape: Free Drawing [id:dp9711257422239841] 
+\draw  [line width=3] [line join = round][line cap = round] (554.5,110) .. controls (560.83,110) and (567.2,109.34) .. (573.5,110) .. controls (573.87,110.04) and (571.51,115.71) .. (571.5,116) .. controls (571.17,126.33) and (572.2,136.8) .. (570.5,147) .. controls (570.17,149) and (571.49,152.6) .. (569.5,153) .. controls (565.26,153.85) and (545.5,158.61) .. (545.5,155) ;
+%Shape: Free Drawing [id:dp019224341919782617] 
+\draw  [line width=3] [line join = round][line cap = round] (457.5,103) .. controls (454.23,106.27) and (445.5,112.66) .. (445.5,116) ;
+%Shape: Free Drawing [id:dp986259411148902] 
+\draw  [line width=3] [line join = round][line cap = round] (443.5,137) .. controls (443.5,143.96) and (445.5,145.22) .. (445.5,150) ;
+%Shape: Free Drawing [id:dp5323790629923182] 
+\draw  [line width=3] [line join = round][line cap = round] (462.5,172) .. controls (468.84,172) and (475.16,173) .. (481.5,173) ;
+%Shape: Free Drawing [id:dp9585634413108175] 
+\draw  [line width=3] [line join = round][line cap = round] (497.5,165) .. controls (497.5,154.43) and (505.5,146.51) .. (505.5,143) ;
+%Shape: Free Drawing [id:dp08062581786762557] 
+\draw  [line width=3] [line join = round][line cap = round] (473.5,99) .. controls (481.26,99) and (484.59,101) .. (490.5,101) ;
+%Shape: Free Drawing [id:dp8136692300560437] 
+\draw  [line width=3] [line join = round][line cap = round] (502.5,113) .. controls (502.5,115.69) and (503.5,118.31) .. (503.5,121) ;
+%Shape: Free Drawing [id:dp8439272759065046] 
+\draw  [line width=3] [line join = round][line cap = round] (560.5,97) .. controls (557.18,103.63) and (543.5,109.28) .. (543.5,116) ;
+%Shape: Free Drawing [id:dp8679145224109877] 
+\draw  [line width=3] [line join = round][line cap = round] (539.5,138) .. controls (539.5,145.67) and (539.5,153.33) .. (539.5,161) ;
+%Shape: Free Drawing [id:dp3001510111550647] 
+\draw  [line width=3] [line join = round][line cap = round] (557.5,177) .. controls (564.01,177) and (567.73,175.77) .. (572.5,171) ;
+%Shape: Free Drawing [id:dp7837689405020887] 
+\draw  [line width=3] [line join = round][line cap = round] (583.5,107) .. controls (583.5,112.59) and (591.5,116.94) .. (591.5,122) ;
+%Shape: Free Drawing [id:dp8711100724721823] 
+\draw  [line width=3] [line join = round][line cap = round] (590.5,141) .. controls (590.5,147.63) and (587.41,154) .. (581.5,154) ;
+
+% Text Node
+\draw (631,31.4) node [anchor=north west][inner sep=0.75pt]    {$\mathbb{R}^{2}$};
+% Text Node
+\draw (558,73.4) node [anchor=north west][inner sep=0.75pt]    {$U_{1}$};
+% Text Node
+\draw (474,73.4) node [anchor=north west][inner sep=0.75pt]    {$U_{2}$};
+% Text Node
+\draw (180,190.4) node [anchor=north west][inner sep=0.75pt]    {$( 0,\ 1]$};
+
+
+\end{tikzpicture}
+
+\item $X \xrightarrow[x \mapsto \circ]{f} \mathbb{R}$ everything is mapped to a point. $f^{-1}(\emptyset) = \emptyset$, $f^{-1}(\{0\}) = X$, induced topology $= \{\emptyset, X \}$.  
+\item Note $i^{-1}(\emptyset) = \emptyset$ and $f^{-1}(\emptyset) = \emptyset$.
+\end{enumerate}
+
+\subsection*{Local Condition for Continuity:}
+\subsection*{Definition:}
+$f:(X, \tau) \rightarrow (Y, \tau')$ is \underline{continuous at $x$} if $\forall U \subset \tau'$ containing $f(x)$, $\exists V \in \tau$ containing $x$ such that $f(V) \subset U$. 
+ 
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.5pt,y=0.5pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Free Drawing [id:dp6046510484709193] 
+\draw  [line width=3] [line join = round][line cap = round] (190.5,57) .. controls (169.99,57) and (155.47,57.58) .. (139.5,70) .. controls (135.17,73.36) and (131.63,74.21) .. (128.5,79) .. controls (110.23,106.94) and (102.83,146.41) .. (130.5,171) .. controls (138.1,177.76) and (143.22,182.79) .. (153.5,186) .. controls (180.64,194.48) and (208.62,176.16) .. (227.5,159) .. controls (233.94,153.15) and (243.07,146.11) .. (243.5,137) .. controls (244.86,108.48) and (235.48,95.59) .. (213.5,78) .. controls (210.41,75.53) and (193.58,61) .. (188.5,61) ;
+%Shape: Free Drawing [id:dp23341486717944804] 
+\draw  [line width=3] [line join = round][line cap = round] (259.5,105) .. controls (266.99,97.51) and (278.27,95.19) .. (287.5,90) .. controls (325.51,68.62) and (355.02,58.61) .. (398.5,76) .. controls (411.32,81.13) and (419.82,92.66) .. (430.5,98) .. controls (435.34,100.42) and (421.62,77.49) .. (420.5,76) .. controls (419.53,74.7) and (416.75,67.5) .. (416.5,68) .. controls (411.63,77.75) and (432.48,88.08) .. (430.5,98) .. controls (430.21,99.43) and (422.22,99.79) .. (421.5,100) .. controls (417.36,101.18) and (403.32,109.65) .. (400.5,104) ;
+%Shape: Free Drawing [id:dp8402708812474518] 
+\draw  [line width=3] [line join = round][line cap = round] (537.5,26) .. controls (512.79,26) and (495.29,45.2) .. (478.5,61) .. controls (465.2,73.52) and (460.38,78.46) .. (449.5,94) .. controls (449.02,94.69) and (435.08,110.67) .. (434.5,117) .. controls (433.19,131.41) and (430.01,145.61) .. (428.5,160) .. controls (425.93,184.46) and (427.25,210.22) .. (451.5,221) .. controls (465.82,227.36) and (484.15,227.15) .. (499.5,228) .. controls (511.9,228.69) and (526.2,230.87) .. (538.5,228) .. controls (589.58,216.08) and (616.24,183.66) .. (627.5,133) .. controls (632.51,110.43) and (640.62,80.16) .. (625.5,60) .. controls (613.65,44.19) and (590.28,50.01) .. (574.5,43) .. controls (568.29,40.24) and (569.11,38.91) .. (563.5,34) .. controls (559.76,30.73) and (540.95,25) .. (535.5,25) ;
+%Shape: Free Drawing [id:dp4289785091513205] 
+\draw  [line width=3] [line join = round][line cap = round] (540.5,111) .. controls (538.47,111) and (536.49,109.6) .. (534.5,110) .. controls (513.42,114.22) and (489.77,143.52) .. (501.5,166) .. controls (501.79,166.56) and (511.46,184.98) .. (516.5,187) .. controls (524.97,190.39) and (537.85,189.79) .. (545.5,189) .. controls (549.94,188.54) and (558.27,183.48) .. (561.5,181) .. controls (576.96,169.11) and (564.54,149.94) .. (558.5,137) .. controls (553.95,127.25) and (551.56,113) .. (539.5,113) ;
+%Shape: Free Drawing [id:dp5468176089479553] 
+\draw  [line width=3] [line join = round][line cap = round] (527.5,151) .. controls (527.5,152.5) and (530.5,155.83) .. (530.5,154) ;
+%Shape: Free Drawing [id:dp8583536802114353] 
+\draw  [line width=3] [line join = round][line cap = round] (173.5,125) .. controls (180.28,125) and (175.92,121) .. (173.5,121) ;
+
+% Text Node
+\draw (168,129.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (517,158.4) node [anchor=north west][inner sep=0.75pt]    {$f( x)$};
+% Text Node
+\draw (332,45.4) node [anchor=north west][inner sep=0.75pt]    {$f$};
+% Text Node
+\draw (128,38.4) node [anchor=north west][inner sep=0.75pt]    {$V$};
+% Text Node
+\draw (608,18.4) node [anchor=north west][inner sep=0.75pt]    {$U$};
+
+
+\end{tikzpicture}
+
+\subsection*{Lemma:}
+$f$ is continuous iff $f$ is continuous at all $x \in X$. 
+
+\section*{Bases:}
+$(X, \tau)$ is a topological space.
+\subsection*{Definition:}
+A \underline{basis} (or base) $B$ of $\tau$ is a subcollection of $\tau$ such that every $U \in \tau$ is a union of elements of $B$. (same as metric space definition)
+
+\subsection*{Remark:}
+Often easier to describe a basis rather than the topology itself. 
+
+\subsection*{Example:}
+For metric topology $B = \{B(x, r) | x \in X, r \in \mathbb{R}_{> 0} \}$ is a basis for the metric topology. 
+
+\subsection*{Lemma:}
+$B$ is a basis $\iff$ $\forall x \in X$ and open neighborhood $x \in V$ $\exists U \in B$ such that $x \in U \subset V$. 
+
+\subsection*{Basis Criterion:}
+A collection $B$ of subsets of $X$ is a basis for a topology of $X$ iff
+\begin{enumerate}
+    \item Every $x \in X$ lies in some $U \in B$. 
+    \item For any $U, V \in B$, $U \cap V$ is a union of elements in $B$. 
+\end{enumerate}
+
+ \subsection*{Example:}
+ For the metric topology, we checked that $B(x, r) \cap B(y, r')$ is union of open balls. 
+
+ \subsection*{Proof:}
+ \begin{proof}
+     Let $B$ be a basis for $\tau$. 
+     \begin{enumerate}
+         \item $X \in \tau$ so $X = \bigcup\limits_{\alpha \in I} U_{\alpha}$ for $U_{\alpha} \in B$ and some $x \in U_{\alpha}$. 
+         \item This holds since $U \bigcap V$ is open as intersections of open sets are open, so $U \bigcap V \in \tau$. Hence $U \bigcap V$ is a union of open sets in $B$. 
+     \end{enumerate}
+     Assume $(1)$ and $(2)$ hold. Then $\tau = \{ \bigcup\limits_{U \in B'} U : B' \subset B \}$ (topology generated by $B$). 
+     \begin{itemize}
+         \item $\emptyset \in \tau$ is clear and $X \in \tau$ follows from $(1)$. 
+         \item Union of elements in $\tau$ is still in $\tau$. 
+         \item Show that if $\bigcup\limits_{U_{\alpha} \in B'} U_{\alpha} = U, \bigcup\limits_{U_{\beta}' \in B''} U_{\beta}' = V \in \tau$, then $U \bigcap V \in \tau$, as 
+         \[
+         U \bigcap V = \left(\bigcup U_{\alpha} \right) \bigcap \left(\bigcup U_{\beta}' \right) = \bigcup \left(U_{\alpha}\bigcup U_{\beta}'\right)
+         \]
+         which is the union of elements in $B$. 
+     \end{itemize}
+ \end{proof}
+
+\subsection*{Product Topology:}
+$(X_1, \tau_1), \ldots , (X_n, \tau_n)$ are topological spaces. 
+The product topology on $X_1 \times \cdots \times X_n$ is the topology generated by the basis $B = \{ U_1 \times \cdots \times U_n : U_i \in \tau_i \}$. 
+
+\begin{enumerate}
+    \item Every $x = (x_1, \ldots , x_n)$ is in some $U_1 \times \cdots \times U_n$. True since each $x_i \in U_i$. 
+    \item $(U_1 \times \cdots \times U_n) \cap (V_1 \times \cdots \times V_n) = (U_1 \cap V_1) \times \cdots \times (U_n \cap V_n) \in B$ as each $(U_i \cap V_i) \in \tau_i$. 
+\end{enumerate}
+We have $\pi_i: X \xrightarrow[(x_1, \ldots , x_n) \mapsto x_i]{} X_i$ projections. 
+
+\subsection*{Lemma:}
+The product topology is the \underline{smallest} topology for which $\pi_i$ are continuous. 
+
+\subsection*{Proof:} 
+\begin{proof} 
+If $\pi_i$ is continuous, then, for $U_i \in \tau_i$, $\pi_i^{-1}(U_i) = X_1 \times \cdots \times X_n$ is open. Which implies $\bigcap\limits_{i = 1}^n \pi_i^{-1}(U_i) = U_1 \times \cdots \times U_n$ is open. Since $B = \{U_1 \times \cdots \times U_n : U_i \in \tau_i \}$ is a basis, any other topology $\tau'$ for which $\pi_i$ are continuous contains $\tau$ generated by $B$. 
+\end{proof}
+
+\subsection*{2nd Countable:}
+
+\subsection*{Definition:}
+$(X, \tau)$ is \underline{2nd countable} if it has at most countable basis $B$. 
+
+\subsection*{Theorem: (Lindelof)}
+If $X$ is 2nd countable, any open cover $\tau'$ of $X$ has a countable subcover. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Start with a countable basis $B$, throw away ones not contained in any $U \in \tau'$ called $B'$. $B'$ is countable. Assigment $\Phi:B' \xrightarrow[V \mapsto \Phi(V) = U]{} \tau'$ and we have $V \subset U \in \tau'$ for $V \in B'$. For each $V$ you can find some $U$ that contains $V$. Picking an element in $\tau'$ amongst all $U$ such that $V \subset U$. \underline{Claim}:
+    \[
+    \bigcup\limits_{V \in B'} \Phi(V) = X
+    \]
+    the desired countable subcover. For any $x \in X$, $\exists U \in \tau'$ containing $x$. But then $B$ is a basis, so $\exists V \in B$ such that $V \subset U$ and $x \in V$, which implies $x \in V \subset \Phi(V)$ with $V \in B'$ and $\Phi(V) \in \tau'$. 
+\end{proof}
+
+\subsection*{Theorem:}
+2nd countable $\Rightarrow$ separable ($\exists$ countable dense subset).
+
+\subsection*{Proof:}
+\begin{proof}
+    $\Phi: B \xrightarrow[V \mapsto x \in V]{} X$. $\Phi(B)$ is dense in $X$. Given any $U \in \tau$, $\exists$ $\Phi(V) \in V \subset U$ such that $V \in B$ and $U \in \tau$. 
+\end{proof}
+
+\subsection*{Remark:}
+The converse is not true in general. 
+
+\subsection*{Example:}
+Cofinite topology (Section 4.1.). 
+
+
+\section*{Products and Quotients:}
+\subsection*{More on (Finite) Products:}
+$(X_1, \tau_1), \cdots , (X_n, \tau_n) = $ topological space. $X = X_1 \times \cdots \times X_n$ product topology $\tau$ with $B = \{U_1 \times \cdots \times U_n : U_i \in \tau_i\}$ smallest topology such that $\pi_i: X \rightarrow X_i$ are continuous. 
+
+\subsection*{Lemma:}
+$\pi_i: (X, \tau) \rightarrow (X_i, \tau_i)$ is an \underline{open map}. ($U \in \tau \Rightarrow \pi_i(U) \in \tau_i$ image of open is open)
+
+\subsection*{Proof:}
+\begin{proof}
+    If $U \in \tau$, then it's a union of $U_1 \times \cdots \times U_n$, $U_i \in \tau_i$, $\pi_i(U_1 \times \cdots \times U_n) = U_i$. 
+
+\end{proof}
+
+\subsection*{Lemma:}
+Let $E$ be a topological space. Then $f:E \rightarrow X$ is continuous iff $\pi_i \circ f: E \rightarrow X_i$ are all continuous. 
+
+\subsection*{Proof:}
+\begin{proof}
+    If $f$ is continuous, then $\pi_i \circ f$ is continuous since $\pi_i$ is continuous and compositions are continuous. \\
+
+    Suppose $\pi_i \circ f$ is continuous. Given $U_i \in \tau_i$, $(\pi_i\circ f)^{-1}(U_i)$ open implies $\bigcap\limits_{i = 1}^n (\pi_i \circ f)^{-1}(U_i) = f^{-1}(U_1 \times \cdots \times U_n)$ is open. We have
+    \[
+    (\pi_i \circ f)^{-1}(U_i) = f^{-1}(\pi_i^{-1}(U_i)) = f^{-1}(X_1 \times \cdots \times U_i \times \cdots \times X_n)
+    \]
+    and we are done everything is continuous preimage of open sets is open. 
+\end{proof}
+
+\subsection*{Quotients:}
+Recall an equivalence relation on $X$ is a subset $S$ of $X \times X$ (if $(a, b) \in S$ we write $a \sim b$) such that $\forall a, b, c \in X$
+\begin{itemize}
+    \item $a \sim a$
+    \item If $a\sim b$ then $b \sim a$
+    \item If $a\sim b$, $b \sim c$, then $a\sim c$
+\end{itemize}
+Let $X / \sim$ (quotient)
+ be the set of equivalence classes of $X$ with respect to $\sim$. 
+ \[
+ [a] = \{b \in X : a\sim b \}
+ \]
+ If $(X, \tau)$ is a topological space, want to define a topology (called quotient topology) denoted $\tau_{\sim}$ on $X / \sim$
+ \[
+ \pi:X \xrightarrow[a \mapsto \text{[a]} ]{} X / \sim
+ \]
+ Take the largest topology on $X / \sim$ which makes $\pi$ continuous. $U \in \tau_{\sim}$ iff $\pi^{-1}(U) \in \tau$. 
+
+ \subsection*{Lemma:}
+ $\tau_{\sim}$ is the largest topology such that $\pi$ is continuous. 
+
+ \subsection*{Proof:}
+ \begin{proof}
+     Suppose $\pi: (X, \tau) \rightarrow (X / \sim , \tau')$ is continuous. Then for any $U \in \tau'$, $\pi^{-1}(U) \in \tau \iff U \in \tau_{\sim}$ by the definition of $\tau_{\sim}$. 
+ \end{proof}
+
+\subsection*{Example: (A)}
+$[0, 1] / 0 \sim 1$ this means $0 \sim 1$ is the only nontrivial equivalence relation. \\ $e^{2\pi t} \longleftrightarrow (\cos 2 \pi t, \sin 2 \pi t)$ \\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da0939933642038977] 
+\draw    (100,126) -- (206.5,126) ;
+%Shape: Free Drawing [id:dp44062218669552333] 
+\draw  [line width=3] [line join = round][line cap = round] (100.5,126) .. controls (100.5,124.67) and (100.5,122) .. (100.5,122) .. controls (100.5,122) and (99.17,126) .. (101.5,126) ;
+%Shape: Free Drawing [id:dp3252097148020321] 
+\draw  [line width=3] [line join = round][line cap = round] (208.5,125) .. controls (208.5,131.35) and (208.66,121.68) .. (207.5,124) .. controls (207.2,124.6) and (207.5,125.33) .. (207.5,126) ;
+%Shape: Free Drawing [id:dp2162942775763641] 
+\draw  [line width=3] [line join = round][line cap = round] (164.5,111) .. controls (178.68,111) and (191.26,94.94) .. (200.5,89) .. controls (215.28,79.5) and (237.93,70.57) .. (255.5,70) .. controls (281.6,69.16) and (302,72.15) .. (326.5,81) .. controls (331.28,82.72) and (336.09,84.48) .. (340.5,87) .. controls (345.8,90.03) and (348.5,96) .. (348.5,96) .. controls (348.5,96) and (346.77,91.45) .. (346.5,91) .. controls (343.09,85.31) and (337.5,76.49) .. (337.5,70) ;
+%Shape: Free Drawing [id:dp9098228314822803] 
+\draw  [line width=3] [line join = round][line cap = round] (324.5,96) .. controls (334.17,96) and (343.83,96) .. (353.5,96) ;
+%Shape: Circle [id:dp5712621422558493] 
+\draw   (360,109.5) .. controls (360,86.58) and (378.58,68) .. (401.5,68) .. controls (424.42,68) and (443,86.58) .. (443,109.5) .. controls (443,132.42) and (424.42,151) .. (401.5,151) .. controls (378.58,151) and (360,132.42) .. (360,109.5) -- cycle ;
+
+% Text Node
+\draw (92,131.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+% Text Node
+\draw (208.5,129.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (226,122.4) node [anchor=north west][inner sep=0.75pt]    {$/\sim $};
+% Text Node
+\draw (444,69.4) node [anchor=north west][inner sep=0.75pt]    {$circle$};
+% Text Node
+\draw (446,119.4) node [anchor=north west][inner sep=0.75pt]    {$\subset \mathbb{R}^{2}$};
+
+
+\end{tikzpicture}
+\\
+we get that $[0, 1] / 0 \sim 1$ is homeomorphic to the unit circle. 
+
+\subsection*{Example: (B)}
+$[0, 1]^2 / (x, 0) \sim (x, 1) \ \forall x \in [0, 1]$ $(0, y) \sim (1, y) \ \forall y \in [0, 1]$. You go from the unit square to the surface of a donut (torus). 
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp843480866071662] 
+\draw   (147,82) -- (226.5,82) -- (226.5,155) -- (147,155) -- cycle ;
+%Shape: Free Drawing [id:dp9615418484419886] 
+\draw  [line width=3] [line join = round][line cap = round] (390.5,77) .. controls (382.17,77) and (373.83,76.68) .. (365.5,77) .. controls (361.16,77.17) and (355.37,81.03) .. (350.5,82) .. controls (339.32,84.24) and (327.79,91.71) .. (321.5,98) .. controls (320.52,98.98) and (314.67,102.99) .. (314.5,104) .. controls (312.43,116.39) and (308.3,130.39) .. (312.5,143) .. controls (313.25,145.25) and (320.83,152.33) .. (323.5,155) .. controls (338.89,170.39) and (366.88,176.26) .. (391.5,179) .. controls (405.22,180.52) and (428.7,182.8) .. (440.5,171) .. controls (442.32,169.18) and (441.66,164.62) .. (443.5,162) .. controls (444.99,159.87) and (447.77,158.5) .. (448.5,156) .. controls (449.53,152.48) and (448.12,148.65) .. (448.5,145) .. controls (449.06,139.65) and (450.99,134.35) .. (450.5,129) .. controls (449.3,115.85) and (436.72,89.11) .. (424.5,83) .. controls (418.39,79.94) and (408.5,78.87) .. (401.5,78) .. controls (398.35,77.61) and (392.5,77.72) .. (392.5,77) ;
+%Shape: Free Drawing [id:dp06552434543244745] 
+\draw  [line width=3] [line join = round][line cap = round] (393.5,108) .. controls (385.16,108) and (376.59,106.98) .. (368.5,109) .. controls (364.8,109.93) and (348.84,115.98) .. (348.5,119) .. controls (346.66,135.52) and (362.15,151.24) .. (380.5,152) .. controls (387.83,152.31) and (395.24,153.07) .. (402.5,152) .. controls (407.52,151.26) and (415.78,151.03) .. (416.5,146) .. controls (418.02,135.35) and (423.99,119.49) .. (414.5,110) .. controls (410.31,105.81) and (397.5,115.23) .. (397.5,107) ;
+%Shape: Free Drawing [id:dp13980708726073443] 
+\draw  [line width=3] [line join = round][line cap = round] (369.5,128) .. controls (380.79,139.29) and (407.5,140.55) .. (407.5,121) ;
+%Shape: Free Drawing [id:dp24410742971863875] 
+\draw  [line width=3] [line join = round][line cap = round] (382.5,133) .. controls (382.5,124.56) and (401.5,118.47) .. (401.5,130) ;
+
+% Text Node
+\draw (140,159.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+% Text Node
+\draw (223,157.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (137,63.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (263,118.4) node [anchor=north west][inner sep=0.75pt]    {$\cong $};
+
+
+\end{tikzpicture}
+
+\subsection*{HW:}
+Prove that $(A) \cong S^1 \subset \mathbb{R}^2$, $(B) \cong S^1 \times S^1$. 
+
+\subsection*{Lemma:}
+For $Y$ a topological space,  $\overline{f}: X / \sim \rightarrow Y$ is continuous $\iff$ $\overline{f} \circ \pi : X \rightarrow Y$ is continuous. 
+
+\subsection*{Proof:}
+\begin{proof}
+    $\overline{f}$ continuous $\Rightarrow \overline{f} \circ \pi$ is continuous by composition. \\
+
+    Suppose $\overline{f} \circ \pi$ is continuous. For any $U$ open in $Y$, $(\overline{f} \circ \pi)^{-1} (U)$ open $\pi^{-1}(\overline{f}^{-1}(U))$ open $\Rightarrow \overline{f}^{-1}(U)$ open by definition $\Rightarrow \overline{f}$ is continuous.
+\end{proof}
+
+\subsection*{Corollary:}
+Suppose $f:X \to Y$ is continuous. If $f$ is constant on each equivalence class of $\sim$, then $\overline{f}:X / \sim \to Y$ is defined and is continuous. 
+
+\section*{Discussion 4:}
+\subsection*{Problem 1:}
+Show that the induced topology is the smallest topology which implies $f:X \to Y$ continuous. 
+
+\subsection*{Solution:}
+\[
+\tau = \{ U \subset X : U = f^{-1}(V), \text{ for open } V \subset Y\}
+\]
+\begin{enumerate}
+    \item $\emptyset, X \in \tau$ such that $f^{-1}(\emptyset) = \emptyset$ and $f^{-1}(Y) = X$
+    \item Closed under finite intersection: \\
+    Given $U_1, \ldots U_n \in \tau$, 
+    \[
+    \bigcap\limits_{k = 1}^n U_k = \bigcap\limits_{k = 1}^n f^{-1}(V_k) \ V_k \text{ open in } Y.
+    \]
+    \[
+    = f^{-1}\left(\bigcap\limits_{k = 1}^n V_k \right) \text{ open}. 
+    \]
+    \[
+    \Rightarrow \bigcap\limits_{k = 1}^n U_k \in \tau. 
+    \]
+    \item Arbitrary union: $\{U_{\alpha}\}_{\alpha \in A} \subset \tau$. Then 
+    \[
+    \bigcup\limits_{\alpha \in A}U_{\alpha} = \bigcup\limits_{\alpha \in A}f^{-1}(V) = f^{-1} \left(\bigcup\limits_{\alpha \in A} V_{\alpha} \right) \text{ open}
+    \]
+    \[
+    \Rightarrow \bigcup\limits_{\alpha \in A} U_{\alpha \in A} \in \tau
+    \]
+\end{enumerate}
+
+\subsection*{Problem 2:}
+Show that the unit ball $\{(x, y) \in \mathbb{R}^2: x^2 + y^2 = 1\}$ is homeomorphic to the open square $\{(x, y) \in \mathbb{R}^2: 0  < x < 1, 0 < y < 1 \}$. 
+
+\subsection*{Solution:}
+\[
+\left(\tan\left(\frac{\pi}{2}x\right), \tan \left(\frac{\pi}{2}y \right) \right)
+\]
+\[
+z^2 = (x + it)^2, \ (x^2 - y^2, 2xy)
+\]
+Another approach: \\
+First shift the square so that it is centered at the origin. Then use $\left(\tan \pi x, \tan \pi y \right)$ to map to all of $\mathbb{R}^2$. Then, 
+\[
+(x, y) \mapsto \frac{2}{\pi}\tan^{-1}\left(||x, y|| \right)\frac{(x, y)}{||x, y||}
+\]
+with $||x, y||$ norm of unit vector. 
+
+\subsection*{Problem 3: (2.4.1.)}
+Let $X$ be a topological space with cofinite topology ($U$ open if $X \backslash U$ is finite). Show that $X$ is separable. When is $X$ second countable? 
+
+\subsection*{Solution:}
+Assume $X$ is an infinite set. Separable: Let $S =\{ x_1, x_2, \ldots \} \subset X$. Claim: $S$ is a dense subset. Given: $x \in X$, open neighborhood $U$ of $x$. Then $X \backslash U$ is finite. 
+\[
+S = \left(S \cap U\right) \cup \left(S \cap U^c \right)
+\]
+\[
+S \cap U^c \subset \underbrace{X\cap U^c}_{\text{finite}} \Rightarrow S\cap U^c \text{ is finite}.
+\]
+
+Since $S$ is infinite, $S \cap U$ has to be non-empty. \\
+
+Second-countable:\\
+
+Case 1: ($X$ countable): Yes, since finite product of countable set is countable, 
+\[
+\{x_1\}, \{x_2\}, \{x_3\}, \ldots
+\]
+\[
+\{x_1, x_2 \}, \{x_1, x_3 \}, \ldots
+\]
+Since these sets are in $1-1$ correspondence with our open sets, our open sets are also countable. \\
+
+Case 2: ($X$ uncountable) No. By contradiction assume $U_1, U_2, \ldots$ is a countable basis
+\[
+\bigcup\limits_{n = 1}^{\infty} \left(X\backslash U_n \right) \text{ is countable } \Rightarrow \exists x \not\in \bigcup_{n = 1}^{\infty}\left(X \backslash U_n \right) \text{ since } X \text{ is uncountable}.
+\]
+Define $U_x = X \backslash \{x \}$, this open. Our hypothesis implies 
+\[
+U_x = \bigcup\limits_{k =1}^{\infty}U_{n_{k}} \text{ some subsequence}
+\]
+
+
+
+\begin{align*}
+X \backslash U_x &= X\backslash \left(\bigcup\limits_{k =1}^{\infty} U_{n_{k}}\right) \\
+&= X \bigcap \left(\bigcup U_{n_{k}} \right)^c \\
+&= X \bigcap \left(\bigcap_{k =1}^{\infty} U_{n_{k}}^c \right) \\
+&= \bigcap\limits_{k =1}^{\infty}\left(X \bigcap U_{n_{k}}^c \right) \subset X \bigcap U_{n_{k}}^c
+\end{align*}
+$\{x\} \subset X \bigcap U_{n_{k}}^c$ contradicts $x \notin \bigcup\limits_{n =1}^{\infty} \left(X \backslash U_n \right)$. 
+
+\subsection*{Problem 5:}
+Show $[0, 1] / \sim$ with the quotient topology is homeomorphic to $S^c$. 
+\[
+e^{2 \pi i t} = (\cos(2\pi t), \sin(2 \pi t))
+\]
+
+\subsection*{Example:}
+let $p: \mathbb{R} \to A = \{a, b, c\}$. 
+\[
+p(c) = \begin{cases}
+    a \text{ if } x > 0 \\
+    b \text{ if } x < 0 \\
+    c \text{ if } x = 0
+\end{cases}
+\]
+Describe the quotient topology on $A$. $\{\{a\}$, $\{b\}$, $\{a, b\}$, $\{a, b, c\}$, $\emptyset \} = \tau$ a topology. Let $X = \{x_1^2 + x_2^2 \leq 1 \}$, consider $X / \sim$ by gluing $x_1^2 + x_2^2 = 1$ together then $X / \sim \equiv S^2$. Open unit disk is homeomorphic to the unit sphere in $\mathbb{R}^3$ with one point taken away. 
+
+\section*{Separation Axioms:}
+A topological space $(X, d)$ is:
+\begin{enumerate}
+    \item $T_1$ if $\forall x \neq y$ in $X$, $\exists$ open set $U$ such that $ y \in U$ and $x \notin U$. 
+    \item $T_2$ (Hausdorff) if $\forall x \neq y$ in $X$, $\exists$ open sets $U$ and $V$ such that $ y \in U$, $ x\in V$ and $U \cap V = \emptyset$.
+    \item \underline{Regular} if $\forall$ closed $E \subset X$ and $\forall x \in X \backslash E$ there exists open sets $U$ and $V$ such that $E \subset U$,$x \in V$ and $U \cap V = \emptyset$.
+    %if $\forall x \in X$ and closed set $E \subset X$ where $x \notin E$ $\exists$ open sets $U$ and $V$ where $E \subset U$ and $x \in V$ such that $U \cap V = \emptyset$.
+    \item $T_3$ if $T_1$ and regular. 
+    \item \underline{Normal} if $\forall$ closed sets $E, F$ disjoint $\subset X$ $\exists$ open sets $U, V$ where $E \subset U$ and $F \subset V$ such that $U \cap V = \emptyset$. 
+    \item $T_4$ if $T_1$ and normal. 
+\end{enumerate}
+
+\subsection*{Properties:}
+\begin{enumerate}
+    \item $T_1 \iff$ points are closed. 
+    \begin{proof}
+        If $\{x\}$ is closed, then take $U = X - \{x\}$ which $y \in X- \{x\} = U$. If $T_1$, then for each $y \neq x$ $\exists$ open $U_y$ with $y \in U_y$ but not $x$. Take union $\bigcup\limits_{y \neq x} U_y = X - \{x\}$ open. 
+    \end{proof}
+    \item $T_4 \Rightarrow T_3 \Rightarrow T_2 \Rightarrow T_1$. 
+    \item Hausdorff $\Rightarrow $ Limits of sequences are unique. (HW)
+    \item $T_1$ but not $T_2$: Cofinite topology with $X$ infinite. Any two open sets $U, V \neq \emptyset$ have nontrivial intersection if $X$ is infinite. 
+
+    
+\end{enumerate}
+
+\subsection*{Remark: (Limits of Sequences)}
+$x_n \to x$ means $\forall$ open $U$ with $x \in U$ $\exists N > 0$ such that $\forall n \geq N$ $x_n \in U$. 
+
+\subsection*{Lemma:}
+Every metric space $(X, d)$ is $T_4$ (normal and $T_1$)
+
+\subsection*{Proof:}
+\begin{proof}
+$T_1$: For any two points $x, y$ with $x \neq y$. If $r \leq d(x, y)$, then $y \in B(y, r)$ but $x \notin B(y, r)$. \\
+Normal: $E, F$ disjoint closed. Given $x \in E$, $\exists r(x) > 0$ such that $B(x, r(x)) \cap F = \emptyset$. This is true since $F$ is closed and hence $X - F$ is open. Similarly, given $y \in F$ $\exists r(y) > 0$ such that $B(y, r(y)) \cap E = \emptyset$. Claim: $U = \bigcup\limits_{x \in E} B \left(x, \frac{r(x)}{2} \right)$, $V = \bigcup\limits_{y \in F}B\left(y, \frac{r(y)}{2} \right)$ open and contain $E, F$ respectively, $U \bigcap V = \emptyset$. Suppose $U \bigcap V \neq \emptyset$. Let $z \in U \bigcap V$. Suppose wlog $r(x) > r(y)$. $d(x, y) \leq d(x, z) + d(z, y) < \frac{r(x)}{2} + \frac{r(x)}{2} = r(x) \Rightarrow y \in B(x, r(x))$ which is a contradiction. 
+\end{proof}
+
+\subsection*{Lemma:}
+Normal $\iff$ For every closed $E \subset X$ and open $W$ with $E \subset W$, $\exists$ open $U$ such that $E \subset U \subset \overline{U} \subset W$. \\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.5pt,y=0.5pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp3470228961271924] 
+\draw   (241,132.75) .. controls (241,78.76) and (284.76,35) .. (338.75,35) .. controls (392.74,35) and (436.5,78.76) .. (436.5,132.75) .. controls (436.5,186.74) and (392.74,230.5) .. (338.75,230.5) .. controls (284.76,230.5) and (241,186.74) .. (241,132.75) -- cycle ;
+%Shape: Ellipse [id:dp10907167605136525] 
+\draw   (337.98,195.52) .. controls (317.18,195.69) and (300.66,167.73) .. (301.09,133.07) .. controls (301.51,98.4) and (318.72,70.16) .. (339.52,69.98) .. controls (360.32,69.81) and (376.84,97.77) .. (376.41,132.43) .. controls (375.99,167.1) and (358.78,195.34) .. (337.98,195.52) -- cycle ;
+%Shape: Free Drawing [id:dp2763033335180105] 
+\draw  [line width=3] [line join = round][line cap = round] (334.5,89) .. controls (339.41,89) and (348.19,92.24) .. (346.5,99) .. controls (346.11,100.57) and (339.17,106.94) .. (339.5,107) .. controls (345.27,107.96) and (352.95,108.22) .. (350.5,118) .. controls (349.62,121.52) and (343.66,121.28) .. (341.5,122) .. controls (340.64,122.29) and (338.04,128.37) .. (337.5,130) .. controls (336.04,134.39) and (358.63,135.44) .. (350.5,149) .. controls (350.44,149.09) and (338.77,150.15) .. (337.5,151) .. controls (335.88,152.08) and (338.68,155.32) .. (340.5,156) .. controls (342.71,156.83) and (346.75,154.76) .. (347.5,157) .. controls (350.12,164.85) and (345.77,163.15) .. (341.5,166) .. controls (335.85,169.77) and (337.04,174.54) .. (331.5,169) ;
+%Shape: Ellipse [id:dp9501272385897268] 
+\draw   (337.83,208.3) .. controls (308.01,208.55) and (284.24,174.93) .. (284.75,133.2) .. controls (285.26,91.48) and (309.85,57.45) .. (339.67,57.2) .. controls (369.49,56.95) and (393.26,90.57) .. (392.75,132.3) .. controls (392.24,174.02) and (367.65,208.05) .. (337.83,208.3) -- cycle ;
+
+% Text Node
+\draw (421,49.4) node [anchor=north west][inner sep=0.75pt]    {$W\ open\ $};
+% Text Node
+\draw (378,115.4) node [anchor=north west][inner sep=0.75pt]    {$U\ open$};
+% Text Node
+\draw (335,173.4) node [anchor=north west][inner sep=0.75pt]    {$E$};
+% Text Node
+\draw (286,59.4) node [anchor=north west][inner sep=0.75pt]    {$\overline{U}$};
+
+
+\end{tikzpicture}
+
+\subsection*{Proof:}
+\begin{proof}
+    Suppose $X$ is normal. Given $E, W$, take $\underbrace{F= X - W}_{closed}$. Normal $\Rightarrow$ $\exists U$ open with $E \subset U$ and $V$ open with $X - W \subset V$. Therefore, $X - V$ is closed and $X - V \subset W$ And $E \subset U \subset X - V \subset W$. Since $X - V$ closed and $U \subset X- V$ we must have $U \subset \overline{U} \subset X - V \subset W$. \\
+    Suppose the right-hand side holds. Given $E, F$ closed and disjoint, let $W = X - F$ open. $\exists U$ open such that $E \subset U \subset \overline{U} \subset W$. Then, $X - \overline{U} = V$ is open and $F = X - W$ with $F \subset V$, then $U, V$ are disjoint. 
+    
+\end{proof}
+\section*{Urysohn and Tietze:}
+$X$ is a normal topological space. 
+\subsection*{Theorem: (Urysohn's Lemma)}
+$E, F$ disjoint closed subsets of $X$ normal. Then $\exists$ continuous function $f: X \to [0, 1]$ such that $f(E) = 0$ and $f(F) = 1$. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Let $V = X - F$ open. Then by the Lemma from last time, $\exists U_{\frac{1}{2}}$ open such that $E \subset U_{\frac{1}{2}} \subset \overline{U_{\frac{1}{2}}} \subset V = X - F$. Applying lemma again to $\overline{U_{\frac{1}{2}}}$ and $F$, $\exists U_{\frac{3}{4}}$ open such that $\overline{U_{\frac{1}{2}}} \subset U_{\frac{3}{4}} \subset \overline{U_{\frac{3}{4}}} \subset V$. Similarly $\exists U_{\frac{1}{4}}$ open such that $E \subset U_{\frac{1}{4}} \subset \overline{U_{\frac{1}{4}}} \subset U_{\frac{1}{2}}$. Continuing in this way, we can construct $U_{\frac{p}{2^n}} \subset \overline{U_{\frac{p}{2^n}}}$ dyadic rationals ($0 < p < 2^n$ integer $n \in \mathbb{Z}_{> 0}$) such that 
+    \begin{enumerate}
+        \item $\overline{U_r} \subset U_s \ 0 < r < s < 1$
+        \item $E \subset U_r \ 0 < r < 1$
+        \item $U_s \subset V \ 0 < s < 1$. 
+    \end{enumerate}
+
+    Define $f:X \to [0, 1]$
+    \[
+    f(x) = 
+    \begin{cases}
+        0 \text{ if } x \in U_r \ \forall r > 0 \\
+        \sup\{r : x \notin U_r \} \text{ otherwise }
+    \end{cases}.
+    \]
+    If $x \in d U_r$, then $f(x) = r$. Easy to see that $f(E) = 0$, $f(F) = 1$ , and $0 \leq f \leq 1$. Show $f$ is continuous. For $x \in X$, suppose $0 < f(x) < 1$ (n other cases, argue separately). Given $\epsilon > 0$, pick $r, s > 0$ such that $f(x) - \epsilon < r < f(x) < s < f(x) + \epsilon$ so $r, s$ are dyadic rationals. \underline{Claim}:
+    \begin{enumerate}
+        \item $x \notin \overline{U_r}$
+        \item $x \in U_s$
+    \end{enumerate}
+    implies that $x \in U_s - \overline{U_r}$. $(1)$ $x \notin U_t$ for $r < t < f(x) \Rightarrow x \notin \overline{U_r} \subset U_t$ with $r < t$. $(2)$ $x \in U_s$ since otherwise $f(x) \geq s $. Also, since $x \in U_s - U_r$, $f(U_s - \overline{U_r}) \subset [r, s] \subset (f(x) - \epsilon, f(x) + \epsilon)$ (check this). 
+\end{proof}
+
+\subsection*{Tietze Extension:}
+Let $X$ be normal and $Y \subset X$ closed. If $f$ is a bounded continuous function on $Y \to \mathbb{R}$ then $\exists$ continuous extension $h: X \to \mathbb{R}$ such that $h|_Y = f$. 
+
+\subsection*{Remark:}
+Tietze is a generalization of Urysohn. Take $Y = E \bigcupplus F$ and $f|_E = 0, f|_F = 1$. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Let $c_0 = \{\sup|f(y)| : y \in Y \}$ $E = f^{-1} \left( \left[-c_0, -\frac{c_0}{3} \right] \right)$ closed and $F = f^{-1}\left(\left[\frac{c_0}{3}, c_0\right]\right)$. By Urysohn, $\exists$ continuous function $g_0: X \to \mathbb{R}$ such that $g_0(E) = - \frac{c_0}{3}, g_0(F) = \frac{c_0}{3}, g_0(x) \subset 
+    \left[-\frac{c_0}{3}, \frac{c_0}{3}\right]$. $0$th order approximation of the desired function; $\left|f - g_0 \right| \leq \frac{2c_0}{3}$. Apply above procedure to $f - g_0$ to set $g_1: X 
+    \to \mathbb{R}$ such that $\left|f - g_0 - g_1\right| \leq \left(\frac{2}{3}\right)^2c_0$. Continuing, we obtain $h = g_0 + g_1 + \cdots$ which converge geometrically. Left for you: 
+    \begin{itemize}
+        \item carefully check convergence
+        \item show that $f = h|_Y$
+    \end{itemize}
+\end{proof}
+
+\section*{Compactness:}
+\subsection*{Definition:}
+A topological space $X$ is \underline{compact} if any open cover has a finite subcover. A subset $Y \subset X$ is \underline{compact} if $Y$ with induced topology is compact. 
+
+\subsection*{Properties:}
+\begin{enumerate}
+    \item A finite union of compact subsets of $X$ is compact. 
+    \begin{proof}
+        Let $S_1, \ldots, S_n$ be compact subsets of $X$. Given an open cover $\{U_{\alpha}\} \subset X$ of $S_1 \cup \cdots \cup S_n$, $\exists$ a finite subcover of each $S_i$. Just take the (finite) union of the subcovers. 
+        \end{proof}
+    \item A closed subset $Y \subset X$ compact is compact. 
+    \begin{proof}
+        Let $\{U_{\alpha}\} \subset X$ be an open cover of $Y$. Since $Y$ is closed, $X - Y$ is open. $\{X-Y\} \cup \{U_{\alpha}\}$ is an open cover of $X$. Since $X$ is compact, $\exists$ finite subcover which easily covers $Y$. 
+    \end{proof}
+    \item A compact subset of a Hausdorff space is closed. 
+    \begin{proof}
+        Show that for any $x \in X - Y$ there exists an open set $U_x \subset X$ which does not intersect $Y$. This would imply $X - Y$ open and $Y$ is closed. Given $y \in Y$, Hausdorff $\Rightarrow$ $\exists V_{x, y}$ with $y \in V_{x, y}$ and $U_{x, y}$ with $x \in U_{x, y}$ open that are disjoint. Clearly $V_{x, y}$ cover $Y$ as $y$ ranges over $Y$ $\exists$ finite subcover $V_{x, y_1}, \ldots , V_{x, y_n}$ of $Y$ and $\bigcup\limits_{i =1}^n V_{x, y_i}$ is disjoint from $\bigcap\limits_{i =1}^n U_{x, y_i}$. 
+        \end{proof}
+    \item A compact Hausdorff $X$ is $T_4$. 
+        \begin{proof}
+            In notes. 
+        \end{proof}
+    \item If $f:X \to Y$ is continuous and $X$ is compact, then $f(X)$ is compact. 
+    \begin{proof}
+        Let $\{U_{\alpha}\}$ be an open cover of $f(X)$. Then $\{f^{-1}(U_{\alpha})\}$ is an open cover of $X$. Take a finite subcover $\{f^{-1}(U_1), \ldots , f^{-1}(U_n) \}$. $\{U_1, \ldots , U_n\}$ covers $f(X)$. 
+    \end{proof}
+\end{enumerate}
+
+\subsection*{Fundamental Theorem of Point-Set Topology:}
+Let $f:X \to Y$ be a one-to-one, continuous map and $X$ compact, $Y$ Hausdorff. Then $f:X \to f(X)$ is a homeomorphism. 
+
+\subsection*{Remark:}
+Don't need to check inverse is continuous to prove homeomorphism. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Need to show $f$ is an open map. Let $U \subset X$ be open. Therefore, $X - U$ is closed. Apply $(2)$ since $X$ is compact and $X- U$ closed, then we have $X - U$ compact, then by $(5)$, $f(X - U)$ compact. By $(3)$, since $Y$ is Hausdorff, $f(X - U)$ is closed. Since $f$ is one-to-one, $f(X - U) = f(X) - f(U)$ which implies $f(U)$ open.
+\end{proof}
+
+\subsection*{Remark:}
+Try to redo some exercises using FTPST. 
+
+\subsection*{Corollary:}
+Let $f:X \to Y$ be continuous and surjective, $X$ compact, $Y$ Hausdorff. Define $\sim$ on $X$ such that $x_1 \sim x_2$ iff $f(x_1) = f(x_2)$. Then $\overline{f}:X/\sim \to Y$ is a homeomorphism. 
+
+\subsection*{Proof:}
+\begin{proof}
+    Let $f:X \to Y$ continuous and surjective. $X \xrightarrow[]{\pi} X/\sim$ and $\overline{f} X/\sim \to Y$. Recall, $f$ is continuous $\iff$ $\overline{f}$ continuous. But then $\pi:X \to X/\sim$ is continuous and $X$ is compact, so $X/\sim$ is also compact by $(5)$. Finally, $\overline{f}:X/\sim \to Y$ is bijective, $X/\sim$ is compact, $Y$ is Hausdorff, and FTPST $\Rightarrow $ $\overline{f}$ is a homeomorphism. 
+\end{proof}
+
+\subsection*{Application:}
+Want to show $[0, 1]/\sim \cong S^1$. $f:[0, 1] \xrightarrow[t \mapsto e^{2\pi i t}]{} S^1$ is continuous and a bijection except $f(0) = f(1)$. $[0, 1]$ is compact, $S^1$ is Hausdorff. $\overline{f}: [0, 1]/0 \sim 1 \to S^1$ is a bijection and a homeomorphism by the corollary. 
+
+
+\section*{Discussion 5:}
+\subsection*{Problem 1: (2.13.6.)}
+Show that the quotient space $\mathbb{R}^2/S^1$ is homeomorphic to $S^2$. $f:\mathbb{R}^2 \cup \{\infty\} \to S^2$ $(u, v) \in \mathbb{R}^2 \mapsto \left(\frac{2u}{1 + u^2 + v^2}, \frac{2v}{1 + u^2 + v^2}, \frac{u^2 + v^2 - 1}{1 + u^2 + v^2} \right)$ $\infty \mapsto 
+(0, 0, 1)$. $g:(\xi, \eta) \in int(B^2) \mapsto tan(\frac{\pi}{2}(\xi^2 + \eta^2) \frac{(\xi, \eta)}{||\xi \eta}$, $(\xi, \eta) \in d(B^2) \mapsto \infty$. Topology on $\mathbb{R}^2$ is open sets in $\mathbb{R}^2$ union sets of the form $K^c$ where $K$ is compact in 
+$\mathbb{R}^2$. For $h:B^2/S^1 \to S^2$, $h([a]) = f\circ g \circ \pi^{-1}([a]) = f \circ g ((x, y))$ for $(x, y) \in B^2$ such that $\pi(x, y) = [a]$. $h$ is well defined, since $g$ maps $S^1$ to infinity. $S^n/\{N\} \subseteq \mathbb{R}^{n+1}$ $(x_1, \ldots, x_n) \mapsto \left(\frac{x_1}{1-x_n}, \cdots , \frac{x_n-1}{1 - x_n} \right)$.
+
+\subsection*{Definition:}
+A topological space $X$ is 
+\begin{itemize}
+    \item $T_1$ if singletons are closed.
+    \item $T_2$ if Hausdorff. 
+    \item $T_3$ if $T_4$ and regular. 
+    \item $T_4$ if $T_1$ and normal. 
+\end{itemize}
+
+\subsection*{Problem 2: (2.5.3.)}
+If $X$ is $T_4, T_2$, regular, then every subspace of $X$ is $T_4, T_2$ regular. 
+
+\subsection*{Solution:}
+Regular: Let $Y \subset X$ be a subspace. Given $y \in Y$, and $C \subseteq Y$ closed. CLaim, $\exists U, V$ open in $Y$ such that $y \in U$, $C \subseteq V$, and $U \cap V = \emptyset$. We know $C = \hat{C}\cap Y$ for some $\hat{C} \subseteq X$ closed. Since $X$ is regular, $\exists \hat{U}, \hat{V}$ open in $X$, such that 
+\begin{enumerate}
+    \item $y \in \hat{U}$
+    \item $\hat{C} \subseteq \hat{V}$
+    \item $\hat{U} \cap \hat{V} = \emptyset$
+\end{enumerate}.
+So take $U = \hat{U} \cap Y$ and $V = \hat{V} \cap Y$. Then, they are open, and satisfy the desired properties. 
+
+\subsection*{Urysohn:}
+Let $X$ be normal, $E, F$ are disjoint closed subsets. Then, $\exists$ a continuous $f:X \to [0, 1]$ such that $f = 0$ on $E$, and $f = 1$ on $F$. 
+
+\subsection*{Tietze:}
+Let $X$ be normal. If $Y \subseteq X$ is closed, and $f:Y \to \mathbb{R}$is continuous and bounded, then $\exists$ a bounded continuous extension $\hat{f}:X \to \mathbb{R}$.
+
+\subsection*{Problem: (2.5.4.)}
+A topological space $X$ is normal iff the conclusion of Urysohn's Lemma is true. 
+
+\subsection*{Solution:}
+\begin{proof}
+    $\Rightarrow$) Just the proof of Urysohn's Lemma. \\
+    $\Leftarrow)$ Given closed sets $E, F \subseteq X$, want $U, V$ open in $X$ such that \begin{enumerate}
+        \item $E \subseteq U$, $F \subseteq V$
+        \item $U \cap V = \emptyset$
+    \end{enumerate}.
+    By Urysohn, $\exists$ a continuous $f:X \to [0, 1]$ such that codomain of $f|_E = 0$ and $f|_F = 1$. Take $U = f^{-1}([0, \frac{1}{3}))$, $V = f^{-1}((\frac{2}{3}, 1])$. Then, $U, V$ are open since $f$ is continuous and $[0, \frac{1}{3})$, $(\frac{2}{3}, 1]$ are open in $[0, 1]$. $U$ and $V$ are disjoint, since $[0, \frac{1}{3}) \cap (\frac{2}{3}, 1] = \emptyset$. 
+\end{proof}
+
+\subsection*{Example:}
+Subspace of a normal space is not always normal. Given a set $X$, the smallest topology $\tau$ such that $\{a, b\}, \{b, c\}$ are closed. Closed sets: $\{a, b\}, \{b,c \}, \{b\}, \emptyset, X$. Consider $Y = X \cap \{b\}^c$. Closed sets in $Y$: $\{a\}, \{c\}, \emptyset, X \cap \{b\}^c$. Open sets in $Y$: $\{a\}^c$, $\{c\}^c$, $X \cap \{b\}^c, \emptyset$. $\{a\}, \{c\}$ are the only possible non-empty disjoint closed sets. 
+
+\section*{One-Point Compactification:}
+\subsection*{Definition:}
+$X$ is \underline{locally compact} if $\forall x \in X$ $\exists$ open $U$ with $x \in U$ such that $\overline{U}$ is compact. 
+\begin{itemize}
+    \item compact $\Rightarrow$ locally compact
+    \item $\mathbb{R}^n$ is locally compact since $\overline{B(x, r)}$ are compact.
+\end{itemize}
+
+\subsection*{Observation:}
+If $Y$ is compact, Hausdorff, then for any $y \in Y$, $Y - \{y\} = X$ is locally compact and Hausdorff. 
+
+\subsection*{Proof:}
+\begin{proof}
+$X$ is locally compact. Hausdorff $\Rightarrow U, V$ open with $x\in U$ and $y \in V$ such that $U \cap V = \emptyset$. This implies $X - V$ is closed. $U \subset X - V$ closed, so $\overline{U} \subset X - V$, $\Rightarrow$ $\overline{U}$ is compact since $\overline{U} \subset Y$ and $Y$ is compact. 
+\end{proof}
+
+\subsection*{Definition:}
+A \underline{one-point compactification} of a l.c. Hausdorff space $(X, \tau)$ is $(Y, S)$ such that
+\begin{itemize}
+    \item As a set $Y = X \cup \{\infty\}$ (some point not in $X$).
+    \item $Y$ is compact, Hausdorff, and $i^{-1}(S) = \tau$ where $i: X \to Y$ is the standard inclusion. 
+\end{itemize}
+
+\subsection*{Theorem:}
+One-point compactification exists and is unique (any two are homeomorphic w.r.t. the identity map $id:Y \to Y$).
+
+\subsection*{Example:}
+One-point compactification of $\mathbb{R}^n$. The stereographic projection. $X = S^n$, $Y = \mathbb{R}^n$
+
+\subsection*{Example:}
+If $X$ is already compact, disconnected topological space with two connected components $S^n, \{\infty\}$. 
+
+\subsection*{Proof:}
+\begin{proof}
+    
+
+Define $Y = X \bigcupplus \{\infty\}$, $S = \tau \bigcup \{U \subset Y : \infty \in U, \ Y - U = X - U \text{ is compact} \}$. $\tau$ is open sets originally in $X$. Call $\{U \subset Y : \infty \in U, \ Y - U = X - U \text{ is compact} \} = \tau'$. 
+\begin{enumerate}
+    \item $\tau = i^{-1}S$: $i^{-1}\tau = \tau$. Remains to check that if $U \in \tau'$, then $U \cap X \in \tau$. $U \cap X = U - \{\infty\}$. $X - U$ compact$\subset$ Hausdorff $X \Rightarrow X-U = X - (U - \{\infty\})$ closed $\Rightarrow U-\{\infty\}$ open. 
+    \item $S$ is a topology: We have $\emptyset \in S$, $Y \in S$ since $\infty \in Y$ and $X - Y = \emptyset$ and $\emptyset$ is compact. $U_{\alpha} \in S:$ If all $U_{\alpha} \in \tau$, then $\bigcup U_{\alpha} \in \tau$. If $\exists U_{\alpha_{0}} \in \tau'$, then $X - U_{\alpha_{0}}$ is compact in $X$. Since $X \cap U_{\alpha} \in \tau$ for all $U_{\alpha}$, $\bigcup U_{\alpha} = U_{\alpha_{0}} \cup \bigcup\limits_{U_{\alpha}} \left(X \cap U_{\alpha}\right)$ where $X \cap U_{\alpha} \in \tau$. Then, $X - \bigcup U_{\alpha} = \left(X - U_{\alpha_{0}}\right) - \left(\bigcup V_{\beta} \right)$ with $V_{\beta} \in \tau$. $X- U_{\alpha_{0}}$ is compact and in Hausdorff, hence closed, and $\bigcup V_{\beta}$ is open in $\tau$. Closed subsets of compact $X$ are compact. Consider $U = U_1 \cap \cdots \cap U_n$, $U_i \in S$: If not all $U_i \in \tau'$, then some $U_i \in \tau$ hence $\infty \notin U$ and $U = \left(X \cap U_1 \right) \cap \cdots \cap \left(X \cap U_n \right)$ for $X \cap U_i \in \tau$ $\Rightarrow U \in \tau$. If all $U_i \in \tau'$, then $\infty \in U$ and $X - U = \left(X - U_1 \right) \cup \cdots \cup \left( X - U_n\right)$ where each $U_i$ is compact, and the finite union of compact is compact. 
+    \item $Y$ is compact: Let $\{U_{\alpha}\}$ be an open cover of $Y$. Then, $\infty \in U_{\alpha_{0}} \in \{U_{\alpha}\}$ and $X - U_{\alpha_{0}}$ is compact. $\exists$ finitely many $U_{\alpha_{1}}, \ldots , U_{\alpha_{N}}$ covering $X - U_{\alpha_{0}}$. Take $\{U_{\alpha_{0}}, \ldots , U_{\alpha_{N}} \}$. 
+    \item Hausdorff: Either $x \neq y$ both in $X$ or $x \in X$ and $y = \infty$. We have already taken care of $x \neq y$ both in $X$ since $X$ is Hausdorff. Use that $X$ is locally compact, so $\exists U \in \tau$ open with $x \in U$ such that $\overline{U}$ is compact. Take $V =(X - \overline{U})\cup \{\infty\} \in \tau$ and so $\infty \in V$. Thus, $U \cap V = \emptyset$ and $x \in U \in \tau$ and $\infty \in V \in \tau'$. 
+\end{enumerate}
+\end{proof}
+
+\section*{Connectedness:}
+
+\subsection*{Definition:}
+\underline{Disjoint union} of topological spaces $(X_1, \tau_1)$ and $(X_2, \tau_2)$. As a set $X = X_1 \bigcupplus X_2$, $\tau = \{U : \ U \cap X_i \in \tau_i \}$. 
+
+\subsection*{Fact:}
+$\tau$ is the largest topology which make $i_1:X_1 \to X$ and $i_2:X_2 \to X$ continuous. Given $f_1: X_1 \to Y$ and $f_2: X_2 \to Y$ these are continuous. $\exists !$ $f:X \to Y$ continuous such that the diagram commutes; $f\circ i_1 = f_1$ and $f \circ i_2 = f_2$. With the product $X_1 \times X_2$ all of the arrows are inverted. 
+
+\subsection*{Definition:}
+$X$ is \underline{disconnected} if $\exists$ nonempty complementary subsets $X_1, X_2 \subset X$, hence $X_1 \cup X_2 = X$ and $X_1 \cap X_2 = \emptyset$, such that $X_i$ open ($\iff X_i$ closed). This is true $\iff$ $X = X_1 \bigcupplus X_2$ (disjoint union of $X_1, X_2$ where $X_i$ has the induced/subset topology.
+
+\subsection*{Definition:}
+$X$ is \underline{connected} if it is not disconnected. A subset $Y \subset X$ is \underline{connected} if it's connected with respect to the induced topology $i:Y \to X$. 
+
+\subsection*{Examples:}
+\begin{itemize}
+    \item All balls are connected. 
+    \item Two separated balls or subsets are disconnected. 
+\end{itemize}
+
+\subsection*{Basic Properties:}
+\begin{enumerate}
+    \item If $f:X \to Y$ is continuous and $X$ is connected, then $f(X)$ is connected. \\
+    \begin{proof}
+        Suppose $\exists U_1, U_2 \subset Y$ open and disjoint such that $f(X) \subset U_1 \cup U_2$. Then, $X\subset f^{-1}(U_1)\cup f^{-1}(U_2)$ and $f^{-1}(U_1), f^{-1}(U_2)$ are disjoint. Since $X$ is connected, one of $f^{-1}(U_i)$ is empty, which implies $U_i \cap f(X) = \emptyset$. 
+    \end{proof}
+
+    \item Suppose $\{E_{\alpha}\}_{\alpha \in I}$ is a family of connected subsets of $X$ such that $E_{\alpha} \cap E_{\beta} \neq \emptyset \ \forall \alpha, \beta \in I$. Then, $\bigcup\limits_{\alpha \in I}E_{\alpha}$ is connected. \\
+    \begin{proof}
+        Suppose $F, E- F \subset E$ are both open (in $E$). Consider $F \cap E_{\alpha}$, $(E- F) \cap E_{\alpha}$ open in $E_{\alpha}$. But then $E_{\alpha}$ connected implies one of the two, say $(E - F) \cap E_{\alpha} = E_{\alpha} - F$ is empty which implies $E_{\alpha} \subset F$. Next, $F \cap E_{\beta} \neq \emptyset$ for any $\beta \in I$. This implies $E_{\beta} \subset F$. Hence, $\bigcup\limits_{\alpha \in I}E_{\alpha} \subset F$. 
+    \end{proof}
+    \item Two connected components either coincide or are disjoint. \\
+    \begin{proof}
+        If $X_1, X_2$ are connected components and $X_1 \cap X_2 \neq \emptyset$, then $X_1 \cup X_2$ is connected by $(2)$. Since connected components are maximal, $X_1 = X_1 \cup X_2 = X_2$. 
+    \end{proof}
+\end{enumerate}
+
+\subsection*{Definition:}
+Given $x \in X$, the \underline{connected component} of $x \in X$ is the union of all connected subsets of $X$ containing $x$, i.e. is the maximal connected subset of $X$ containing $x$. 
+
+\subsection*{Fact:}
+Any interval $[a, b]$, $(a, b]$, $(a, b)$, $a, b \in \mathbb{R}$ are connected. So are $[a, \infty)$, $(a, \infty)$, $(-\infty, \infty)$. 
+
+\section*{Discussion 6:}
+\subsection*{Problem 1.c.}
+T/F every quotient space of Hausdorff space $X$ is Hausdorff. 
+
+\subsection*{Solution:}
+False. Consider $\mathbb{R}$ with metric topology, consider $\mathbb{R}/\mathbb{Q}$ such that $[x], [y] \in \mathbb{R}\mathbb{Q}$ is equal 
+iff $x \neq y$ in $\mathbb{R}/\mathbb{Q}$, $\exists U, V$ open in $\mathbb{R}/\mathbb{Q}$ such that $x \in U,y \in V, U\cap V = \emptyset$. 
+Then, $\pi^{-1}(U)$, $\pi$ continuous since $\mathbb{Q}$ is dense in $\mathbb{R}$, $\mathbb{Q}\cap \pi^{-1}(U) \neq \emptyset$ and 
+$\mathbb{Q} \cap \pi^{-1}(V) \neq \emptyset$ which implies $[0] \in U \cap V$ which is a contradiction. 
+
+\subsection*{Problem 1.d.}
+T/F: If every open cover of a metric space $(X, d)$ has a finite subcover, then $X$ is second countable. 
+
+\subsection*{Solution:}
+$X$ compact implies $X$ totally bounded and complete, hence $\forall \epsilon > 0$, \bigcup\limits_{x \in X} B(x, \epsilon) is an open cover 
+implies that it has a finite subcover which implies it is second countable. 
+
+\subsection*{Problem 3.c.}
+Prove that if $X_i$, $i = 1, \ldots , n$ are Hausdorff, then so is $X = X_1 \times \cdots \times X_n$ with respect to the product topology.
+
+\subsection*{Solution:}
+In $x, y \in X$, $x \neq y$ iff $x_i \neq y_i$ for some $i$. $X_i$ Hausdorff implies there exists $U_i, V_i$ open in $X_i$ such that 
+\begin{enumerate}
+    \item $x_i \in U_i$ and $y_i \in V_i$
+    \item $U_i \cap V_i = \emptyset$ 
+\end{enumerate}
+Consider $\underbrace{X_1 \times \cdots \times U_i \times \cdots \times X_n}_U $ and $\underbrace{X_1 \times \cdots \times V_i \times \cdots \times X_n}_V$ are open in the product space.
+Then, $x \in U_1$, $y \in V_1$ and $U \cap V = \emptyset$ implies product space is Hausdorff. 
+
+\subsection*{Problem 4:}
+Let $X, Y$ be topological spaces, consider the product space with product topology. Consider the equivalence relation defined by $(x_1, y_1) \sim (x_2, y_2)$ iff $x_1 = x_2$. Show $X \times Y \equiv X$. 
+
+\subsection*{Solution:}
+Define $h:X \times Y/\sim \to X$ by $h([x, y]) = \pi((x', y')) $ for $(x', y') \in X \times Y$ such that $\rho(x', y') = [(x, y)]$. To show well-definedness, say $(x_1, y_1), (x_2, y_2) \in X\times Y$ are such that $\rho(x_1, y_1) = \rho(x_2, y_2)$. Check $x_1 = \pi(x_1, y_1)  = \pi(x_2, y_2) = x_2$, their image is the same. Check $h$ is bijective:
+\begin{enumerate}
+    \item Injective: If $[(x_1, y_1)], [(x_2, y_2)]$ are different iff $x_1 \neq x_2$ implies $h([x_1, y_1]) \neq h([x_1, y_1])$. 
+    \item Surjective: Given $x \in X_1$ consider $x = h([x, y])$ for any $y \in Y$. 
+\end{enumerate}
+$h^{-1}$ is continuous: Let $V \subset X \times Y/\sim$ open implies $\rho^{-1}(V) \subset X \times Y$ open. WTS $\pi(\rho^{-1}(V))$ is open. Since $X \times Y$ has product topology $\rho^{-1}(V) = \bigcup\limits_{\alpha \in A} U_{\alpha} \times V_{\alpha}$ where $U_{\alpha} \subseteq X$, $V_{\alpha} \subseteq Y$ open. $U_{\alpha} \times V_{\alpha} \subseteq \rho^{-1}(V)$ and $U_{\alpha} \times Y \subseteq \rho^{-1}(V)$ and $U_{\alpha} \times Y \in \rho^{-1}(V)$. This implies $U(U_{\alpha} \times V_{\alpha}) = U(U_{\alpha} \times Y) = (UU_{\alpha} \times Y)$. $U \subseteq X$ is open. $\pi(\rho^{-1}(V)) = \pi(U\times Y) = U$. 
+
+\subsection*{Problem 2.8.4.:}
+A point $p$
+
+\section*{Path-Connectedness:}
+\subsection*{Fact:}
+$(0, 1)$ is connected. 
+\subsection*{Proof:}
+Uses the homework that states any open subset of $(0, 1)$ is a disjoint union of open intervals. Suppose $(0, 1) = X_1 \cup X_2$ disjoint union of two open sets and suppose both $X_i \neq \emptyset$. WLOG $\exists (a, b) \subset X_1$ such that $b \notin X_1$. But then $b \in X_2$ and $X_1 \cap X_2 \neq \emptyset$ which is a contradiction. Therefore, $X_2 = \emptyset$. \\
+
+$X$ is a topological space. 
+\subsection*{Definition:}
+A \underline{path} in $X$ from $x_0 \in X$ to $x_1 \in X$ is a continuous map $\gamma : [0, 1] \to X$ such that $\gamma(0)= x_0$, $\gamma(1) = x_1$. 
+\subsection*{Remark:}
+You should distinguish between a path $\gamma$ and its image $\gamma([0, 1])$. 
+
+\subsection*{Definition:}
+$X$ is \underline{path-connected} if $\forall x_0, x_1 \in X$ $\exists$ a path in $X$ from $x_0$ to $x_1$. 
+
+\subsection*{Theorem:}
+Path-connected $\Rightarrow$ connected. 
+
+\subsection*{Proof:}
+Suppose $X$ is path-connected. If $X = X_1 \sqcup X_2$, $X_1, X_2 \neq \emptyset$, then take a path $\gamma:[0, 1] \to X$ such that $\gamma(0) = x_1 \in X_1$, $\gamma(1) = x_2 \in X_2$. This implies $\gamma^{-1}(x_1)$ and $\gamma^{-1}(x_2)$ open, disjoint and $\gamma^{-1}(x_1) \cup \gamma^{-1}(x_2) = [0, 1]$. This contradicts that $[0, 1]$ is connected. 
+
+\subsection*{Equivalence Relation on $X$:}
+Given $x, y \in X$, write $x \sim y$ if $\exists$ path in $X$ from $x$ to $y$. 
+\begin{enumerate}
+    \item $x \sim x$  $\gamma:[0, 1] \xrightarrow[s \mapsto x]{} X$ consistant path. 
+    \item $x \sim y$ $\Rightarrow$ $y \sim x$: $\gamma:[0, 1] \to X$ $\gamma(0) = x$, $\gamma(1) = y$ \[
+    [0, 1] \xrightarrow[s \mapsto 1 - s]{} [0, 1] \xrightarrow[1 - s \mapsto \gamma(1 - s)]{\gamma} X   
+    \]
+    Therefore $\gamma^{-1}(s) = \gamma(1 - s)$ $\gamma^{-1}(0) = \gamma(1) = y$, $\gamma^{-1}(1) = \gamma(0) = x$. 
+    item $x \sim y$, $y \sim z$ $\Rightarrow$ $x \sim z$. \\
+    $\alpha$ frmo $x$ to $y$ $\alpha:[0, 1] \to X$ \\
+    $\beta$ from $y$ to $z$ $\beta: [0, 1] \to X$
+    \[
+    \alpha\beta: [0, 1] \xrightarrow[s \in [0, \frac{1}{2}] \mapsto \alpha(2s); \s \in [\frac{1}{2},1]\mapsto \beta(2s - 1)]{} X    
+    \]
+    How to show continuity.
+    \begin{itemize}
+        \item $[0, \frac{1}{2}]\sqcup [\frac{1}{2}, 1] \to X$ is continuous $(\alpha(2s), \beta(2s - 1))$
+        \item $\alpha(2(s = \frac{1}{2})) = \beta(2(s = \frac{1}{2}) - 1)
+        \item [0, \frac{1}{2}]\sqcup [\frac{1}{2}, 1]/\frac{1}{2}_{(1)} \sim \frac{1}{2}_{(2)} \to X$ is continuous. 
+        \item $[0, 1] \cong [0, \frac{1}{2}] \sqcup [\frac{1}{2}, 1]/\sim$ using FTPST. The reverse direction is trivially. 
+    \end{itemize}
+\end{enumerate}
+We can decompose $X$ into equivalence classes called \underline{path components}. 
+
+\subsection*{Remark:}
+\begin{enumerate}
+    \item $\exists$ connected subsets of $\mathbb{R}^n$ that are not path-connected. For example, th sinusoidal wave $y = \sin \frac{1}{x}$ $x = 0$. 
+    \item Open subsets of $\mathbb{R}^n$ are connected iff path-connected. 
+\end{enumerate}
+
+\subsection*{Properties:}
+\begin{enumerate}
+    \item $X_i, i = 1, \ldots , n$ connected $\Rightarrow X_1 \times \cdots \times X_n$ connected. 
+    \item $X_i, i = 2, \ldots, n$ path-connected $\Rightarrow X_1 \times \cdots \times X_n$ path-connected. 
+    \item $X$ connected and $\sim$ an equivalence relation on $X$ $\Rightarrow X/\sim$ is connected. 
+    \item $X$ path-connected and $\sim$ an equivalence relation on $X$ $\Rightarrow$ $X/\sim$ is connected.  path-connected. 
+\end{enumerate}
+
+\end{document}
+

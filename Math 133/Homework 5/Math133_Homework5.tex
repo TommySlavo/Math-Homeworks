@@ -1,0 +1,356 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{bbm}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand{\mycomment}[1]{}
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 133 Homework 5}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\begin{proof}
+    Let
+    \[
+    L_n(x) = \begin{cases}
+        \frac{(1 - x^2)^n}{x_n}, \ -1 \leq x \leq 1 \\
+        0, \ |x| > 1
+    \end{cases}    
+    \]
+    where $c_n$ is chosen such that 
+    \[
+    \int_{-\infty}^{\infty}L_n(x)dx = 1.    
+    \]
+    With \[
+    1 = \frac{1}{c_n} \int_{-1}^1(1 - x^2)^n dx    
+    \]
+    we have that since the function is even and we are only picking values of $x \in [0,1]$ that $1 - x^2 \geq 1 - x$ 
+    \begin{align*}
+        c_n &= \int_{-1}^1 (1 - x^2)^n \\
+        &= 2 \int_0^1(1 - x^2)^n dx \\
+        &\geq 2 \int_0^1 (1 - x)^n dx \\
+        &= 2 \left[- \frac{(1 - x)^{n + 1}}{n + 1} \right]_0^1 = \frac{2}{n + 1}.
+    \end{align*}
+    Then, we already have that the first property of good kernels is trivially satisfied by our definition of $L_n(x)$ we just now have to check the second and third properties of good kernels: 
+    \begin{align*}
+        \int_{-\infty}^{\infty}|L_n(x)|dx &= \int_{-1}^1 \left|\frac{(1 - x^2)^n}{c_n}\right|dx \\
+        &= \frac{1}{c_n} \int_{-1}^1\left|(1 - x^2)^n\right|dx \\
+        &\numeq{a} \frac{1}{c_n}\int_{-1}^1\left|\sum\limits_{k = 0}^n{n \choose k}(-x^2)^k \right|dx \\
+        &\numleq{b} \frac{1}{c_n} \int_{-1}^1 \sum\limits_{k = 0}^n{n \choose k} \left|(-1)^kx^{2k} \right|dx \\
+        &\numeq{c} \frac{1}{c_n}\sum\limits_{k = 0}^n \int_{-1}^1\left|x^{2k}\right|dx \\
+        &= \frac{1}{c_n} \sum\limits_{k = 0}^n{n \choose k} \left[\frac{x^{2k + 1}}{2k + 1} \right]_{-1}^1 \\
+        &= \frac{1}{c_n} \sum\limits_{k = 0}^n \left(\frac{1}{2k + 1} - \frac{(-1)^{2k + 1}}{2k + 1}\right) < \infty
+    \end{align*}
+    as this is clearly a finite sum, so the integral of the kernel is bounded with steps $(a) -(c)$ justfied:
+    \begin{enumerate}[\indent(a)]
+        \item binomial theorem 
+        \item triangle inequality
+        \item can swap integral and finite sum. 
+    \end{enumerate}
+    Verifying the third quality of a good kernel family, select $\eta > 0$, and if $\eta \notin (0, 1]$ we have that the integral is $0$ as $f$ is zero everywhere outside, otherwise $(1- x^2)$ will be minimized at $\eta$, so 
+    \begin{align*}
+        \int_{|x| > \eta} |L_n(x)|dx &\leq \frac{1}{c_n} \int_{\eta}^1|(1 - x^2)^n|dx + \frac{1}{c_n}\int_{-1}^{\eta}|(1 - x^2)^n| dx\\
+        &\leq \frac{1}{c_n}\int_{\eta}^1|(1 - \eta^2)^n|dx + \frac{1}{c_n}\int_{-1}^{\eta}|(1 - \eta^2)^n|dx \\
+        &= \frac{1}{c_n} |(1 - \eta^2)^n|\left(\int_{\eta}^11dx + \int_{-1}^{\eta}1dx \right)\\
+        &\leq \frac{n + 1}{2} |(1 - \eta^2)^n|\left(\int_{\eta}^11dx + \int_{-1}^{\eta}1dx \right).
+    \end{align*}
+    If $\eta = 1$ the integral is $0$, and as $n \to \infty$
+    \[
+    \frac{n + a}{2}\cdot|(1 - \eta^2)^n| \xrightarrow[n \to \infty]{} 0   
+    \]
+    since $\eta \in (0, 1]$. Thus, the third property of a good kernel is true for $L_n$. Because $L_n$ is a good kernel family we have convergence for the convolution with a continuous function, so  
+    \[    
+   \lim\limits_{n \to \infty}(f*L_n)(x) = f(x) 
+    \]
+    and we have uniform convergence on the closed and bounded interval $\left[-\frac{1}{2}, \frac{1}{2}\right]$ as continuous functions are uniformly continuous on closed and bounded intervals. Hence, we are done. Now, all we haev to do is show that $(f*L_n)(x)$ is indeed a polynomial which it is because
+   \begin{align*}
+    (f*L_n)(x) &= \int_{-\infty}^{\infty}L_n(x - t)dt \\
+    &= \int_{-1}^1f(t)L_n(x - t)dt \\
+    &= \int_{-1}^1f(t) \frac{1}{c_n}(1 - (x - t)^2)^n dt \\
+    &= \frac{1}{c_n}\int_{-1}^1f(t)\sum\limits_{k = 0}^n{n \choose k }(-(x -t)^2)^k dt \\
+    &= \frac{1}{c_n}\sum\limits_{k =0}^n{n \choose k}(-1)^k\int_{-1}^1f(t)(x - t)^{2k}dt \\
+    &= \frac{1}{c_n}\sum\limits_{k = 0}^n{n \choose k}(-1)^k\int_{-1}^1f(t) \sum\limits_{j = 0}^{2k}x^j(-t)^{2k -j}dt \\
+    &= \frac{1}{c_n}\sum\limits_{k =0}^n{n \choose k}(-1)^k\sum\limits_{j = 0}^{2k}x^j(-1)^{2k -j }\int_{-1}^1f(t)t^{2k -j}dt
+   \end{align*} 
+   and this is a polynomial. 
+\end{proof}
+
+\section*{2.}
+\subsection*{a.}
+\begin{proof}
+   With $\hat{f}$ is compactly supported, it has Fourier series
+   \[
+   \hat{f}(\xi)\sim \sum\limits_{n = -\infty}^{\infty}\hat{\hat{f}}(n)e^{2 \pi i n \xi} = \sum\limits_{n = -\infty}^{\infty}f(n)e^{-2\pi in \xi}. 
+   \]
+   Throughout our calculations we will be interchaing the infinite sum and integral, and we are justified in doing so as the Fourier series is absolutely convergent:
+   \[
+    \sum\limits_{n = -\infty}^{\infty}\left|f(n)e^{-2\pi in \xi}\right| = \sum\limits_{n = -\infty}^{\infty}|f(n)| \leq \sum\limits_{n = -\infty}^{\infty} \frac{A}{1 + n^2} < \infty.
+   \]
+   Therefore, the sum is absolutely and uniformly convergent.  
+   With $f$ being of moderate decrease we may use the Fourier inversion formula for $f$, so 
+   \[
+   f(x) = \int_{-\infty}^{\infty}\hat{f}(\xi)e^{2 \pi i x \xi}d \xi 
+   \]
+   and thus with $\hat{f}$ being compactly supported on $\left[-\frac{1}{2}, \frac{1}{2}\right]$
+   \begin{align*}
+    f(x) &= \int_{-\infty}^{\infty}\hat{f}(\xi)e^{2 \pi ix \xi}d \xi \\
+    &= \int_{-\infty}^{\infty}\mathbbm{1}_{\xi \in \left[-\frac{1}{2}, \frac{1}{2}\right]}\sum\limits_{n = -\infty}^{\infty}f(n)e^{-2 \pi i n \xi}e^{2 \pi i x \xi}d \xi \\
+    &= \int_{-\infty}^{\infty}\mathbbm{1}_{\xi \in \left[-\frac{1}{2}, \frac{1}{2}\right]}\sum\limits_{n = -\infty}^{\infty}f(n)e^{-2 \pi i \xi (n - x)}d \xi \\
+    &= \int_{-\frac{1}{2}}^{\frac{1}{2}}\sum\limits_{n = -\infty}^{\infty}f(n)e^{-2 \pi i \xi(n - x)}d\xi \\
+    &= \sum\limits_{n = -\infty}^{\infty}f(n)\int_{-\frac{1}{2}}^{\frac{1}{2}}e^{-2 \pi i \xi(n - x)}dx \\
+    &= \sum\limits_{n = -\infty}^{\infty}f(n)\cdot -\frac{1}{2 \pi i (n - x)}\left[e^{-2\pi i \xi(n - x)}\right]_{-\frac{1}{2}}^{\frac{1}{2}} \\
+    &= - \sum\limits_{n =-\infty}^{\infty}f(n)\cdot \frac{1}{2 \pi i (n - x)}(e^{-\pi i(n - x)} - e^{\pi i(n - x)}) \\
+    &= -\sum\limits_{n = -\infty}^{\infty}f(n)\cdot \frac{1}{2 \pi i(n - x)}\cdot -2 \sin(\pi(n - x)) \\
+    &= \sum\limits_{n = -\infty}^{\infty}f(n) \frac{\sin(\pi(n - x))}{\pi (n - x)} \\
+    &= \sum\limits_{n = -\infty}^{\infty}f(n)K(x - n).
+   \end{align*}
+   With a simple change of variables at the end. 
+\end{proof}   
+
+\subsection*{c.}
+\begin{proof}
+    Looking at the problem, we can begin by taking the integral
+    \[
+    \int_{-\infty}^{\infty}K(x - n)^2dx = \int_{-\infty}^{\infty}\frac{\sin^2(\pi(x - n))}{\pi^2(x - n)^2 }dx = 1    
+    \]
+    as previously shown. Therefore,  
+    \begin{align*}
+        \int_{-\infty}^{\infty}|f(x)|^2dx &= \int_{-\infty}^{\infty} \sum\limits_{n = -\infty}^{\infty}f(n)K(x - n)\sum\limits_{m = -\infty}^{\infty}f(m)K(x - m) dx \\
+        &= \sum\limits_{n = -\infty}^{\infty}|f(n)|^2\int_{-\infty}^{\infty}K(x - n)^2dx \\
+        &= \sum\limits_{n = -\infty}^{\infty}|f(n)|^2.
+    \end{align*}
+    We can interchange the sum and the integral by the uniform and absolute convergence of the sum with the moderate decrease of the function, as in the first part of the problem.  
+\end{proof}
+
+
+\section*{3.}
+\begin{proof} 
+
+    With $f$ compactly supported by the hint, we have the following: $f$ is a trigonometric polynomial. Therefore, we can write 
+    \[
+    f(x) = \sum\limits_{|n| \leq N} a_ne^{inx}.    
+    \]
+    We then have
+    \[
+    \hat{f}(m) = \int_{-\infty}^{\infty}f(x)e^{-imx} dx = \int_{-\pi} \sum\limits_{|n| \leq N}a_n e^{inx}e^{-imx}dx = \sum\limits_{|n|\leq N}\int_{-\pi}^{\pi}a_ne^{ix(n - m)}dx
+    \]
+    and this is equal only if $m = n$. So 
+    \[
+    \hat{f}(m) = a_m    
+    \]
+    and if the function is only equal to a constant it cannot be compactly supported unless it is equal to $0$ and we get the desired result. 
+\end{proof}
+
+\section*{4.}
+\begin{proof}
+    We begin with the inequalities
+    \[
+    \frac{1}{2} \int_{-\infty}^{\infty}x^2|f(x)|^2dx \leq \int_{I_1}x^2|f(x)|^2dx \leq \left(\frac{L_1}{2}\right)^2 \int_{-\infty}^{\infty}|f(x)|^2dx    
+    \]
+    \[
+        \frac{1}{2} \int_{-\infty}^{\infty}\xi^2|\hat{f}(\xi)|^2d\xi \leq \int_{I_2}\xi^2|\hat{f}(\xi)|^2d\xi \leq \left(\frac{L_2}{2}\right)^2 \int_{-\infty}^{\infty}|\hat{f}(\xi)|^2d\xi.
+    \]
+    Considering if $\int_{-\infty}^{\infty} |f(x)|^2 dx \neq 1$ we can always normalize it, we only need to consider $\int_{-\infty}^{\infty}|f(x)|^2dx = 1$ and using Plancherel's theorem since $f \in \mathcal{S}(\mathbb{R})$ we have $||f|| = ||\hat{f}||$, so 
+    \[
+        \frac{1}{2} \int_{-\infty}^{\infty}x^2|f(x)|^2dx \leq \left(\frac{L_1}{2} \right)^2
+    \]
+    \[
+        \frac{1}{2} \int_{-\infty}^{\infty}\xi^2|\hat{f}(\xi)|^2d\xi \leq \left(\frac{L_2}{2}\right)^2 \int_{-\infty}^{\infty}|\hat{f}(\xi)|^2d\xi = \left(\frac{L_2}{2}\right)^2 \int_{-\infty}^{\infty}|f(x)|^2dx = \left(\frac{L_2}{2}\right)^2
+    \]
+   By the Heisenberg uncertainty principle
+   \[
+   \frac{1}{4} \cdot \frac{1}{16\pi^2} \leq \frac{1}{2}\int_{-\infty}^{\infty}|f(x)|^2dx \cdot \frac{1}{2}\int_{-\infty}^{\infty}\xi^2|\hat{f}(\xi)|^2d \xi \leq  \left(\frac{L_1}{2}\right)^2\cdot \left(\frac{L_2}{2}\right)^2
+   \]
+   which implies 
+   \[
+   \frac{1}{4}\cdot \frac{1}{16\pi^2} \leq \frac{L_1^2L_2^2}{16} 
+   \]
+   and thus
+   \[
+   \frac{1}{2\pi}\leq L_1L_2 
+   \]
+\end{proof}
+\section*{5.}
+\subsection*{a.}
+\begin{proof}
+    Initially, using the properties of inner products we have 
+    \begin{align*}
+        (L(f(x)), f(x)) &= (-f''(x) + x^2f(x), f(x)) \\
+        &= -(f''(x), f(x)) + (x^2f(x), f(x)) \\
+        &= -\int_{-\infty}^{\infty}f''(x)\overline{f(x)}dx + \int_{-\infty}^{\infty}x^2f(x)\overline{f(x)}dx \\
+        &= -\int_{-\infty}^{\infty}f''(x)\overline{f(x)}dx + \int_{-\infty}^{\infty}x^2|f(x)|^2dx.
+    \end{align*}
+    Perform integration by parts on the first integral by taking $u = \overline{f(x)}$ and $dv = f''(x)$:
+    \begin{align*}
+        (L(f(x)), f(x)) &= -\left([\overline{f(x)}f'(x)]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}f'(x)\overline{f'(x)}dx \right) + \int_{-\infty}^{\infty}x^2|f(x)|^2dx \\
+        &= \int_{-\infty}^{\infty}|f'(x)|^2dx + \int_{-\infty}^{\infty}x^2|f(x)|^2dx.
+    \end{align*}
+    The common arithmetic mean-geometric mean inequality gives us 
+    \begin{align*}
+        (L(f(x)), f(x)) &= \int_{-\infty}^{\infty}|f'(x)|^2dx + \int_{-\infty}^{\infty}x^2|f(x)|^2dx \\
+        &\geq \left(4 \int_{-\infty}^{\infty}|f'(x)|^2dx \int_{-\infty}^{\infty}x^2|f(x)|^2dx \right)^{\frac{1}{2}} \\
+        &= 2\left( \int_{-\infty}^{\infty}|f'(x)|^2dx \int_{-\infty}^{\infty}x^2|f(x)|^2dx \right)^{\frac{1}{2}}
+    \end{align*}
+    With $f \in \mathcal{S}(\mathbb{R})$ we also have $f' \in \mathcal{S}(\mathbb{R})$ and therefore, by the properties of the Fourier transform listed in Proposition 1.2 (pg. 136) we have
+    \[
+    \int_{-\infty}^{\infty}|f'(x)|^2dx = \int_{-\infty}^{\infty}|2 \pi i \xi \hat{f}(\xi)|^2dx = 4 \pi^2\int_{-\infty}^{\infty}\xi^2|\hat{f}(\xi)|^2d\xi.    
+    \]
+    We can plug this into our existing inequality to get
+    \begin{align*}
+        (L(f(x)), f(x)) &\geq 2\left( \int_{-\infty}^{\infty}|f'(x)|^2dx \int_{-\infty}^{\infty}x^2|f(x)|^2dx \right)^{\frac{1}{2}} \\
+        &= 2 \left(4 \pi^2 \int_{-\infty}^{\infty}\xi^2|\hat{f}(\xi)|^2d\xi\int_{-\infty}^{\infty}x^2|f(x)|^2dx \right)^{\frac{1}{2}} \\
+        &= 4\pi \left(\int_{-\infty}^{\infty}\xi^2|\hat{f}(\xi)|^2d \xi \int_{-\infty}^{\infty}x^2|f(x)|^2dx \right)^{\frac{1}{2}} \\
+        &\geq 4 \pi \frac{(f(x), f(x))}{(16\pi^2)^{\frac{1}{2}}} = (f(x), f(x))
+    \end{align*}
+    using the proof and result from the discussion on Heisenberg's uncertainty principle. 
+\end{proof}
+\subsection*{b.}
+\subsubsection*{i.}
+\begin{proof}
+    Using the properties of inner products we have 
+    \begin{align*}
+        (A(f(x)), g(x)) &= (f'(x) + xf(x), g(x)) \\
+        &= (f'(x), g(x)) + (xf(x), g(x)) \\
+        &= \int_{-\infty}^{\infty}f'(x)\overline{g(x)}dx + \int_{-\infty}^{\infty}xf(x) \overline{g(x)}dx \\
+        &= \left[f(x)\overline{g(x)}\right]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}f(x)\overline{g'(x)}dx + \int_{-\infty}^{\infty}xf(x)\overline{g(x)}dx.
+    \end{align*}
+    Since $f, g \in \mathcal{S}(\mathbb{R})$ we have that 
+    \[
+       [f(x)\overline{g(x)}]_{-\infty}^{\infty} = 0 
+    \]
+    hence
+    \begin{align*}
+        (A(f(x)), g(x)) &= \left[f(x)\overline{g(x)}\right]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}f(x)\overline{g'(x)}dx + \int_{-\infty}^{\infty}xf(x)\overline{g(x)}dx \\
+        &= - \int_{-\infty}^{\infty}f(x)\overline{g'(x)}dx + \int_{-\infty}^{\infty}xf(x)\overline{g(x)}dx \\
+        &= (f(x), -g'(x)) + (f, xg(x)) \\
+        &= (f(x), -g'(x) + xg(x)) = (f(x), A^*g(x)).
+    \end{align*}
+\end{proof}
+\subsubsection*{ii.}
+\begin{proof}
+    Once again using the properties of inner product 
+    \begin{align*}
+        (A(f(x)), A(f(x))) &= (f'(x) + xf(x), f'(x) + xf(x)) \\
+        &= (f'(x), f'(x)) + (f'(x), xf(x)) + (xf(x), f'(x)) + (xf(x), xf(x)) \\
+        &= \int_{-\infty}^{\infty}|f'(x)|^2dx + \int_{-\infty}^{\infty}f'(x)x\overline{f(x)}dx + \int_{-\infty}^{\infty}xf(x)\overline{f'(x)}dx + \int_{-\infty}^{\infty}x^2|f(x)|^2.
+    \end{align*}
+    Breaking the first integral apart using integration by parts with $u = f'(x)$ and $dv = \overline{f'(x)}$ we have 
+    \begin{align*}
+        \int_{-\infty}^{\infty}|f'(x)|^2dx &= [f'(x)\overline{f(x)}]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}f''(x)\overline{f(x)}dx \\
+        &= 0 - \int_{-\infty}^{\infty}f''(x)\overline{f(x)}dx \\
+        &= -(f''(x), f(x))
+    \end{align*}
+    with $[f'(x)\overline{f(x)}]_{-\infty}^{\infty} = 0$ as all derivatives of $f$ are in the Schwartz space. Using integration by parts with $u = f(x)\overline{f(x)}$ and $dv = 1$ we discover the neat equality
+    \begin{align*}
+        -(f(x), f(x)) &= -\int_{-\infty}^{\infty}|f(x)|^2dx\\
+        &= -\int_{-\infty}^{\infty}f(x)\overline{f(x)}dx \\
+        &= -\left([xf(x)\overline{f(x)}]_{-\infty}^{\infty} - \int_{-\infty}^{\infty}x(f'(x)\overline{f(x)} + f(x)\overline{f'(x)})dx \right) \\
+        &= \int_{-\infty}^{\infty}xf'(x)\overline{f(x)}dx + \int_{-\infty}^{\infty}xf(x)\overline{f'(x)}dx
+    \end{align*}
+    using that it is proven in the book that if $f \in \mathcal{S}(\mathbb{R})$, then $xf\in \mathcal{S}(\mathbb{R})$. Thus, we have that 
+    \begin{align*}
+        (A(f(x)), A(f(x))) &= \int_{-\infty}^{\infty}|f'(x)|^2dx + \int_{-\infty}^{\infty}f'(x)x\overline{f(x)}dx + \int_{-\infty}^{\infty}xf(x)\overline{f'(x)}dx + \int_{-\infty}^{\infty}x^2|f(x)|^2 \\
+        &= -(f''(x), f(x)) -(f(x), f(x)) + (x^2f(x), f(x)) \\
+        &= (-(f'(x) +xf(x))' + xf'(x) + x^2f(x), f(x)) \\
+        &= (A^*(f'(x) + xf(x)), f(x)) \\
+        &= (A^*(A(f(x))), f(x)).
+    \end{align*} 
+\end{proof}
+\subsubsection*{iii.}
+\begin{proof}
+    The proof follows:
+    \begin{align*}
+        A^*A &= -\frac{d}{dx}\left(\frac{d}{dx} + x\right) + x\left(\frac{d}{dx} + x \right) \\
+        &= -\frac{d^2}{dx^2} - 1 + 1 + x^2 \\
+        &= -\frac{d^2}{dx^2} + x^2 = L.
+    \end{align*}
+\end{proof}
+\subsection*{c.}
+\begin{proof}
+    Suppose 
+    \[
+    \int_{-\infty}^{\infty}|f(x)|^2dx = 1.    
+    \]
+    Through much simplification, using the fact given in the problem, we obtain the result 
+    \begin{align*}
+        0 &\leq (A_t^*(a_t(f(x))), f(x)) \\
+        &= (A_t^*(f'(x) + txf(x)), f(x)) \\
+        &= (-f''(x) - tf(x) -txf'(x) + tx(f'(x)+txf(x)), f(x)) \\
+        &= (-f''(x) -tf(x) + t^2x^2f(x), f(x)) \\
+        &= (-f''(x), f(x)) + (-tf(x), f(x)) + (t^2x^2f(x), f(x)) \\
+        &= -\int_{-\infty}^{\infty}f''(x)\overline{f(x)}dx - \int_{-\infty}^{\infty}tf(x)\overline{f(x)}dx + \int_{-\infty}^{\infty}t^2x^2f(x)\overline{f(x)}dx \\
+        &= t^2\int_{-\infty}^{\infty}x^2|f(x)|^2dx - t + \int_{-\infty}^{\infty}|f'(x)|^2dx
+    \end{align*}
+    making use of our initial assumption of $(f(x), f(x)) = 1$ and that we found in the previous problem that $(f'(x), f'(x)) = (f''(x), \overline{f(x)})$. Notice that we now have a quadratic with variable $t$. By high school algebra, the discriminant must be non-positive, so 
+    \[
+    1^2 - 4\int_{-\infty}^{\infty}x^2|f(x)|^2dx\int_{-\infty}^{\infty}|f'(x)|^2dx \leq 0    
+    \]
+    hence 
+    \[
+    \frac{1}{4}\leq\int_{-\infty}^{\infty}x^2|f(x)|^2dx\int_{-\infty}^{\infty}|f'(x)|^2dx    
+    \]
+\end{proof}
+\section*{6.}
+\begin{proof}
+With $f, g \in \mathcal{S}(\mathbb{R})$ we have that $\hat{f}, \hat{g} \in \mathcal{S}(\mathbb{R})$ as a result from the book. Also, we may employ the Fourier transform which gives us 
+\[
+ \hat{f}(\xi) = \int_{-\infty}^{\infty}f(x)e^{-2 \pi i x \xi}d\xi = \int_{-\infty}^{\infty} e^{-\frac{\pi(x + n_1)^2}{\delta_1}}e^{-2 \pi ix \xi}d\xi
+\]
+\[
+ \overline{\hat{g}(\xi)} = \overline{\int_{-\infty}^{\infty} g(x)e^{-2 \pi i x \xi}d\xi} = \overline{\int_{-\infty}^{\infty}e^{-\frac{\pi(x + n_2)^2}{\delta_2}}e^{-2 \pi i \xi x}d\xi} = \int_{-\infty}^{\infty}e^{-\frac{\pi(x + n_2)^2}{\delta_2}}e^{2 \pi i \xi x}d\xi.
+\]
+Therefore, we get the result
+\[
+ \int_{-\infty}^{\infty}\hat{f}(\xi)\hat{g}(\xi)d \xi= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{\pi(x + n_1)^2}{\delta_1}}e^{-2 \pi ix \xi}d\xi \int_{-\infty}^{\infty}e^{-\frac{\pi(x + n_2)^2}{\delta_2}}e^{2 \pi i \xi x}d\xi dx\]\[ = \int_{-\infty}^{\infty}f(x)g(x)\int_{-\infty}^{\infty}e^{-2 \pi ix \xi}d\xi\int_{-\infty}^{\infty}e^{2 \pi i \xi x} d \xi dx = \int_{-\infty}^{\infty}f(x)g(x).\]
+
+\end{proof}
+
+
+
+
+\section*{7.}
+\begin{proof}
+    Since $f \in \mathcal{M}(\mathbb{R})$ we automatically have that $f$ is continuous, and thus it is uniformly continuous in a closed and bounded interval of any length $2R$. Outside of any closed and bounded interval, when $|x| > R$, we have for any $A > 0$
+    \[
+    \frac{A}{1 + x^2} \leq \frac{A}{1 + R^2}.
+    \]
+    With the knowledge that $K_{\delta}$ is a good kernel family and hence $\int_{-\infty}^{\infty}K_{\delta}(x)dx = 1$, inspecting the convolution with $f$ we have 
+    \[
+    (f*K_{\delta})(x) - f(x) = \int_{-\infty}^{\infty}K_{\delta}(t)f(x - t)dt - 1\cdot f(x) = \int_{-\infty}^{\infty}K_{\delta}(t)f(x - t)dt - \int_{-\infty}^{\infty}K_{\delta}(t)dt\cdot f(x) = \int_{-\infty}^{\infty}K_{\delta}(t)(f(x - t) -f(x))dt.
+    \]    
+    Note that the kernel family referred to in the problem is $K_{\delta}(x) = \delta^{-\frac{1}{2}}e^{-\frac{\pi x^2}{\delta}}$ for $\delta > 0$, so 
+    \[
+    |K_{\delta}(x)| = K_{\delta}(x) \geq 0.    
+    \]
+    Therefore, for $|x - y| < R$
+    \begin{align*}
+        |(f*K_{\delta})(x) - f(x)| &= \left|\int_{-\infty}^{\infty}K_{\delta}(t)(f(x - t) - f(x))dt\right| \\
+        &= \left|\int_{|t| > R}\int_{-\infty}^{\infty}K_{\delta}(t)(f(x - t) - f(x))dt + \int_{|t| \leq R}\int_{-\infty}^{\infty}K_{\delta}(t)(f(x - t) - f(x))dt\right| \\
+        &\leq \int_{|t| > R}\int_{-\infty}^{\infty}K_{\delta}(t)|f(x - t) - f(x)|dt + \int_{|t| \leq R}\int_{-\infty}^{\infty}K_{\delta}(t)|f(x - t) - f(x)|dt
+    \end{align*}
+    with the first integral small by the the third property of good kernels, and the second integral small by the uniform continuity of $f$ on a closed and bounded interval. Thus, we have convergence of $f*K_{\delta}$ to $f$ for functions of moderate decrease. 
+\end{proof}
+
+\end{document}

@@ -1,0 +1,439 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand{\mycomment}[1]{}
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+
+
+\title{Math 133 Homework 4}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1.}
+\subsection*{a.}
+\begin{proof}
+    We will show that the Fourier series of $f$, $\sum\limits_{n = -\infty}^{\infty}a_n(L)e^{\frac{2 \pi inx }{L}}$ converges uniformly to $f(x)$. With $\frac{L}{2} > M$ we are given that integral $\frac{1}{L}\int_{-\frac{L}{2}}^{\frac{L}{2}} f(x)e^{-\frac{2 \pi i nx }{L}} dx= \frac{1}{L}\hat{f}\left(\frac{n}{L}\right) $, then
+    \begin{align*}
+        \left|\sum\limits_{n = -\infty}^{\infty}a_n(L) e^{\frac{2 \pi i nx}{L}}\right| &\numleq{a} \sum\limits_{n = -\infty}^{\infty}|a_n(L)| \\
+        &= \sum\limits_{-\infty}^{\infty} \frac{1}{L} \left|\hat{f}\left(\frac{n}{L} \right) \right| \\
+        & \numleq{b} \frac{1}{L} \sum\limits_{n = -\infty}^{\infty} \frac{A}{1 + \left(\frac{n}{L}\right)^2} \\
+        &= \frac{1}{L} \sum\limits_{n = -\infty}^{\infty} \frac{A}{1 + \frac{n^2}{L^2}} \\
+        &= \frac{2L^2A}{L} \sum\limits_{n = 1}^{\infty} \frac{1}{L^2 + n^2} + \frac{1}{L^2} \\
+        &\numleq{c} 2 L A \sum\limits_{n = 1}^{\infty} \frac{1}{n^2} + \frac{1}{L^2} < \infty.
+    \end{align*}
+    With steps $(a)-(c)$ justfied:
+    \begin{enumerate}[\indent(a)]
+       \item triangle inequality
+       \item $\hat{f}$ having moderate decrease
+       \item comparison test.  
+    \end{enumerate}
+    Since $f$ is continuous on the circle and $\sum\limits_{n = -\infty}^{\infty} |\hat{f}_n(n)| < \infty$ is absolutely convergent, then by Cororllary 2.3, we have that the Fourier series converges uniformly to $f$ giving us
+    \[
+    \sum\limits_{n = -\infty}^{\infty} a_n(L)e^{\frac{2 \pi i nx}{L}} = f(x).   
+    \]
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+   Using the continuity of the function $F$, we have that $F$ is Riemann integrable, so if we approximate it by its Riemann sum, we have that $\forall \epsilon > 0$, there exists $\delta_1 > 0$ such that $\forall \delta < \delta_1$ we have 
+   \[
+   \left|\int_{-N}^N F(\xi) d \xi - \delta \sum\limits_{|n| \leq \frac{N}{\delta}}F(\delta n) \right| < \epsilon. 
+   \]
+    With the triangle inequality and using the moderate decrease of $F(x)$ for some $A > 0$ we can decompose our initial problem into 
+    \begin{align*}
+        \left|\int_{-\infty}^{\infty}F(\xi)d \xi - \lim\limits_{\delta \to 0, \delta > 0}\delta \sum\limits_{n = -\infty}^{\infty}F(\delta n) \right| &= \left|\int_{|\xi| > N}F(\xi)d \xi + \int_{-N}^N F(\xi)d \xi - \lim\limits_{\delta \to 0, \delta > 0}\delta \sum\limits_{|n| \leq \frac{N}{\delta}} F(n \delta) + \lim\limits_{\delta \to 0, \delta > 0}\delta \sum\limits_{|n| \frac{N}{\delta}}F(n \delta) \right| \\
+        &\leq \left|\int_{|\xi| > N} F(\xi)d \xi - \lim\limits_{\delta \to 0, \delta > 0}\delta \sum\limits_{|n| \leq \frac{N}{\delta}}F(n \delta) \right| + \left|\int_{-N}^NF(\xi) d \xi \right| + \left|\lim\limits_{\delta \to 0, \delta > 0}\delta \sum\limits_{|n| >  \frac{N}{\delta}} F(n \delta) \right| \\
+        &< \epsilon + \int_{-N}^N|F(\xi)|d \xi + \lim\limits_{\delta \to 0, \delta > 0}\delta \sum\limits_{|n| > \frac{N}{\delta}} |F(n \delta)| \\
+        & \leq \epsilon + \int_{-N}^N \frac{A}{1 + \xi^2} d\xi +\lim\limits_{\delta \to 0, \delta > 0} \delta\sum\limits_{|n| > \frac{N}{\delta}}\frac{A}{1 + n^2\delta^2} \\
+        & < \epsilon + 2 A\int_{0}^N  \frac{1}{\xi^2} d \xi +\lim\limits_{\delta \to 0, \delta > 0} 2\delta \sum\limits_{|n| > \frac{N}{\delta}} \frac{A}{n^2 \delta^2} \\
+        & = \epsilon + \frac{2A}{N} +\lim\limits_{\delta \to 0, \delta > 0} 2\delta A \int_{N}^{\infty} \frac{1}{x^2} dx \\
+        &= \epsilon + \frac{2A}{N} -\lim\limits_{\delta \to 0, \delta > 0} \frac{2 \delta A}{N} 
+    \end{align*} 
+    using that 
+    \[
+        2 \delta \sum\limits_{|n| > \frac{N}{\delta}} \frac{A}{n^2 \delta^2} = 2\delta A \int_{N}^{\infty} \frac{1}{x^2} dx
+    \]
+    as it is the Riemann sum and we replace $\delta^2n^2$ with $x^2$. Taking $N \to \infty$ we have 
+    \[
+        \left|\int_{-\infty}^{\infty}F(\xi)d \xi - \delta \sum\limits_{n = -\infty}^{\infty}F(\delta n) \right| < \epsilon
+    \]
+    and thus, 
+    \[
+       \int_{-\infty}^{\infty}F( \xi) d \xi = \lim_{\delta \to 0, \delta > 0} \delta \sum\limits_{n = -\infty}^{\infty}F(\delta n). 
+    \]
+\end{proof}
+\subsection*{c.}
+\begin{proof}
+    Using the previous problems, if we take $F(\delta n) = \hat{f}(n \delta)e^{2 \pi i n \delta x}$, and since part (a) holds for all $\delta$, we then have 
+    \[
+    f(x) = \lim\limits_{\delta \to 0, \delta > 0} \delta \sum\limits_{n = -\infty}^{\infty} \hat{f}(n \delta)e^{2 \pi i n \delta x} = \int_{ -\infty}^{\infty} \hat{f}(\xi)e^{2 \pi i x \xi} d\xi. 
+    \]
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+    Calculating the Fourier transform of $f$ we get 
+    \[
+    \hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2 \pi i x \xi} dx    
+    \]
+    but $f$ is $0$ outside of the interval $[-1, 1]$ and $1$ in the interval, so the integral is 
+    \[
+    \hat{f}(\xi) = \int_{-1}^{1} e^{-2 \pi i x \xi} dx. 
+    \]
+    Using the $u-$substitution $u = -2 \pi i x \xi$ we get 
+    \[
+        \int_{-1}^{1} e^{-2 \pi i x \xi} dx = -\frac{1}{2 \pi i \xi}\left[e^{-2 \pi i x \eta} \right]_{-1}^1 = -\frac{1}{2 \pi i \xi}\left(e^{-2 \pi i \xi} - e^{2 \pi i \xi} \right).
+    \]
+    We then use Euler's formula and the fact that $\cos$ is even and $\sin$ is odd to derive
+    \[e^{-2 \pi i \xi} - e^{2 \pi i \xi} = \cos(- 2 \pi \xi) + i \sin(-2 \pi \xi) - \cos(2 \pi \xi) - i \sin(2 \pi \xi) = -2i \sin( 2\pi \xi).\]
+    Thus, our integral is 
+    \[
+    \hat{f}(\xi) = -\frac{1}{2 \pi i \xi}\left(e^{-2 \pi i \xi} - e^{2 \pi i \xi} \right) = \frac{2 i \sin(2 \pi \xi)}{2 \pi i \xi} = \frac{\sin(2 \pi \xi)}{\pi \xi}. 
+    \] 
+
+    In our calculation of $\hat{g}(\xi)$ we will once again use Euler's formula, the first part of the problem, and the same $u-$substitution. Once again $g(x) = 0$ for all $x \notin [-1, 1]$ and $g(x) = 1 - |x|$ otherwise. Therefore, our integral is 
+    \[
+    \hat{g}(\xi) = \int_{-\infty}^{\infty} g(x)e^{-2 \pi i x \xi} dx = \int_{-1}^1 (1 - |x|)e^{-2 \pi i x \xi}dx = \int_{-1}^1e^{- 2 \pi i x \xi} - \int_0^1xe^{-2 \pi i x \xi} dx + \int_{-1}^0 xe^{-2 \pi i x \xi}dx.   
+    \]
+    Fortunately we've already solved the first integral and we can proceed by integration by parts on the other two integrals taking $u = x$ and $dv = e^{- 2\pi i x \xi}$ repeatedly. Doing this over and over again
+    \begin{align*}
+        \hat{g}(\xi) &= \int_{-1}^1e^{- 2 \pi i x \xi} - \int_0^1xe^{-2 \pi i x \xi} dx + \int_{-1}^0 xe^{-2 \pi i x \xi}dx \\
+        &= \frac{\sin(2 \pi \xi)}{\pi \xi} - \frac{\sin(2 \pi \xi)}{2 \pi \xi} + \frac{i \sin(2 \pi \xi)}{4 \pi^2 \xi^2} - \frac{i \cos( 2\pi \xi)}{2 \pi \xi} \\
+        &- \frac{\cos(2 \pi \xi)}{4 \pi^2 \xi^2} + \frac{1}{4 \pi^2 \xi^2} - \frac{\sin(2\pi \xi)}{2 \pi \xi} - \frac{i \sin(2 \pi \xi)}{4 \pi^2\xi^2} - \frac{\cos( 2\pi \xi)}{4 \pi^2 \xi^2} + \frac{i \cos(2 \pi \xi)}{2 \pi \xi} + \frac{1}{4 \pi^2 \xi^2}\\
+        &= -\frac{2 \cos(2 \pi \xi) - 1}{4 \pi^2 \xi^2}\\
+        &= -\frac{\cos(2 \pi \xi) - 1}{2 \pi^2 \xi^2}.
+    \end{align*}
+    We now use the trig identity that $\cos(2 \theta) = \cos^2(\theta) - \sin^2(\theta)$ to state
+    \begin{align*}
+        \hat{g}(\xi) &= -\frac{\cos(2 \pi \xi) - 1}{2 \pi^2\xi^2}\\
+        &= -\frac{\cos^2(\pi \xi) - \sin^2(\pi \xi) - 1}{2 \pi^2\xi^2} \\
+        &= \frac{1 -\cos^2(\pi \xi) + \sin^{2}(\pi \xi) }{2 \pi^2 \xi^2} \\
+        &= \frac{2 \sin^2(\pi \xi)}{2 \pi^2 \xi^2} \\
+        &= \left( \frac{\sin(\pi \xi)}{\pi \xi} \right)^2.
+    \end{align*}
+\end{proof}
+
+\section*{4.}
+\subsection*{a.}
+\begin{proof}
+   For the case where $x < a$ or $x > b$, then $f(x) = 0$ always and thus $f^{(n)}(x) = 0$ always. When $a < x < b$ we will prove by induction on $n$ that $f^{(n)}(x)$ is of the form $P_{2n}\left(-\frac{1}{x - a} - \frac{1}{b - x} \right)e^{-\frac{1}{x - a} - \frac{1}{b - x}}$ a polynomial of degree $2n$. For the base case we have that 
+   \[
+   f^{(1)}(x) = e^{- \frac{1}{x - a} - \frac{1}{b - x}}  \frac{d}{dx} \left(- \frac{1}{x - a} - \frac{1}{b - x} \right) = e^{- \frac{1}{x - a} - \frac{1}{b - x}}\left( \frac{1}{( x- a)^2} - \frac{1}{(b - x)^2}\right) 
+   \] 
+   which is of the desired form. Now, Suppose $f^{(n)}(x)$ is of the desired form. Now, note that for any polynomials of the form $P_1(- \frac{1}{x - a} - \frac{1}{b - x}), P_2( - \frac{1}{x - a} - \frac{1}{b - x})$ if we multiply these polynomials together we get another polynomial of the same type back. If we derivate a polynomial of this form we get a polynomial of the same form, and the same is true for addition and subtraction. So, the set of polynomials $P(- \frac{1}{x - a} - \frac{1}{b - x})$ is easily seen to be closed under derivation, multiplication, subtraction and addition. Therefore, we have that 
+   \[
+    f^{(n + 1)}(x) = \frac{d}{dx}f^{(n)}(x) =\frac{d}{dx}  e^{-\frac{1}{x - a} - \frac{1}{b - x}}P_{2n}\left( - \frac{1}{x - a} - \frac{1}{ b - x} \right).
+    \]
+    Using the product rule to take the derivative of this we have  
+    \[
+        f^{(n + 1)}(x) = e^{-\frac{1}{x - a} - \frac{1}{b - x}} \left( \frac{1}{(x - a)^2} - \frac{1}{(b - x)^2}\right)P_{2n}\left( - \frac{1}{x - a} - \frac{1}{ b - x} \right) + e^{-\frac{1}{x - a} - \frac{1}{b - x}}P_{2n}'\left( - \frac{1}{x - a} - \frac{1}{ b - x} \right)
+    \]
+    but since polynomials of this form are closed under addition, multiplication, and derivation, we have 
+    \[
+        e^{-\frac{1}{x - a} - \frac{1}{b - x}} \left(\left( \frac{1}{(x - a)^2} - \frac{1}{(b - x)^2}\right)P_{2n}\left( - \frac{1}{x - a} - \frac{1}{ b - x} \right) + P_{2n}'\left( - \frac{1}{x - a} - \frac{1}{ b - x} \right)\right)    
+    \]
+    is of our desired form. Note that $x < b$ and $x > a$ are always in this case, so we never have to deal with undefinedness. For the last two cases we have to consider when $x$ is near $a$ and when $x$ is near $b$. If we are approaching $a$ from below, or $b$ from above, then we know that the derivative is always $0$. Otherwise, note that we can rewrite 
+    \[
+    f(x) = e^{-\frac{1}{x - a} - \frac{1}{b - x}} = e^{- \frac{b - a}{(x - a)(b - x)}}   
+    \]
+    and if we take $u^2 = -\frac{(x - a)(b - x)}{b - a}$ then the problem becomes the behavior of
+    \[
+    f(u) = e^{-\frac{1}{u^2}}    
+    \] 
+    as we approach $0$ which we showed on a previous homework was infinitely differentiable. Therefore, we have that $f(x)$ is infinitely differentiable. 
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Consider the function 
+    \[
+    F(x) = c \int_{-\infty}^x f(t) dt    
+    \]
+    where $f(t)$ is the same as in the previous problem and $c$ acts as a normalization constant. For all $t \leq a$ we have that $f(t) = 0$, so if $x \leq a$, then 
+    \[
+    F(x) = c \int_{-\infty}^x f(t) dt = c \int_{-\infty}^x 0dt = 0.     
+    \]
+    With the function bounded and continuous we have $c$ as a normalization constant such that for $x \geq b$ we have 
+    \[
+    F(x) = c \in_{a}^b f(t)dt = c \int_{-\infty}^{\infty} f(t) dt = 1.    
+    \]
+    The function is strictly increasing as we have that $f(t)$ is greater than $0$ always, so the integral is never negative for any interval and thus the integral as constructed captures more and more of $f(t)$. The function is infinitely differentiable, as $f(t)$ is infinitely differentiable on $\mathbb{R}$ and we can use Fundamental theorem of calculus.  
+\end{proof}
+\subsection*{c.}
+\begin{proof}
+   For $\delta > 0$ small such that $a+ \delta < b - \delta$ consider 
+   \[
+   g(x) = \begin{cases}
+    f(x), \ x \leq a \text{ or } x \geq b \\
+    c' \int_{a + \delta}^{b - \delta} f(t),  \ x \in [a + \delta, b - \delta] \\
+    f \left( \frac{x - a}{\delta}\right),  \ x \in [a, a + \delta] \\
+    f\left(\frac{b - x}{\delta} \right) , \  x \in [b - \delta, b]
+   \end{cases} 
+   \] 
+   where $c'$ is a normalization constant similar to the previous part of the problem to ensure that the integral is equal to $1$. Notice that for $x \in [a, a + \delta]$ and $x \in [b - \delta, b]$ we have that 
+   \[
+   g(x) = f \left(\frac{x - a}{\delta} \right) = e^{- \frac{\delta}{x - a - \delta a}} e^{ - \frac{\delta}{\delta b - x + a}}
+   \]
+   and
+   \[
+   g(x) = f \left( \frac{b - x}{\delta} \right) = e^{- \frac{\delta}{b - x - \delta a}}e^{- \frac{\delta}{\delta b - b + x}} 
+   \]
+   with our selection ensuring the $g$ is always defined in $[a, a + \delta]$ and $[b - \delta, b]$ and since $e^{-x}$ is always monotonically decreasing and $e^x$ i smonotonically increasing for $x > 0$, we have that $g$ is monotonic in the intervals $[a , a + \delta]$ and $[b - \delta, b]$. Clearly, when $x \leq a$ or $x \geq b$ we have that 
+   \[
+   g(x) = f(x) = 0.  
+   \]
+   Lastly, since $f(x)$ is a continuously differentiable function, we have that $g(x)$ is a continuously differentiable function. 
+\end{proof}
+
+\section*{5.}
+\begin{proof}
+    Beginning, we prove continuity. Suppose $\delta > 0$ and $|\xi - \xi_0| < \delta$. Then, noting that then without loss of generality suppose $\xi = \xi_0 + \delta$, 
+    \begin{align*}
+        |\hat{f}(\xi) - \hat{f}(\xi_0)| &= \left|\int_{-\infty}^{\infty}f(x)e^{-2 \pi i x \xi}dx - \int_{-\infty}^{\infty}f(x)e^{-2 \pi ix \xi_0}dx \right| \\
+        &\leq \int_{-\infty}^{\infty}|f(x)|\left|e^{-2\pi i x \xi} - e^{-2 \pi i x \xi_0} \right|dx \\
+        &= \int_{-\infty}^{\infty}|f(x)|\left|e^{-2 \pi i x \xi} - e^{-2\pi ix \xi}e^{-2\pi ix \delta} \right|dx \\
+        &= \int_{-\infty}^{\infty}|f(x)|\left|e^{-2 \pi i x \xi}\left(1 - e^{-2 \pi ix \delta} \right) \right|dx \\
+        &= \int_{-\infty}^{\infty}|f(x)|\left|1 - e^{-2 \pi i x \delta} \right|dx \xrightarrow[\delta \to 0]{} 0
+    \end{align*}
+    and thus the function is continuous.  
+   For the second part of the question we begin by proving the hint using the $u-$substitution $u = x - \frac{1}{2 \xi}$:
+   \begin{align*}
+    \frac{1}{2}\int_{-\infty}^{\infty} \left(f(x) - f\left(x - \frac{1}{2 \xi} \right)\right)e^{-2\pi ix \xi}dx &= \frac{1}{2} \int_{-\infty}^{\infty}f(x)e^{-2 \pi i x \xi}dx - \frac{1}{2}\int_{-\infty}^{\infty}f \left(x - \frac{1}{2 \xi} \right)e^{-2 \pi i x \xi}dx \\
+    &= \frac{1}{2}\hat{f}(\xi) - \frac{1}{2}\int_{-\infty}^{\infty}f(u)e^{-2 \pi i \left(u+ \frac{1}{2 \xi}\right)\xi} du \\
+    &= \frac{1}{2}\hat{f}(\xi) - \frac{1}{2}\int_{-\infty}^{\infty}f(u)e^{-2 \pi i \xi u} du \cdot e^{-\pi i } \\
+    &= \frac{1}{2} \hat{f}(\xi) - \frac{1}{2}\hat{f}(\xi)(\cos(-\pi) + i \sin(-\pi)) \\
+    &= \hat{f}(\xi).
+   \end{align*} 
+   Using this fact, given $\epsilon > 0$, and without loss of generality $|\xi| \geq 1$ and fix $N > 0$
+   \begin{align*}
+    |\hat{f}(\xi)| &= \left|\frac{1}{2}\int_{-\infty}^{\infty} \left(f(x) - f\left(x - \frac{1}{2\xi} \right) \right)e^{-2 \pi i x \xi} dx \right| \\
+    &= \left|\frac{1}{2} \int_{|x| > N} \left(f(x) - f \left(x - \frac{1}{2 \xi} \right) \right)e^{-2 \pi i x \xi} dx + \frac{1}{2} \int_{|x| \leq N} \left(f(x) - f \left(x - \frac{1}{2 \xi} \right) \right)e^{-2 \pi i x \xi} dx \right| \\
+    &\leq \frac{1}{2}\int_{|x| > N}\left|f(x) - f \left(x - \frac{1}{2 \xi} \right)\right|dx + \frac{1}{2} \int_{|x|\leq N} \left|f(x) - f\left(x - \frac{1}{2 \xi} \right) \right| dx \\
+    &\leq \frac{1}{2}\int_{|x| > N}\left|f(x)\right|dx+ \frac{1}{2}\int_{|x| > N}\left| f \left(x - \frac{1}{2 \xi} \right)\right|dx + \frac{1}{2} \int_{|x|\leq N} \left|f(x) - f\left(x - \frac{1}{2 \xi} \right) \right| dx. 
+   \end{align*}
+   By moderate decrease, we have that 
+   \[
+     \frac{1}{2}\int_{|x| > N}\left|f(x)\right|dx, \  \frac{1}{2}\int_{|x| > N}\left| f \left(x - \frac{1}{2 \xi} \right)\right|dx < \frac{\epsilon}{4}
+   \]
+   as $N$ becomes large. Also, 
+   \[
+   f(x) - f \left(x - \frac{1}{2 \xi} \right) 
+   \]
+   is continuous and $[-N, N]$ is a closed and bounded interval, and thus $f(x) - f \left(x - \frac{1}{2 \xi} \right)$ is uniformly continuous on the set $[-N, N]$. Therefore we may exchange
+   \[
+   \lim\limits_{|\xi| \to \infty}\frac{1}{2} \int_{|x|\leq N} \left|f(x) - f\left(x - \frac{1}{2 \xi} \right) \right| dx = \frac{1}{2} \int_{|x|\leq N}\lim\limits_{|\xi| \to \infty} \left|f(x) - f\left(x - \frac{1}{2 \xi} \right) \right| dx. 
+   \]
+   By the continuity of $f$ we then have 
+   \[
+   \lim\limits_{|\xi| \to \infty}\left|f(x) - f\left(x - \frac{1}{2 \xi}\right)\right| \leq \frac{\epsilon}{4N} 
+   \]
+   hence
+   \[
+    \frac{1}{2} \int_{|x|\leq N}\lim\limits_{|\xi| \to \infty} \left|f(x) - f\left(x - \frac{1}{2 \xi} \right) \right| dx \leq \frac{\epsilon}{4N} \cdot 2N = \frac{\epsilon}{2}
+   \]
+   and that \[
+   \lim\limits_{|\xi| \to \infty} |\hat{f}(\xi)| \leq \frac{\epsilon}{4} + \frac{\epsilon}{4} + \frac{\epsilon}{2} = \epsilon
+   \]
+   proving $|\hat{f}(\xi)| \to 0$ as $|\xi| \to \infty$. 
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}
+    \mycomment{
+    Note that by the continuity of $f$ and since $g \in \mathcal{S}(\mathbb{R})$ we have that $f, g, \hat{f}, \hat{g}$ are all integrable. Therefore we can use Fubini's theorem to state
+    \[
+    \int f(x)\hat{g}(x)dx = \int g(y)\hat{f}(y)dy.    
+    \]
+    With $g \in \mathcal{S}(\mathbb{R})$, by the Fourier inversion formula 
+    \[
+    g(x) = \int_{-\infty}^{\infty}\hat{g}(y)e^{2 \pi i x y}dy.    
+    \]
+    Taking $K_{\delta}(t - y) = \hat{g}(y) \in \mathcal{S}(\mathbb{R})$:
+    \begin{align*}
+        \int_{-\infty}^{\infty}f(x) \hat{g}(x) dx &= \int_{-\infty}^{\infty} \hat{f}(y)g(y) dy \\
+        &= \int_{-\infty}^{\infty}\hat{f}(y) \int_{-\infty}^{\infty}\hat{g}(\xi)e^{2 \pi i y \xi}d \xi dy \\
+        &= \int_{-\infty}^{\infty}\hat{f}(y) \int_{-\infty}^{\infty}K_{\delta}(t - \xi) e^{2 \pi i y \xi}d \xi dy \\
+        &= -\int_{-\infty}^{\infty}f(y)\int_{-\infty}^{\infty}K_{\delta}(u)e^{2 \pi i y(t - u)}du dy \\
+        &= -\int_{-\infty}^{\infty} \hat{f}(y)e^{2 \pi i yt}\hat{K}_{\delta}(y) dy = 0.
+    \end{align*}
+    Note that by theorem 1.3 (pg. 137) we have that since $K_{\delta} \in \mathcal{S}(\mathbb{R})$ we have $\hat{K}_{\delta} \in \mathcal{S}(\mathbb{R})$. We thus have 
+    \[
+    -\lim\limits_{\delta \to 0} \int_{-\infty}^{\infty}\hat{f}(y)e^{2 \pi i yt } \hat{K}_{\delta}(y)dy = \lim\limits_{\delta \to 0}\int_{-\infty}^{\infty} f(x)\hat{g}(x)dx = (f*K_{\delta}(t)) = f(t) = 0.  
+    \] 
+    }
+    In the Extension to functions of moderate decrease portion of the chapter, it is revealed that the Fourier inversion formula also holds for functions of moderate decrease. Therefore, the proof is exceedingly trivial as
+    \[
+    f(x) = \int_{-\infty}^{\infty}\hat{f}(\xi)e^{2 \pi ix\xi} d \xi = 0.    
+    \]
+\end{proof}
+
+\section*{7.}
+\begin{proof}
+    Looking at the convolution of two functions $f, g \in \mathcal{M}(\mathbb{R})$ we have 
+    \[
+    |f*g(x)| =\left| \int_{-\infty}^{\infty}f(x - y)g(y)dy \right| = \left|\int_{|y| \leq |x|/2} f(x - y)g(y)dy + \int_{|y| \geq |x|/2} f(x - y)g(y)dy \right|\]\[ \leq \int_{|y| \leq |x|/2} |f(x - y)||f(y)| dy + \int_{|y| \geq |x|/2}|f(x- y)||g(y)| dy \]       
+    using the triangle inequality for integrals and for vector spaces. Using the moderate decrease of $f, g$, we have for some $A, B > 0$
+    \[
+        \int_{|y| \leq |x|/2} |f(x - y)||f(y)| dy + \int_{|y| \geq |x|/2}|f(x- y)||g(y)| dy \leq \int_{|y| \leq |x|/2} \frac{A}{1 + (x - y)^2}|g(y)| dy + \int_{|y| \geq |x|/2}|f(x - y)| \frac{B}{1 + y^2}dy.
+    \]
+    In order to maximize the integral, which we note is always positive as
+    \[
+    \frac{A}{1 + (x - y)^2}|g(y)|, \ \frac{B}{1 + y^2}|f(x - y)| \geq 0 \text{ always}   
+    \]
+    we want to minimize the denominators of both of our ratios. Since the denominators of both ratios is $\geq 1$ we must minimize $(x - y)^2$ in the first integral and $y^2$ in the second integral. Therefore, in both cases the optimal choice to minimize both of these ratios is $y = \frac{|x|}{2}$ and we ascertain
+    \[
+        \int_{|y| \leq |x|/2} \frac{A}{1 + (x - y)^2}|g(y)| dy + \int_{|y| \geq |x|/2}|f(x - y)| \frac{B}{1 + y^2}dy \leq \int_{|y| \leq |x|/2} \frac{A}{1 + \frac{x^2}{4}}|g(y)|dy + \int_{|y| \geq |x|/2} \frac{B}{1 + \frac{x^2}{4}}|f(x - y)|dy\] \[= \frac{1}{4 + x^2}\left(4A\int_{|y| \leq |x|/2 }|g(y)|dy + 4B\int_{|y|\geq|x|/2}|f(x - y)|dy \right). 
+    \]
+    By definition of $\mathcal{M}(\mathbb{R})$ everything in the space is also continuous, therefore implying 
+    \[
+        \int_{|y| \leq |x|/2 }|g(y)|dy < \infty, \ \int_{|y| \geq |x|/2} |f(x - y)| dy < \infty. 
+    \]
+    Thus, we have that 
+    \[
+    |f*g(x)| \leq \frac{C}{1 + x^2}    
+    \]
+    for some $C > 0$. A property of convolutions is that the convolution of two continuous functions is continuous, so since $f, g \in \mathcal{M}(\mathbb{R})$ we have that they are continuous and thus $f* g $ is continuous and $f*g \in \mathcal{M}(\mathbb{R})$. 
+\end{proof}
+\section*{9.}
+\begin{proof}
+   First, we check that the integral of the kernel is equal to $1$:
+   \begin{align*}
+    \int_{-\infty}^{\infty}  \mathcal{F}_R(t) dt = \int_{-\infty}^{\infty} R \left(\frac{\sin( \pi t R)}{\pi R t}\right)^2 dt &= \frac{1}{\pi^2 R}\int_{-\infty}^{\infty} \frac{\sin^2(\pi t R)}{t^2}dt 
+   \end{align*} 
+   Using $u-$substitution take $u = \pi t R$ and use that the function is even to get
+   \[
+    \frac{1}{\pi^2 R}\int_{-\infty}^{\infty} \frac{\sin^2(\pi t R)}{t^2}dt = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{\sin^2(u)}{u^2} du = \frac{2}{\pi}\int_0^{\infty} \frac{\sin^2(u)}{u^2}du
+   \]
+   and we may now perform integration by parts with $x = \sin^2(u)$, $dx = 2 \cos(u)\sin(u)$, $dy = \frac{1}{u^2}$, and $y = -\frac{1}{u}$ to obtain
+   \[
+   \frac{2}{\pi}\left(\left[-\frac{\sin^2(u)}{u}\right]_0^{\infty} - \int_0^{\infty} -\frac{1}{u}2\cos(u)\sin(u) du \right). 
+   \]
+   Clearly, since $\sin^{2}(u) \leq 1$ always
+   \[
+   \left|\frac{\sin^2(u)}{u}\right| \leq \frac{1}{|u|} \xrightarrow[u \to \infty]{} 0.  
+   \]
+   The behavior of $\frac{\sin^2(u)}{u}$ is far more obscure as $u$ nears $0$. Note that 
+   \[
+   \sin(u) =  \sum\limits_{n = 0}^{\infty}(-1)^n \frac{u^{2n + 1}}{(2n + 1)!} = u - \frac{u^3}{3!} + \frac{u^5}{5!} - \frac{u^7}{7!} + \cdots 
+   \]
+   so to find a power series expanion for $\sin^2(u)$ note that 
+   \begin{align*}
+    \int_0^u \sin(2x) dx &= \sin^2(u)\\
+     &= \int_0^u2x - \frac{(2x)^3}{3!} + \frac{(2x)^5}{5!} - \frac{(2x)^7}{7!} + \cdots dx \\
+     &= u^2 - \frac{2^3u^4}{4!} + \frac{2^5u^6}{6!} - \frac{2^7u^8}{8!} + \frac{2^9u^{10}}{10!} - \cdots \\
+     &= \sum\limits_{n = 0}^{\infty} (-1)^n \frac{2^{2n + 1}u^{2n + 2}}{(2n + 2)!}
+   \end{align*}
+   and thus 
+   \[
+   \frac{\sin^2(u)}{u} = \frac{1}{u} \sum\limits_{n = 0}^{\infty} (-1)^n \frac{2^{2n + 1}u^{2n + 2}}{(2n + 2)!} = \sum\limits_{n = 0}^{\infty} (-1)^n \frac{2^{2n + 1}u^{2n + 1}}{(2n + 2)!}. 
+   \]
+   We now want to show that 
+   \[
+   \lim\limits_{u \to 0}\sum\limits_{n = 0}^{\infty} (-1)^n \frac{2^{2n + 1}u^{2n + 1}}{(2n + 2)!} = 0 
+   \]
+    and to do so we only need to consider small $u$ say $u \in [-1, 1]$ and we then have that 
+    \[
+    \left| \frac{2^{2n + 1}u^{2n + 1}}{(2n + 2)!} \right| \leq \frac{2^{2n + 1}}{(2n + 2)!}     
+    \]
+    for all $n \geq 0$. Using the ratio test we see
+    \[
+    \lim\limits_{n \to \infty}\left|\frac{2^{2(n + 1) + 1}}{(2(n + 1)+ 2)!} \cdot \frac{(2n + 2)!}{2^{2n + 1}}\right| = \lim\limits_{n \to \infty} \frac{2^2}{(2n + 4)(2n + 3)} = 0.    
+    \]
+    Therefore, by the Weierstrass M-test, we have that 
+
+    \[
+        \sum\limits_{n = 0}^{\infty} (-1)^n \frac{2^{2n + 1}u^{2n + 1}}{(2n + 2)!}
+    \]
+    converges absolutely and uniformly for $u \in [-1, 1]$, so we can exchange the limit and the integral to finally have 
+    \[
+        \lim\limits_{u \to 0}\sum\limits_{n = 0}^{\infty} (-1)^n \frac{2^{2n + 1}u^{2n + 1}}{(2n + 2)!} = 0.  
+    \]
+    Returning to our integral in question we now see that 
+   \[
+    \frac{2}{\pi}\left(\left[-\frac{\sin^2(u)}{u}\right]_0^{\infty} - \int_0^{\infty} -\frac{1}{u}2\cos(u)\sin(u) du \right) = \frac{2}{\pi}\int_0^{\infty} \frac{\sin(2u)}{u}du 
+   \]
+   where $2 \cos(u)\sin(u) = \sin(2u)$ by the double angle identity. Now, substitute $v = 2u$ to get 
+   \[
+    \frac{2}{\pi}\int_0^{\infty} \frac{\sin(2u)}{u}du  = \frac{2}{\pi}\int_0^{\infty} \frac{\sin(v)}{v}dv.
+   \]
+   To determine this integral recall that 
+   \[
+   \int_{-\pi}^{\pi}D_N(\theta) d \theta = \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2}\right)x\right)}{\sin\left(\frac{x}{2}\right)}dx = 2 \pi.\]
+   By a hint in the book (Exercise 12, Chapter 2) we have that $\frac{1}{\sin(\frac{x}{2})} - \frac{2}{x}$ is continuous on $[- \pi, \pi]$. So, rewritting we have 
+   \[
+   \frac{1}{\sin\left(\frac{1}{x}\right)}  = \frac{1}{\sin\left(\frac{1}{x}\right)}- \frac{2}{x} + \frac{2}{x}. 
+   \] 
+  Hence, we rewrite our integral as
+  \[\int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2}\right)x\right)}{\sin\left(\frac{x}{2}\right)}dx  = \int_{-\pi}^{\pi} \frac{2 \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx + \int_{-\pi}^{\pi}\sin\left(\left(N + \frac{1}{2}\right)x\right) \left(\frac{1}{\sin\left(\frac{1}{x}\right)} - \frac{2}{x} \right)dx.\]
+  Because $\frac{1}{\sin\left(\frac{1}{x} \right)} - \frac{2}{x}$ is continuous on $[-\pi, \pi]$, it is integrable on $[-\pi, \pi]$ and therefore, by the Riemann-Lebesgue lemma, we have 
+  \[
+  \lim\limits_{|N| \to \infty} \int_{-\pi}^{\pi}\sin\left(\left(N + \frac{1}{2}\right)x\right) \left(\frac{1}{\sin\left(\frac{1}{x}\right)} - \frac{2}{x} \right)dx = 0 
+  \]
+  and by our initial solution to the integral of the Dirichlet kernel
+  \[
+  \lim\limits_{|N| \to \infty} \left( \int_{-\pi}^{\pi} \frac{2 \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx + \int_{-\pi}^{\pi}\sin\left(\left(N + \frac{1}{2}\right)x\right) \left(\frac{1}{\sin\left(\frac{1}{x}\right)} - \frac{2}{x} \right)dx \right) = \lim\limits_{|N| \to \infty} \int_{-\pi}^{\pi} \frac{2 \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx = 2\pi. 
+  \] 
+  Doing a quick calculation, we have
+  \[
+   \frac{\sin(-x)}{-x} = (-1)\cdot (-1) \frac{\sin(x)}{x} = \frac{\sin(x)}{x} 
+  \]
+  and therefore, $\frac{\sin(x)}{x}$ is an even function and our integral becomes
+  \[
+    \lim\limits_{|N| \to \infty} \int_{-\pi}^{\pi} \frac{2 \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx = 4 \cdot \lim\limits_{|N| \to \infty} \int_{0}^{\pi} \frac{ \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx = 2 \pi 
+  \]
+  which implies 
+  \[
+    \lim\limits_{|N| \to \infty}\int_{0}^{\pi} \frac{ \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx = \frac{\pi}{2}.
+  \]
+  Take $y = \left(N + \frac{1}{2}\right)x$ and the integral turns into 
+  \[
+    \lim\limits_{|N| \to \infty}\int_{0}^{\pi} \frac{ \sin\left(\left(N + \frac{1}{2}\right)x\right)}{x}dx = \frac{\pi}{2} = \lim\limits_{|N| \to \infty}\int_{0}^{\pi\left(N + \frac{1}{2}\right)} \frac{ \sin\left(x\right)}{x}dx = \int_{0}^{\infty} \frac{\sin(x)}{x}dx =  \frac{\pi}{2}.
+  \]
+  Thus, we finally get the result
+  \[
+  \int_{-\infty}^{\infty}  \mathcal{F}_R(t) dt = \frac{2}{\pi}\int_0^{\infty}\frac{\sin(v)}{v}dv = \frac{2}{\pi}\cdot \frac{\pi}{2} = 1
+  \]
+  and the first condition for a good kernel has been satisfied. \\ 
+
+   To reveal that $\mathcal{F}_R(t)$ satisfies the second condition of a good kernel we scrutinize
+   \[
+   \int_{-\infty}^{\infty}|\mathcal{F}_R(t)|dt 
+   \]
+   and we see that 
+   \[
+    \int_{-\infty}^{\infty}|\mathcal{F}_R(t)|dt = \int_{-\infty}^{\infty} \left|R \left(\frac{\sin(\pi t R)}{\pi t R} \right)^2 \right| dt = \frac{1}{\pi^2 R} \int_{-\infty}^{\infty} \frac{\sin^2(\pi t R)}{t^2}dt = 1 < \infty
+   \]
+   which we've just shown.\\
+   
+   For the final condition to be a good kernel let $\eta > 0$ and we have 
+   \begin{align*}
+    \int_{|t| > \eta}|\mathcal{F}_R(t)|dt &= \int_{|t| > \eta} \left|R \left(\frac{\sin(\pi t R)}{\pi t R}\right)^2 \right| dt \\
+    &= \frac{1}{R\pi^2} \int_{|t| > \eta} \frac{\sin^2(\pi t R)}{t^2}dt \\
+    &\leq \frac{1}{R\pi^2} \int_{|t| > \eta} \frac{1}{t^2} dt \\
+    &= \frac{2}{R \pi^2} \int_{t > \eta} \frac{1}{t^2} dt = \frac{2}{R\pi^2} \left[-\frac{1}{t}\right]_{\eta}^{\infty} \\
+    &= \frac{2}{R \pi^2 \eta} \xrightarrow[R \to \infty]{} 0
+   \end{align*}
+   and thus the third and final condition for a good kernel is satisfied and hence $\mathcal{F}_R(t)$ is a good kernel. By the property of a good kernel for the limit of its convolution with a function to converge to the function, we have
+   \[
+    \lim\limits_{R \to \infty} (f * \mathcal{F}_R)(x) = \lim\limits_{R \to \infty} \int_{-R}^R \left(1 - \frac{|\xi|}{R}\right)\hat{f}(\xi)e^{2 \pi ix \xi}d \xi = f(x).
+   \]
+\end{proof}
+\end{document}

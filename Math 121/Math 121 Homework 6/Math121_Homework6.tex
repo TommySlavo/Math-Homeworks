@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+
+\title{Math 121 Homework 6}
+\author{Thomas Slavonia; UID: 205511702}
+\date{February 2024}
+
+\begin{document}
+\maketitle
+\section*{2.8.1.}
+\begin{proof}[\unskip\nopunct]
+Recall that a property is a topological property if it is preserved in topological spaces that are homeomorphic. Suppose that $X$ and $Y$ are two homeomorphic topological spaces. Suppose that $X$ is connected. Since $X$ and $Y$ are homeomorphic, 
+there must be a function $f: X \rightarrow Y$ that is continuous and bijective. Hence, if $E \subseteq Y$ is open and closed in $Y$, then $f^{-1}(E)$ is 
+open and closed in $X$. But, $X$ is connected; therefore, the only open and closed sets in $X$ are $X$ and $\emptyset$. For this reason it must be that $f^{-1}(E) = X$ or $f^{-1}(E) = \emptyset$. Because $f$ is a bijective homeomorphism, we must have that $E = Y$ or $E = \emptyset$. We can conclude that $Y$  is connected. 
+\end{proof}
+
+\section*{2.8.2.}
+\begin{proof}[\unskip\nopunct]
+Let $E \subseteq \mathbb{R}$ be connected. Let $a, b \in S$ with $a \neq b$. Then, we have that $a < b$ or $b < a$. Without loss of generality, suppose $a < b$. By the density of the reals, we have $x \in E$ such that $a < x < b$. Take $E_1 = \{y: y \in E, y < x \}$ and $E_2 = \{z: z \in E, z > x\}$. These sets are both open and disjoint, as I can create a ball with a small enough radius around a point $y$ such that it is in the set $E_1$ and similarly with the set $E_2$. If the union of $E_1$ and $E_2$ is $E$ then we would have that $E$ isn't connected which would be a contradiction. 
+Therefore, we can't create two sets as such, and we must have that two open subsets of $E$ must overlap. Look at some number $x \in \mathbb{R}$ such that $a < x < b$, which we can always find by the density of the real numbers. Suppose $x \notin E$. Then we can always form and $E_1 = \{y: y \in E, y < x \}$ and $E_2 = \{z: z \in E, z > x\}$, but then $E$ is not connected. Hence, $E$ must always be of the form of an interval since it is connected. 
+\end{proof}
+
+\section*{2.8.3.}
+\begin{proof}[\unskip\nopunct]
+The union of the disks is not a connected subset of $\mathbb{R}^2$. Let $E = \{x^2 + y^2 < 1\} \cup \{(x - 2)^2 + y^2 < 1\}$ is equal to the union of two open disjoint subsets of $\mathbb{R}^2$ and is thus disconnected. \\
+On the other hand the union of the closure of each of the disks $E = \{x^2 + y^2 \leq 1\}$ and $\{(x - 2)^2 + y^2 \leq 1\}$ has a nontrivial intersection, as $E = \{x^2 + y^2 \leq 1\} \cup \{(x - 2)^2 + y^2 \leq 1\} = (1, 0)$. 
+Both disks are connected themselves, and thus by Theorem 8.2
+We have that the union of the disks is connected. \\
+Without loss of generality, suppose $\{x^2 + y^2 \leq 1\}$ is the closure of the unit disk and the other disk is open. Suppose there are two open disjoint subsets of $U, V \subset \{x^2 + y^2 \leq 1\} \cup \{(x - 2)^2 + y^2 < 1\}$
+such that $U \cup V =\{x^2 + y^2 \leq 1\} \bigcup \{(x - 2)^2 + y^2 < 1\}$ and $U \cap V = \emptyset$. The point $(1, 0)$ must be in exactly one of the sets so let it be in $U$. Then, we must have that there is an open neighborhood around $(1, 0)$ that is inside $U$ as $U$ is an open set, but the neighborhood would also have to extend into both disks. Hence, $U \cap\{x^2 + y^2 \leq 1\} \neq \emptyset$ and $U \cap \{(x - 2)^2 + y^2 < 1\} \neq \emptyset$. Since $U$ and $V$ are 
+disjoint, we must have that $(U \cap\{x^2 + y^2 \leq 1\}) \cap (V \cap\{x^2 + y^2 \leq 1\}) = \emptyset$, but since $U$ and $V$ cover both disks we also must have $(U \cap\{x^2 + y^2 \leq 1\}) \cup (V \cap\{x^2 + y^2 \leq 1\}) =\cap\{x^2 + y^2 \leq 1\} $ which is a contradiction 
+as that would imply that $\cap\{x^2 + y^2 \leq 1\}$ is disconnected. Thus, 
+$ \{x^2 + y^2 \leq 1\} \cup \{(x - 2)^2 + y^2 < 1\}$ is connected. 
+
+
+\end{proof}
+\section*{2.8.4.}
+\begin{proof}[\unskip\nopunct]
+Suppose $X$ and $Y$ are two homeomorphic topological spaces, and $X$ has the cut property. Because $X$ and $Y$ are homeomorphic there is a homeomorphism $f:X \to Y$. If $p \in X$ is the cut point, then $X\backslash \{p\}$ is disconnected, so there exists $U, V$ open and closed proper subsets of $X$ that are disjoint, and the union is $X\backslash \{p\}$. Hence, $f(U), f(V)$ are closed and open disjoint subsets of $Y$ such that there union is $f(X)\backslash f(\{p\}) = Y \backslash f(\{p\})$. We conclude that $Y$ has a cut point. 
+\end{proof}
+
+\section*{2.8.5.}
+\begin{proof}[\unskip\nopunct]
+    The interval $[0, 1]$ has two points that aren't cut points, namely $0, 1$, as then we would end up with a connected half-open interval. All other points are cut points as suppose we take $x \in (0, 1)$, then $(0, 1)\backslash x = (0, x) \cup (x, 1)$ which is disconnected. The interval $[0, 1)$ has a single non-cut point $0$. Lastly, the interval $(0, 1)$ has every point as a cut point. 
+    By the previous problem, cut points are a topological property
+    and each of the intervals has a different number of non-cut
+    points, we conclude that the intervals aren't homeomorphic. 
+    
+\end{proof}
+\section*{2.8.6.}
+\begin{proof}[\unskip\nopunct]
+    The square has no cut points. The other three spaces have at least one cut point; thus, the first space is not homeomorphic to any other spaces. The fourth space contains a point when cut gives four connected components and any other cut point of the fourth space will give only two connected components. 
+    In no other space can we remove a point and get four connected components, hence 
+    the fourth space is not homeomorphic to any of the other spaces.
+    Similarly, the second space has a cut point that gives
+    three connected components, and the third space has
+    no such cut point. Therefore, the third and second spaces
+    aren't homeomorphic to any other spaces. Therefore, none of the spaces are homeomorphic.  
+    
+\end{proof}
+\section*{2.9.1.}
+\begin{proof}[\unskip\nopunct]
+   Suppose we have an interval with $a \in \mathbb{R}$ and $b \in \mathbb{R}$ in the interval with $a < b$. 
+   Then we can can make a path from $a$ to $b$ by defining $\gamma$
+   where $\gamma(t) = a(1 - t) + b(t)$ for $0 \leq t \leq 1$. 
+   
+\end{proof}
+\section*{2.9.2.}
+\begin{proof}[\unskip\nopunct]
+Let $X$ and $Y$ be two homeomorphic topological spaces
+such that $X$ is path-connected. Suppose $f:X \to Y$ is a homeomorphism from $X$ to $Y$. Since $f$ is continuous and 
+any path $\gamma$ is continuous, their composition is a continuous function. For $y_1, y_2 \in Y$, becuase $f$ is continuous and bijective, there exists unique $x_1, x_2 \in X$ such that $f(x_1) = y_1$ and $f(x_2) = y_2$. Because $X$ is path connected, there exists $\gamma:[0, 1] \to X$ a path from $x_1$ to $x_2$ such that $\gamma(0) = x_2$ and $\gamma(1) = x_2$. Since the composition the continuous, we have that $f \circ \gamma(0) = f(x_1) = y_1$ and $f \circ \gamma(1) = f(x_2) = y_2$ and hence we have a path from $y_1$ to $y_2$. Considering our choice for $y_1$ and $y_2$ was arbitrary, we have that $Y$ is path connected.     
+\end{proof}
+
+\section*{2.9.3.}
+\begin{proof}[\unskip\nopunct]
+    The proof here will be very similar to that of the previous problem. Let $y_1, y_2 \in f(X)$. Then, $y_1 = f(x_1)$ and $y_2 = f(x_2)$ for some $x_1, x_2 \in X$. Since $X$ is path connected, there exists $\gamma:[0, 1] \to X$ such that $\gamma(0) = x_1$ and $\gamma(1) = x_2$. Hence, $f \circ \gamma (0) = y_1$ and $f \circ \gamma (1) = y_2$ is a path from $y_1$ to $y_2$ in $f(X)$. Consequently, $f(X)$ is path connected. 
+\end{proof}
+
+\section*{2.9.4.}
+\begin{proof}[\unskip\nopunct]
+    Let $P$ be a path component of $X$ that contains the point $x$. 
+    We want to show that this path component coincides with 
+    a connected component of $X$. Then the open neighborhood $U$ 
+    that contains $x$ is inside $P$. The 
+    connected component of $x$ denoted $C(x)$ is the union 
+    of all connected subsets of $X$ that contains $x$.
+    Path components are connected, and since $P$ contains
+    the open neighborhood of $x$, path components are open themselves. 
+    $X\backslash P$ is the union of all the other path components, and thus, the complement
+    is open and closed, as each path component is open. 
+    Therefore, $P$ is closed. As a consequence, $P$ is a closed 
+    and open subset of $X$ and thus contains the connected
+    components of $X$. But, path components are themselves connected. Hence, the connected components coincide with the 
+    path components.   
+\end{proof}
+
+\section*{2.9.6.}
+\begin{proof}[\unskip\nopunct]
+$\Rightarrow)$ If we assume that $\mathbb{R}^n$ is connected, then we know the only connected components of $\mathbb{R}^n$ are the whole space and the empty set. By the previous exercise, since the path components coincide with the connected components, there must be only one path component which is all of $\mathbb{R}^n$. 
+Consequently, if all of $\mathbb{R}^n$ is locally path-connected, then it is path-connected everywhere
+as there is only one path component. \\
+$\Leftarrow)$ We have a previous theorem that states that if a topological space is path-connected, it is connected.
+Hence, if $\mathbb{R}^n$ is path-connected it must be connected. 
+\end{proof}
+
+\section*{2.9.7.}
+\begin{proof}[\unskip\nopunct]
+    $E$ is the closed vertical interval from $-1$ to $1$ at $x = 0$. $E$ is path connected, as we can create $\gamma:[0, 1] \to E$ such that for $t \in [0, 1]$, $\gamma(t) = (0, 2t - 1) \in E$. Also, $\gamma$ is clearly continuous, and thus $E$ is path connected. Let $\phi:[0, 1] \to F$ be the map that takes $t \in [0, 1]$ to $\phi(t) =\left(t, \sin \left(\frac{1}{t}\right)\right) $. 
+    We have that $\phi$ is continuous everywhere, and $x > 0$ always so the case where we divide by $0$ is of little concern. These are our two path components of $X$. There is no path connecting $E$ and $F$, as we must have that $x \neq 0$ in $F$, but $x = 0$ always in $E$. Hence, $X$ is not path-connected. 
+    As a result of $E$ and $F$ both being path connected
+    they must both be connected as well. 
+    The entire space $X$ is connected because we are unable to create an open neighborhood around $(0, y)$ with $-1  \leq y \leq 1$ that does not coincide with $F$ as it oscillates between $-1$ and $1$ forever. Hence, $X$ is connected. 
+\end{proof}
+
+\end{document}

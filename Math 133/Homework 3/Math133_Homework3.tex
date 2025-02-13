@@ -1,0 +1,280 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\allowdisplaybreaks
+\newcommand\numeq[1]%
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+\newcommand\numleq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\leq}}
+\newcommand\numgeq[1]
+  {\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{\geq}}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+
+
+\title{Math 133 Homework 3}
+\author{Tom Slavonia}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{1.}
+\subsection*{a.}
+\begin{proof}
+    Note that as $x$ approaches $\pm \pi$, the function term $(\pi - x)^2$ and $(\pi + x)$ will become very large with the function being undefined at $x = \pm \pi$, but we define the function to be $0$ there filling in the gaps. Note that the product of differentiable functions is differentiable, and thus the product of $C^{\infty}$ functions is $C^{\infty}$. Therefore, we must show that 
+    \[
+    e^{-\frac{1}{(\pi - x)^2}} \text{ and } e^{-\frac{1}{(\pi + x)^2}}    
+    \]
+    are $C^{\infty}$. But, on the previous homework, we proved that 
+    \[
+    F(x) \begin{cases}
+        0, \ x \leq 0 \\
+        e^{-\frac{1}{x^2}}, \ x > 0
+    \end{cases}    
+    \]
+    is $C^{\infty}$ and our current function is simply a change of variables away from $F(x)$. Therefore, 
+    \[
+        e^{-\frac{1}{(\pi - x)^2}} \text{ and } e^{-\frac{1}{(\pi + x)^2}}  
+    \]
+    are $C^{\infty}$ and so $f$ is $C^{\infty}$. To extend the function to $\mathbb{R}$ we want to shift the input of $f$ into $[-\pi, \pi]$ from anywhere on $\mathbb{R}$ and we can do this with the function
+    \[
+    f(x) = f\left(x - 2 \pi \left\lfloor \frac{x}{2 \pi } + \frac{1}{2} \right\rfloor \right).    
+    \]
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    Integrating $a_n$ with integration by parts, and taking $u = f(x)$ and $dv = e^{-inx}$ we have 
+    \begin{align*}
+        a_n &= \frac{1}{2 \pi} \int_{-\pi}^{\pi} f(x) e^{-inx} dx \\
+        &= \frac{1}{2 \pi}\left[-f(x)\frac{e^{-inx}}{in}\right]_0^{2 \pi} + \frac{1}{2 \pi}\frac{1}{in}\int_{-\pi}^{\pi}f'(x)e^{-inx}dx\\
+        &= \frac{1}{2 \pi}\frac{1}{in}\int_{-\pi}^{\pi}f'(x)e^{-inx}dx
+    \end{align*}
+    as we have that 
+    \[
+    -e^{-in\pi} + e^{in \pi} = -\cos(-n \pi ) -i\sin(-n\pi) + \cos(n\pi) +  i\sin(n \pi) = -\cos(n \pi) + \cos(n \pi) = 0.   
+    \]
+    Repeating the process $k-$times we get that 
+    \[
+    a_n =  \frac{1}{2 \pi}\frac{1}{i^kn^k}\int_{-\pi}^{\pi}f^{(k)}(x)e^{-inx}dx.   
+    \]
+    Taking the modulus we have
+    \[
+    |a_n| = \left| \frac{1}{2 \pi}\frac{1}{i^kn^k}\int_{-\pi}^{\pi}f^{(k)}(x)e^{-inx}dx \right| \leq  \frac{1}{2 \pi}\frac{1}{n^k}\int_{-\pi}^{\pi}\left|f^{(k)}(x)e^{-inx}\right|dx
+    \]
+    but, $f$ is $C^{\infty}$, so 
+    \[
+        \left|\frac{1}{2 \pi}\int_{-\pi}^{\pi}f^{(k)}(x)e^{-inx}dx\right| < \infty
+    \]
+    say \[
+        \frac{1}{2 \pi}\int_{-\pi}^{\pi}f^{(k)}(x)e^{-inx}dx = C_k    
+    \]
+    for some $C_k \in \mathbb{R}$. Therefore, we have 
+    \[
+    |a_n| \leq  \frac{1}{2 \pi}\frac{1}{n^k}\int_{-\pi}^{\pi}\left|f^{(k)}(x)e^{-inx}\right|dx = C_kn^{-k}.    
+    \]
+\end{proof}
+
+\section*{2.}
+\begin{proof}
+    Suppose $A_k = \{a_{k, n} \}_{n \in \mathbb{Z}}$ $k = 1, 2, \ldots$ is a Cauchy sequence. For all $\epsilon > 0$ there exists an $N \in \mathbb{N}$ such that $\forall k, k' > N$ 
+    \[
+    |a_{k, n} - a_{k', n}| \leq \left(\sum\limits_{j = -\infty}^{\infty}|a_{k_j} - a_{k'_j}|^2 \right)^{\frac{1}{2}} = ||A_k - A_k'||_{l^2(\mathbb{Z})} < \epsilon.   
+    \] We know $(a_k)_{k = 1}^{\infty}$ is a Cauchy sequence of complex numbers and it converges to a limit, denote this as $b_n$.  Therefore $a_{k_j} \to b_j$ for some $b_j$ as $k \to \infty$
+    \[
+    b = (\ldots, b_{-1}, b_0, b_{1}, \ldots).     
+    \]
+    Since, $(a_k)_{k = 1}^{\infty}$ is a Cauchy sequence
+    \[
+    \sum\limits_{n \in \mathbb{Z}}|a_{k,n} - a_{k', n} | < \epsilon    
+    \]
+    for sufficiently large $N \in\mathbb{N}$. 
+   Fix $\epsilon > 0$ and $M \in \mathbb{N}$, and 
+    \[
+\sum\limits_{j = -M}^{M}|b_j - a_{k_j}| = \sum\limits_{j = -M}^M|\lim\limits_{k' \to \infty}(a_{k'_j})-a_{k_j}|^2 = \lim\limits_{k' \to \infty}\sum\limits_{j = -M}^M|a_{k'_j} - a_{k_j}|^2
+\]
+\[
+\leq \limsup\limits_{k'\to \infty}\sum\limits_{j = -\infty}^{\infty} |a_{k_j'} - a_{k_j}|^2 \leq \limsup_{k' \to \infty} \epsilon = \epsilon.
+\]
+If we take $n \to \infty$ we have that $a_k \to b$. Due to this convergence, $\forall \epsilon > 0$, $\exists N \in \mathbb{N}$ such that $\forall k > N$ 
+\begin{align*}
+ \left(\sum\limits_{j = -N}^N|b_n|^2 \right)^{\frac{1}{2}} &= \left(\sum\limits_{j = -N}^{N}|b_n - a_{k, n} + a_{k, n}|^2 \right)^{\frac{1}{2}} \\
+ &\numeq{a} \left(\sum\limits_{j = -N}^{N} |b_n - a_{k, n}|^2 \right)^{\frac{1}{2}} + \left(\sum\limits_{j = -N}^N|a_{k,n}|^2 \right)^{\frac{1}{2}} < \epsilon + M 
+\end{align*}
+as $A_k$ is in $l^2(\mathbb{Z})$, so $\left(\sum\limits_{j = -N}^N|a_{k,n}|^2 \right)^{\frac{1}{2}} < M$ and step $(a)$ is justified by the triangle inequality. Thus, $b \in l^2(\mathbb{Z})$. 
+    
+\end{proof}
+
+\section*{3.}
+\begin{proof}
+    Begin by noting that we have previously found that 
+    \[
+    \int_{-\pi}^{\pi} D_N(\theta)d \theta = \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)}{\sin\left(\frac{\theta}{2}\right)} d \theta = 2 \pi.    
+    \]
+    Note that the difference \[
+    \frac{1}{\sin\left(\frac{\theta}{2}\right)} - \frac{2}{\theta}    
+    \]
+    is continuous on $[-\pi, \pi]$. 
+    Look at the integral 
+    \begin{align*}
+     \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)}{\sin\left(\frac{\theta}{2}\right)} d \theta - 2 \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta  &= 
+    \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)}{\sin\left(\frac{\theta}{2}\right)} - \frac{2\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta\\ &= \int_{-\pi}^{\pi} \sin\left(\left(N + \frac{1}{2} \right)\theta\right) \left(\frac{1}{\sin\left(\frac{\theta}{2} \right)} - \frac{2}{\theta} \right) d\theta
+    \end{align*}
+    and thus we can apply Riemann-Lebesgue lemma to state that
+    \[
+    \lim\limits_{N \to \infty} \int_{-\pi}^{\pi} \sin\left(\left(N + \frac{1}{2} \right)\theta\right) \left(\frac{1}{\sin\left(\frac{\theta}{2} \right)} - \frac{2}{\theta} \right) d\theta = 0. 
+    \]
+    Therefore, 
+    \[
+    \lim\limits_{N \to \infty} \left( \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)}{\sin\left(\frac{\theta}{2}\right)} d \theta - 2 \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta \right) = \lim\limits_{N \to \infty}\left(2 \pi   - 2 \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta \right) = 0  
+    \]
+    and since $\frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta}$ is an even function we have 
+    \[
+        2 \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta = 4 \int_{0}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta
+    \]
+    so now \[
+        \lim\limits_{N \to \infty}\left(2 \pi   - 2 \int_{-\pi}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta \right) = \lim\limits_{N \to \infty}\left(2 \pi   - 4 \int_{0}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta \right) = 0.
+    \]
+    Therefore, we must have 
+    \[
+        \lim\limits_{N \to \infty}\left(2 \pi   - 4 \int_{0}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta \right)  = 2 \pi -4\lim\limits_{N \to \infty}\int_{0}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta = 0
+    \]
+    which implies \[
+        \lim\limits_{N \to \infty}\int_{0}^{\pi} \frac{\sin\left(\left(N + \frac{1}{2} \right)\theta\right)} {\theta} d \theta = \frac{\pi}{2}.
+    \]
+    Using the change of variables $x = \left(N + \frac{1}{2}\right)\theta$, we have that \[
+    \lim\limits_{N \to \infty}\int_0^{\left(N + \frac{1}{2}\right)\pi}  \frac{\sin(x)}{x} dx  = \int_0^{\infty} \frac{\sin(x)}{x} dx = \frac{\pi}{2}. 
+    \]
+
+
+
+\end{proof}
+\section*{4.}
+\begin{proof}
+    Begin with 
+    \[
+    \hat{f}(n) = \frac{1}{2 \pi}\int_0^{2 \pi}f(x)e^{-inx}dx    
+    \]
+    Taking the norm we get that \[
+    |\hat{f}(n)| = \left|\frac{1}{2 \pi}\int_0^{2 \pi}f(x)e^{-inx}dx \right| \leq \frac{1}{2 \pi}\int_0^{2 \pi}\left|f(x)e^{-inx}\right|dx = \frac{1}{2 \pi}\int_0^{2 \pi}|f(x)|dx
+    \]
+    as $\left|e^{-inx}\right| = 1$. Since $f(x) \in C^k$ it is also differentiable, implying $\hat{f}(n) \in C^1$. Using integration by parts with $dv = e^{-inx}$ and $u = f(x)$ we have that 
+    \[
+    \hat{f}(n) = \frac{1}{2 \pi}\left[-f(x)\frac{e^{-inx}}{in} \right]_0^{2 \pi } + \frac{1}{2 \pi}\frac{1}{in} \int_0^{2 \pi} f'(x)e^{-inx} dx.    
+    \]
+    Becuase $e^{-in2 \pi } = \cos(2\pi n) - \sin(2 \pi n) = 1 = e^{0}$ we have
+    \[
+        \hat{f}(n) = \frac{1}{2 \pi}\left[-f(x)\frac{e^{-inx}}{in} \right]_0^{2 \pi } + \frac{1}{in} \int_0^{2 \pi} f'(x)e^{-inx} dx = \frac{1}{2 \pi}\frac{1}{in} \int_0^{2 \pi} f'(x)e^{-inx} dx.
+    \]
+    Perform this process $k$ times and we will obtain \[
+    \hat{f}(n) =  \frac{1}{2 \pi}\frac{1}{i^kn^k} \int_0^{2 \pi}f^{(k)}(x)e^{-inx} dx.    
+    \]
+    Then, 
+    \begin{align*}
+    |\hat{f}(n)| &= \left| \frac{1}{2 \pi}\frac{1}{i^kn^k} \int_0^{2 \pi}f^{(k)}(x)e^{-inx} dx \right|\\ &=  \frac{1}{2 \pi}\frac{1}{n^k} \left|\int_0^{2 \pi}f^{(k)}(x)e^{-inx} dx  \right|\\ &\leq  \frac{1}{2 \pi}\frac{1}{n^k} \int_0^{2 \pi}\left|f^{(k)}(x)e^{-inx}\right| dx \\ &= \frac{1}{2 \pi}\frac{1}{n^k} \int_0^{2 \pi}\left|f^{(k)}(x)\right|dx. 
+    \end{align*}
+    With $f \in C^{k}$ we have that 
+    \[
+        \int_0^{2 \pi}\left|f^{(k)}(x)\right|dx < \infty
+    \]
+    and thus, as we send $n \to \infty$
+    \[
+    \lim\limits_{n \to \infty}\hat{f}(n) = \lim\limits_{n \to \infty} \frac{1}{2 \pi}\frac{1}{n^k} \int_0^{2 \pi}\left|f^{(k)}(x)\right|dx = 0.
+    \]
+    Thus, $\hat{f}(n)$ is $o\left(\frac{1}{n^k} \right)$. 
+\end{proof}
+\section*{5.}
+Suppose $f$ is a $2\pi-$periodic function and satisfies the Lipschitz condition with constant $K$. 
+\subsection*{a.}
+\begin{proof}
+To solve this problem we will use Parseval's identity that 
+\[
+ \sum\limits_{n = -\infty}^{\infty}|a_n|^2 = ||f||^2 = \frac{1}{2 \pi }\int_0^{2\pi}|f(x)|^2dx.   
+\]
+Using the identity, we have the result
+\begin{align*}
+    \frac{1}{2\pi }\int_0^{2 \pi }|g_h(x)|^2dx &\numeq{a} \sum\limits_{n = -\infty}^{\infty}|\hat{g}_h(n)|^2 \\
+    &\numeq{b} \sum\limits_{n = -\infty}^{\infty}\left|\frac{1}{2\pi} \int_0^{2 \pi}(f(x + h) - f(x - h))e^{-inx}dx \right|^2 \\
+    &= \sum\limits_{n = -\infty}^{\infty}\left|\frac{1}{2\pi}\int_0^{2 \pi}f(x + h)e^{-inx}dx - \frac{1}{2\pi}\int_0^{2 \pi}f(x - h)e^{-inx}dx \right|^2 \\
+    &\numeq{c} \sum\limits_{n = -\infty}^{\infty}\left|\frac{1}{2\pi}e^{inh} \int_0^{2 \pi}f(u)e^{-inu}du - \frac{1}{2\pi}e^{-inh}\int_0^{2\pi}f(v)e^{-inv}dv \right|^2 \\
+    &= \sum\limits_{n = -\infty}^{\infty}\left|e^{inh}\hat{f}(n) - e^{-inh}\hat{f}(n)\right|^2 \\
+    &= \sum\limits_{n = -\infty}^{\infty}\left|\hat{f}(n)\left(e^{inh} - e^{-inh}\right)\right|^2 \\
+    &\numeq{d} \sum\limits_{n = -\infty}^{\infty}\left|\hat{f}2i\sin(nh)\right|^2 \\
+    &= \sum\limits_{n = -\infty}^{\infty}4|\sin(nh)|^2|\hat{f}(n)|^2
+\end{align*}
+with steps $(a)-(d)$ justified: 
+\begin{enumerate}[\indent(a)]
+   \item Parseval's identity
+   \item $g_h(x) = f(x + h) - f(x- h)$
+   \item using change of variable $u = x +h$ in the first integral, and $v = x - h$ in the second integral 
+   \item using that cosine is even and sine is odd \[
+   e^{inh} - e^{-inh} = \cos(nh) + i\sin(nh) - \cos(-nh) - i\sin(-nh) = \cos(nh) + i \sin(nh) - \cos(nh) + i\sin(nh) = 2i\sin(nh). 
+   \]
+\end{enumerate}
+Using our previous result we have that 
+\[
+ \frac{1}{8\pi}\int_0^{2\pi}|g_n(x)|^2dx = \sum\limits_{n = -\infty}^{\infty}|\sin(nh)|^2|\hat{f}(n)|^2   
+\]
+and therefore
+\begin{align*}
+    \sum\limits_{n = -\infty}^{\infty}|\sin(nh)|^2|\hat{f}(n)|^2 &= \frac{1}{8\pi}\int_0^{2\pi}|g_n(x)|^2dx \\
+    &\numeq{a} \frac{1}{8\pi}\int_0^{2\pi}|f(x + h) - f(x - h)|^2dx \\
+    &\numleq{b}\frac{1}{8 \pi}\int_0^{2\pi}\left(K|x + h - (x -h)|\right)^2 dx \\
+    &= \frac{1}{8 \pi}\int_0^{2 \pi} 4K^2h^2dx \\
+    &= K^2h^2
+\end{align*}
+with steps $(a)-(b)$ justified: 
+\begin{enumerate}[\indent(a)]
+   \item $g_h(x) = f(x + h)- f(x -h)$
+   \item Lipschitz continuity of $f$.  
+\end{enumerate}
+\end{proof}
+\subsection*{b.}
+\begin{proof}
+    By the previous part
+    \[
+    \sum\limits_{2^{p-1} < |n| < 2^p} \left|\sin\left(n\frac{\pi}{2^{p + 1}}\right)\right|^2|\hat{f}(n)|^2 \leq  \frac{K^2\pi^2}{2^{2p + 2}}. 
+    \]
+    Since $2^{p-1} < |n| < 2^p$
+    \[
+    \frac{1}{\sqrt{2}} = \sin\left(\frac{\pi}{4}\right) = \sin\left(2^{p-1}\frac{\pi}{2^{p+1}}\right) \leq \sin\left(n \frac{\pi}{2^{p + 1}}\right) \leq \sin\left(2^p\frac{\pi}{2^{p + 1}}\right) = \sin\left(\frac{\pi}{2} \right) = 1.
+    \]
+    Therefore, 
+    \[
+    \frac{1}{2}\sum\limits_{2^{p - 1} < |n| < 2^p} |\hat{f}(n)|^2 = \sum\limits_{2^{p - 1} < |n| < 2^p} \left|\frac{1}{\sqrt{2}}\right|^2|\hat{f}(n)|^2 = \sum\limits_{2^{p - 1} < |n| < 2^p} \left|\sin\left(2^{p - 1} \frac{\pi}{2^{p + 1}}\right)\right|^2 |\hat{f}(n)|^2 \leq \sum\limits_{2^{p - 1} < |n| < 2^p}\left|\sin\left(n\frac{\pi}{2^{p + 1}}\right)\right|^2|\hat{f}(n)|^2
+    \]
+    and thus \[
+        \frac{1}{2}\sum\limits_{2^{p - 1} < |n| < 2^p} |\hat{f}(n)|^2   \leq  \frac{K^2\pi^2}{2^{2p + 2}}    
+    \]
+    implying 
+    \[
+        \sum\limits_{2^{p - 1} < |n| < 2^p} |\hat{f}(n)|^2 \leq \frac{K^2\pi^2}{2^{2p + 1}}.
+    \]
+\end{proof}
+\subsection*{c}
+
+\begin{proof}
+    With the Cauchy-Schwarz inequality we have
+    \[
+    \left(\sum\limits_{2^{p - 1} < |n| < 2^p} |\hat{f}(n)| \right)^2 \leq \sum\limits_{2^{p - 1} < |n| < 2^p}|\hat{f}(n)|^2 \sum\limits_{2^{p-1}< |n| < 2^p}1 \leq 2^p\frac{K^2\pi^2}{2^{2p + 1}} = \frac{K^2\pi^2}{} < \infty.
+    \]
+\end{proof}
+Now we have 
+\[
+    \sum\limits_{2^{p-1} < |n| < 2^p} |\hat{f}(n)| < \infty
+\]
+and so we may apply the abosolute convergence corollary (Corollary 2.3) to state that the Fourier series converges uniformly to $f$. 
+\end{document}
